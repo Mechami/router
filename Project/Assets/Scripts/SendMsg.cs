@@ -5,7 +5,7 @@ public class SendMsg : MonoBehaviour
 {
 	public RoutingEvent Event = RoutingEvent.Test1;
 
-	void Update()
+	public void Update()
 	{
 		Router.RouteMessage(Event);
 	}
