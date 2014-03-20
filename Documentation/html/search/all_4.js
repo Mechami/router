@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['subscriber',['Subscriber',['../struct_router_messaging_system_1_1_route.html#a6cfe836db599f43d97b8770c51db5eb6',1,'RouterMessagingSystem::Route']]]
+  ['null',['Null',['../namespace_router_messaging_system.html#ab3aa4e6a364559327c890239a4129317abbb93ef26e3c101ff11cdd21cab08a94',1,'RouterMessagingSystem']]]
 ];

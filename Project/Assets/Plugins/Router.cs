@@ -13,7 +13,7 @@ using System.Collections.Generic;
 /** \brief Namespace for Router Messaging System */
 /// \details Provides encapsulation for RoutePointer, Route, RoutingEvent and Router.
 /// \author Philip Muzzall
-/// \version 1.0
+/// \version 1.0.0
 /// \date 3/17/2014
 /// \copyright Property of Philip Muzzall
 namespace RouterMessagingSystem
@@ -26,70 +26,102 @@ namespace RouterMessagingSystem
 		Test2 = 2, ///< Debug event 2
 	}
 
-	/** \brief Delegate used by Route and Router for RouteEvent addressing. */
+	/** \brief Base delegate used by Route and Router for RouteEvent addressing. */
 	public delegate void RoutePointer();
+	/** \brief RoutePointer that returns an object of type R. */
+	/// \returns Returns object of type R.
+	public delegate R RoutePointer<out R>();
 
 	/** \brief Route struct for use with Router Messaging System */
 	/// \author Philip Muzzall
-	/// \version 1.0
+	/// \version 1.0.0
 	/// \date 3/17/2014
 	/// \copyright Property of Philip Muzzall
-	/// \details Routes encapsulate the subscribing GameObject, the subscribed function and the subscribed event all in one object.\n
-	/// \details Multiple Routes can be used to subscribe a GameObject to multiple events at once.\n
+	/// \details Routes encapsulate the subscribing Component, the subscribed function and the subscribed event all in one object.\n
+	/// \details Multiple Routes can be used to subscribe a Component to multiple events at once.\n
 	/// \note It is not advised to pass a multicast delegate as a RoutePointer.
-	public struct Route
+	public struct Route : IEquatable<Route>
 	{
 		/// Reference to the originator of this route.
-		public readonly GameObject Subscriber;
+		public readonly Component Subscriber;
 		/// Reference to the function this route calls.
 		public readonly RoutePointer Address;
 		/// Value for the RouteEvent that calls this Route's address.
 		public readonly RoutingEvent RouteEvent;
 
-		/// Constructor that accepts a GameObject, a RoutePointer and a RoutingEvent.\n
+		/// \brief Constructor that accepts a Component, a RoutePointer and a RoutingEvent.
 		/// \warning Do not pass null as any parameters.\n
 		/// \warning Router will discard any Routes with null attributes.
-		public Route(GameObject RouteSubscriber /**< Reference to the subscribing GameObject. */, RoutePointer RoutingAddress /**< Reference to a function that this route calls.\n Must return void and accept no parameters. */, RoutingEvent Event /**< Value stating which event calls this Route. */) : this()
+		public Route(Component RouteSubscriber /**< Reference to the subscribing Component.\n Can be of any type derived from Component. */, RoutePointer RoutingAddress /**< Reference to a function that this route calls.\n Must return void and accept no parameters. */, RoutingEvent Event /**< Value stating which event calls this Route. */) : this()
 		{
 			Subscriber = RouteSubscriber;
 			Address = RoutingAddress;
 			RouteEvent = Event;
 		}
 
-		/// Constructor that accepts a Component, a RoutePointer and a RoutingEvent.\n
-		/// \warning Do not pass null as any parameters.\n
-		/// \warning Router will discard any Routes with null attributes.
-		public Route(Component RouteSubscriber /**< Used to derive a reference to the subscribing GameObject.\n Can be of any type derived from Component. */, RoutePointer RoutingAddress /**< Reference to a function that this route calls.\n Must return void and accept no parameters. */, RoutingEvent Event /**< Value stating which event calls this Route. */) : this()
+		/// \brief Checks if the attributes of the passed Route are the same as the calling Route's attributes.
+		/// \return Returns true if all attributes are the same, otherwise false.
+		public bool Equals(Route RT /**< Route to compare with the calling Route. */)
 		{
-			Subscriber = RouteSubscriber.gameObject;
-			Address = RoutingAddress;
-			RouteEvent = Event;
+			return ((this.Subscriber == RT.Subscriber) && (this.Address == RT.Address) && (this.RouteEvent == RT.RouteEvent));
 		}
 
-		/// Returns a string listing this Route's routing data.
-		/// \returns A string containing the subscribing Component, the GameObject parent of the Component, the subscribing event and the callback function.
+		/// \brief Checks if the passed object is the same as the calling Route.
+		/// \return Returns true if Obj is a Route and all attributes are the same as the calling Route.\n
+		/// \return Immediately returns false if Obj is not a Route at all.\n
+		public override bool Equals(System.Object Obj /**< Object to check for equivalency. */)
+		{
+			return ((Obj is Route) && (this.Subscriber == ((Route)Obj).Subscriber) && (this.Address == ((Route)Obj).Address) && (this.RouteEvent == ((Route)Obj).RouteEvent));
+		}
+
+		/// \brief Returns a hash of this Route.
+		/// \returns Hash generated from combined member attribute hashes.
+		public override int GetHashCode()
+		{
+			return (this.Subscriber.GetHashCode() + this.Address.GetHashCode() + this.RouteEvent.GetHashCode());
+		}
+
+		/// \brief Returns a string listing this Route's routing data.
+		/// \returns A string containing the subscribing Component, the subscribing event and the callback function.
 		public override string ToString()
 		{
 			return ("Subscriber: " + Address.Target + " | Event: " + RouteEvent.ToString() + " | Function: " + Address.Method);
+		}
+
+		/// \brief Compares two Routes for equivalent attributes.
+		/// \returns True if all attributes of the left-side operand are the same as their respective attributes of the right-side operand.
+		/// \returns False if any attribute of the left-side operand is different from the respective attribute of the right-side operand.
+		public static bool operator ==(Route RT1 /**< Left-side operand */, Route RT2 /**< Right-side operand */)
+		{
+			return ((RT1.Subscriber == RT2.Subscriber) && (RT1.Address == RT2.Address) && (RT1.RouteEvent == RT2.RouteEvent));
+		}
+
+		/// \brief Contrasts two Routes for differing attributes.
+		/// \returns True if any attribute of the left-side operand is different from the respective attribute of the right-side operand.\n
+		/// \returns False if all attributes of the left-side operand are the same as their respective attributes of the right-side operand.
+		public static bool operator !=(Route RT1 /**< Left-side operand */, Route RT2 /**< Right-side operand */)
+		{
+			return ((RT1.Subscriber != RT2.Subscriber) || (RT1.Address != RT2.Address) || (RT1.RouteEvent != RT2.RouteEvent));
 		}
 	}
 
 	/** \brief Router Messaging System for Unity Engine */
 	/// \details A replacement messaging system for Unity Engine built around not using blasted strings.
 	/// \author Philip Muzzall
-	/// \version 1.0
+	/// \version 1.0.0
 	/// \date 3/17/2014
 	/// \copyright Property of Philip Muzzall
-	/// \details Each GameObject must register with the Router before it can receive messages.\n
+	/// \details Each Component must register with the Router before it can receive messages.\n
 	/// To do this create a Route and register it with the Router using Router.AddRoute(Route NewRoute).\n
-	/// GameObjects can register multiple Routes with the Router to subscribe to multiple events.
+	/// Components can register multiple Routes with the Router to subscribe to multiple events.
 	/// \note Router internally maintains routing tables for all registered Routes.\n
 	/// \note These tables do not exists until the first Route has been registered.\n
 	/// \note If all Routes are removed then Router will destroy these tables and recreate them again when they are needed.
 	public static class Router
 	{
 		private static Dictionary<RoutingEvent, RoutePointer> RouteTable = null;
-		private static List<Route> ManifestTable = null, DeadRoutes = null;
+		private static HashSet<Route> ManifestTable = null;
+		private static Stack<Route> DeadRoutes = null;
 		private static bool TablesExist = false;
 
 		/** \brief Registers a new Route with the Router. */
@@ -262,9 +294,9 @@ namespace RouterMessagingSystem
 
 		private static bool ConstructTables()
 		{
-			ManifestTable = (new List<Route>());
+			ManifestTable = (new HashSet<Route>());
 			RouteTable = (new Dictionary<RoutingEvent, RoutePointer>());
-			DeadRoutes = (new List<Route>());
+			DeadRoutes = (new Stack<Route>());
 			return ((ManifestTable != null) && (RouteTable != null) && (DeadRoutes != null));
 		}
 
@@ -320,16 +352,21 @@ namespace RouterMessagingSystem
 
 		private static void CleanDeadRoutes()
 		{
-			DeadRoutes = ManifestTable.FindAll(x => x.Subscriber == null);
-
-			ManifestTable.RemoveAll(x => x.Subscriber == null);
-
-			foreach (Route RT in DeadRoutes)
+			foreach (Route RT in ManifestTable)
 			{
-				PruneRoutes(RT);
+				if (RT.Subscriber == null)
+				{
+					DeadRoutes.Push(RT);
+				}
 			}
 
-			DeadRoutes.Clear();
+			ManifestTable.RemoveWhere(x => x.Subscriber == null);
+
+			while (DeadRoutes.Count > 0)
+			{
+				PruneRoutes(DeadRoutes.Pop());
+			}
+
 			TablesExist = (TablesExist? DestroyTables() : TablesExist);
 		}
 

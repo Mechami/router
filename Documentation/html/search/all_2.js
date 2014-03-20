@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['null',['Null',['../namespace_router_messaging_system.html#ab3aa4e6a364559327c890239a4129317abbb93ef26e3c101ff11cdd21cab08a94',1,'RouterMessagingSystem']]]
+  ['flushroutes',['FlushRoutes',['../class_router_messaging_system_1_1_router.html#ad40fee06b10339cc09228e9d175a8810',1,'RouterMessagingSystem::Router']]]
 ];
