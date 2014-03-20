@@ -132,7 +132,7 @@ namespace RouterMessagingSystem
 
 			bool KeyPresent = RouteTable.ContainsKey(NewRoute.RouteEvent), ValidRoute = ((NewRoute.Subscriber != null) && (NewRoute.Address != null) && (NewRoute.RouteEvent != RoutingEvent.Null));
 
-			if (ValidRoute && !ManifestTable.Contains(NewRoute))
+			if (ValidRoute)
 			{
 				ManifestTable.Add(NewRoute);
 			}
@@ -162,11 +162,6 @@ namespace RouterMessagingSystem
 			if (TablesExist && KeyPresent && KeyHasValue(OldRoute.RouteEvent))
 			{
 				RemoveAddress(OldRoute);
-			}
-
-			if (TablesExist && KeyPresent && !KeyHasValue(OldRoute.RouteEvent))
-			{
-				RouteTable.Remove(OldRoute.RouteEvent);
 			}
 
 			TablesExist = (TablesExist? DestroyTables() : TablesExist);
@@ -320,6 +315,11 @@ namespace RouterMessagingSystem
 		{
 			//RouteTable[RT.RouteEvent] = (RouteTable[RT.RouteEvent] - RT.Address);
 			RouteTable[RT.RouteEvent] = (Delegate.RemoveAll(RouteTable[RT.RouteEvent], RT.Address) as RoutePointer);
+
+			if (!KeyHasValue(RT.RouteEvent))
+			{
+				RouteTable.Remove(RT.RouteEvent);
+			}
 		}
 
 		/// \internal Routing Functions
