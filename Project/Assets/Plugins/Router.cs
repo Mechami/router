@@ -26,7 +26,7 @@ namespace RouterMessagingSystem
 		Test2 = 2, ///< Debug event 2
 	}
 
-	/** \brief Base delegate used by Route and Router for RouteEvent addressing. */
+	/** \brief RoutePointer that doesn't accept or return any parameters. */
 	public delegate void RoutePointer();
 
 	/** \brief RoutePointer that returns an object of type R. */
@@ -39,11 +39,11 @@ namespace RouterMessagingSystem
 
 	/** \brief RoutePointer that returns an object and accepts two parameters. */
 	/// \returns Returns object of type R.
-	public delegate R RoutePointer<out R, in T1, in T2>(T1 P1, T2 P2);
+	public delegate R RoutePointer<out R, in T1, in T2>(T1 P1 /**< Input parameter of type T1. */, T2 P2 /**< Input parameter of type T2. */);
 
 	/** \brief RoutePointer that returns an object and accepts three parameters. */
 	/// \returns Returns object of type R.
-	public delegate R RoutePointer<out R, in T1, in T2, in T3>(T1 P1, T2 P2, T3 P3);
+	public delegate R RoutePointer<out R, in T1, in T2, in T3>(T1 P1 /**< Input parameter of type T1. */, T2 P2 /**< Input parameter of type T2. */, T3 P3 /**< Input parameter of type T3. */);
 
 	/** \brief Route struct for use with Router Messaging System */
 	/// \author Philip Muzzall
@@ -128,46 +128,46 @@ namespace RouterMessagingSystem
 		/// Value for the RouteEvent that calls this Route's address.
 		public readonly RoutingEvent RouteEvent;
 
-		/// \brief Constructor that accepts a Component, a RoutePointer and a RoutingEvent.
+		/// \brief Constructor that accepts a Component, a RoutePointer<R> and a RoutingEvent.
 		/// \warning Do not pass null as any parameters.\n
 		/// \warning Router will discard any Routes with null attributes.
-		public Route(Component RouteSubscriber /**< Reference to the subscribing Component.\n Can be of any type derived from Component. */, RoutePointer<R> RoutingAddress /**< Reference to a function that this route calls.\n First type is return type, second is input type. */, RoutingEvent Event /**< Value stating which event calls this Route. */) : this()
+		public Route(Component RouteSubscriber /**< Reference to the subscribing Component.\n Can be of any type derived from Component. */, RoutePointer<R> RoutingAddress /**< Reference to a function that this route calls.\n R is return type. */, RoutingEvent Event /**< Value stating which event calls this Route. */) : this()
 		{
 			Subscriber = RouteSubscriber;
 			Address = RoutingAddress;
 			RouteEvent = Event;
 		}
 
-		/// \brief Checks if the attributes of the passed Route are the same as the calling Route's attributes.
+		/// \brief Checks if the attributes of the passed Route<R> are the same as the calling Route<R>'s attributes.
 		/// \return Returns true if all attributes are the same, otherwise false.
-		public bool Equals(Route<R> RT /**< Route to compare with the calling Route. */)
+		public bool Equals(Route<R> RT /**< Route<R> to compare with the calling Route<R>. */)
 		{
 			return ((this.Subscriber == RT.Subscriber) && (this.Address == RT.Address) && (this.RouteEvent == RT.RouteEvent));
 		}
 
-		/// \brief Checks if the passed object is the same as the calling Route.
-		/// \return Returns true if Obj is a Route and all attributes are the same as the calling Route.\n
-		/// \return Immediately returns false if Obj is not a Route at all.\n
+		/// \brief Checks if the passed object is the same as the calling Route<R>.
+		/// \return Returns true if Obj is a Route<R> and all attributes are the same as the calling Route.\n
+		/// \return Immediately returns false if Obj is not a Route<R> at all.\n
 		public override bool Equals(System.Object Obj /**< Object to check for equivalency. */)
 		{
 			return ((Obj == typeof(Route<R>)) && (this.Subscriber == ((Route<R>)Obj).Subscriber) && (this.Address == ((Route<R>)Obj).Address) && (this.RouteEvent == ((Route<R>)Obj).RouteEvent));
 		}
 
-		/// \brief Returns a hash of this Route.
+		/// \brief Returns a hash of this Route<R>.
 		/// \returns Hash generated from combined member attribute hashes.
 		public override int GetHashCode()
 		{
 			return (this.Subscriber.GetHashCode() + this.Address.GetHashCode() + this.RouteEvent.GetHashCode());
 		}
 
-		/// \brief Returns a string listing this Route's routing data.
+		/// \brief Returns a string listing this Route<R>'s routing data.
 		/// \returns A string containing the subscribing Component, the subscribing event and the callback function.
 		public override string ToString()
 		{
 			return ("Subscriber: " + Address.Target + " | Event: " + RouteEvent.ToString() + " | Function: " + Address.Method);
 		}
 
-		/// \brief Compares two Routes for equivalent attributes.
+		/// \brief Compares two Route<R>'s for equivalent attributes.
 		/// \returns True if all attributes of the left-side operand are the same as their respective attributes of the right-side operand.
 		/// \returns False if any attribute of the left-side operand is different from the respective attribute of the right-side operand.
 		public static bool operator ==(Route<R> RT1 /**< Left-side operand */, Route<R> RT2 /**< Right-side operand */)
@@ -175,7 +175,7 @@ namespace RouterMessagingSystem
 			return ((RT1.Subscriber == RT2.Subscriber) && (RT1.Address == RT2.Address) && (RT1.RouteEvent == RT2.RouteEvent));
 		}
 
-		/// \brief Contrasts two Routes for differing attributes.
+		/// \brief Contrasts two Route<R>'s for differing attributes.
 		/// \returns True if any attribute of the left-side operand is different from the respective attribute of the right-side operand.\n
 		/// \returns False if all attributes of the left-side operand are the same as their respective attributes of the right-side operand.
 		public static bool operator !=(Route<R> RT1 /**< Left-side operand */, Route<R> RT2 /**< Right-side operand */)
@@ -194,46 +194,46 @@ namespace RouterMessagingSystem
 		/// Value for the RouteEvent that calls this Route's address.
 		public readonly RoutingEvent RouteEvent;
 
-		/// \brief Constructor that accepts a Component, a RoutePointer and a RoutingEvent.
+		/// \brief Constructor that accepts a Component, a RoutePointer<R, T> and a RoutingEvent.
 		/// \warning Do not pass null as any parameters.\n
 		/// \warning Router will discard any Routes with null attributes.
-		public Route(Component RouteSubscriber /**< Reference to the subscribing Component.\n Can be of any type derived from Component. */, RoutePointer<R, T> RoutingAddress /**< Reference to a function that this route calls.\n First type is return type, second is input type. */, RoutingEvent Event /**< Value stating which event calls this Route. */) : this()
+		public Route(Component RouteSubscriber /**< Reference to the subscribing Component.\n Can be of any type derived from Component. */, RoutePointer<R, T> RoutingAddress /**< Reference to a function that this route calls.\n R is return type, T is parameter type. */, RoutingEvent Event /**< Value stating which event calls this Route. */) : this()
 		{
 			Subscriber = RouteSubscriber;
 			Address = RoutingAddress;
 			RouteEvent = Event;
 		}
 
-		/// \brief Checks if the attributes of the passed Route are the same as the calling Route's attributes.
+		/// \brief Checks if the attributes of the passed Route<R, T> are the same as the calling Route<R, T>'s attributes.
 		/// \return Returns true if all attributes are the same, otherwise false.
-		public bool Equals(Route<R, T> RT /**< Route to compare with the calling Route. */)
+		public bool Equals(Route<R, T> RT /**< Route<R, T> to compare with the calling Route<R, T>. */)
 		{
 			return ((this.Subscriber == RT.Subscriber) && (this.Address == RT.Address) && (this.RouteEvent == RT.RouteEvent));
 		}
 
 		/// \brief Checks if the passed object is the same as the calling Route.
-		/// \return Returns true if Obj is a Route and all attributes are the same as the calling Route.\n
-		/// \return Immediately returns false if Obj is not a Route at all.\n
+		/// \return Returns true if Obj is a Route<R, T> and all attributes are the same as the calling Route<R, T>.\n
+		/// \return Immediately returns false if Obj is not a Route<R, T> at all.\n
 		public override bool Equals(System.Object Obj /**< Object to check for equivalency. */)
 		{
 			return ((Obj == typeof(Route<R, T>)) && (this.Subscriber == ((Route<R, T>)Obj).Subscriber) && (this.Address == ((Route<R, T>)Obj).Address) && (this.RouteEvent == ((Route<R, T>)Obj).RouteEvent));
 		}
 
-		/// \brief Returns a hash of this Route.
+		/// \brief Returns a hash of this Route<R, T>.
 		/// \returns Hash generated from combined member attribute hashes.
 		public override int GetHashCode()
 		{
 			return (this.Subscriber.GetHashCode() + this.Address.GetHashCode() + this.RouteEvent.GetHashCode());
 		}
 
-		/// \brief Returns a string listing this Route's routing data.
+		/// \brief Returns a string listing this Route<R, T>'s routing data.
 		/// \returns A string containing the subscribing Component, the subscribing event and the callback function.
 		public override string ToString()
 		{
 			return ("Subscriber: " + Address.Target + " | Event: " + RouteEvent.ToString() + " | Function: " + Address.Method);
 		}
 
-		/// \brief Compares two Routes for equivalent attributes.
+		/// \brief Compares two Route<R, T>'s for equivalent attributes.
 		/// \returns True if all attributes of the left-side operand are the same as their respective attributes of the right-side operand.
 		/// \returns False if any attribute of the left-side operand is different from the respective attribute of the right-side operand.
 		public static bool operator ==(Route<R, T> RT1 /**< Left-side operand */, Route<R, T> RT2 /**< Right-side operand */)
@@ -241,7 +241,7 @@ namespace RouterMessagingSystem
 			return ((RT1.Subscriber == RT2.Subscriber) && (RT1.Address == RT2.Address) && (RT1.RouteEvent == RT2.RouteEvent));
 		}
 
-		/// \brief Contrasts two Routes for differing attributes.
+		/// \brief Contrasts two Route<R, T>'s for differing attributes.
 		/// \returns True if any attribute of the left-side operand is different from the respective attribute of the right-side operand.\n
 		/// \returns False if all attributes of the left-side operand are the same as their respective attributes of the right-side operand.
 		public static bool operator !=(Route<R, T> RT1 /**< Left-side operand */, Route<R, T> RT2 /**< Right-side operand */)
@@ -260,46 +260,46 @@ namespace RouterMessagingSystem
 		/// Value for the RouteEvent that calls this Route's address.
 		public readonly RoutingEvent RouteEvent;
 
-		/// \brief Constructor that accepts a Component, a RoutePointer and a RoutingEvent.
+		/// \brief Constructor that accepts a Component, a RoutePointer<R, T1, T2> and a RoutingEvent.
 		/// \warning Do not pass null as any parameters.\n
 		/// \warning Router will discard any Routes with null attributes.
-		public Route(Component RouteSubscriber /**< Reference to the subscribing Component.\n Can be of any type derived from Component. */, RoutePointer<R, T1, T2> RoutingAddress /**< Reference to a function that this route calls.\n First type is return type, second is input type. */, RoutingEvent Event /**< Value stating which event calls this Route. */) : this()
+		public Route(Component RouteSubscriber /**< Reference to the subscribing Component.\n Can be of any type derived from Component. */, RoutePointer<R, T1, T2> RoutingAddress /**< Reference to a function that this route calls.\n R is return type, T1 and T2 are parameter types. */, RoutingEvent Event /**< Value stating which event calls this Route. */) : this()
 		{
 			Subscriber = RouteSubscriber;
 			Address = RoutingAddress;
 			RouteEvent = Event;
 		}
 
-		/// \brief Checks if the attributes of the passed Route are the same as the calling Route's attributes.
+		/// \brief Checks if the attributes of the passed Route<R, T1, T2> are the same as the calling Route<R, T1, T2>'s attributes.
 		/// \return Returns true if all attributes are the same, otherwise false.
 		public bool Equals(Route<R, T1, T2> RT /**< Route to compare with the calling Route. */)
 		{
 			return ((this.Subscriber == RT.Subscriber) && (this.Address == RT.Address) && (this.RouteEvent == RT.RouteEvent));
 		}
 
-		/// \brief Checks if the passed object is the same as the calling Route.
-		/// \return Returns true if Obj is a Route and all attributes are the same as the calling Route.\n
-		/// \return Immediately returns false if Obj is not a Route at all.\n
+		/// \brief Checks if the passed object is the same as the calling Route<R, T1, T2>.
+		/// \return Returns true if Obj is a Route<R, T1, T2> and all attributes are the same as the calling Route.\n
+		/// \return Immediately returns false if Obj is not a Route<R, T1, T2> at all.\n
 		public override bool Equals(System.Object Obj /**< Object to check for equivalency. */)
 		{
 			return ((Obj == typeof(Route<R, T1, T2>)) && (this.Subscriber == ((Route<R, T1, T2>)Obj).Subscriber) && (this.Address == ((Route<R, T1, T2>)Obj).Address) && (this.RouteEvent == ((Route<R, T1, T2>)Obj).RouteEvent));
 		}
 
-		/// \brief Returns a hash of this Route.
+		/// \brief Returns a hash of this Route<R, T1, T2>.
 		/// \returns Hash generated from combined member attribute hashes.
 		public override int GetHashCode()
 		{
 			return (this.Subscriber.GetHashCode() + this.Address.GetHashCode() + this.RouteEvent.GetHashCode());
 		}
 
-		/// \brief Returns a string listing this Route's routing data.
+		/// \brief Returns a string listing this Route<R, T1, T2>'s routing data.
 		/// \returns A string containing the subscribing Component, the subscribing event and the callback function.
 		public override string ToString()
 		{
 			return ("Subscriber: " + Address.Target + " | Event: " + RouteEvent.ToString() + " | Function: " + Address.Method);
 		}
 
-		/// \brief Compares two Routes for equivalent attributes.
+		/// \brief Compares two Route<R, T1, T2>'s for equivalent attributes.
 		/// \returns True if all attributes of the left-side operand are the same as their respective attributes of the right-side operand.
 		/// \returns False if any attribute of the left-side operand is different from the respective attribute of the right-side operand.
 		public static bool operator ==(Route<R, T1, T2> RT1 /**< Left-side operand */, Route<R, T1, T2> RT2 /**< Right-side operand */)
@@ -307,7 +307,7 @@ namespace RouterMessagingSystem
 			return ((RT1.Subscriber == RT2.Subscriber) && (RT1.Address == RT2.Address) && (RT1.RouteEvent == RT2.RouteEvent));
 		}
 
-		/// \brief Contrasts two Routes for differing attributes.
+		/// \brief Contrasts two Route<R, T1, T2>'s for differing attributes.
 		/// \returns True if any attribute of the left-side operand is different from the respective attribute of the right-side operand.\n
 		/// \returns False if all attributes of the left-side operand are the same as their respective attributes of the right-side operand.
 		public static bool operator !=(Route<R, T1, T2> RT1 /**< Left-side operand */, Route<R, T1, T2> RT2 /**< Right-side operand */)
@@ -326,17 +326,17 @@ namespace RouterMessagingSystem
 		/// Value for the RouteEvent that calls this Route's address.
 		public readonly RoutingEvent RouteEvent;
 
-		/// \brief Constructor that accepts a Component, a RoutePointer and a RoutingEvent.
+		/// \brief Constructor that accepts a Component, a RoutePointer<R, T1, T2, T3> and a RoutingEvent.
 		/// \warning Do not pass null as any parameters.\n
 		/// \warning Router will discard any Routes with null attributes.
-		public Route(Component RouteSubscriber /**< Reference to the subscribing Component.\n Can be of any type derived from Component. */, RoutePointer<R, T1, T2, T3> RoutingAddress /**< Reference to a function that this route calls.\n First type is return type, second is input type. */, RoutingEvent Event /**< Value stating which event calls this Route. */) : this()
+		public Route(Component RouteSubscriber /**< Reference to the subscribing Component.\n Can be of any type derived from Component. */, RoutePointer<R, T1, T2, T3> RoutingAddress /**< Reference to a function that this route calls.\n R is return type while T1, T2 and T3 are parameter types. */, RoutingEvent Event /**< Value stating which event calls this Route. */) : this()
 		{
 			Subscriber = RouteSubscriber;
 			Address = RoutingAddress;
 			RouteEvent = Event;
 		}
 
-		/// \brief Checks if the attributes of the passed Route are the same as the calling Route's attributes.
+		/// \brief Checks if the attributes of the passed Route<R, T1, T2, T3> are the same as the calling Route's attributes.
 		/// \return Returns true if all attributes are the same, otherwise false.
 		public bool Equals(Route<R, T1, T2, T3> RT /**< Route to compare with the calling Route. */)
 		{
@@ -344,28 +344,28 @@ namespace RouterMessagingSystem
 		}
 
 		/// \brief Checks if the passed object is the same as the calling Route.
-		/// \return Returns true if Obj is a Route and all attributes are the same as the calling Route.\n
-		/// \return Immediately returns false if Obj is not a Route at all.\n
+		/// \return Returns true if Obj is a Route<R, T1, T2, T3> and all attributes are the same as the calling Route<R, T1, T2, T3>.\n
+		/// \return Immediately returns false if Obj is not a Route<R, T1, T2, T3> at all.\n
 		public override bool Equals(System.Object Obj /**< Object to check for equivalency. */)
 		{
 			return ((Obj == typeof(Route<R, T1, T2, T3>)) && (this.Subscriber == ((Route<R, T1, T2, T3>)Obj).Subscriber) && (this.Address == ((Route<R, T1, T2, T3>)Obj).Address) && (this.RouteEvent == ((Route<R, T1, T2, T3>)Obj).RouteEvent));
 		}
 
-		/// \brief Returns a hash of this Route.
+		/// \brief Returns a hash of this Route<R, T1, T2, T3>.
 		/// \returns Hash generated from combined member attribute hashes.
 		public override int GetHashCode()
 		{
 			return (this.Subscriber.GetHashCode() + this.Address.GetHashCode() + this.RouteEvent.GetHashCode());
 		}
 
-		/// \brief Returns a string listing this Route's routing data.
+		/// \brief Returns a string listing this Route<R, T1, T2, T3>'s routing data.
 		/// \returns A string containing the subscribing Component, the subscribing event and the callback function.
 		public override string ToString()
 		{
 			return ("Subscriber: " + Address.Target + " | Event: " + RouteEvent.ToString() + " | Function: " + Address.Method);
 		}
 
-		/// \brief Compares two Routes for equivalent attributes.
+		/// \brief Compares two Route<R, T1, T2, T3>'s for equivalent attributes.
 		/// \returns True if all attributes of the left-side operand are the same as their respective attributes of the right-side operand.
 		/// \returns False if any attribute of the left-side operand is different from the respective attribute of the right-side operand.
 		public static bool operator ==(Route<R, T1, T2, T3> RT1 /**< Left-side operand */, Route<R, T1, T2, T3> RT2 /**< Right-side operand */)
@@ -373,7 +373,7 @@ namespace RouterMessagingSystem
 			return ((RT1.Subscriber == RT2.Subscriber) && (RT1.Address == RT2.Address) && (RT1.RouteEvent == RT2.RouteEvent));
 		}
 
-		/// \brief Contrasts two Routes for differing attributes.
+		/// \brief Contrasts two Route<R, T1, T2, T3>'s for differing attributes.
 		/// \returns True if any attribute of the left-side operand is different from the respective attribute of the right-side operand.\n
 		/// \returns False if all attributes of the left-side operand are the same as their respective attributes of the right-side operand.
 		public static bool operator !=(Route<R, T1, T2, T3> RT1 /**< Left-side operand */, Route<R, T1, T2, T3> RT2 /**< Right-side operand */)
@@ -394,6 +394,7 @@ namespace RouterMessagingSystem
 	/// \note Router internally maintains routing tables for all registered Routes.\n
 	/// \note These tables do not exists until the first Route has been registered.\n
 	/// \note If all Routes are removed then Router will destroy these tables and recreate them again when they are needed.
+	/// \todo Implement generic routes for passing and returning data.
 	public static class Router
 	{
 		private static Dictionary<RoutingEvent, RoutePointer> RouteTable = null;
@@ -441,7 +442,7 @@ namespace RouterMessagingSystem
 				RemoveAddress(OldRoute);
 			}
 
-			TablesExist = (TablesExist? DestroyTables() : TablesExist);
+			TablesExist = (TablesExist? DeconstructTables() : TablesExist);
 		}
 
 		/** \brief Flushes all Routes from the routing table. */
@@ -572,7 +573,7 @@ namespace RouterMessagingSystem
 			return ((ManifestTable != null) && (RouteTable != null) && (DeadRoutes != null));
 		}
 
-		private static bool DestroyTables()
+		private static bool DeconstructTables()
 		{
 			ManifestTable = ((ManifestTable.Count > 0)? ManifestTable : null);
 			RouteTable = ((RouteTable.Count > 0)? RouteTable : null);
@@ -584,14 +585,12 @@ namespace RouterMessagingSystem
 
 		private static void AttachAddress(Route RT)
 		{
-			//RouteTable[RT.RouteEvent] = (RouteTable[RT.RouteEvent] + RT.Address);
-			RouteTable[RT.RouteEvent] = (Delegate.Combine(RouteTable[RT.RouteEvent], RT.Address) as RoutePointer);
+			RouteTable[RT.RouteEvent] = (RouteTable[RT.RouteEvent] + RT.Address);
 		}
 
 		private static void RemoveAddress(Route RT)
 		{
-			//RouteTable[RT.RouteEvent] = (RouteTable[RT.RouteEvent] - RT.Address);
-			RouteTable[RT.RouteEvent] = (Delegate.RemoveAll(RouteTable[RT.RouteEvent], RT.Address) as RoutePointer);
+			RouteTable[RT.RouteEvent] = (RouteTable[RT.RouteEvent] - RT.Address);
 
 			if (!KeyHasValue(RT.RouteEvent))
 			{
@@ -644,7 +643,7 @@ namespace RouterMessagingSystem
 				PruneRoutes(DeadRoutes.Pop());
 			}
 
-			TablesExist = (TablesExist? DestroyTables() : TablesExist);
+			TablesExist = (TablesExist? DeconstructTables() : TablesExist);
 		}
 
 		private static void PruneRoutes(Route RT)
