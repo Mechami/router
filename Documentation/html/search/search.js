@@ -13,7 +13,8 @@ var indexSectionsWithContent =
   3: "aefgort",
   4: "ars",
   5: "r",
-  6: "nt"
+  6: "nt",
+  7: "t"
 };
 
 var indexSectionNames =
@@ -24,7 +25,8 @@ var indexSectionNames =
   3: "functions",
   4: "variables",
   5: "enums",
-  6: "enumvalues"
+  6: "enumvalues",
+  7: "pages"
 };
 
 function convertToId(search)

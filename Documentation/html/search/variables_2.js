@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['subscriber',['Subscriber',['../struct_router_messaging_system_1_1_route.html#a8a188c84ef9c822e63c5425fb61dafe7',1,'RouterMessagingSystem::Route']]]
+  ['subscriber',['Subscriber',['../struct_router_messaging_system_1_1_route.html#a8a188c84ef9c822e63c5425fb61dafe7',1,'RouterMessagingSystem.Route.Subscriber()'],['../struct_router_messaging_system_1_1_route_3_01_r_01_4.html#a92db189557c5679cca13f595b2bca6c8',1,'RouterMessagingSystem.Route&lt; R &gt;.Subscriber()'],['../struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html#acadc530ab2a223111d52bd368388181d',1,'RouterMessagingSystem.Route&lt; R, T &gt;.Subscriber()'],['../struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8',1,'RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.Subscriber()'],['../struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_00_01_t3_01_4.html#a04ca524b41c70fb001b83e01dad5d1c5',1,'RouterMessagingSystem.Route&lt; R, T1, T2, T3 &gt;.Subscriber()']]]
 ];
