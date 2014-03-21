@@ -6,8 +6,8 @@ var class_router_messaging_system_1_1_router =
     [ "RouteMessage", "class_router_messaging_system_1_1_router.html#a576e1f0b64ef7a64eb4ee535cbf37594", null ],
     [ "RouteMessageArea", "class_router_messaging_system_1_1_router.html#abe0f035b6e4867a059be9258f4ae9464", null ],
     [ "RouteMessageArea", "class_router_messaging_system_1_1_router.html#ab772d7262c553f0599e7fc2f3ecd7cf9", null ],
-    [ "RouteMessageDownstream", "class_router_messaging_system_1_1_router.html#a7c2faeb594acba7d446356588736f13b", null ],
-    [ "RouteMessageDownstream", "class_router_messaging_system_1_1_router.html#ad80291ef8e2683cd22c8606f84be6d0c", null ],
-    [ "RouteMessageUpstream", "class_router_messaging_system_1_1_router.html#aff2409f806464d8cfeb390e0449a846f", null ],
-    [ "RouteMessageUpstream", "class_router_messaging_system_1_1_router.html#afdbd481f411f75045586212351811618", null ]
+    [ "RouteMessageAscendants", "class_router_messaging_system_1_1_router.html#a8394f047dfd2018da75688b0807feba0", null ],
+    [ "RouteMessageAscendants", "class_router_messaging_system_1_1_router.html#afd1ee507a7c567d967922056fb4c6820", null ],
+    [ "RouteMessageDescendants", "class_router_messaging_system_1_1_router.html#ad571c1a47ca90b937b970c9ee1cf3c85", null ],
+    [ "RouteMessageDescendants", "class_router_messaging_system_1_1_router.html#a7fa87567dc83f0b7b221e91ef81b41aa", null ]
 ];

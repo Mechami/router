@@ -4,25 +4,25 @@ using RouterMessagingSystem;
 public class ReceiveMsg : MonoBehaviour
 {
 	public RoutingEvent Event = RoutingEvent.Test1;
-	private Route RT = new Route();
+	private Route<Component> RT = new Route<Component>();
 
 	public void Awake()
 	{
-		RT = new Route(this, Test, Event);
+		RT = new Route<Component>(this, Test, Event);
 	}
 
 	public void OnEnable()
 	{
-		Router.AddRoute(RT);
+		Router<Component>.AddRoute(RT);
 	}
 
 	public void OnDisable()
 	{
-		Router.RemoveRoute(RT);
+		Router<Component>.RemoveRoute(RT);
 	}
 
-	public void Test()
+	public Component Test()
 	{
-		Debug.Log(this + ": Test called from Router!");
+		return this;
 	}
 }

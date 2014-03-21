@@ -19,7 +19,7 @@ using System.Collections.Generic;
 namespace RouterMessagingSystem
 {
 	/** \brief Enumeration for event types. */
-	public enum RoutingEvent
+	public enum RoutingEvent : byte
 	{
 		Null = 0, ///< Unused event type
 		Test1 = 1, ///< Debug event 1
@@ -470,7 +470,7 @@ namespace RouterMessagingSystem
 		/** \brief Routes a message of the specified event to the specified GameObject and its children. */
 		/// Both direct and indirect children of the specified GameObject receive the event.\n
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
-		public static void RouteMessageDownstream(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */)
+		public static void RouteMessageDescendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
 			if (TablesExist && ScopeIsValid(Scope))
 			{
@@ -486,7 +486,7 @@ namespace RouterMessagingSystem
 		/// Both direct and indirect children of the specified GameObject receive the event.\n
 		/// Accepts a Component that is used to derive a reference to the target GameObject.\n
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
-		public static void RouteMessageDownstream(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component. */, RoutingEvent EventType /**< Type of event to send. */)
+		public static void RouteMessageDescendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
 			if (TablesExist && ScopeIsValid(Scope.gameObject))
 			{
@@ -501,7 +501,7 @@ namespace RouterMessagingSystem
 		/** \brief Routes a message of the specified event to the specified GameObject and its parents. */
 		/// Both direct and indirect parents of the specified GameObject receive the event.\n
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
-		public static void RouteMessageUpstream(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */)
+		public static void RouteMessageAscendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
 			if (TablesExist && ScopeIsValid(Scope))
 			{
@@ -517,7 +517,7 @@ namespace RouterMessagingSystem
 		/// Both direct and indirect parents of the specified GameObject receive the event.\n
 		/// Accepts a Component that is used to derive a reference to the target GameObject.\n
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
-		public static void RouteMessageUpstream(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component.*/, RoutingEvent EventType /**< Type of event to send. */)
+		public static void RouteMessageAscendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component.*/, RoutingEvent EventType /**< Type of event to send. */)
 		{
 			if (TablesExist && ScopeIsValid(Scope.gameObject))
 			{
@@ -647,6 +647,370 @@ namespace RouterMessagingSystem
 		}
 
 		private static void PruneRoutes(Route RT)
+		{
+			bool KeyPresent = RouteTable.ContainsKey(RT.RouteEvent);
+
+			if (KeyPresent && KeyHasValue(RT.RouteEvent))
+			{
+				RemoveAddress(RT);
+			}
+
+			if (KeyPresent && !KeyHasValue(RT.RouteEvent))
+			{
+				RouteTable.Remove(RT.RouteEvent);
+			}
+		}
+
+		/// \internal Misc Functions
+
+		private static bool KeyHasValue(RoutingEvent EventType)
+		{
+			return (RouteTable.ContainsKey(EventType) && (RouteTable[EventType] != null));
+		}
+
+		private static bool ScopeIsValid(GameObject Scope)
+		{
+			return (Scope != null);
+		}
+	}
+
+	/** \brief Router that returns R from sending messages. */
+	public static class Router<R>
+	{
+		private static Dictionary<RoutingEvent, RoutePointer<R>> RouteTable = null;
+		private static HashSet<Route<R>> ManifestTable = null;
+		private static Stack<Route<R>> DeadRoutes = null;
+		private static bool TablesExist = false;
+
+		/** \brief Registers a new Route with the Router. */
+		/// \warning Any Routes with null attributes will not be registered.
+		public static void AddRoute(Route<R> NewRoute /**< Route to be registered. */)
+		{
+			TablesExist = (TablesExist? TablesExist : ConstructTables());
+
+			bool KeyPresent = RouteTable.ContainsKey(NewRoute.RouteEvent), ValidRoute = ((NewRoute.Subscriber != null) && (NewRoute.Address != null) && (NewRoute.RouteEvent != RoutingEvent.Null));
+
+			if (ValidRoute)
+			{
+				ManifestTable.Add(NewRoute);
+			}
+
+			if (ValidRoute && KeyPresent)
+			{
+				AttachAddress(NewRoute);
+			}
+
+			if (ValidRoute && !KeyPresent)
+			{
+				RouteTable.Add(NewRoute.RouteEvent, NewRoute.Address);
+			}
+		}
+
+		/** \brief Removes a Route from routing table. */
+		public static void RemoveRoute(Route<R> OldRoute /**< Route to be removed. */)
+		{
+			bool KeyPresent = false;
+
+			if (TablesExist)
+			{
+				KeyPresent = RouteTable.ContainsKey(OldRoute.RouteEvent);
+				ManifestTable.Remove(OldRoute);
+			}
+
+			if (TablesExist && KeyPresent && KeyHasValue(OldRoute.RouteEvent))
+			{
+				RemoveAddress(OldRoute);
+			}
+
+			TablesExist = (TablesExist? DeconstructTables() : TablesExist);
+		}
+
+		/** \brief Flushes all Routes from the routing table. */
+		/// \warning Only use this if you absolutely need to reset the entire routing table at runtime.\n
+		/// \warning Every subscriber will need to re-register with the Router after the tables are flushed.\n
+		/// \warning This is a relatively slow operation, depending on the amount of subscribers that need to be re-added.
+		public static void FlushRoutes()
+		{
+			ManifestTable = null;
+			RouteTable = null;
+			DeadRoutes = null;
+			TablesExist = false;
+		}
+
+		/** \brief Routes a message of the specified event to all subscribers and returns their values. */
+		/// \returns Returns an array of type R from all subscribers of this event type.
+		/// \returns If the message fails to send then returns the default of R[].
+		public static R[] RouteMessage(RoutingEvent EventType /**< Type of event to send. */)
+		{
+			if (TablesExist && KeyHasValue(EventType))
+			{
+				CleanDeadRoutes();
+
+				RoutePointer<R>[] RPL = (RouteTable[EventType].GetInvocationList() as RoutePointer<R>[]);
+				R[] Results = new R[RPL.Length];
+
+				for (int i = 0; i < RPL.Length; i++)
+				{
+					Results[i] = RPL[i]();
+				}
+
+				return Results;
+			}
+			else
+			{
+				return default(R[]);
+			}
+		}
+
+		/** \brief Routes a message of the specified event to the specified GameObject and its children. */
+		/// Both direct and indirect children of the specified GameObject receive the event.\n
+		/// \returns Returns an array of type R from all subscribers of this event type.
+		/// \returns If the message fails to send then returns the default of R[].
+		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
+		public static R[] RouteMessageDescendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */)
+		{
+			if (TablesExist && ScopeIsValid(Scope))
+			{
+				CleanDeadRoutes();
+
+				List<R> Results = new List<R>(ManifestTable.Count);
+
+				foreach (Route<R> RT in ManifestTable)
+				{
+					Results.Add(RouteDownwardsIfParent(Scope, EventType, RT));
+				}
+
+				Results.RemoveAll(x => (Equals(x, default(R))));
+
+				return Results.ToArray();
+			}
+			else
+			{
+				return default(R[]);
+			}
+		}
+
+		/** \brief Routes a message of the specified event to the specified GameObject and its children. */
+		/// Both direct and indirect children of the specified GameObject receive the event.\n
+		/// Accepts a Component that is used to derive a reference to the target GameObject.\n
+		/// \returns Returns an array of type R from all subscribers of this event type.
+		/// \returns If the message fails to send then returns the default of R[].
+		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
+		public static R[] RouteMessageDescendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component. */, RoutingEvent EventType /**< Type of event to send. */)
+		{
+			if (TablesExist && ScopeIsValid(Scope.gameObject))
+			{
+				CleanDeadRoutes();
+
+				List<R> Results = new List<R>(ManifestTable.Count);
+
+				foreach (Route<R> RT in ManifestTable)
+				{
+					Results.Add(RouteDownwardsIfParent(Scope.gameObject, EventType, RT));
+				}
+
+				Results.RemoveAll(x => (Equals(x, default(R))));
+
+				return Results.ToArray();
+			}
+			else
+			{
+				return default(R[]);
+			}
+		}
+
+		/** \brief Routes a message of the specified event to the specified GameObject and its parents. */
+		/// Both direct and indirect parents of the specified GameObject receive the event.\n
+		/// \returns Returns an array of type R from all subscribers of this event type.
+		/// \returns If the message fails to send then returns the default of R[].
+		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
+		public static R[] RouteMessageAscendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */)
+		{
+			if (TablesExist && ScopeIsValid(Scope))
+			{
+				CleanDeadRoutes();
+
+				List<R> Results = new List<R>(ManifestTable.Count);
+
+				foreach (Route<R> RT in ManifestTable)
+				{
+					Results.Add(RouteUpwardsIfChild(Scope, EventType, RT));
+				}
+
+				Results.RemoveAll(x => (Equals(x, default(R))));
+
+				return Results.ToArray();
+			}
+			else
+			{
+				return default(R[]);
+			}
+		}
+
+		/** \brief Routes a message of the specified event to the specified GameObject and its parents. */
+		/// Both direct and indirect parents of the specified GameObject receive the event.\n
+		/// Accepts a Component that is used to derive a reference to the target GameObject.\n
+		/// \returns Returns an array of type R from all subscribers of this event type.
+		/// \returns If the message fails to send then returns the default of R[].
+		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
+		public static R[] RouteMessageAscendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component.*/, RoutingEvent EventType /**< Type of event to send. */)
+		{
+			if (TablesExist && ScopeIsValid(Scope.gameObject))
+			{
+				CleanDeadRoutes();
+
+				List<R> Results = new List<R>(ManifestTable.Count);
+
+				foreach (Route<R> RT in ManifestTable)
+				{
+					Results.Add(RouteUpwardsIfChild(Scope.gameObject, EventType, RT));
+				}
+
+				Results.RemoveAll(x => (Equals(x, default(R))));
+
+				return Results.ToArray();
+			}
+			else
+			{
+				return default(R[]);
+			}
+		}
+
+		/** \brief Routes a message of the specified event to all subscribers in a radius. */
+		/// Uses the specified GameObject as the origin point.\n
+		/// \returns Returns an array of type R from all subscribers of this event type.
+		/// \returns If the message fails to send then returns the default of R[].
+		/// \note Only works for subscribed GameObjects.
+		public static R[] RouteMessageArea(GameObject Origin /**< GameObject specifying the origin of the event radius.\n Does not need to be subscribed unless it also is to receive the event. */, float Radius /**< Radius of the event in meters. */, RoutingEvent EventType /**< Type of event to send. */)
+		{
+			if (TablesExist && ScopeIsValid(Origin))
+			{
+				CleanDeadRoutes();
+
+				List<R> Results = new List<R>(ManifestTable.Count);
+
+				foreach (Route<R> RT in ManifestTable)
+				{
+					Results.Add(RouteIfInRadius(Origin, EventType, RT, Radius));
+				}
+
+				Results.RemoveAll(x => (Equals(x, default(R))));
+
+				return Results.ToArray();
+			}
+			else
+			{
+				return default(R[]);
+			}
+		}
+
+		/** \brief Routes a message of the specified event to all subscribers in a radius. */
+		/// Uses the specified Component as the origin point.\n
+		/// \returns Returns an array of type R from all subscribers of this event type.
+		/// \returns If the message fails to send then returns the default of R[].
+		/// \note Only works for subscribed GameObjects.
+		public static R[] RouteMessageArea(Component Origin /**< Component specifying the origin of the event radius.\n Can be of any type derived from Component.\n Does not need to be subscribed unless it also is to receive the event. */, float Radius /**< Radius of the event in meters. */, RoutingEvent EventType /**< Type of event to send. */)
+		{
+			if (TablesExist && ScopeIsValid(Origin.gameObject))
+			{
+				CleanDeadRoutes();
+
+				List<R> Results = new List<R>(ManifestTable.Count);
+
+				foreach (Route<R> RT in ManifestTable)
+				{
+					Results.Add(RouteIfInRadius(Origin.gameObject, EventType, RT, Radius));
+				}
+
+				Results.RemoveAll(x => (Equals(x, default(R))));
+
+				return Results.ToArray();
+			}
+			else
+			{
+				return default(R[]);
+			}
+		}
+
+		/** \internal *******************/
+		/** \internal Utility Functions */
+		/** \internal *******************/
+
+		/// \internal Structors
+
+		private static bool ConstructTables()
+		{
+			ManifestTable = (new HashSet<Route<R>>());
+			RouteTable = (new Dictionary<RoutingEvent, RoutePointer<R>>());
+			DeadRoutes = (new Stack<Route<R>>());
+			return ((ManifestTable != null) && (RouteTable != null) && (DeadRoutes != null));
+		}
+
+		private static bool DeconstructTables()
+		{
+			ManifestTable = ((ManifestTable.Count > 0)? ManifestTable : null);
+			RouteTable = ((RouteTable.Count > 0)? RouteTable : null);
+			DeadRoutes = ((ManifestTable != null) && (RouteTable != null))? DeadRoutes : null;
+			return ((ManifestTable != null) && (RouteTable != null) && (DeadRoutes != null));
+		}
+
+		/// \internal Registration Functions
+
+		private static void AttachAddress(Route<R> RT)
+		{
+			RouteTable[RT.RouteEvent] = (RouteTable[RT.RouteEvent] + RT.Address);
+		}
+
+		private static void RemoveAddress(Route<R> RT)
+		{
+			RouteTable[RT.RouteEvent] = (RouteTable[RT.RouteEvent] - RT.Address);
+
+			if (!KeyHasValue(RT.RouteEvent))
+			{
+				RouteTable.Remove(RT.RouteEvent);
+			}
+		}
+
+		/// \internal Routing Functions
+
+		private static R RouteDownwardsIfParent(GameObject Scope, RoutingEvent EventType, Route<R> RT)
+		{
+			return (((RT.RouteEvent == EventType) && RT.Subscriber.transform.IsChildOf(Scope.transform))? RT.Address() : default(R));
+		}
+
+		private static R RouteUpwardsIfChild(GameObject Scope, RoutingEvent EventType, Route<R> RT)
+		{
+			return (((RT.RouteEvent == EventType) && Scope.transform.IsChildOf(RT.Subscriber.transform))? RT.Address() : default(R));
+		}
+
+		private static R RouteIfInRadius(GameObject Scope, RoutingEvent EventType, Route<R> RT, float Radius)
+		{
+			return (((RT.RouteEvent == EventType) && ((new Decimal(Vector3.Distance(Scope.transform.position, RT.Subscriber.transform.position))) <= (new Decimal(Radius))))? RT.Address() : default(R));
+		}
+
+		/// \internal Janitorial Functions
+
+		private static void CleanDeadRoutes()
+		{
+			foreach (Route<R> RT in ManifestTable)
+			{
+				if (RT.Subscriber == null)
+				{
+					DeadRoutes.Push(RT);
+				}
+			}
+
+			ManifestTable.RemoveWhere(x => x.Subscriber == null);
+
+			while (DeadRoutes.Count > 0)
+			{
+				PruneRoutes(DeadRoutes.Pop());
+			}
+
+			TablesExist = (TablesExist? DeconstructTables() : TablesExist);
+		}
+
+		private static void PruneRoutes(Route<R> RT)
 		{
 			bool KeyPresent = RouteTable.ContainsKey(RT.RouteEvent);
 

@@ -7,6 +7,11 @@ public class SendMsg : MonoBehaviour
 
 	public void Update()
 	{
-		Router.RouteMessage(Event);
+		Component[] c = Router<Component>.RouteMessage(Event);
+
+		foreach (Component c2 in c)
+		{
+			Debug.Log(c2);
+		}
 	}
 }

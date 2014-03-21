@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Router: RouterMessagingSystem.Router Class Reference</title>
+<title>Router: RouterMessagingSystem.Router&lt; R &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -85,7 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('class_router_messaging_system_1_1_router.html','');});
+$(document).ready(function(){initNavTree('class_router_messaging_system_1_1_router_3_01_r_01_4.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -105,68 +105,52 @@ $(document).ready(function(){initNavTree('class_router_messaging_system_1_1_rout
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="class_router_messaging_system_1_1_router-members.html">List of all members</a>  </div>
+<a href="class_router_messaging_system_1_1_router_3_01_r_01_4-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">RouterMessagingSystem.Router Class Reference</div>  </div>
+<div class="title">RouterMessagingSystem.Router&lt; R &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="class_router_messaging_system_1_1_router.html" title="Router Messaging System for Unity Engine. ">Router</a> Messaging System for Unity Engine.  
- <a href="class_router_messaging_system_1_1_router.html#details">More...</a></p>
+<p><a class="el" href="class_router_messaging_system_1_1_router.html" title="Router Messaging System for Unity Engine. ">Router</a> that returns R from sending messages.  
+ <a href="class_router_messaging_system_1_1_router_3_01_r_01_4.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:aee00d3d6636e9a50b69d317ea378b06d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#aee00d3d6636e9a50b69d317ea378b06d">AddRoute</a> (<a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a> NewRoute)</td></tr>
-<tr class="memdesc:aee00d3d6636e9a50b69d317ea378b06d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a new <a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a> with the <a class="el" href="class_router_messaging_system_1_1_router.html" title="Router Messaging System for Unity Engine. ">Router</a>.  <a href="#aee00d3d6636e9a50b69d317ea378b06d">More...</a><br/></td></tr>
-<tr class="separator:aee00d3d6636e9a50b69d317ea378b06d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40cec954f9e8bd1f0072331ae4610828"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#a40cec954f9e8bd1f0072331ae4610828">RemoveRoute</a> (<a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a> OldRoute)</td></tr>
-<tr class="memdesc:a40cec954f9e8bd1f0072331ae4610828"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a <a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a> from routing table.  <a href="#a40cec954f9e8bd1f0072331ae4610828">More...</a><br/></td></tr>
-<tr class="separator:a40cec954f9e8bd1f0072331ae4610828"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad40fee06b10339cc09228e9d175a8810"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#ad40fee06b10339cc09228e9d175a8810">FlushRoutes</a> ()</td></tr>
-<tr class="memdesc:ad40fee06b10339cc09228e9d175a8810"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flushes all Routes from the routing table.  <a href="#ad40fee06b10339cc09228e9d175a8810">More...</a><br/></td></tr>
-<tr class="separator:ad40fee06b10339cc09228e9d175a8810"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a576e1f0b64ef7a64eb4ee535cbf37594"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#a576e1f0b64ef7a64eb4ee535cbf37594">RouteMessage</a> (<a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
-<tr class="memdesc:a576e1f0b64ef7a64eb4ee535cbf37594"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to all subscribers.  <a href="#a576e1f0b64ef7a64eb4ee535cbf37594">More...</a><br/></td></tr>
-<tr class="separator:a576e1f0b64ef7a64eb4ee535cbf37594"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad571c1a47ca90b937b970c9ee1cf3c85"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#ad571c1a47ca90b937b970c9ee1cf3c85">RouteMessageDescendants</a> (GameObject Scope, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
-<tr class="memdesc:ad571c1a47ca90b937b970c9ee1cf3c85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to the specified GameObject and its children.  <a href="#ad571c1a47ca90b937b970c9ee1cf3c85">More...</a><br/></td></tr>
-<tr class="separator:ad571c1a47ca90b937b970c9ee1cf3c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7fa87567dc83f0b7b221e91ef81b41aa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#a7fa87567dc83f0b7b221e91ef81b41aa">RouteMessageDescendants</a> (Component Scope, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
-<tr class="memdesc:a7fa87567dc83f0b7b221e91ef81b41aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to the specified GameObject and its children.  <a href="#a7fa87567dc83f0b7b221e91ef81b41aa">More...</a><br/></td></tr>
-<tr class="separator:a7fa87567dc83f0b7b221e91ef81b41aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8394f047dfd2018da75688b0807feba0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#a8394f047dfd2018da75688b0807feba0">RouteMessageAscendants</a> (GameObject Scope, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
-<tr class="memdesc:a8394f047dfd2018da75688b0807feba0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to the specified GameObject and its parents.  <a href="#a8394f047dfd2018da75688b0807feba0">More...</a><br/></td></tr>
-<tr class="separator:a8394f047dfd2018da75688b0807feba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd1ee507a7c567d967922056fb4c6820"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#afd1ee507a7c567d967922056fb4c6820">RouteMessageAscendants</a> (Component Scope, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
-<tr class="memdesc:afd1ee507a7c567d967922056fb4c6820"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to the specified GameObject and its parents.  <a href="#afd1ee507a7c567d967922056fb4c6820">More...</a><br/></td></tr>
-<tr class="separator:afd1ee507a7c567d967922056fb4c6820"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe0f035b6e4867a059be9258f4ae9464"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#abe0f035b6e4867a059be9258f4ae9464">RouteMessageArea</a> (GameObject Origin, float Radius, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
-<tr class="memdesc:abe0f035b6e4867a059be9258f4ae9464"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to all subscribers in a radius.  <a href="#abe0f035b6e4867a059be9258f4ae9464">More...</a><br/></td></tr>
-<tr class="separator:abe0f035b6e4867a059be9258f4ae9464"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab772d7262c553f0599e7fc2f3ecd7cf9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#ab772d7262c553f0599e7fc2f3ecd7cf9">RouteMessageArea</a> (Component Origin, float Radius, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
-<tr class="memdesc:ab772d7262c553f0599e7fc2f3ecd7cf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to all subscribers in a radius.  <a href="#ab772d7262c553f0599e7fc2f3ecd7cf9">More...</a><br/></td></tr>
-<tr class="separator:ab772d7262c553f0599e7fc2f3ecd7cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0000ab04444d202b404987ce81199b2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html#ad0000ab04444d202b404987ce81199b2">AddRoute</a> (<a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&lt; R &gt; NewRoute)</td></tr>
+<tr class="memdesc:ad0000ab04444d202b404987ce81199b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a new <a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a> with the <a class="el" href="class_router_messaging_system_1_1_router.html" title="Router Messaging System for Unity Engine. ">Router</a>.  <a href="#ad0000ab04444d202b404987ce81199b2">More...</a><br/></td></tr>
+<tr class="separator:ad0000ab04444d202b404987ce81199b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa0f08cfa172eee64e9f0f7092082156"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html#afa0f08cfa172eee64e9f0f7092082156">RemoveRoute</a> (<a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&lt; R &gt; OldRoute)</td></tr>
+<tr class="memdesc:afa0f08cfa172eee64e9f0f7092082156"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a <a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a> from routing table.  <a href="#afa0f08cfa172eee64e9f0f7092082156">More...</a><br/></td></tr>
+<tr class="separator:afa0f08cfa172eee64e9f0f7092082156"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5c73911e9504bcc294fd17c51d13113"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html#ab5c73911e9504bcc294fd17c51d13113">FlushRoutes</a> ()</td></tr>
+<tr class="memdesc:ab5c73911e9504bcc294fd17c51d13113"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flushes all Routes from the routing table.  <a href="#ab5c73911e9504bcc294fd17c51d13113">More...</a><br/></td></tr>
+<tr class="separator:ab5c73911e9504bcc294fd17c51d13113"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a463330aa0aee58d43c0981b7aaf5010a"><td class="memItemLeft" align="right" valign="top">static R[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html#a463330aa0aee58d43c0981b7aaf5010a">RouteMessage</a> (<a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
+<tr class="memdesc:a463330aa0aee58d43c0981b7aaf5010a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to all subscribers and returns their values.  <a href="#a463330aa0aee58d43c0981b7aaf5010a">More...</a><br/></td></tr>
+<tr class="separator:a463330aa0aee58d43c0981b7aaf5010a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83343f656879f930642dadab9fc2502f"><td class="memItemLeft" align="right" valign="top">static R[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html#a83343f656879f930642dadab9fc2502f">RouteMessageDescendants</a> (GameObject Scope, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
+<tr class="memdesc:a83343f656879f930642dadab9fc2502f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to the specified GameObject and its children.  <a href="#a83343f656879f930642dadab9fc2502f">More...</a><br/></td></tr>
+<tr class="separator:a83343f656879f930642dadab9fc2502f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55671e80eced28fc4a9bd3382b27ec0b"><td class="memItemLeft" align="right" valign="top">static R[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html#a55671e80eced28fc4a9bd3382b27ec0b">RouteMessageDescendants</a> (Component Scope, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
+<tr class="memdesc:a55671e80eced28fc4a9bd3382b27ec0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to the specified GameObject and its children.  <a href="#a55671e80eced28fc4a9bd3382b27ec0b">More...</a><br/></td></tr>
+<tr class="separator:a55671e80eced28fc4a9bd3382b27ec0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac86b42d964fa7e30e439b76c52e0abf8"><td class="memItemLeft" align="right" valign="top">static R[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html#ac86b42d964fa7e30e439b76c52e0abf8">RouteMessageAscendants</a> (GameObject Scope, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
+<tr class="memdesc:ac86b42d964fa7e30e439b76c52e0abf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to the specified GameObject and its parents.  <a href="#ac86b42d964fa7e30e439b76c52e0abf8">More...</a><br/></td></tr>
+<tr class="separator:ac86b42d964fa7e30e439b76c52e0abf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af56ca2ec2e9ed0d3f0a2d12a88595b86"><td class="memItemLeft" align="right" valign="top">static R[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html#af56ca2ec2e9ed0d3f0a2d12a88595b86">RouteMessageAscendants</a> (Component Scope, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
+<tr class="memdesc:af56ca2ec2e9ed0d3f0a2d12a88595b86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to the specified GameObject and its parents.  <a href="#af56ca2ec2e9ed0d3f0a2d12a88595b86">More...</a><br/></td></tr>
+<tr class="separator:af56ca2ec2e9ed0d3f0a2d12a88595b86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1844b5cb49c48d1e02e7fbe3c74f0c53"><td class="memItemLeft" align="right" valign="top">static R[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html#a1844b5cb49c48d1e02e7fbe3c74f0c53">RouteMessageArea</a> (GameObject Origin, float Radius, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
+<tr class="memdesc:a1844b5cb49c48d1e02e7fbe3c74f0c53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to all subscribers in a radius.  <a href="#a1844b5cb49c48d1e02e7fbe3c74f0c53">More...</a><br/></td></tr>
+<tr class="separator:a1844b5cb49c48d1e02e7fbe3c74f0c53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ab221b672646669180b4d0eb7ea07b2"><td class="memItemLeft" align="right" valign="top">static R[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html#a8ab221b672646669180b4d0eb7ea07b2">RouteMessageArea</a> (Component Origin, float Radius, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
+<tr class="memdesc:a8ab221b672646669180b4d0eb7ea07b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to all subscribers in a radius.  <a href="#a8ab221b672646669180b4d0eb7ea07b2">More...</a><br/></td></tr>
+<tr class="separator:a8ab221b672646669180b4d0eb7ea07b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="class_router_messaging_system_1_1_router.html" title="Router Messaging System for Unity Engine. ">Router</a> Messaging System for Unity Engine. </p>
-<p>A replacement messaging system for Unity Engine built around not using blasted strings. </p>
-<dl class="section author"><dt>Author</dt><dd>Philip Muzzall </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>1.0.0 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>3/17/2014 </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>Property of Philip Muzzall</dd></dl>
-<p>Each Component must register with the <a class="el" href="class_router_messaging_system_1_1_router.html" title="Router Messaging System for Unity Engine. ">Router</a> before it can receive messages.<br/>
-To do this create a <a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a> and register it with the <a class="el" href="class_router_messaging_system_1_1_router.html" title="Router Messaging System for Unity Engine. ">Router</a> using <a class="el" href="class_router_messaging_system_1_1_router.html#aee00d3d6636e9a50b69d317ea378b06d" title="Registers a new Route with the Router. ">Router.AddRoute(Route NewRoute)</a>.<br/>
-Components can register multiple Routes with the <a class="el" href="class_router_messaging_system_1_1_router.html" title="Router Messaging System for Unity Engine. ">Router</a> to subscribe to multiple events. </p>
-<dl class="section note"><dt>Note</dt><dd><a class="el" href="class_router_messaging_system_1_1_router.html" title="Router Messaging System for Unity Engine. ">Router</a> internally maintains routing tables for all registered Routes.<br/>
-</dd>
-<dd>
-These tables do not exists until the first <a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a> has been registered.<br/>
-</dd>
-<dd>
-If all Routes are removed then <a class="el" href="class_router_messaging_system_1_1_router.html" title="Router Messaging System for Unity Engine. ">Router</a> will destroy these tables and recreate them again when they are needed. </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Implement generic routes for passing and returning data. </dd></dl>
+<div class="textblock"><p><a class="el" href="class_router_messaging_system_1_1_router.html" title="Router Messaging System for Unity Engine. ">Router</a> that returns R from sending messages. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="aee00d3d6636e9a50b69d317ea378b06d"></a>
+<a class="anchor" id="ad0000ab04444d202b404987ce81199b2"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -174,9 +158,9 @@ If all Routes are removed then <a class="el" href="class_router_messaging_system
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router.AddRoute </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.AddRoute </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&lt; R &gt;&#160;</td>
           <td class="paramname"><em>NewRoute</em></td><td>)</td>
           <td></td>
         </tr>
@@ -199,7 +183,7 @@ If all Routes are removed then <a class="el" href="class_router_messaging_system
 
 </div>
 </div>
-<a class="anchor" id="ad40fee06b10339cc09228e9d175a8810"></a>
+<a class="anchor" id="ab5c73911e9504bcc294fd17c51d13113"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -207,7 +191,7 @@ If all Routes are removed then <a class="el" href="class_router_messaging_system
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router.FlushRoutes </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.FlushRoutes </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -231,7 +215,7 @@ This is a relatively slow operation, depending on the amount of subscribers that
 
 </div>
 </div>
-<a class="anchor" id="a40cec954f9e8bd1f0072331ae4610828"></a>
+<a class="anchor" id="afa0f08cfa172eee64e9f0f7092082156"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -239,9 +223,9 @@ This is a relatively slow operation, depending on the amount of subscribers that
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router.RemoveRoute </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RemoveRoute </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&lt; R &gt;&#160;</td>
           <td class="paramname"><em>OldRoute</em></td><td>)</td>
           <td></td>
         </tr>
@@ -263,7 +247,7 @@ This is a relatively slow operation, depending on the amount of subscribers that
 
 </div>
 </div>
-<a class="anchor" id="a576e1f0b64ef7a64eb4ee535cbf37594"></a>
+<a class="anchor" id="a463330aa0aee58d43c0981b7aaf5010a"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -271,7 +255,7 @@ This is a relatively slow operation, depending on the amount of subscribers that
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router.RouteMessage </td>
+          <td class="memname">static R [] <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessage </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td>
           <td class="paramname"><em>EventType</em></td><td>)</td>
@@ -285,7 +269,10 @@ This is a relatively slow operation, depending on the amount of subscribers that
 </table>
 </div><div class="memdoc">
 
-<p>Routes a message of the specified event to all subscribers. </p>
+<p>Routes a message of the specified event to all subscribers and returns their values. </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns an array of type R from all subscribers of this event type. </dd>
+<dd>
+If the message fails to send then returns the default of R[]. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">EventType</td><td>Type of event to send. </td></tr>
@@ -295,7 +282,7 @@ This is a relatively slow operation, depending on the amount of subscribers that
 
 </div>
 </div>
-<a class="anchor" id="abe0f035b6e4867a059be9258f4ae9464"></a>
+<a class="anchor" id="a1844b5cb49c48d1e02e7fbe3c74f0c53"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -303,7 +290,7 @@ This is a relatively slow operation, depending on the amount of subscribers that
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router.RouteMessageArea </td>
+          <td class="memname">static R [] <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageArea </td>
           <td>(</td>
           <td class="paramtype">GameObject&#160;</td>
           <td class="paramname"><em>Origin</em>, </td>
@@ -336,6 +323,9 @@ This is a relatively slow operation, depending on the amount of subscribers that
 <p>Routes a message of the specified event to all subscribers in a radius. </p>
 <p>Uses the specified GameObject as the origin point.<br/>
 </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns an array of type R from all subscribers of this event type. </dd>
+<dd>
+If the message fails to send then returns the default of R[]. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Only works for subscribed GameObjects. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -349,7 +339,7 @@ This is a relatively slow operation, depending on the amount of subscribers that
 
 </div>
 </div>
-<a class="anchor" id="ab772d7262c553f0599e7fc2f3ecd7cf9"></a>
+<a class="anchor" id="a8ab221b672646669180b4d0eb7ea07b2"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -357,7 +347,7 @@ This is a relatively slow operation, depending on the amount of subscribers that
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router.RouteMessageArea </td>
+          <td class="memname">static R [] <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageArea </td>
           <td>(</td>
           <td class="paramtype">Component&#160;</td>
           <td class="paramname"><em>Origin</em>, </td>
@@ -390,6 +380,9 @@ This is a relatively slow operation, depending on the amount of subscribers that
 <p>Routes a message of the specified event to all subscribers in a radius. </p>
 <p>Uses the specified Component as the origin point.<br/>
 </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns an array of type R from all subscribers of this event type. </dd>
+<dd>
+If the message fails to send then returns the default of R[]. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Only works for subscribed GameObjects. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -404,7 +397,7 @@ This is a relatively slow operation, depending on the amount of subscribers that
 
 </div>
 </div>
-<a class="anchor" id="a8394f047dfd2018da75688b0807feba0"></a>
+<a class="anchor" id="ac86b42d964fa7e30e439b76c52e0abf8"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -412,7 +405,7 @@ This is a relatively slow operation, depending on the amount of subscribers that
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router.RouteMessageAscendants </td>
+          <td class="memname">static R [] <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageAscendants </td>
           <td>(</td>
           <td class="paramtype">GameObject&#160;</td>
           <td class="paramname"><em>Scope</em>, </td>
@@ -439,6 +432,9 @@ This is a relatively slow operation, depending on the amount of subscribers that
 <p>Routes a message of the specified event to the specified GameObject and its parents. </p>
 <p>Both direct and indirect parents of the specified GameObject receive the event.<br/>
 </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns an array of type R from all subscribers of this event type. </dd>
+<dd>
+If the message fails to send then returns the default of R[]. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -450,7 +446,7 @@ This is a relatively slow operation, depending on the amount of subscribers that
 
 </div>
 </div>
-<a class="anchor" id="afd1ee507a7c567d967922056fb4c6820"></a>
+<a class="anchor" id="af56ca2ec2e9ed0d3f0a2d12a88595b86"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -458,7 +454,7 @@ This is a relatively slow operation, depending on the amount of subscribers that
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router.RouteMessageAscendants </td>
+          <td class="memname">static R [] <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageAscendants </td>
           <td>(</td>
           <td class="paramtype">Component&#160;</td>
           <td class="paramname"><em>Scope</em>, </td>
@@ -486,6 +482,9 @@ This is a relatively slow operation, depending on the amount of subscribers that
 <p>Both direct and indirect parents of the specified GameObject receive the event.<br/>
 Accepts a Component that is used to derive a reference to the target GameObject.<br/>
 </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns an array of type R from all subscribers of this event type. </dd>
+<dd>
+If the message fails to send then returns the default of R[]. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -498,7 +497,7 @@ Accepts a Component that is used to derive a reference to the target GameObject.
 
 </div>
 </div>
-<a class="anchor" id="ad571c1a47ca90b937b970c9ee1cf3c85"></a>
+<a class="anchor" id="a83343f656879f930642dadab9fc2502f"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -506,7 +505,7 @@ Accepts a Component that is used to derive a reference to the target GameObject.
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router.RouteMessageDescendants </td>
+          <td class="memname">static R [] <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageDescendants </td>
           <td>(</td>
           <td class="paramtype">GameObject&#160;</td>
           <td class="paramname"><em>Scope</em>, </td>
@@ -533,6 +532,9 @@ Accepts a Component that is used to derive a reference to the target GameObject.
 <p>Routes a message of the specified event to the specified GameObject and its children. </p>
 <p>Both direct and indirect children of the specified GameObject receive the event.<br/>
 </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns an array of type R from all subscribers of this event type. </dd>
+<dd>
+If the message fails to send then returns the default of R[]. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -544,7 +546,7 @@ Accepts a Component that is used to derive a reference to the target GameObject.
 
 </div>
 </div>
-<a class="anchor" id="a7fa87567dc83f0b7b221e91ef81b41aa"></a>
+<a class="anchor" id="a55671e80eced28fc4a9bd3382b27ec0b"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -552,7 +554,7 @@ Accepts a Component that is used to derive a reference to the target GameObject.
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router.RouteMessageDescendants </td>
+          <td class="memname">static R [] <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageDescendants </td>
           <td>(</td>
           <td class="paramtype">Component&#160;</td>
           <td class="paramname"><em>Scope</em>, </td>
@@ -580,6 +582,9 @@ Accepts a Component that is used to derive a reference to the target GameObject.
 <p>Both direct and indirect children of the specified GameObject receive the event.<br/>
 Accepts a Component that is used to derive a reference to the target GameObject.<br/>
 </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns an array of type R from all subscribers of this event type. </dd>
+<dd>
+If the message fails to send then returns the default of R[]. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -600,7 +605,7 @@ Accepts a Component that is used to derive a reference to the target GameObject.
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespace_router_messaging_system.html">RouterMessagingSystem</a></li><li class="navelem"><a class="el" href="class_router_messaging_system_1_1_router.html">Router</a></li>
+    <li class="navelem"><a class="el" href="namespace_router_messaging_system.html">RouterMessagingSystem</a></li><li class="navelem"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html">Router< R ></a></li>
     <li class="footer">Generated on Thu Mar 20 2014 23:57:34 for Router by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
