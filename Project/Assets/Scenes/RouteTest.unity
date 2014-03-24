@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c9db43b1303ce4da863736d026ee1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 2
+  Event: 1
 --- !u!1 &968687675
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c9db43b1303ce4da863736d026ee1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 2
+  Event: 1
 --- !u!1 &985936972
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c9db43b1303ce4da863736d026ee1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 2
+  Event: 1
 --- !u!4 &985936974
 Transform:
   m_ObjectHideFlags: 0
@@ -377,7 +377,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1040935943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -100, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 427607699}
@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c9db43b1303ce4da863736d026ee1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 2
+  Event: 1
 --- !u!1 &1286026319
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +417,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1286026319}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 100, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 968687676}
@@ -514,6 +514,44 @@ Transform:
   m_Children:
   - {fileID: 93561953}
   m_Father: {fileID: 354410165}
+--- !u!1 &1649558711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1649558713}
+  - 114: {fileID: 1649558712}
+  m_Layer: 0
+  m_Name: TestMsgrRandom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1649558712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1649558711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8f85715e1455f46bf483f04e4e3a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1649558713
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1649558711}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &1935372347
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +591,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Event: 1
+--- !u!1 &2007791946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2007791948}
+  - 114: {fileID: 2007791947}
+  m_Layer: 0
+  m_Name: TestRandom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &2007791947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2007791946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57d939066814b640bcbaac909163eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Max: 32
+--- !u!4 &2007791948
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2007791946}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &2027457531
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,4 +669,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c9db43b1303ce4da863736d026ee1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 2
+  Event: 1

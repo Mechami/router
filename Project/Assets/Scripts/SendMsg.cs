@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using RouterMessagingSystem;
+using System.Collections.Generic;
 
 public class SendMsg : MonoBehaviour
 {
@@ -7,11 +8,12 @@ public class SendMsg : MonoBehaviour
 
 	public void Update()
 	{
-		Component[] c = Router<Component>.RouteMessage(Event);
+		List<Component> Components = Router<Component>.RouteMessage(Event);
+		Debug.Log(Components);
 
-		foreach (Component c2 in c)
+		foreach (Component Com in Components)
 		{
-			Debug.Log(c2);
+			Debug.Log(Com);
 		}
 	}
 }
