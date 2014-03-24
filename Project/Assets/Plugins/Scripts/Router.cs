@@ -436,7 +436,7 @@ namespace RouterMessagingSystem
 	}
 
 
-	/// \details Each Component must register with the Router before it can receive messages.\n
+	/// Each Component must register with the Router before it can receive messages.\n
 	/// To do this create a Route and register it with the Router using Router.AddRoute(Route NewRoute).\n
 	/// Components can register multiple Routes with the Router to subscribe to multiple events.
 	/// \note Router internally maintains routing tables for all registered Routes.\n
@@ -905,6 +905,7 @@ namespace RouterMessagingSystem
 		/// \returns Returns an array of type R from all subscribers of this event type.
 		/// \returns If the message fails to send then returns the default of List<R>.
 		/// \note Only works for subscribed GameObjects.
+		/// \bug Seems to call some routes twice; Possibly present in other methods as-well.
 		public static List<R> RouteMessageArea(Component Origin /**< Component specifying the origin of the event radius.\n Can be of any type derived from Component.\n Does not need to be subscribed unless it also is to receive the event. */, RoutingEvent EventType /**< Type of event to send. */, float Radius /**< Radius of the event in meters. */)
 		{
 			if (TablesExist && ScopeIsValid(Origin.gameObject) && EventIsRegistered(EventType))
