@@ -1,9 +1,15 @@
-/** \brief Router Messaging System for Unity Engine */
-/// \details A replacement messaging system for Unity Engine built around not using strings.
-/// \author Philip Muzzall
-/// \version 1.0.0
-/// \date 3/17/2014
-/// \copyright Property of Philip Muzzall
+/** \mainpage Router Messaging System for Unity Engine
+A replacement messaging system for Unity Engine built around not using blasted strings.
+\author Philip Muzzall
+\version 1.0.0
+\date 3/17/2014
+\copyright Property of Philip Muzzall
+\details Each Component must register with the Router before it can receive messages.\n
+\details To do this create a Route and register it with the Router using Router.AddRoute(Route NewRoute).\n
+\details Components can register multiple Routes with the Router to subscribe to multiple events.
+\note Router internally maintains routing tables for all registered Routes.\n
+\note These tables do not exists until the first Route has been registered.\n
+\note If all Routes are removed then Router will destroy these tables and recreate them again when they are needed. */
 
 using UnityEngine;
 using System;
@@ -436,12 +442,8 @@ namespace RouterMessagingSystem
 	}
 
 
-	/// Each Component must register with the Router before it can receive messages.\n
-	/// To do this create a Route and register it with the Router using Router.AddRoute(Route NewRoute).\n
-	/// Components can register multiple Routes with the Router to subscribe to multiple events.
-	/// \note Router internally maintains routing tables for all registered Routes.\n
-	/// \note These tables do not exists until the first Route has been registered.\n
-	/// \note If all Routes are removed then Router will destroy these tables and recreate them again when they are needed.
+	/** \brief Router that calls basic functions only. */
+	/// \todo Redocument this.
 	public static class Router
 	{
 		private static Dictionary<RoutingEvent, RoutePointer> PointerTable = null;
@@ -518,7 +520,7 @@ namespace RouterMessagingSystem
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
 		public static void RouteMessageDescendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
-			if (TablesExist && ScopeIsValid(Scope.gameObject) && EventIsRegistered(EventType))
+			if (TablesExist && ScopeIsValid(Scope) && EventIsRegistered(EventType))
 			{
 				CleanDeadRoutes(EventType);
 				List<Route> RT = RouteTable[EventType].FindAll(x => x.Subscriber.transform.IsChildOf(Scope.transform));
@@ -545,7 +547,7 @@ namespace RouterMessagingSystem
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
 		public static void RouteMessageAscendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component.*/, RoutingEvent EventType /**< Type of event to send. */)
 		{
-			if (TablesExist && ScopeIsValid(Scope.gameObject) && EventIsRegistered(EventType))
+			if (TablesExist && ScopeIsValid(Scope) && EventIsRegistered(EventType))
 			{
 				CleanDeadRoutes(EventType);
 				List<Route> RT = RouteTable[EventType].FindAll(x => Scope.transform.IsChildOf(x.Subscriber.transform));
@@ -572,7 +574,7 @@ namespace RouterMessagingSystem
 		/// \note Only works for subscribed GameObjects.
 		public static void RouteMessageArea(Component Origin /**< Component specifying the origin of the event radius.\n Can be of any type derived from Component.\n Does not need to be subscribed unless it also is to receive the event. */, float Radius /**< Radius of the event in meters. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
-			if (TablesExist && ScopeIsValid(Origin.gameObject) && EventIsRegistered(EventType))
+			if (TablesExist && ScopeIsValid(Origin) && EventIsRegistered(EventType))
 			{
 				CleanDeadRoutes(EventType);
 				decimal RadiusD = new Decimal(Radius);
@@ -686,6 +688,11 @@ namespace RouterMessagingSystem
 		{
 			return (Scope != null);
 		}
+
+		private static bool ScopeIsValid(Component Scope)
+		{
+			return (Scope != null);
+		}
 	}
 
 	/** \brief Router that returns R from sending messages. */
@@ -738,8 +745,8 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers and returns their values. */
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		public static List<R> RouteMessage(RoutingEvent EventType /**< Type of event to send. */)
 		{
 			if (TablesExist && KeyHasValue(EventType) && EventIsRegistered(EventType))
@@ -758,14 +765,14 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its children. */
 		/// Both direct and indirect children of the specified GameObject receive the event.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
 		public static List<R> RouteMessageDescendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
@@ -785,19 +792,19 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its children. */
 		/// Both direct and indirect children of the specified GameObject receive the event.\n
 		/// Accepts a Component that is used to derive a reference to the target GameObject.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
 		public static List<R> RouteMessageDescendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
-			if (TablesExist && ScopeIsValid(Scope.gameObject) && EventIsRegistered(EventType))
+			if (TablesExist && ScopeIsValid(Scope) && EventIsRegistered(EventType))
 			{
 				CleanDeadRoutes(EventType);
 
@@ -813,14 +820,14 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its parents. */
 		/// Both direct and indirect parents of the specified GameObject receive the event.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
 		public static List<R> RouteMessageAscendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
@@ -840,19 +847,19 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its parents. */
 		/// Both direct and indirect parents of the specified GameObject receive the event.\n
 		/// Accepts a Component that is used to derive a reference to the target GameObject.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
 		public static List<R> RouteMessageAscendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component.*/, RoutingEvent EventType /**< Type of event to send. */)
 		{
-			if (TablesExist && ScopeIsValid(Scope.gameObject) && EventIsRegistered(EventType))
+			if (TablesExist && ScopeIsValid(Scope) && EventIsRegistered(EventType))
 			{
 				CleanDeadRoutes(EventType);
 
@@ -868,14 +875,14 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers in a radius. */
 		/// Uses the specified GameObject as the origin point.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects.
 		public static List<R> RouteMessageArea(GameObject Origin /**< GameObject specifying the origin of the event radius.\n Does not need to be subscribed unless it also is to receive the event. */, RoutingEvent EventType /**< Type of event to send. */, float Radius /**< Radius of the event in meters. */)
 		{
@@ -896,14 +903,14 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers in a radius. */
 		/// Uses the specified Component as the origin point.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects.
 		/// \bug Seems to call some routes twice; Possibly present in other methods as-well.
 		public static List<R> RouteMessageArea(Component Origin /**< Component specifying the origin of the event radius.\n Can be of any type derived from Component.\n Does not need to be subscribed unless it also is to receive the event. */, RoutingEvent EventType /**< Type of event to send. */, float Radius /**< Radius of the event in meters. */)
@@ -925,7 +932,7 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
@@ -1028,6 +1035,11 @@ namespace RouterMessagingSystem
 		{
 			return (Scope != null);
 		}
+
+		private static bool ScopeIsValid(Component Scope)
+		{
+			return (Scope != null);
+		}
 	}
 
 	/** \brief Router that returns R from sending messages and accepts one parameter. */
@@ -1080,8 +1092,8 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers and returns their values. */
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		public static List<R> RouteMessage(RoutingEvent EventType /**< Type of event to send. */, T Parameter)
 		{
 			if (TablesExist && KeyHasValue(EventType) && EventIsRegistered(EventType))
@@ -1100,14 +1112,14 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its children. */
 		/// Both direct and indirect children of the specified GameObject receive the event.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
 		public static List<R> RouteMessageDescendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */, T Parameter)
 		{
@@ -1127,19 +1139,19 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its children. */
 		/// Both direct and indirect children of the specified GameObject receive the event.\n
 		/// Accepts a Component that is used to derive a reference to the target GameObject.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
 		public static List<R> RouteMessageDescendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component. */, RoutingEvent EventType /**< Type of event to send. */, T Parameter)
 		{
-			if (TablesExist && ScopeIsValid(Scope.gameObject) && EventIsRegistered(EventType))
+			if (TablesExist && ScopeIsValid(Scope) && EventIsRegistered(EventType))
 			{
 				CleanDeadRoutes(EventType);
 
@@ -1155,14 +1167,14 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its parents. */
 		/// Both direct and indirect parents of the specified GameObject receive the event.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
 		public static List<R> RouteMessageAscendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */, T Parameter)
 		{
@@ -1182,19 +1194,19 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its parents. */
 		/// Both direct and indirect parents of the specified GameObject receive the event.\n
 		/// Accepts a Component that is used to derive a reference to the target GameObject.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
 		public static List<R> RouteMessageAscendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component.*/, RoutingEvent EventType /**< Type of event to send. */, T Parameter)
 		{
-			if (TablesExist && ScopeIsValid(Scope.gameObject) && EventIsRegistered(EventType))
+			if (TablesExist && ScopeIsValid(Scope) && EventIsRegistered(EventType))
 			{
 				CleanDeadRoutes(EventType);
 
@@ -1210,14 +1222,14 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers in a radius. */
 		/// Uses the specified GameObject as the origin point.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects.
 		public static List<R> RouteMessageArea(GameObject Origin /**< GameObject specifying the origin of the event radius.\n Does not need to be subscribed unless it also is to receive the event. */, RoutingEvent EventType /**< Type of event to send. */, float Radius /**< Radius of the event in meters. */, T Parameter)
 		{
@@ -1238,14 +1250,14 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers in a radius. */
 		/// Uses the specified Component as the origin point.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects.
 		public static List<R> RouteMessageArea(Component Origin /**< Component specifying the origin of the event radius.\n Can be of any type derived from Component.\n Does not need to be subscribed unless it also is to receive the event. */, RoutingEvent EventType /**< Type of event to send. */, float Radius /**< Radius of the event in meters. */, T Parameter)
 		{
@@ -1266,7 +1278,7 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
@@ -1369,6 +1381,11 @@ namespace RouterMessagingSystem
 		{
 			return (Scope != null);
 		}
+
+		private static bool ScopeIsValid(Component Scope)
+		{
+			return (Scope != null);
+		}
 	}
 
 	/** \brief Router that returns R from sending messages and accepts two parameters. */
@@ -1421,8 +1438,8 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers and returns their values. */
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		public static List<R> RouteMessage(RoutingEvent EventType /**< Type of event to send. */, RouteParameters<T1, T2> Parameters)
 		{
 			if (TablesExist && KeyHasValue(EventType) && EventIsRegistered(EventType))
@@ -1441,14 +1458,14 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its children. */
 		/// Both direct and indirect children of the specified GameObject receive the event.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
 		public static List<R> RouteMessageDescendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */, RouteParameters<T1, T2> Parameters)
 		{
@@ -1468,19 +1485,19 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its children. */
 		/// Both direct and indirect children of the specified GameObject receive the event.\n
 		/// Accepts a Component that is used to derive a reference to the target GameObject.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
 		public static List<R> RouteMessageDescendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component. */, RoutingEvent EventType /**< Type of event to send. */, RouteParameters<T1, T2> Parameters)
 		{
-			if (TablesExist && ScopeIsValid(Scope.gameObject) && EventIsRegistered(EventType))
+			if (TablesExist && ScopeIsValid(Scope) && EventIsRegistered(EventType))
 			{
 				CleanDeadRoutes(EventType);
 
@@ -1496,14 +1513,14 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its parents. */
 		/// Both direct and indirect parents of the specified GameObject receive the event.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
 		public static List<R> RouteMessageAscendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */, RouteParameters<T1, T2> Parameters)
 		{
@@ -1523,19 +1540,19 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its parents. */
 		/// Both direct and indirect parents of the specified GameObject receive the event.\n
 		/// Accepts a Component that is used to derive a reference to the target GameObject.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
 		public static List<R> RouteMessageAscendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component.*/, RoutingEvent EventType /**< Type of event to send. */, RouteParameters<T1, T2> Parameters)
 		{
-			if (TablesExist && ScopeIsValid(Scope.gameObject) && EventIsRegistered(EventType))
+			if (TablesExist && ScopeIsValid(Scope) && EventIsRegistered(EventType))
 			{
 				CleanDeadRoutes(EventType);
 
@@ -1551,14 +1568,14 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers in a radius. */
 		/// Uses the specified GameObject as the origin point.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects.
 		public static List<R> RouteMessageArea(GameObject Origin /**< GameObject specifying the origin of the event radius.\n Does not need to be subscribed unless it also is to receive the event. */, RoutingEvent EventType /**< Type of event to send. */, float Radius /**< Radius of the event in meters. */, RouteParameters<T1, T2> Parameters)
 		{
@@ -1579,14 +1596,14 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers in a radius. */
 		/// Uses the specified Component as the origin point.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects.
 		public static List<R> RouteMessageArea(Component Origin /**< Component specifying the origin of the event radius.\n Can be of any type derived from Component.\n Does not need to be subscribed unless it also is to receive the event. */, RoutingEvent EventType /**< Type of event to send. */, float Radius /**< Radius of the event in meters. */, RouteParameters<T1, T2> Parameters)
 		{
@@ -1607,7 +1624,7 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
@@ -1710,6 +1727,11 @@ namespace RouterMessagingSystem
 		{
 			return (Scope != null);
 		}
+
+		private static bool ScopeIsValid(Component Scope)
+		{
+			return (Scope != null);
+		}
 	}
 
 	/** \brief Router that returns R from sending messages and accepts three parameters. */
@@ -1762,9 +1784,9 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers and returns their values. */
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
-		public static List<R> RouteMessage(RoutingEvent EventType /**< Type of event to send. */, RouteParameters<T1, T2, T3> Parameters)
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
+		public static List<R> RouteMessage(RoutingEvent EventType /**< Type of event to send. */, RouteParameters<T1, T2, T3> Parameters /**< Struct containing parameters to pass to recipients. */)
 		{
 			if (TablesExist && KeyHasValue(EventType) && EventIsRegistered(EventType))
 			{
@@ -1782,16 +1804,16 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its children. */
 		/// Both direct and indirect children of the specified GameObject receive the event.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
-		public static List<R> RouteMessageDescendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */, RouteParameters<T1, T2, T3> Parameters)
+		public static List<R> RouteMessageDescendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */, RouteParameters<T1, T2, T3> Parameters /**< Struct containing parameters to pass to recipients. */)
 		{
 			if (TablesExist && ScopeIsValid(Scope) && EventIsRegistered(EventType))
 			{
@@ -1809,19 +1831,19 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its children. */
 		/// Both direct and indirect children of the specified GameObject receive the event.\n
 		/// Accepts a Component that is used to derive a reference to the target GameObject.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
-		public static List<R> RouteMessageDescendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component. */, RoutingEvent EventType /**< Type of event to send. */, RouteParameters<T1, T2, T3> Parameters)
+		public static List<R> RouteMessageDescendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component. */, RoutingEvent EventType /**< Type of event to send. */, RouteParameters<T1, T2, T3> Parameters /**< Struct containing parameters to pass to recipients. */)
 		{
-			if (TablesExist && ScopeIsValid(Scope.gameObject) && EventIsRegistered(EventType))
+			if (TablesExist && ScopeIsValid(Scope) && EventIsRegistered(EventType))
 			{
 				CleanDeadRoutes(EventType);
 
@@ -1837,16 +1859,16 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its parents. */
 		/// Both direct and indirect parents of the specified GameObject receive the event.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
-		public static List<R> RouteMessageAscendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */, RouteParameters<T1, T2, T3> Parameters)
+		public static List<R> RouteMessageAscendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */, RouteParameters<T1, T2, T3> Parameters /**< Struct containing parameters to pass to recipients. */)
 		{
 			if (TablesExist && ScopeIsValid(Scope) && EventIsRegistered(EventType))
 			{
@@ -1864,19 +1886,19 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its parents. */
 		/// Both direct and indirect parents of the specified GameObject receive the event.\n
 		/// Accepts a Component that is used to derive a reference to the target GameObject.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
-		public static List<R> RouteMessageAscendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component.*/, RoutingEvent EventType /**< Type of event to send. */, RouteParameters<T1, T2, T3> Parameters)
+		public static List<R> RouteMessageAscendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component.*/, RoutingEvent EventType /**< Type of event to send. */, RouteParameters<T1, T2, T3> Parameters /**< Struct containing parameters to pass to recipients. */)
 		{
-			if (TablesExist && ScopeIsValid(Scope.gameObject) && EventIsRegistered(EventType))
+			if (TablesExist && ScopeIsValid(Scope) && EventIsRegistered(EventType))
 			{
 				CleanDeadRoutes(EventType);
 
@@ -1892,16 +1914,16 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers in a radius. */
 		/// Uses the specified GameObject as the origin point.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects.
-		public static List<R> RouteMessageArea(GameObject Origin /**< GameObject specifying the origin of the event radius.\n Does not need to be subscribed unless it also is to receive the event. */, RoutingEvent EventType /**< Type of event to send. */, float Radius /**< Radius of the event in meters. */, RouteParameters<T1, T2, T3> Parameters)
+		public static List<R> RouteMessageArea(GameObject Origin /**< GameObject specifying the origin of the event radius.\n Does not need to be subscribed unless it also is to receive the event. */, RoutingEvent EventType /**< Type of event to send. */, float Radius /**< Radius of the event in meters. */, RouteParameters<T1, T2, T3> Parameters /**< Struct containing parameters to pass to recipients. */)
 		{
 			if (TablesExist && ScopeIsValid(Origin) && EventIsRegistered(EventType))
 			{
@@ -1920,16 +1942,16 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers in a radius. */
 		/// Uses the specified Component as the origin point.\n
-		/// \returns Returns an array of type R from all subscribers of this event type.
-		/// \returns If the message fails to send then returns the default of List<R>.
+		/// \returns Returns a List<R> containing all return data from subscribers of this event type.\n
+		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects.
-		public static List<R> RouteMessageArea(Component Origin /**< Component specifying the origin of the event radius.\n Can be of any type derived from Component.\n Does not need to be subscribed unless it also is to receive the event. */, RoutingEvent EventType /**< Type of event to send. */, float Radius /**< Radius of the event in meters. */, RouteParameters<T1, T2, T3> Parameters)
+		public static List<R> RouteMessageArea(Component Origin /**< Component specifying the origin of the event radius.\n Can be of any type derived from Component.\n Does not need to be subscribed unless it also is to receive the event. */, RoutingEvent EventType /**< Type of event to send. */, float Radius /**< Radius of the event in meters. */, RouteParameters<T1, T2, T3> Parameters /**< Struct containing parameters to pass to recipients. */)
 		{
 			if (TablesExist && ScopeIsValid(Origin.gameObject) && EventIsRegistered(EventType))
 			{
@@ -1948,7 +1970,7 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				return default(List<R>);
+				return null;
 			}
 		}
 
@@ -2048,6 +2070,11 @@ namespace RouterMessagingSystem
 		}
 
 		private static bool ScopeIsValid(GameObject Scope)
+		{
+			return (Scope != null);
+		}
+
+		private static bool ScopeIsValid(Component Scope)
 		{
 			return (Scope != null);
 		}
