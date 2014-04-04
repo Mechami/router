@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Router: RouterMessagingSystem.Route Struct Reference</title>
+<title>Router Messaging System: RouterMessagingSystem.Route Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,9 +29,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Router
-   &#160;<span id="projectnumber">1</span>
+   <div id="projectname">Router Messaging System
+   &#160;<span id="projectnumber">1.0.0</span>
    </div>
+   <div id="projectbrief">A replacement messaging system for Unity Engine built around not using blasted strings.</div>
   </td>
  </tr>
  </tbody>
@@ -46,7 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Packages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -113,7 +114,7 @@ $(document).ready(function(){initNavTree('struct_router_messaging_system_1_1_rou
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a> struct for use with <a class="el" href="class_router_messaging_system_1_1_router.html" title="Router Messaging System for Unity Engine. ">Router</a> Messaging System.  
+<p><a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a> struct for use with <a class="el" href="class_router_messaging_system_1_1_router.html" title="Router that calls basic functions only. ">Router</a> Messaging System.  
  <a href="struct_router_messaging_system_1_1_route.html#details">More...</a></p>
 
 <p>Inherits IEquatable&lt; Route &gt;.</p>
@@ -161,11 +162,7 @@ readonly <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b
 <tr class="separator:a33a154b5c9c8b9c281cb8529017bf68e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a> struct for use with <a class="el" href="class_router_messaging_system_1_1_router.html" title="Router Messaging System for Unity Engine. ">Router</a> Messaging System. </p>
-<dl class="section author"><dt>Author</dt><dd>Philip Muzzall </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>1.0.0 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>3/17/2014 </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>Property of Philip Muzzall</dd></dl>
+<div class="textblock"><p><a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a> struct for use with <a class="el" href="class_router_messaging_system_1_1_router.html" title="Router that calls basic functions only. ">Router</a> Messaging System. </p>
 <p>Routes encapsulate the subscribing Component, the subscribed function and the subscribed event all in one object.<br/>
 </p>
 <p>Multiple Routes can be used to subscribe a Component to multiple events at once.<br/>
@@ -175,6 +172,9 @@ readonly <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b
 <a class="anchor" id="aa66a3feb1402e38cd800aedff7e347cd"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">RouterMessagingSystem.Route.Route </td>
@@ -200,13 +200,18 @@ readonly <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Constructor that accepts a Component, a RoutePointer and a RoutingEvent. </p>
 <dl class="section warning"><dt>Warning</dt><dd>Do not pass null as any parameters.<br/>
 </dd>
 <dd>
-<a class="el" href="class_router_messaging_system_1_1_router.html" title="Router Messaging System for Unity Engine. ">Router</a> will discard any Routes with null attributes. </dd></dl>
+<a class="el" href="class_router_messaging_system_1_1_router.html" title="Router that calls basic functions only. ">Router</a> will discard any Routes with null attributes. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">RouteSubscriber</td><td>Reference to the subscribing Component.<br/>
@@ -224,6 +229,9 @@ readonly <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b
 <a class="anchor" id="ad2540cec3b222a5852f4275bf1a61267"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool RouterMessagingSystem.Route.Equals </td>
@@ -233,6 +241,11 @@ readonly <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Checks if the attributes of the passed <a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a> are the same as the calling <a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a>'s attributes. </p>
@@ -249,6 +262,9 @@ readonly <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b
 <a class="anchor" id="a30f392aeb818052a841fbae159cb858a"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">override bool RouterMessagingSystem.Route.Equals </td>
@@ -258,6 +274,11 @@ readonly <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Checks if the passed object is the same as the calling <a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a>. </p>
@@ -278,6 +299,9 @@ Immediately returns false if Obj is not a <a class="el" href="struct_router_mess
 <a class="anchor" id="acf058d8c45920af1ce97aeb169a354cf"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">override int RouterMessagingSystem.Route.GetHashCode </td>
@@ -286,6 +310,11 @@ Immediately returns false if Obj is not a <a class="el" href="struct_router_mess
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Returns a hash of this <a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a>. </p>
@@ -320,7 +349,7 @@ Immediately returns false if Obj is not a <a class="el" href="struct_router_mess
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -367,7 +396,7 @@ False if all attributes of the left-side operand are the same as their respectiv
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -389,6 +418,9 @@ False if any attribute of the left-side operand is different from the respective
 <a class="anchor" id="aae8387079d35134788fecc4a0f09039f"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">override string RouterMessagingSystem.Route.ToString </td>
@@ -397,6 +429,11 @@ False if any attribute of the left-side operand is different from the respective
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Returns a string listing this <a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a>'s routing data. </p>
@@ -405,7 +442,7 @@ False if any attribute of the left-side operand is different from the respective
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>Project/Assets/Plugins/Router.cs (ff42788cca8e52dde79f6f0315bc9657681d8c05)</li>
+<li>Project/Assets/Plugins/Scripts/Router.cs (41108ff6283952a66d6818a3089f4e0feed608a7)</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -413,7 +450,7 @@ False if any attribute of the left-side operand is different from the respective
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_router_messaging_system.html">RouterMessagingSystem</a></li><li class="navelem"><a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a></li>
-    <li class="footer">Generated on Thu Mar 20 2014 23:57:34 for Router by
+    <li class="footer">Generated on Fri Apr 4 2014 15:19:16 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

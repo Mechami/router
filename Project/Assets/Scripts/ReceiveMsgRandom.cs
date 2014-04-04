@@ -5,12 +5,14 @@ using RouterMessagingSystem;
 public class ReceiveMsgRandom : MonoBehaviour
 {
 	private Route RT = new Route();
-	RoutingEvent Event = RoutingEvent.Null;
-	System.Random RNG = new System.Random();
+	private RoutingEvent Event = RoutingEvent.Null;
+	private System.Random RNG = new System.Random();
+	//public int Min = 1, Max = 17;
+	public int Min = 1, Max = 1;
 
 	public void Awake()
 	{
-		Event = (RoutingEvent)Enum.Parse(typeof(RoutingEvent), RNG.Next(1, 17).ToString());
+		Event = (RoutingEvent)Enum.Parse(typeof(RoutingEvent), RNG.Next(Min, Max).ToString());
 		RT = new Route(this, Test, Event);
 	}
 
@@ -26,6 +28,6 @@ public class ReceiveMsgRandom : MonoBehaviour
 
 	public void Test()
 	{
-		//Debug.Log(this + " (" + Event.ToString() + ")" + " [" + this.GetInstanceID() + "]");
+		Debug.Log(this + " (" + Event.ToString() + ")" + " [" + this.GetInstanceID() + "]");
 	}
 }

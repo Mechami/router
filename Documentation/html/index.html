@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Router: Main Page</title>
+<title>Router Messaging System: Router Messaging System</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,9 +29,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Router
-   &#160;<span id="projectnumber">1</span>
+   <div id="projectname">Router Messaging System
+   &#160;<span id="projectnumber">1.0.0</span>
    </div>
+   <div id="projectbrief">A replacement messaging system for Unity Engine built around not using blasted strings.</div>
   </td>
  </tr>
  </tbody>
@@ -46,7 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Packages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -97,15 +98,32 @@ $(document).ready(function(){initNavTree('index.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Router Documentation</div>  </div>
+<div class="title">Router Messaging System </div>  </div>
 </div><!--header-->
 <div class="contents">
-</div><!-- contents -->
+<div class="textblock"><p>A replacement messaging system for Unity Engine built around not using blasted strings. </p>
+<dl class="section author"><dt>Author</dt><dd>Philip Muzzall </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>3/17/2014 </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Property of Philip Muzzall</dd></dl>
+<p>Each Component must register with the Router before it can receive messages.<br/>
+</p>
+<p>To do this create a Route and register it with the Router using Router.AddRoute(Route NewRoute).<br/>
+</p>
+<p>Components can register multiple Routes with the Router to subscribe to multiple events. </p>
+<dl class="section note"><dt>Note</dt><dd>Router internally maintains routing tables for all registered Routes.<br/>
+</dd>
+<dd>
+These tables do not exists until the first Route has been registered.<br/>
+</dd>
+<dd>
+If all Routes are removed then Router will destroy these tables and recreate them again when they are needed. </dd></dl>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Mar 20 2014 23:57:34 for Router by
+    <li class="footer">Generated on Fri Apr 4 2014 15:19:17 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

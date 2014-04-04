@@ -1,10 +1,11 @@
 var NAVTREE =
 [
-  [ "Router", "index.html", [
+  [ "Router Messaging System", "index.html", [
     [ "Todo List", "todo.html", null ],
-    [ "Packages", null, [
-      [ "Packages", "namespaces.html", "namespaces" ],
-      [ "Package Functions", "namespacemembers.html", [
+    [ "Bug List", "bug.html", null ],
+    [ "Namespaces", null, [
+      [ "Namespace List", "namespaces.html", "namespaces" ],
+      [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ],
