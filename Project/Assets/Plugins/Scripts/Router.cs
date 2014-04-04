@@ -491,6 +491,8 @@ namespace RouterMessagingSystem
 			TablesExist = false;
 		}
 
+		/** \brief Returns the total amount of Routes registered with the Router. */
+		/// \returns Uint representing the Routes registered.
 		public static uint RouteCount()
 		{
 			if (TablesExist)
