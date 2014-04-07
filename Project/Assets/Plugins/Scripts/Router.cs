@@ -94,7 +94,7 @@ namespace RouterMessagingSystem
 		/// \return Immediately returns false if Obj is not a Route at all.\n
 		public override bool Equals(System.Object Obj /**< Object to check for equivalency. */)
 		{
-			return ((Obj == typeof(Route)) && (this.Subscriber == ((Route)Obj).Subscriber) && (this.Address == ((Route)Obj).Address) && (this.RouteEvent == ((Route)Obj).RouteEvent));
+			return ((Obj is Route) && (this.Subscriber == ((Route)Obj).Subscriber) && (this.Address == ((Route)Obj).Address) && (this.RouteEvent == ((Route)Obj).RouteEvent));
 		}
 
 		/// \brief Returns a hash of this Route.
@@ -108,7 +108,7 @@ namespace RouterMessagingSystem
 		/// \returns A string containing the subscribing Component, the subscribing event and the callback function.
 		public override string ToString()
 		{
-			return ("Subscriber: " + Address.Target + " | Event: " + RouteEvent.ToString() + " | Function: " + Address.Method);
+			return ("[" + Address.Target + ", " + RouteEvent + ", " + Address.Method + "]");
 		}
 
 		/// \brief Compares two Routes for equivalent attributes.
@@ -160,7 +160,7 @@ namespace RouterMessagingSystem
 		/// \return Immediately returns false if Obj is not a Route<R> at all.\n
 		public override bool Equals(System.Object Obj /**< Object to check for equivalency. */)
 		{
-			return ((Obj == typeof(Route<R>)) && (this.Subscriber == ((Route<R>)Obj).Subscriber) && (this.Address == ((Route<R>)Obj).Address) && (this.RouteEvent == ((Route<R>)Obj).RouteEvent));
+			return ((Obj is Route<R>) && (this.Subscriber == ((Route<R>)Obj).Subscriber) && (this.Address == ((Route<R>)Obj).Address) && (this.RouteEvent == ((Route<R>)Obj).RouteEvent));
 		}
 
 		/// \brief Returns a hash of this Route<R>.
@@ -174,7 +174,7 @@ namespace RouterMessagingSystem
 		/// \returns A string containing the subscribing Component, the subscribing event and the callback function.
 		public override string ToString()
 		{
-			return ("Subscriber: " + Address.Target + " | Event: " + RouteEvent.ToString() + " | Function: " + Address.Method);
+			return ("[" + Address.Target + ", " + RouteEvent + ", " + Address.Method + "]");
 		}
 
 		/// \brief Compares two Route<R>'s for equivalent attributes.
@@ -226,7 +226,7 @@ namespace RouterMessagingSystem
 		/// \return Immediately returns false if Obj is not a Route<R, T> at all.\n
 		public override bool Equals(System.Object Obj /**< Object to check for equivalency. */)
 		{
-			return ((Obj == typeof(Route<R, T>)) && (this.Subscriber == ((Route<R, T>)Obj).Subscriber) && (this.Address == ((Route<R, T>)Obj).Address) && (this.RouteEvent == ((Route<R, T>)Obj).RouteEvent));
+			return ((Obj is Route<R, T>) && (this.Subscriber == ((Route<R, T>)Obj).Subscriber) && (this.Address == ((Route<R, T>)Obj).Address) && (this.RouteEvent == ((Route<R, T>)Obj).RouteEvent));
 		}
 
 		/// \brief Returns a hash of this Route<R, T>.
@@ -240,7 +240,7 @@ namespace RouterMessagingSystem
 		/// \returns A string containing the subscribing Component, the subscribing event and the callback function.
 		public override string ToString()
 		{
-			return ("Subscriber: " + Address.Target + " | Event: " + RouteEvent.ToString() + " | Function: " + Address.Method);
+			return ("[" + Address.Target + ", " + RouteEvent + ", " + Address.Method + "]");
 		}
 
 		/// \brief Compares two Route<R, T>'s for equivalent attributes.
@@ -292,7 +292,7 @@ namespace RouterMessagingSystem
 		/// \return Immediately returns false if Obj is not a Route<R, T1, T2> at all.\n
 		public override bool Equals(System.Object Obj /**< Object to check for equivalency. */)
 		{
-			return ((Obj == typeof(Route<R, T1, T2>)) && (this.Subscriber == ((Route<R, T1, T2>)Obj).Subscriber) && (this.Address == ((Route<R, T1, T2>)Obj).Address) && (this.RouteEvent == ((Route<R, T1, T2>)Obj).RouteEvent));
+			return ((Obj is Route<R, T1, T2>) && (this.Subscriber == ((Route<R, T1, T2>)Obj).Subscriber) && (this.Address == ((Route<R, T1, T2>)Obj).Address) && (this.RouteEvent == ((Route<R, T1, T2>)Obj).RouteEvent));
 		}
 
 		/// \brief Returns a hash of this Route<R, T1, T2>.
@@ -306,7 +306,7 @@ namespace RouterMessagingSystem
 		/// \returns A string containing the subscribing Component, the subscribing event and the callback function.
 		public override string ToString()
 		{
-			return ("Subscriber: " + Address.Target + " | Event: " + RouteEvent.ToString() + " | Function: " + Address.Method);
+			return ("[" + Address.Target + ", " + RouteEvent + ", " + Address.Method + "]");
 		}
 
 		/// \brief Compares two Route<R, T1, T2>'s for equivalent attributes.
@@ -358,7 +358,7 @@ namespace RouterMessagingSystem
 		/// \return Immediately returns false if Obj is not a Route<R, T1, T2, T3> at all.\n
 		public override bool Equals(System.Object Obj /**< Object to check for equivalency. */)
 		{
-			return ((Obj == typeof(Route<R, T1, T2, T3>)) && (this.Subscriber == ((Route<R, T1, T2, T3>)Obj).Subscriber) && (this.Address == ((Route<R, T1, T2, T3>)Obj).Address) && (this.RouteEvent == ((Route<R, T1, T2, T3>)Obj).RouteEvent));
+			return ((Obj is Route<R, T1, T2, T3>) && (this.Subscriber == ((Route<R, T1, T2, T3>)Obj).Subscriber) && (this.Address == ((Route<R, T1, T2, T3>)Obj).Address) && (this.RouteEvent == ((Route<R, T1, T2, T3>)Obj).RouteEvent));
 		}
 
 		/// \brief Returns a hash of this Route<R, T1, T2, T3>.
@@ -372,7 +372,7 @@ namespace RouterMessagingSystem
 		/// \returns A string containing the subscribing Component, the subscribing event and the callback function.
 		public override string ToString()
 		{
-			return ("Subscriber: " + Address.Target + " | Event: " + RouteEvent.ToString() + " | Function: " + Address.Method);
+			return ("[" + Address.Target + ", " + RouteEvent + ", " + Address.Method + "]");
 		}
 
 		/// \brief Compares two Route<R, T1, T2, T3>'s for equivalent attributes.
@@ -400,7 +400,7 @@ namespace RouterMessagingSystem
 		/// The second parameter for the message.
 		public readonly T2 SecondParameter;
 
-		/// \brief Constructor that accepts three parameters.
+		/// \brief Constructor that accepts two parameters.
 		public RouteParameters(T1 First /**< First parameter. */, T2 Second /**< Second parameter. */) : this()
 		{
 			FirstParameter = First;
@@ -411,7 +411,7 @@ namespace RouterMessagingSystem
 		/// \returns A string containing the parameters.
 		public override string ToString()
 		{
-			return ("Parameter 1: " + FirstParameter + " | Parameter 2: " + SecondParameter);
+			return ("[" + FirstParameter + ", " + SecondParameter + "]");
 		}
 	}
 
@@ -437,10 +437,9 @@ namespace RouterMessagingSystem
 		/// \returns A string containing the parameters.
 		public override string ToString()
 		{
-			return ("Parameter 1: " + FirstParameter + " | Parameter 2: " + SecondParameter + " | Parameter 3: " + ThirdParameter);
+			return ("[" + FirstParameter + ", " + SecondParameter + ", " + ThirdParameter + "]");
 		}
 	}
-
 
 	/** \brief Router that calls basic functions only. */
 	/// \todo Redocument this.
@@ -524,7 +523,7 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its children. */
-		/// Both direct and indirect children of the specified GameObject receive the event.\n
+		/// Both direct and indirect children of the specified GameObject receive the event.
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
 		public static void RouteMessageDescendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
@@ -539,7 +538,7 @@ namespace RouterMessagingSystem
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its children. */
 		/// Both direct and indirect children of the specified GameObject receive the event.\n
-		/// Accepts a Component that is used to derive a reference to the target GameObject.\n
+		/// Accepts a Component that is used to derive a reference to the target GameObject.
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
 		public static void RouteMessageDescendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
@@ -568,7 +567,7 @@ namespace RouterMessagingSystem
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its parents. */
 		/// Both direct and indirect parents of the specified GameObject receive the event.\n
-		/// Accepts a Component that is used to derive a reference to the target GameObject.\n
+		/// Accepts a Component that is used to derive a reference to the target GameObject.
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
 		public static void RouteMessageAscendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component.*/, RoutingEvent EventType /**< Type of event to send. */)
 		{
@@ -582,93 +581,63 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers in a radius. */
-		/// Uses the specified GameObject as the origin point.\n
+		/// Uses the specified Vector3 as the origin point.
 		/// \note Only works for subscribed GameObjects.
-		public static void RouteMessageArea(GameObject Origin /**< GameObject specifying the origin of the event radius.\n Does not need to be subscribed unless it also is to receive the event. */, float Radius /**< Radius of the event in meters. */, RoutingEvent EventType /**< Type of event to send. */)
+		public static void RouteMessageArea(Vector3 Origin /**< Vector3 specifying the origin of the event radius. */, float Radius /**< Radius of the event in meters. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
 			CleanDeadRoutes(EventType);
 
-			if (TablesExist && ScopeIsValid(Origin) && EventIsPopulated(EventType))
+			if (TablesExist && EventIsPopulated(EventType))
 			{
 				decimal RadiusD = new Decimal(Radius);
-				List<Route> RT = RouteTable[EventType].FindAll(x => (new Decimal(Vector3.Distance(Origin.transform.position, x.Subscriber.transform.position)) <= RadiusD));
-				RT.ForEach(x => x.Address());
-			}
-		}
-
-		/** \brief Routes a message of the specified event to all subscribers in a radius. */
-		/// Uses the specified Component as the origin point.\n
-		/// \note Only works for subscribed GameObjects.
-		public static void RouteMessageArea(Component Origin /**< Component specifying the origin of the event radius.\n Can be of any type derived from Component.\n Does not need to be subscribed unless it also is to receive the event. */, float Radius /**< Radius of the event in meters. */, RoutingEvent EventType /**< Type of event to send. */)
-		{
-			CleanDeadRoutes(EventType);
-
-			if (TablesExist && ScopeIsValid(Origin) && EventIsPopulated(EventType))
-			{
-				decimal RadiusD = new Decimal(Radius);
-				List<Route> RT = RouteTable[EventType].FindAll(x => (new Decimal(Vector3.Distance(Origin.transform.position, x.Subscriber.transform.position)) <= RadiusD));
+				List<Route> RT = RouteTable[EventType].FindAll(x => (new Decimal(Vector3.Distance(Origin, x.Subscriber.transform.position)) <= RadiusD));
 				RT.ForEach(x => x.Address());
 			}
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers outside the specified radius. */
-		/// Uses the specified GameObject as the origin point.\n
+		/// Uses the specified Component as the origin point.
 		/// \note Only works for subscribed GameObjects.
-		public static void RouteMessageAreaInverse(GameObject Origin /**< GameObject specifying the origin of the event radius.\n Does not need to be subscribed unless it also is to receive the event. */, float Radius /**< Radius of the event in meters. */, RoutingEvent EventType /**< Type of event to send. */)
+		public static void RouteMessageAreaInverse(Vector3 Origin /**< Vector3 specifying the origin of the event radius. */, float Radius /**< Radius of the event in meters. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
 			CleanDeadRoutes(EventType);
 
-			if (TablesExist && ScopeIsValid(Origin) && EventIsPopulated(EventType))
+			if (TablesExist && EventIsPopulated(EventType))
 			{
 				decimal RadiusD = new Decimal(Radius);
-				List<Route> RT = RouteTable[EventType].FindAll(x => (new Decimal(Vector3.Distance(Origin.transform.position, x.Subscriber.transform.position)) > RadiusD));
+				List<Route> RT = RouteTable[EventType].FindAll(x => (new Decimal(Vector3.Distance(Origin, x.Subscriber.transform.position)) > RadiusD));
 				RT.ForEach(x => x.Address());
 			}
 		}
 
-		/** \brief Routes a message of the specified event to all subscribers outside the specified radius. */
-		/// Uses the specified Component as the origin point.\n
-		/// \note Only works for subscribed GameObjects.
-		public static void RouteMessageAreaInverse(Component Origin /**< Component specifying the origin of the event radius.\n Can be of any type derived from Component.\n Does not need to be subscribed unless it also is to receive the event. */, float Radius /**< Radius of the event in meters. */, RoutingEvent EventType /**< Type of event to send. */)
-		{
-			CleanDeadRoutes(EventType);
-
-			if (TablesExist && ScopeIsValid(Origin) && EventIsPopulated(EventType))
-			{
-				decimal RadiusD = new Decimal(Radius);
-				List<Route> RT = RouteTable[EventType].FindAll(x => (new Decimal(Vector3.Distance(Origin.transform.position, x.Subscriber.transform.position)) > RadiusD));
-				RT.ForEach(x => x.Address());
-			}
-		}
-
-		/** \brief Routes a message of the specified event to all subscribers between an inner and outer radius. */
-		/// Uses the specified Component as the origin point.\n
+		/** \brief Routes a message of the specified event to all subscribers inside a ring specified by an inner and outer radius. */
+		/// Uses the specified Vector3 as the origin point.
 		/// \note Only works for subscribed GameObjects.
 		/** \todo Clean up the parameter list. */
-		public static void RouteMessageAreaBand(GameObject Origin /**< Component specifying the origin of the event radius.\n Can be of any type derived from Component.\n Does not need to be subscribed unless it also is to receive the event. */, float InnerRadius /**< Radius of the event in meters. */, float OuterRadius /**< Radius of the event in meters. */, RoutingEvent EventType /**< Type of event to send. */)
+		public static void RouteMessageAreaBand(Vector3 Origin /**< Vector3 specifying the origin of the event radius. */, float InnerRadius /**< Radius of the event in meters. */, float OuterRadius /**< Radius of the event in meters. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
 			CleanDeadRoutes(EventType);
 
-			if (TablesExist && ScopeIsValid(Origin) && EventIsPopulated(EventType))
+			if (TablesExist && EventIsPopulated(EventType))
 			{
 				decimal InnerRadiusD = new Decimal(InnerRadius), OuterRadiusD = new Decimal(OuterRadius);
-				List<Route> RT = RouteTable[EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(Origin.transform.position, x.Subscriber.transform.position)); return ((Distance >= InnerRadiusD) && (Distance <= OuterRadiusD)); });
+				List<Route> RT = RouteTable[EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(Origin, x.Subscriber.transform.position)); return ((Distance >= InnerRadiusD) && (Distance <= OuterRadiusD)); });
 				RT.ForEach(x => x.Address());
 			}
 		}
 
-		/** \brief Routes a message of the specified event to all subscribers between an inner and outer radius. */
-		/// Uses the specified Component as the origin point.\n
+		/** \brief Routes a message of the specified event to all subscribers outside a ring specified by an inner and outer radius. */
+		/// Uses the specified Vector3 as the origin point.
 		/// \note Only works for subscribed GameObjects.
 		/** \todo Clean up the parameter list. */
-		public static void RouteMessageAreaBand(Component Origin /**< Component specifying the origin of the event radius.\n Can be of any type derived from Component.\n Does not need to be subscribed unless it also is to receive the event. */, float InnerRadius /**< Radius of the event in meters. */, float OuterRadius /**< Radius of the event in meters. */, RoutingEvent EventType /**< Type of event to send. */)
+		public static void RouteMessageInverseAreaBand(Vector3 Origin /**< Vector3 specifying the origin of the event radius. */, float InnerRadius /**< Radius of the event in meters. */, float OuterRadius /**< Radius of the event in meters. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
 			CleanDeadRoutes(EventType);
 
-			if (TablesExist && ScopeIsValid(Origin) && EventIsPopulated(EventType))
+			if (TablesExist && EventIsPopulated(EventType))
 			{
 				decimal InnerRadiusD = new Decimal(InnerRadius), OuterRadiusD = new Decimal(OuterRadius);
-				List<Route> RT = RouteTable[EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(Origin.transform.position, x.Subscriber.transform.position)); return ((Distance >= InnerRadiusD) && (Distance <= OuterRadiusD)); });
+				List<Route> RT = RouteTable[EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(Origin, x.Subscriber.transform.position)); return ((Distance < InnerRadiusD) || (Distance > OuterRadiusD)); });
 				RT.ForEach(x => x.Address());
 			}
 		}
@@ -774,13 +743,18 @@ namespace RouterMessagingSystem
 		{
 			// Without the check this is supposedly at most a 3(O(n)) operation.
 			// With the check this ranges from a max of 4(O(n)) to 1 O(n) operation.
-			if (TablesExist && EventIsPopulated(EventType) && !RouteTable[EventType].TrueForAll(x => x.Subscriber != null))
+			if (TablesExist && EventIsPopulated(EventType) && TableIsPolluted(EventType))
 			{
 				Route[] DeadRoutes = RouteTable[EventType].ToArray();
 				DeadRoutes = Array.FindAll(DeadRoutes, x => x.Subscriber == null);
 				Array.ForEach(DeadRoutes, x => {DeregisterRoute(x); DetachAddress(x);});
 				TablesExist = (TablesExist? DeconstructTables() : TablesExist);
 			}
+		}
+
+		private static bool TableIsPolluted(RoutingEvent EventType)
+		{
+			return !RouteTable[EventType].TrueForAll(x => x.Subscriber != null);
 		}
 
 		/// \internal Misc Functions
@@ -793,11 +767,6 @@ namespace RouterMessagingSystem
 		private static bool RouteIsRegistered(Route RT)
 		{
 			return (EventIsRegistered(RT.RouteEvent) && RouteTable[RT.RouteEvent].Contains(RT));
-		}
-
-		private static bool RouteAddressIsAttached(Route RT)
-		{
-			return Array.Exists(PointerTable[RT.RouteEvent].GetInvocationList(), x => (x == RT.Address));
 		}
 
 		private static bool KeyHasValue(RoutingEvent EventType)
