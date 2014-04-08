@@ -1,6 +1,8 @@
 var NAVTREE =
 [
   [ "Router Messaging System", "index.html", [
+    [ "Usage", "usage.html", null ],
+    [ "Notes", "notes.html", null ],
     [ "Todo List", "todo.html", null ],
     [ "Bug List", "bug.html", null ],
     [ "Namespaces", null, [
@@ -20,13 +22,16 @@ var NAVTREE =
         [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ]
       ] ]
+    ] ],
+    [ "Files", null, [
+      [ "File List", "files.html", "files" ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"_attach_random_msg_8cs_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

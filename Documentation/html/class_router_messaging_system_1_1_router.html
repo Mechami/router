@@ -49,6 +49,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -126,6 +127,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ad40fee06b10339cc09228e9d175a8810"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#ad40fee06b10339cc09228e9d175a8810">FlushRoutes</a> ()</td></tr>
 <tr class="memdesc:ad40fee06b10339cc09228e9d175a8810"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flushes all Routes from the routing table.  <a href="#ad40fee06b10339cc09228e9d175a8810">More...</a><br/></td></tr>
 <tr class="separator:ad40fee06b10339cc09228e9d175a8810"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadaa9a08cdf8d0f5df320203d544c17b"><td class="memItemLeft" align="right" valign="top">static uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#aadaa9a08cdf8d0f5df320203d544c17b">RouteCount</a> ()</td></tr>
+<tr class="memdesc:aadaa9a08cdf8d0f5df320203d544c17b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the total amount of Routes registered with the <a class="el" href="class_router_messaging_system_1_1_router.html" title="Router that calls basic functions only. ">Router</a>.  <a href="#aadaa9a08cdf8d0f5df320203d544c17b">More...</a><br/></td></tr>
+<tr class="separator:aadaa9a08cdf8d0f5df320203d544c17b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a576e1f0b64ef7a64eb4ee535cbf37594"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#a576e1f0b64ef7a64eb4ee535cbf37594">RouteMessage</a> (<a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
 <tr class="memdesc:a576e1f0b64ef7a64eb4ee535cbf37594"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to all subscribers.  <a href="#a576e1f0b64ef7a64eb4ee535cbf37594">More...</a><br/></td></tr>
 <tr class="separator:a576e1f0b64ef7a64eb4ee535cbf37594"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,24 +145,18 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:afd1ee507a7c567d967922056fb4c6820"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#afd1ee507a7c567d967922056fb4c6820">RouteMessageAscendants</a> (Component Scope, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
 <tr class="memdesc:afd1ee507a7c567d967922056fb4c6820"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to the specified GameObject and its parents.  <a href="#afd1ee507a7c567d967922056fb4c6820">More...</a><br/></td></tr>
 <tr class="separator:afd1ee507a7c567d967922056fb4c6820"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe0f035b6e4867a059be9258f4ae9464"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#abe0f035b6e4867a059be9258f4ae9464">RouteMessageArea</a> (GameObject Origin, float Radius, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
-<tr class="memdesc:abe0f035b6e4867a059be9258f4ae9464"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to all subscribers in a radius.  <a href="#abe0f035b6e4867a059be9258f4ae9464">More...</a><br/></td></tr>
-<tr class="separator:abe0f035b6e4867a059be9258f4ae9464"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab772d7262c553f0599e7fc2f3ecd7cf9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#ab772d7262c553f0599e7fc2f3ecd7cf9">RouteMessageArea</a> (Component Origin, float Radius, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
-<tr class="memdesc:ab772d7262c553f0599e7fc2f3ecd7cf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to all subscribers in a radius.  <a href="#ab772d7262c553f0599e7fc2f3ecd7cf9">More...</a><br/></td></tr>
-<tr class="separator:ab772d7262c553f0599e7fc2f3ecd7cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17f14f0a5bb158d010fcc6f31bd0486f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#a17f14f0a5bb158d010fcc6f31bd0486f">RouteMessageAreaInverse</a> (GameObject Origin, float Radius, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
-<tr class="memdesc:a17f14f0a5bb158d010fcc6f31bd0486f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to all subscribers outside the specified radius.  <a href="#a17f14f0a5bb158d010fcc6f31bd0486f">More...</a><br/></td></tr>
-<tr class="separator:a17f14f0a5bb158d010fcc6f31bd0486f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83f22841dd91bda4e1d7811f461a50e0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#a83f22841dd91bda4e1d7811f461a50e0">RouteMessageAreaInverse</a> (Component Origin, float Radius, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
-<tr class="memdesc:a83f22841dd91bda4e1d7811f461a50e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to all subscribers outside the specified radius.  <a href="#a83f22841dd91bda4e1d7811f461a50e0">More...</a><br/></td></tr>
-<tr class="separator:a83f22841dd91bda4e1d7811f461a50e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad050b5e63e820f5c33f10bc346249b60"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#ad050b5e63e820f5c33f10bc346249b60">RouteMessageAreaBand</a> (GameObject Origin, float InnerRadius, float OuterRadius, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
-<tr class="memdesc:ad050b5e63e820f5c33f10bc346249b60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to all subscribers between an inner and outer radius.  <a href="#ad050b5e63e820f5c33f10bc346249b60">More...</a><br/></td></tr>
-<tr class="separator:ad050b5e63e820f5c33f10bc346249b60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfa4b17be806a2ca24971adee88d5f2b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#abfa4b17be806a2ca24971adee88d5f2b">RouteMessageAreaBand</a> (Component Origin, float InnerRadius, float OuterRadius, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
-<tr class="memdesc:abfa4b17be806a2ca24971adee88d5f2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to all subscribers between an inner and outer radius.  <a href="#abfa4b17be806a2ca24971adee88d5f2b">More...</a><br/></td></tr>
-<tr class="separator:abfa4b17be806a2ca24971adee88d5f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a789b450874b8ab2b393843a3dc84ba2c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#a789b450874b8ab2b393843a3dc84ba2c">RouteMessageArea</a> (Vector3 Origin, float Radius, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
+<tr class="memdesc:a789b450874b8ab2b393843a3dc84ba2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to all subscribers in a radius.  <a href="#a789b450874b8ab2b393843a3dc84ba2c">More...</a><br/></td></tr>
+<tr class="separator:a789b450874b8ab2b393843a3dc84ba2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a149db6c1da2c7e2d77aeefe84ee58ed7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#a149db6c1da2c7e2d77aeefe84ee58ed7">RouteMessageAreaInverse</a> (Vector3 Origin, float Radius, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
+<tr class="memdesc:a149db6c1da2c7e2d77aeefe84ee58ed7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to all subscribers outside the specified radius.  <a href="#a149db6c1da2c7e2d77aeefe84ee58ed7">More...</a><br/></td></tr>
+<tr class="separator:a149db6c1da2c7e2d77aeefe84ee58ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d3417b6a33bacf75e0bf4a592b7397e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#a4d3417b6a33bacf75e0bf4a592b7397e">RouteMessageAreaBand</a> (Vector3 Origin, float InnerRadius, float OuterRadius, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
+<tr class="memdesc:a4d3417b6a33bacf75e0bf4a592b7397e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to all subscribers inside a ring specified by an inner and outer radius.  <a href="#a4d3417b6a33bacf75e0bf4a592b7397e">More...</a><br/></td></tr>
+<tr class="separator:a4d3417b6a33bacf75e0bf4a592b7397e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a68983363967d0883806c8500484a0a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#a6a68983363967d0883806c8500484a0a">RouteMessageInverseAreaBand</a> (Vector3 Origin, float InnerRadius, float OuterRadius, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
+<tr class="memdesc:a6a68983363967d0883806c8500484a0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to all subscribers outside a ring specified by an inner and outer radius.  <a href="#a6a68983363967d0883806c8500484a0a">More...</a><br/></td></tr>
+<tr class="separator:a6a68983363967d0883806c8500484a0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63abb7735fb402562c2fc96bd629fb54"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router.html#a63abb7735fb402562c2fc96bd629fb54">RouteMessageInactiveObjects</a> (<a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
 <tr class="memdesc:a63abb7735fb402562c2fc96bd629fb54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message to inactive subscribers.  <a href="#a63abb7735fb402562c2fc96bd629fb54">More...</a><br/></td></tr>
 <tr class="separator:a63abb7735fb402562c2fc96bd629fb54"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,6 +167,8 @@ Static Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_router_messaging_system_1_1_router.html" title="Router that calls basic functions only. ">Router</a> that calls basic functions only. </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Redocument this. </dd></dl>
+
+<p>Definition at line <a class="el" href="_routers_2_base_8cs_source.html#l00010">10</a> of file <a class="el" href="_routers_2_base_8cs_source.html">Base.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="aee00d3d6636e9a50b69d317ea378b06d"></a>
 <div class="memitem">
@@ -201,6 +201,17 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
+<p>Definition at line <a class="el" href="_routers_2_base_8cs_source.html#l00023">23</a> of file <a class="el" href="_routers_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            TablesExist = (TablesExist? TablesExist : ConstructTables());</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keywordflow">if</span> (RouteIsValid(NewRoute) &amp;&amp; !RouteIsRegistered(NewRoute))</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                RegisterRoute(NewRoute);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                AttachAddress(NewRoute);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="ad40fee06b10339cc09228e9d175a8810"></a>
@@ -233,6 +244,13 @@ Every subscriber will need to re-register with the <a class="el" href="class_rou
 <dd>
 This is a relatively slow operation, depending on the amount of subscribers that need to be re-added. </dd></dl>
 
+<p>Definition at line <a class="el" href="_routers_2_base_8cs_source.html#l00050">50</a> of file <a class="el" href="_routers_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            RouteTable = null;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            PointerTable = null;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            TablesExist = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a40cec954f9e8bd1f0072331ae4610828"></a>
@@ -265,6 +283,63 @@ This is a relatively slow operation, depending on the amount of subscribers that
   </dd>
 </dl>
 
+<p>Definition at line <a class="el" href="_routers_2_base_8cs_source.html#l00035">35</a> of file <a class="el" href="_routers_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordflow">if</span> (TablesExist)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                DeregisterRoute(OldRoute);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                DetachAddress(OldRoute);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            TablesExist = (TablesExist? DeconstructTables() : TablesExist);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="aadaa9a08cdf8d0f5df320203d544c17b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static uint RouterMessagingSystem.Router.RouteCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the total amount of Routes registered with the <a class="el" href="class_router_messaging_system_1_1_router.html" title="Router that calls basic functions only. ">Router</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>Uint representing the Routes registered. </dd></dl>
+
+<p>Definition at line <a class="el" href="_routers_2_base_8cs_source.html#l00059">59</a> of file <a class="el" href="_routers_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">if</span> (TablesExist)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                uint TotalRoutes = 0u;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                <span class="keywordflow">foreach</span> (KeyValuePair&lt;<a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>, List&lt;Route&gt;&gt; KVP <span class="keywordflow">in</span> RouteTable)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                    TotalRoutes += (uint)KVP.Value.Count;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <span class="keywordflow">return</span> TotalRoutes;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="keywordflow">return</span> 0u;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
+<div class="ttc" id="namespace_router_messaging_system_html_abf90ac1a99b75a99768e976718e09340"><div class="ttname"><a href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RouterMessagingSystem.RoutingEvent</a></div><div class="ttdeci">RoutingEvent</div><div class="ttdoc">Enumeration for event types. </div><div class="ttdef"><b>Definition:</b> <a href="_events_8cs_source.html#l00004">Events.cs:4</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a576e1f0b64ef7a64eb4ee535cbf37594"></a>
@@ -297,6 +372,16 @@ This is a relatively slow operation, depending on the amount of subscribers that
   </dd>
 </dl>
 
+<p>Definition at line <a class="el" href="_routers_2_base_8cs_source.html#l00079">79</a> of file <a class="el" href="_routers_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            CleanDeadRoutes(EventType);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; KeyHasValue(EventType) &amp;&amp; EventIsPopulated(EventType))</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                PointerTable[EventType]();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a0cbdcf14ba6da8a5bd4aebb3882ddbb2"></a>
@@ -329,9 +414,20 @@ This is a relatively slow operation, depending on the amount of subscribers that
   </dd>
 </dl>
 
+<p>Definition at line <a class="el" href="_routers_2_base_8cs_source.html#l00222">222</a> of file <a class="el" href="_routers_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        {</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            CleanDeadRoutes(EventType);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            {</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                List&lt;Route&gt; RT = RouteTable[EventType].FindAll(x =&gt; x.Subscriber.gameObject.activeInHierarchy);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                RT.ForEach(x =&gt; x.Address());</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            }</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        }</div>
+</div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="abe0f035b6e4867a059be9258f4ae9464"></a>
+<a class="anchor" id="a789b450874b8ab2b393843a3dc84ba2c"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -341,7 +437,7 @@ This is a relatively slow operation, depending on the amount of subscribers that
         <tr>
           <td class="memname">static void RouterMessagingSystem.Router.RouteMessageArea </td>
           <td>(</td>
-          <td class="paramtype">GameObject&#160;</td>
+          <td class="paramtype">Vector3&#160;</td>
           <td class="paramname"><em>Origin</em>, </td>
         </tr>
         <tr>
@@ -370,77 +466,32 @@ This is a relatively slow operation, depending on the amount of subscribers that
 </div><div class="memdoc">
 
 <p>Routes a message of the specified event to all subscribers in a radius. </p>
-<p>Uses the specified GameObject as the origin point.<br/>
-</p>
+<p>Uses the specified Vector3 as the origin point. </p>
 <dl class="section note"><dt>Note</dt><dd>Only works for subscribed GameObjects. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Origin</td><td>GameObject specifying the origin of the event radius.<br/>
- Does not need to be subscribed unless it also is to receive the event. </td></tr>
+    <tr><td class="paramname">Origin</td><td>Vector3 specifying the origin of the event radius. </td></tr>
     <tr><td class="paramname">Radius</td><td>Radius of the event in meters. </td></tr>
     <tr><td class="paramname">EventType</td><td>Type of event to send. </td></tr>
   </table>
   </dd>
 </dl>
 
+<p>Definition at line <a class="el" href="_routers_2_base_8cs_source.html#l00150">150</a> of file <a class="el" href="_routers_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            CleanDeadRoutes(EventType);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                decimal RadiusD = <span class="keyword">new</span> Decimal(Radius);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                List&lt;Route&gt; RT = RouteTable[EventType].FindAll(x =&gt; (<span class="keyword">new</span> Decimal(Vector3.Distance(Origin, x.Subscriber.transform.position)) &lt;= RadiusD));</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                RT.ForEach(x =&gt; x.Address());</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        }</div>
+</div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="ab772d7262c553f0599e7fc2f3ecd7cf9"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void RouterMessagingSystem.Router.RouteMessageArea </td>
-          <td>(</td>
-          <td class="paramtype">Component&#160;</td>
-          <td class="paramname"><em>Origin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>Radius</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td>
-          <td class="paramname"><em>EventType</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Routes a message of the specified event to all subscribers in a radius. </p>
-<p>Uses the specified Component as the origin point.<br/>
-</p>
-<dl class="section note"><dt>Note</dt><dd>Only works for subscribed GameObjects. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Origin</td><td>Component specifying the origin of the event radius.<br/>
- Can be of any type derived from Component.<br/>
- Does not need to be subscribed unless it also is to receive the event. </td></tr>
-    <tr><td class="paramname">Radius</td><td>Radius of the event in meters. </td></tr>
-    <tr><td class="paramname">EventType</td><td>Type of event to send. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="ad050b5e63e820f5c33f10bc346249b60"></a>
+<a class="anchor" id="a4d3417b6a33bacf75e0bf4a592b7397e"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -450,7 +501,7 @@ This is a relatively slow operation, depending on the amount of subscribers that
         <tr>
           <td class="memname">static void RouterMessagingSystem.Router.RouteMessageAreaBand </td>
           <td>(</td>
-          <td class="paramtype">GameObject&#160;</td>
+          <td class="paramtype">Vector3&#160;</td>
           <td class="paramname"><em>Origin</em>, </td>
         </tr>
         <tr>
@@ -484,16 +535,13 @@ This is a relatively slow operation, depending on the amount of subscribers that
 </table>
 </div><div class="memdoc">
 
-<p>Routes a message of the specified event to all subscribers between an inner and outer radius. </p>
-<p>Uses the specified Component as the origin point.<br/>
-</p>
+<p>Routes a message of the specified event to all subscribers inside a ring specified by an inner and outer radius. </p>
+<p>Uses the specified Vector3 as the origin point. </p>
 <dl class="section note"><dt>Note</dt><dd>Only works for subscribed GameObjects. </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Clean up the parameter list. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Clean up the parameter list. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Origin</td><td>Component specifying the origin of the event radius.<br/>
- Can be of any type derived from Component.<br/>
- Does not need to be subscribed unless it also is to receive the event. </td></tr>
+    <tr><td class="paramname">Origin</td><td>Vector3 specifying the origin of the event radius. </td></tr>
     <tr><td class="paramname">InnerRadius</td><td>Radius of the event in meters. </td></tr>
     <tr><td class="paramname">OuterRadius</td><td>Radius of the event in meters. </td></tr>
     <tr><td class="paramname">EventType</td><td>Type of event to send. </td></tr>
@@ -501,72 +549,21 @@ This is a relatively slow operation, depending on the amount of subscribers that
   </dd>
 </dl>
 
+<p>Definition at line <a class="el" href="_routers_2_base_8cs_source.html#l00181">181</a> of file <a class="el" href="_routers_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        {</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            CleanDeadRoutes(EventType);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                decimal InnerRadiusD = <span class="keyword">new</span> Decimal(InnerRadius), OuterRadiusD = <span class="keyword">new</span> Decimal(OuterRadius);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                List&lt;Route&gt; RT = RouteTable[EventType].FindAll(x =&gt; { decimal Distance = <span class="keyword">new</span> Decimal(Vector3.Distance(Origin, x.Subscriber.transform.position)); <span class="keywordflow">return</span> ((Distance &gt;= InnerRadiusD) &amp;&amp; (Distance &lt;= OuterRadiusD)); });</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                RT.ForEach(x =&gt; x.Address());</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        }</div>
+</div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="abfa4b17be806a2ca24971adee88d5f2b"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void RouterMessagingSystem.Router.RouteMessageAreaBand </td>
-          <td>(</td>
-          <td class="paramtype">Component&#160;</td>
-          <td class="paramname"><em>Origin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>InnerRadius</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>OuterRadius</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td>
-          <td class="paramname"><em>EventType</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Routes a message of the specified event to all subscribers between an inner and outer radius. </p>
-<p>Uses the specified Component as the origin point.<br/>
-</p>
-<dl class="section note"><dt>Note</dt><dd>Only works for subscribed GameObjects. </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Clean up the parameter list. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Origin</td><td>Component specifying the origin of the event radius.<br/>
- Can be of any type derived from Component.<br/>
- Does not need to be subscribed unless it also is to receive the event. </td></tr>
-    <tr><td class="paramname">InnerRadius</td><td>Radius of the event in meters. </td></tr>
-    <tr><td class="paramname">OuterRadius</td><td>Radius of the event in meters. </td></tr>
-    <tr><td class="paramname">EventType</td><td>Type of event to send. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a17f14f0a5bb158d010fcc6f31bd0486f"></a>
+<a class="anchor" id="a149db6c1da2c7e2d77aeefe84ee58ed7"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -576,7 +573,7 @@ This is a relatively slow operation, depending on the amount of subscribers that
         <tr>
           <td class="memname">static void RouterMessagingSystem.Router.RouteMessageAreaInverse </td>
           <td>(</td>
-          <td class="paramtype">GameObject&#160;</td>
+          <td class="paramtype">Vector3&#160;</td>
           <td class="paramname"><em>Origin</em>, </td>
         </tr>
         <tr>
@@ -605,74 +602,29 @@ This is a relatively slow operation, depending on the amount of subscribers that
 </div><div class="memdoc">
 
 <p>Routes a message of the specified event to all subscribers outside the specified radius. </p>
-<p>Uses the specified GameObject as the origin point.<br/>
-</p>
+<p>Uses the specified Component as the origin point. </p>
 <dl class="section note"><dt>Note</dt><dd>Only works for subscribed GameObjects. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Origin</td><td>GameObject specifying the origin of the event radius.<br/>
- Does not need to be subscribed unless it also is to receive the event. </td></tr>
+    <tr><td class="paramname">Origin</td><td>Vector3 specifying the origin of the event radius. </td></tr>
     <tr><td class="paramname">Radius</td><td>Radius of the event in meters. </td></tr>
     <tr><td class="paramname">EventType</td><td>Type of event to send. </td></tr>
   </table>
   </dd>
 </dl>
 
-</div>
-</div>
-<a class="anchor" id="a83f22841dd91bda4e1d7811f461a50e0"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void RouterMessagingSystem.Router.RouteMessageAreaInverse </td>
-          <td>(</td>
-          <td class="paramtype">Component&#160;</td>
-          <td class="paramname"><em>Origin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>Radius</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td>
-          <td class="paramname"><em>EventType</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Routes a message of the specified event to all subscribers outside the specified radius. </p>
-<p>Uses the specified Component as the origin point.<br/>
-</p>
-<dl class="section note"><dt>Note</dt><dd>Only works for subscribed GameObjects. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Origin</td><td>Component specifying the origin of the event radius.<br/>
- Can be of any type derived from Component.<br/>
- Does not need to be subscribed unless it also is to receive the event. </td></tr>
-    <tr><td class="paramname">Radius</td><td>Radius of the event in meters. </td></tr>
-    <tr><td class="paramname">EventType</td><td>Type of event to send. </td></tr>
-  </table>
-  </dd>
-</dl>
-
+<p>Definition at line <a class="el" href="_routers_2_base_8cs_source.html#l00165">165</a> of file <a class="el" href="_routers_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            CleanDeadRoutes(EventType);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                decimal RadiusD = <span class="keyword">new</span> Decimal(Radius);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                List&lt;Route&gt; RT = RouteTable[EventType].FindAll(x =&gt; (<span class="keyword">new</span> Decimal(Vector3.Distance(Origin, x.Subscriber.transform.position)) &gt; RadiusD));</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                RT.ForEach(x =&gt; x.Address());</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a8394f047dfd2018da75688b0807feba0"></a>
@@ -719,6 +671,17 @@ This is a relatively slow operation, depending on the amount of subscribers that
   </dd>
 </dl>
 
+<p>Definition at line <a class="el" href="_routers_2_base_8cs_source.html#l00121">121</a> of file <a class="el" href="_routers_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            CleanDeadRoutes(EventType);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; ScopeIsValid(Scope) &amp;&amp; EventIsPopulated(EventType))</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                List&lt;Route&gt; RT = RouteTable[EventType].FindAll(x =&gt; Scope.transform.IsChildOf(x.Subscriber.transform));</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                RT.ForEach(x =&gt; x.Address());</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="afd1ee507a7c567d967922056fb4c6820"></a>
@@ -755,8 +718,7 @@ This is a relatively slow operation, depending on the amount of subscribers that
 
 <p>Routes a message of the specified event to the specified GameObject and its parents. </p>
 <p>Both direct and indirect parents of the specified GameObject receive the event.<br/>
-Accepts a Component that is used to derive a reference to the target GameObject.<br/>
-</p>
+Accepts a Component that is used to derive a reference to the target GameObject. </p>
 <dl class="section note"><dt>Note</dt><dd>Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -767,6 +729,17 @@ Accepts a Component that is used to derive a reference to the target GameObject.
   </dd>
 </dl>
 
+<p>Definition at line <a class="el" href="_routers_2_base_8cs_source.html#l00136">136</a> of file <a class="el" href="_routers_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            CleanDeadRoutes(EventType);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; ScopeIsValid(Scope) &amp;&amp; EventIsPopulated(EventType))</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                List&lt;Route&gt; RT = RouteTable[EventType].FindAll(x =&gt; Scope.transform.IsChildOf(x.Subscriber.transform));</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                RT.ForEach(x =&gt; x.Address());</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            }</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="ad571c1a47ca90b937b970c9ee1cf3c85"></a>
@@ -802,8 +775,7 @@ Accepts a Component that is used to derive a reference to the target GameObject.
 </div><div class="memdoc">
 
 <p>Routes a message of the specified event to the specified GameObject and its children. </p>
-<p>Both direct and indirect children of the specified GameObject receive the event.<br/>
-</p>
+<p>Both direct and indirect children of the specified GameObject receive the event. </p>
 <dl class="section note"><dt>Note</dt><dd>Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -813,6 +785,17 @@ Accepts a Component that is used to derive a reference to the target GameObject.
   </dd>
 </dl>
 
+<p>Definition at line <a class="el" href="_routers_2_base_8cs_source.html#l00092">92</a> of file <a class="el" href="_routers_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            CleanDeadRoutes(EventType);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; ScopeIsValid(Scope) &amp;&amp; EventIsPopulated(EventType))</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                List&lt;Route&gt; RT = RouteTable[EventType].FindAll(x =&gt; x.Subscriber.transform.IsChildOf(Scope.transform));</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                RT.ForEach(x =&gt; x.Address());</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a7fa87567dc83f0b7b221e91ef81b41aa"></a>
@@ -849,8 +832,7 @@ Accepts a Component that is used to derive a reference to the target GameObject.
 
 <p>Routes a message of the specified event to the specified GameObject and its children. </p>
 <p>Both direct and indirect children of the specified GameObject receive the event.<br/>
-Accepts a Component that is used to derive a reference to the target GameObject.<br/>
-</p>
+Accepts a Component that is used to derive a reference to the target GameObject. </p>
 <dl class="section note"><dt>Note</dt><dd>Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -861,6 +843,17 @@ Accepts a Component that is used to derive a reference to the target GameObject.
   </dd>
 </dl>
 
+<p>Definition at line <a class="el" href="_routers_2_base_8cs_source.html#l00107">107</a> of file <a class="el" href="_routers_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            CleanDeadRoutes(EventType);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; ScopeIsValid(Scope) &amp;&amp; EventIsPopulated(EventType))</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                List&lt;Route&gt; RT = RouteTable[EventType].FindAll(x =&gt; x.Subscriber.transform.IsChildOf(Scope.transform));</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                RT.ForEach(x =&gt; x.Address());</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a63abb7735fb402562c2fc96bd629fb54"></a>
@@ -893,10 +886,93 @@ Accepts a Component that is used to derive a reference to the target GameObject.
   </dd>
 </dl>
 
+<p>Definition at line <a class="el" href="_routers_2_base_8cs_source.html#l00210">210</a> of file <a class="el" href="_routers_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        {</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            CleanDeadRoutes(EventType);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                List&lt;Route&gt; RT = RouteTable[EventType].FindAll(x =&gt; !x.Subscriber.gameObject.activeInHierarchy);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                RT.ForEach(x =&gt; x.Address());</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a6a68983363967d0883806c8500484a0a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void RouterMessagingSystem.Router.RouteMessageInverseAreaBand </td>
+          <td>(</td>
+          <td class="paramtype">Vector3&#160;</td>
+          <td class="paramname"><em>Origin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>InnerRadius</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>OuterRadius</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td>
+          <td class="paramname"><em>EventType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Routes a message of the specified event to all subscribers outside a ring specified by an inner and outer radius. </p>
+<p>Uses the specified Vector3 as the origin point. </p>
+<dl class="section note"><dt>Note</dt><dd>Only works for subscribed GameObjects. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Clean up the parameter list. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Origin</td><td>Vector3 specifying the origin of the event radius. </td></tr>
+    <tr><td class="paramname">InnerRadius</td><td>Radius of the event in meters. </td></tr>
+    <tr><td class="paramname">OuterRadius</td><td>Radius of the event in meters. </td></tr>
+    <tr><td class="paramname">EventType</td><td>Type of event to send. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_routers_2_base_8cs_source.html#l00197">197</a> of file <a class="el" href="_routers_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            CleanDeadRoutes(EventType);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                decimal InnerRadiusD = <span class="keyword">new</span> Decimal(InnerRadius), OuterRadiusD = <span class="keyword">new</span> Decimal(OuterRadius);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                List&lt;Route&gt; RT = RouteTable[EventType].FindAll(x =&gt; { decimal Distance = <span class="keyword">new</span> Decimal(Vector3.Distance(Origin, x.Subscriber.transform.position)); <span class="keywordflow">return</span> ((Distance &lt; InnerRadiusD) || (Distance &gt; OuterRadiusD)); });</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                RT.ForEach(x =&gt; x.Address());</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>Project/Assets/Plugins/Scripts/Router.cs (41108ff6283952a66d6818a3089f4e0feed608a7)</li>
+<li>Project/Assets/Plugins/Router Messaging System/Routers/<a class="el" href="_routers_2_base_8cs_source.html">Base.cs (4b48bfca1b0b148d8bb6133174271863b5bc26d6)</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -904,7 +980,7 @@ Accepts a Component that is used to derive a reference to the target GameObject.
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_router_messaging_system.html">RouterMessagingSystem</a></li><li class="navelem"><a class="el" href="class_router_messaging_system_1_1_router.html">Router</a></li>
-    <li class="footer">Generated on Fri Apr 4 2014 15:19:17 for Router Messaging System by
+    <li class="footer">Generated on Mon Apr 7 2014 21:53:01 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

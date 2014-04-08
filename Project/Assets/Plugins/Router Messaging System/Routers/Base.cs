@@ -1,16 +1,3 @@
-/** \mainpage Router Messaging System
-\details A replacement messaging system for Unity Engine built around not using blasted strings.
-\author Philip Muzzall
-\version 1.0.0
-\date 3/17/2014
-\copyright Property of Philip Muzzall
-\details Each Component must register with the Router before it can receive messages.\n
-\details To do this create a Route and register it with the Router using Router.AddRoute(Route NewRoute).\n
-\details Components can register multiple Routes with the Router to subscribe to multiple events.
-\note Router internally maintains routing tables for all registered Routes.\n
-\note These tables do not exists until the first Route has been registered.\n
-\note If all Routes are removed then Router will destroy these tables and recreate them again when they are needed. */
-
 using UnityEngine;
 using System;
 using System.Collections.Generic;

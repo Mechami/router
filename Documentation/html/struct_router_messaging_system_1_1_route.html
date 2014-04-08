@@ -49,6 +49,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -168,6 +169,8 @@ readonly <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b
 <p>Multiple Routes can be used to subscribe a Component to multiple events at once.<br/>
 </p>
 <dl class="section note"><dt>Note</dt><dd>It is not advised to pass a multicast delegate as a RoutePointer. </dd></dl>
+
+<p>Definition at line <a class="el" href="_routes_2_base_8cs_source.html#l00010">10</a> of file <a class="el" href="_routes_2_base_8cs_source.html">Base.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aa66a3feb1402e38cd800aedff7e347cd"></a>
 <div class="memitem">
@@ -223,6 +226,17 @@ readonly <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b
   </dd>
 </dl>
 
+<p>Definition at line <a class="el" href="_routes_2_base_8cs_source.html#l00022">22</a> of file <a class="el" href="_routes_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                                                                                                       : <span class="keyword">this</span>()</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <a class="code" href="struct_router_messaging_system_1_1_route.html#a8a188c84ef9c822e63c5425fb61dafe7">Subscriber</a> = RouteSubscriber;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <a class="code" href="struct_router_messaging_system_1_1_route.html#ae733d7eaa7109701d18ba16afe161a6c">Address</a> = RoutingAddress;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <a class="code" href="struct_router_messaging_system_1_1_route.html#a33a154b5c9c8b9c281cb8529017bf68e">RouteEvent</a> = Event;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_html_a33a154b5c9c8b9c281cb8529017bf68e"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html#a33a154b5c9c8b9c281cb8529017bf68e">RouterMessagingSystem.Route.RouteEvent</a></div><div class="ttdeci">readonly RoutingEvent RouteEvent</div><div class="ttdoc">Value for the RouteEvent that calls this Route&#39;s address. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00017">Base.cs:17</a></div></div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_html_a8a188c84ef9c822e63c5425fb61dafe7"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html#a8a188c84ef9c822e63c5425fb61dafe7">RouterMessagingSystem.Route.Subscriber</a></div><div class="ttdeci">readonly Component Subscriber</div><div class="ttdoc">Reference to the originator of this route. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00013">Base.cs:13</a></div></div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_html_ae733d7eaa7109701d18ba16afe161a6c"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html#ae733d7eaa7109701d18ba16afe161a6c">RouterMessagingSystem.Route.Address</a></div><div class="ttdeci">readonly RoutePointer Address</div><div class="ttdoc">Reference to the function this route calls. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00015">Base.cs:15</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -257,6 +271,12 @@ readonly <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b
   </dd>
 </dl>
 
+<p>Definition at line <a class="el" href="_routes_2_base_8cs_source.html#l00031">31</a> of file <a class="el" href="_routes_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">return</span> ((this.<a class="code" href="struct_router_messaging_system_1_1_route.html#a8a188c84ef9c822e63c5425fb61dafe7">Subscriber</a> == RT.Subscriber) &amp;&amp; (<span class="keyword">this</span>.Address == RT.Address) &amp;&amp; (<span class="keyword">this</span>.RouteEvent == RT.RouteEvent));</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_html_a8a188c84ef9c822e63c5425fb61dafe7"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html#a8a188c84ef9c822e63c5425fb61dafe7">RouterMessagingSystem.Route.Subscriber</a></div><div class="ttdeci">readonly Component Subscriber</div><div class="ttdoc">Reference to the originator of this route. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00013">Base.cs:13</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a30f392aeb818052a841fbae159cb858a"></a>
@@ -294,6 +314,15 @@ Immediately returns false if Obj is not a <a class="el" href="struct_router_mess
   </dd>
 </dl>
 
+<p>Definition at line <a class="el" href="_routes_2_base_8cs_source.html#l00039">39</a> of file <a class="el" href="_routes_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">return</span> ((Obj is <a class="code" href="struct_router_messaging_system_1_1_route.html#aa66a3feb1402e38cd800aedff7e347cd">Route</a>) &amp;&amp; (this.<a class="code" href="struct_router_messaging_system_1_1_route.html#a8a188c84ef9c822e63c5425fb61dafe7">Subscriber</a> == ((Route)Obj).<a class="code" href="struct_router_messaging_system_1_1_route.html#a8a188c84ef9c822e63c5425fb61dafe7">Subscriber</a>) &amp;&amp; (this.<a class="code" href="struct_router_messaging_system_1_1_route.html#ae733d7eaa7109701d18ba16afe161a6c">Address</a> == ((Route)Obj).<a class="code" href="struct_router_messaging_system_1_1_route.html#ae733d7eaa7109701d18ba16afe161a6c">Address</a>) &amp;&amp; (this.<a class="code" href="struct_router_messaging_system_1_1_route.html#a33a154b5c9c8b9c281cb8529017bf68e">RouteEvent</a> == ((Route)Obj).<a class="code" href="struct_router_messaging_system_1_1_route.html#a33a154b5c9c8b9c281cb8529017bf68e">RouteEvent</a>));</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        }</div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_html_a33a154b5c9c8b9c281cb8529017bf68e"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html#a33a154b5c9c8b9c281cb8529017bf68e">RouterMessagingSystem.Route.RouteEvent</a></div><div class="ttdeci">readonly RoutingEvent RouteEvent</div><div class="ttdoc">Value for the RouteEvent that calls this Route&#39;s address. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00017">Base.cs:17</a></div></div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_html_a8a188c84ef9c822e63c5425fb61dafe7"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html#a8a188c84ef9c822e63c5425fb61dafe7">RouterMessagingSystem.Route.Subscriber</a></div><div class="ttdeci">readonly Component Subscriber</div><div class="ttdoc">Reference to the originator of this route. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00013">Base.cs:13</a></div></div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_html_ae733d7eaa7109701d18ba16afe161a6c"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html#ae733d7eaa7109701d18ba16afe161a6c">RouterMessagingSystem.Route.Address</a></div><div class="ttdeci">readonly RoutePointer Address</div><div class="ttdoc">Reference to the function this route calls. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00015">Base.cs:15</a></div></div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_html_aa66a3feb1402e38cd800aedff7e347cd"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html#aa66a3feb1402e38cd800aedff7e347cd">RouterMessagingSystem.Route.Route</a></div><div class="ttdeci">Route(Component RouteSubscriber, RoutePointer RoutingAddress, RoutingEvent Event)</div><div class="ttdoc">Constructor that accepts a Component, a RoutePointer and a RoutingEvent. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00022">Base.cs:22</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="acf058d8c45920af1ce97aeb169a354cf"></a>
@@ -320,6 +349,13 @@ Immediately returns false if Obj is not a <a class="el" href="struct_router_mess
 <p>Returns a hash of this <a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>Hash generated from combined member attribute hashes. </dd></dl>
 
+<p>Definition at line <a class="el" href="_routes_2_base_8cs_source.html#l00046">46</a> of file <a class="el" href="_routes_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">return</span> (this.<a class="code" href="struct_router_messaging_system_1_1_route.html#a8a188c84ef9c822e63c5425fb61dafe7">Subscriber</a>.GetHashCode() + this.Address.GetHashCode() + this.<a class="code" href="struct_router_messaging_system_1_1_route.html#a33a154b5c9c8b9c281cb8529017bf68e">RouteEvent</a>.GetHashCode());</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_html_a33a154b5c9c8b9c281cb8529017bf68e"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html#a33a154b5c9c8b9c281cb8529017bf68e">RouterMessagingSystem.Route.RouteEvent</a></div><div class="ttdeci">readonly RoutingEvent RouteEvent</div><div class="ttdoc">Value for the RouteEvent that calls this Route&#39;s address. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00017">Base.cs:17</a></div></div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_html_a8a188c84ef9c822e63c5425fb61dafe7"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html#a8a188c84ef9c822e63c5425fb61dafe7">RouterMessagingSystem.Route.Subscriber</a></div><div class="ttdeci">readonly Component Subscriber</div><div class="ttdoc">Reference to the originator of this route. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00013">Base.cs:13</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a2da3e1e9f60018130f15f8f6e60141cb"></a>
@@ -367,6 +403,11 @@ False if all attributes of the left-side operand are the same as their respectiv
   </dd>
 </dl>
 
+<p>Definition at line <a class="el" href="_routes_2_base_8cs_source.html#l00069">69</a> of file <a class="el" href="_routes_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">return</span> ((RT1.Subscriber != RT2.Subscriber) || (RT1.Address != RT2.Address) || (RT1.RouteEvent != RT2.RouteEvent));</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a040e2697fce5884490a8895bf4653c26"></a>
@@ -413,6 +454,11 @@ False if any attribute of the left-side operand is different from the respective
   </dd>
 </dl>
 
+<p>Definition at line <a class="el" href="_routes_2_base_8cs_source.html#l00061">61</a> of file <a class="el" href="_routes_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">return</span> ((RT1.Subscriber == RT2.Subscriber) &amp;&amp; (RT1.Address == RT2.Address) &amp;&amp; (RT1.RouteEvent == RT2.RouteEvent));</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="aae8387079d35134788fecc4a0f09039f"></a>
@@ -439,10 +485,17 @@ False if any attribute of the left-side operand is different from the respective
 <p>Returns a string listing this <a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a>'s routing data. </p>
 <dl class="section return"><dt>Returns</dt><dd>A string containing the subscribing Component, the subscribing event and the callback function. </dd></dl>
 
+<p>Definition at line <a class="el" href="_routes_2_base_8cs_source.html#l00053">53</a> of file <a class="el" href="_routes_2_base_8cs_source.html">Base.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">return</span> (<span class="stringliteral">&quot;[&quot;</span> + <a class="code" href="struct_router_messaging_system_1_1_route.html#ae733d7eaa7109701d18ba16afe161a6c">Address</a>.Target + <span class="stringliteral">&quot;, &quot;</span> + <a class="code" href="struct_router_messaging_system_1_1_route.html#a33a154b5c9c8b9c281cb8529017bf68e">RouteEvent</a> + <span class="stringliteral">&quot;, &quot;</span> + <a class="code" href="struct_router_messaging_system_1_1_route.html#ae733d7eaa7109701d18ba16afe161a6c">Address</a>.Method + <span class="stringliteral">&quot;]&quot;</span>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_html_a33a154b5c9c8b9c281cb8529017bf68e"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html#a33a154b5c9c8b9c281cb8529017bf68e">RouterMessagingSystem.Route.RouteEvent</a></div><div class="ttdeci">readonly RoutingEvent RouteEvent</div><div class="ttdoc">Value for the RouteEvent that calls this Route&#39;s address. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00017">Base.cs:17</a></div></div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_html_ae733d7eaa7109701d18ba16afe161a6c"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html#ae733d7eaa7109701d18ba16afe161a6c">RouterMessagingSystem.Route.Address</a></div><div class="ttdeci">readonly RoutePointer Address</div><div class="ttdoc">Reference to the function this route calls. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00015">Base.cs:15</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>Project/Assets/Plugins/Scripts/Router.cs (41108ff6283952a66d6818a3089f4e0feed608a7)</li>
+<li>Project/Assets/Plugins/Router Messaging System/Routes/<a class="el" href="_routes_2_base_8cs_source.html">Base.cs (4dad724520bf0bc96d7bcc973b79ba7d874e62e1)</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -450,7 +503,7 @@ False if any attribute of the left-side operand is different from the respective
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_router_messaging_system.html">RouterMessagingSystem</a></li><li class="navelem"><a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a></li>
-    <li class="footer">Generated on Fri Apr 4 2014 15:19:16 for Router Messaging System by
+    <li class="footer">Generated on Mon Apr 7 2014 21:53:01 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
