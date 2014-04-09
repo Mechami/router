@@ -6,7 +6,8 @@ using System.Collections.Generic;
 namespace RouterMessagingSystem
 {
 	/** \brief Router that calls basic functions only. */
-	/// \todo Redocument this.
+	/// \todo Redocument the entire class.\n
+	/// \todo Implement RouteMessageContinuously.
 	public static class Router
 	{
 		private static Dictionary<RoutingEvent, RoutePointer> PointerTable = null;
@@ -49,29 +50,33 @@ namespace RouterMessagingSystem
 		/// \warning This is a relatively slow operation, depending on the amount of subscribers that need to be re-added.
 		public static void FlushRoutes()
 		{
-			RouteTable = null;
-			PointerTable = null;
-			TablesExist = false;
+			// Wondering if this will have any affect on performance.
+			if (TablesExist)
+			{
+				RouteTable = null;
+				PointerTable = null;
+				TablesExist = false;
+			}
 		}
 
 		/** \brief Returns the total amount of Routes registered with the Router. */
-		/// \returns Uint representing the Routes registered.
-		public static uint RouteCount()
+		/// \returns Int representing the Routes registered.
+		public static int RouteCount()
 		{
 			if (TablesExist)
 			{
-				uint TotalRoutes = 0u;
+				int TotalRoutes = 0;
 
 				foreach (KeyValuePair<RoutingEvent, List<Route>> KVP in RouteTable)
 				{
-					TotalRoutes += (uint)KVP.Value.Count;
+					TotalRoutes += KVP.Value.Count;
 				}
 
 				return TotalRoutes;
 			}
 			else
 			{
-				return 0u;
+				return 0;
 			}
 		}
 
