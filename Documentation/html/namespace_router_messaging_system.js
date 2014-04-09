@@ -1,5 +1,6 @@
 var namespace_router_messaging_system =
 [
+    [ "AreaMessage", "struct_router_messaging_system_1_1_area_message.html", "struct_router_messaging_system_1_1_area_message" ],
     [ "RouteParameters< T1, T2 >", "struct_router_messaging_system_1_1_route_parameters_3_01_t1_00_01_t2_01_4.html", "struct_router_messaging_system_1_1_route_parameters_3_01_t1_00_01_t2_01_4" ],
     [ "RouteParameters< T1, T2, T3 >", "struct_router_messaging_system_1_1_route_parameters_3_01_t1_00_01_t2_00_01_t3_01_4.html", "struct_router_messaging_system_1_1_route_parameters_3_01_t1_00_01_t2_00_01_t3_01_4" ],
     [ "Router", "class_router_messaging_system_1_1_router.html", "class_router_messaging_system_1_1_router" ],

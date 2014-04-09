@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['notes',['Notes',['../notes.html',1,'']]],
-  ['null',['Null',['../namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340abbb93ef26e3c101ff11cdd21cab08a94',1,'RouterMessagingSystem']]]
+  ['gethashcode',['GetHashCode',['../struct_router_messaging_system_1_1_area_message.html#a6eb87ba9d3abc1e444f0b304e42dd7a5',1,'RouterMessagingSystem.AreaMessage.GetHashCode()'],['../struct_router_messaging_system_1_1_route.html#acf058d8c45920af1ce97aeb169a354cf',1,'RouterMessagingSystem.Route.GetHashCode()'],['../struct_router_messaging_system_1_1_route_3_01_r_01_4.html#a78369f4028f5f46144845224f5da183d',1,'RouterMessagingSystem.Route&lt; R &gt;.GetHashCode()'],['../struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html#a669a33dd8d3b047de7ed9d289a590225',1,'RouterMessagingSystem.Route&lt; R, T &gt;.GetHashCode()'],['../struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#aeaa60bbc917a406fab31c8a4c9f4a955',1,'RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.GetHashCode()'],['../struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_00_01_t3_01_4.html#a2ccbca339c9c92dc8242aa6b5b82457e',1,'RouterMessagingSystem.Route&lt; R, T1, T2, T3 &gt;.GetHashCode()']]]
 ];

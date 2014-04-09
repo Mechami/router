@@ -35,7 +35,7 @@ namespace RouterMessagingSystem
 
 		/// \brief Checks if the passed object is the same as the calling Route.
 		/// \return Returns true if Obj is a Route and all attributes are the same as the calling Route.\n
-		/// \return Immediately returns false if Obj is not a Route at all.\n
+		/// \return Immediately returns false if Obj is not a Route at all.
 		public override bool Equals(System.Object Obj /**< Object to check for equivalency. */)
 		{
 			return ((Obj is Route) && (this.Subscriber == ((Route)Obj).Subscriber) && (this.Address == ((Route)Obj).Address) && (this.RouteEvent == ((Route)Obj).RouteEvent));

@@ -144,32 +144,30 @@ namespace RouterMessagingSystem
 			}
 		}
 
-		/** \brief Routes a message of the specified event to all subscribers in a radius. */
-		/// Uses the specified Vector3 as the origin point.
+		/** \brief Routes a message of the specified event to all subscribers inside the specified radius. */
 		/// \note Only works for subscribed GameObjects.
-		public static void RouteMessageArea(Vector3 Origin /**< Vector3 specifying the origin of the event radius. */, float Radius /**< Radius of the event in meters. */, RoutingEvent EventType /**< Type of event to send. */)
+		public static void RouteMessageArea(AreaMessage MessageParameters /**< Struct containing parameters for the area message. */)
 		{
-			CleanDeadRoutes(EventType);
+			CleanDeadRoutes(MessageParameters.AreaEvent);
 
-			if (TablesExist && EventIsPopulated(EventType))
+			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent))
 			{
-				decimal RadiusD = new Decimal(Radius);
-				List<Route> RT = RouteTable[EventType].FindAll(x => (new Decimal(Vector3.Distance(Origin, x.Subscriber.transform.position)) <= RadiusD));
+				decimal RadiusD = new Decimal(MessageParameters.Radius);
+				List<Route> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) <= RadiusD));
 				RT.ForEach(x => x.Address());
 			}
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers outside the specified radius. */
-		/// Uses the specified Component as the origin point.
 		/// \note Only works for subscribed GameObjects.
-		public static void RouteMessageAreaInverse(Vector3 Origin /**< Vector3 specifying the origin of the event radius. */, float Radius /**< Radius of the event in meters. */, RoutingEvent EventType /**< Type of event to send. */)
+		public static void RouteMessageAreaInverse(AreaMessage MessageParameters /**< Struct containing parameters for the area message. */)
 		{
-			CleanDeadRoutes(EventType);
+			CleanDeadRoutes(MessageParameters.AreaEvent);
 
-			if (TablesExist && EventIsPopulated(EventType))
+			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent))
 			{
-				decimal RadiusD = new Decimal(Radius);
-				List<Route> RT = RouteTable[EventType].FindAll(x => (new Decimal(Vector3.Distance(Origin, x.Subscriber.transform.position)) > RadiusD));
+				decimal RadiusD = new Decimal(MessageParameters.Radius);
+				List<Route> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) > RadiusD));
 				RT.ForEach(x => x.Address());
 			}
 		}
