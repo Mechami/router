@@ -25,10 +25,10 @@ namespace RouterMessagingSystem
 		{
 			TablesExist = (TablesExist? TablesExist : ConstructTables());
 
-			if (RouteIsValid(NewRoute) && !RouteIsRegistered(NewRoute))
+			if (RouteIsValid(ref NewRoute) && !RouteIsRegistered(ref NewRoute))
 			{
-				RegisterRoute(NewRoute);
-				AttachAddress(NewRoute);
+				RegisterRoute(ref NewRoute);
+				AttachAddress(ref NewRoute);
 			}
 		}
 
@@ -37,8 +37,8 @@ namespace RouterMessagingSystem
 		{
 			if (TablesExist)
 			{
-				DeregisterRoute(OldRoute);
-				DetachAddress(OldRoute);
+				DeregisterRoute(ref OldRoute);
+				DetachAddress(ref OldRoute);
 			}
 
 			TablesExist = (TablesExist? DeconstructTables() : TablesExist);
@@ -83,9 +83,9 @@ namespace RouterMessagingSystem
 		/** \brief Routes a message of the specified event to all subscribers. */
 		public static void RouteMessage(RoutingEvent EventType /**< Type of event to send. */)
 		{
-			CleanDeadRoutes(EventType);
+			CleanDeadRoutes(ref EventType);
 
-			if (TablesExist && KeyHasValue(EventType) && EventIsPopulated(EventType))
+			if (TablesExist && KeyHasValue(ref EventType) && EventIsPopulated(ref EventType))
 			{
 				PointerTable[EventType]();
 			}
@@ -96,9 +96,9 @@ namespace RouterMessagingSystem
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
 		public static void RouteMessageDescendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
-			CleanDeadRoutes(EventType);
+			CleanDeadRoutes(ref EventType);
 
-			if (TablesExist && ScopeIsValid(Scope) && EventIsPopulated(EventType))
+			if (TablesExist && ScopeIsValid(ref Scope) && EventIsPopulated(ref EventType))
 			{
 				List<Route> RT = RouteTable[EventType].FindAll(x => x.Subscriber.transform.IsChildOf(Scope.transform));
 				RT.ForEach(x => x.Address());
@@ -111,9 +111,9 @@ namespace RouterMessagingSystem
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
 		public static void RouteMessageDescendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
-			CleanDeadRoutes(EventType);
+			CleanDeadRoutes(ref EventType);
 
-			if (TablesExist && ScopeIsValid(Scope) && EventIsPopulated(EventType))
+			if (TablesExist && ScopeIsValid(ref Scope) && EventIsPopulated(ref EventType))
 			{
 				List<Route> RT = RouteTable[EventType].FindAll(x => x.Subscriber.transform.IsChildOf(Scope.transform));
 				RT.ForEach(x => x.Address());
@@ -125,9 +125,9 @@ namespace RouterMessagingSystem
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
 		public static void RouteMessageAscendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
-			CleanDeadRoutes(EventType);
+			CleanDeadRoutes(ref EventType);
 
-			if (TablesExist && ScopeIsValid(Scope) && EventIsPopulated(EventType))
+			if (TablesExist && ScopeIsValid(ref Scope) && EventIsPopulated(ref EventType))
 			{
 				List<Route> RT = RouteTable[EventType].FindAll(x => Scope.transform.IsChildOf(x.Subscriber.transform));
 				RT.ForEach(x => x.Address());
@@ -140,9 +140,9 @@ namespace RouterMessagingSystem
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
 		public static void RouteMessageAscendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component.*/, RoutingEvent EventType /**< Type of event to send. */)
 		{
-			CleanDeadRoutes(EventType);
+			CleanDeadRoutes(ref EventType);
 
-			if (TablesExist && ScopeIsValid(Scope) && EventIsPopulated(EventType))
+			if (TablesExist && ScopeIsValid(ref Scope) && EventIsPopulated(ref EventType))
 			{
 				List<Route> RT = RouteTable[EventType].FindAll(x => Scope.transform.IsChildOf(x.Subscriber.transform));
 				RT.ForEach(x => x.Address());
@@ -153,9 +153,9 @@ namespace RouterMessagingSystem
 		/// \note Only works for subscribed GameObjects.
 		public static void RouteMessageArea(AreaMessage MessageParameters /**< Struct containing parameters for the area message. */)
 		{
-			CleanDeadRoutes(MessageParameters.AreaEvent);
+			CleanDeadRoutes(ref MessageParameters.AreaEvent);
 
-			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent))
+			if (TablesExist && EventIsPopulated(ref MessageParameters.AreaEvent))
 			{
 				decimal RadiusD = new Decimal(MessageParameters.Radius);
 				List<Route> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) <= RadiusD));
@@ -165,11 +165,11 @@ namespace RouterMessagingSystem
 
 		/** \brief Routes a message of the specified event to all subscribers outside the specified radius. */
 		/// \note Only works for subscribed GameObjects.
-		public static void RouteMessageAreaInverse(AreaMessage MessageParameters /**< Struct containing parameters for the area message. */)
+		public static void RouteMessageAreaInverse(ref AreaMessage MessageParameters /**< Struct containing parameters for the area message. */)
 		{
-			CleanDeadRoutes(MessageParameters.AreaEvent);
+			CleanDeadRoutes(ref MessageParameters.AreaEvent);
 
-			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent))
+			if (TablesExist && EventIsPopulated(ref MessageParameters.AreaEvent))
 			{
 				decimal RadiusD = new Decimal(MessageParameters.Radius);
 				List<Route> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) > RadiusD));
@@ -181,14 +181,14 @@ namespace RouterMessagingSystem
 		/// Uses the specified Vector3 as the origin point.
 		/// \note Only works for subscribed GameObjects.
 		/** \todo Clean up the parameter list. */
-		public static void RouteMessageAreaBand(Vector3 Origin /**< Vector3 specifying the origin of the event radius. */, float InnerRadius /**< Radius of the event in meters. */, float OuterRadius /**< Radius of the event in meters. */, RoutingEvent EventType /**< Type of event to send. */)
+		public static void RouteMessageAreaBand(ref AreaBandMessage MessageParameters)
 		{
-			CleanDeadRoutes(EventType);
+			CleanDeadRoutes(ref MessageParameters.AreaEvent);
 
-			if (TablesExist && EventIsPopulated(EventType))
+			if (TablesExist && EventIsPopulated(ref MessageParameters.AreaEvent))
 			{
-				decimal InnerRadiusD = new Decimal(InnerRadius), OuterRadiusD = new Decimal(OuterRadius);
-				List<Route> RT = RouteTable[EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(Origin, x.Subscriber.transform.position)); return ((Distance >= InnerRadiusD) && (Distance <= OuterRadiusD)); });
+				decimal InnerRadiusD = new Decimal(MessageParameters.InnerRadius), OuterRadiusD = new Decimal(MessageParameters.OuterRadius);
+				List<Route> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance >= InnerRadiusD) && (Distance <= OuterRadiusD)); });
 				RT.ForEach(x => x.Address());
 			}
 		}
@@ -197,14 +197,14 @@ namespace RouterMessagingSystem
 		/// Uses the specified Vector3 as the origin point.
 		/// \note Only works for subscribed GameObjects.
 		/** \todo Clean up the parameter list. */
-		public static void RouteMessageInverseAreaBand(Vector3 Origin /**< Vector3 specifying the origin of the event radius. */, float InnerRadius /**< Radius of the event in meters. */, float OuterRadius /**< Radius of the event in meters. */, RoutingEvent EventType /**< Type of event to send. */)
+		public static void RouteMessageInverseAreaBand(ref AreaBandMessage MessageParameters)
 		{
-			CleanDeadRoutes(EventType);
+			CleanDeadRoutes(ref MessageParameters.AreaEvent);
 
-			if (TablesExist && EventIsPopulated(EventType))
+			if (TablesExist && EventIsPopulated(ref MessageParameters.AreaEvent))
 			{
-				decimal InnerRadiusD = new Decimal(InnerRadius), OuterRadiusD = new Decimal(OuterRadius);
-				List<Route> RT = RouteTable[EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(Origin, x.Subscriber.transform.position)); return ((Distance < InnerRadiusD) || (Distance > OuterRadiusD)); });
+				decimal InnerRadiusD = new Decimal(MessageParameters.InnerRadius), OuterRadiusD = new Decimal(MessageParameters.OuterRadius);
+				List<Route> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance < InnerRadiusD) || (Distance > OuterRadiusD)); });
 				RT.ForEach(x => x.Address());
 			}
 		}
@@ -212,9 +212,9 @@ namespace RouterMessagingSystem
 		/** \brief Routes a message to inactive subscribers. */
 		public static void RouteMessageInactiveObjects(RoutingEvent EventType /**< Type of event to send. */)
 		{
-			CleanDeadRoutes(EventType);
+			CleanDeadRoutes(ref EventType);
 
-			if (TablesExist && EventIsPopulated(EventType))
+			if (TablesExist && EventIsPopulated(ref EventType))
 			{
 				List<Route> RT = RouteTable[EventType].FindAll(x => !x.Subscriber.gameObject.activeInHierarchy);
 				RT.ForEach(x => x.Address());
@@ -224,9 +224,9 @@ namespace RouterMessagingSystem
 		/** \brief Routes a message to active subscribers. */
 		public static void RouteMessageActiveObjects(RoutingEvent EventType /**< Type of event to send. */)
 		{
-			CleanDeadRoutes(EventType);
+			CleanDeadRoutes(ref EventType);
 
-			if (TablesExist && EventIsPopulated(EventType))
+			if (TablesExist && EventIsPopulated(ref EventType))
 			{
 				List<Route> RT = RouteTable[EventType].FindAll(x => x.Subscriber.gameObject.activeInHierarchy);
 				RT.ForEach(x => x.Address());
@@ -255,22 +255,19 @@ namespace RouterMessagingSystem
 
 		/// \internal Registration Functions
 
-		private static void RegisterRoute(Route RT)
+		private static void RegisterRoute(ref Route RT)
 		{
 			if (!RouteTable.ContainsKey(RT.RouteEvent))
 			{
 				RouteTable.Add(RT.RouteEvent, new List<Route>());
-				RouteTable[RT.RouteEvent].Add(RT);
 			}
-			else
-			{
-				RouteTable[RT.RouteEvent].Add(RT);
-			}
+
+			RouteTable[RT.RouteEvent].Add(RT);
 		}
 
-		private static void DeregisterRoute(Route RT)
+		private static void DeregisterRoute(ref Route RT)
 		{
-			if (EventIsPopulated(RT.RouteEvent))
+			if (EventIsPopulated(ref RT.RouteEvent))
 			{
 				RouteTable[RT.RouteEvent].Remove(RT);
 			}
@@ -280,7 +277,7 @@ namespace RouterMessagingSystem
 			}
 		}
 
-		private static void AttachAddress(Route RT)
+		private static void AttachAddress(ref Route RT)
 		{
 			if (!PointerTable.ContainsKey(RT.RouteEvent))
 			{
@@ -288,13 +285,13 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				PointerTable[RT.RouteEvent] =  (PointerTable[RT.RouteEvent] + RT.Address);
+				PointerTable[RT.RouteEvent] = (PointerTable[RT.RouteEvent] + RT.Address);
 			}
 		}
 
-		private static void DetachAddress(Route RT)
+		private static void DetachAddress(ref Route RT)
 		{
-			if (!KeyHasValue(RT.RouteEvent))
+			if (!KeyHasValue(ref RT.RouteEvent))
 			{
 				PointerTable.Remove(RT.RouteEvent);
 			}
@@ -306,57 +303,56 @@ namespace RouterMessagingSystem
 
 		/// \internal Janitorial Functions
 
-		private static void CleanDeadRoutes(RoutingEvent EventType)
+		private static void CleanDeadRoutes(ref RoutingEvent EventType)
 		{
 			// Without the check this is supposedly at most a 3(O(n)) operation.
 			// With the check this ranges from a max of 4(O(n)) to 1 O(n) operation.
-			if (TablesExist && EventIsPopulated(EventType) && TableIsPolluted(EventType))
+			if (TablesExist && EventIsPopulated(ref EventType) && TableIsPolluted(ref EventType))
 			{
-				Route[] DeadRoutes = RouteTable[EventType].ToArray();
-				DeadRoutes = Array.FindAll(DeadRoutes, x => x.Subscriber == null);
-				Array.ForEach(DeadRoutes, x => {DeregisterRoute(x); DetachAddress(x);});
+				Route[] DeadRoutes = Array.FindAll(RouteTable[EventType].ToArray(), x => (x.Subscriber == null));
+				Array.ForEach(DeadRoutes, x => {DeregisterRoute(ref x); DetachAddress(ref x);});
 				TablesExist = (TablesExist? DeconstructTables() : TablesExist);
 			}
 		}
 
-		private static bool TableIsPolluted(RoutingEvent EventType)
+		private static bool TableIsPolluted(ref RoutingEvent EventType)
 		{
-			return !RouteTable[EventType].TrueForAll(x => x.Subscriber != null);
+			return !RouteTable[EventType].TrueForAll(x => (x.Subscriber != null));
 		}
 
 		/// \internal Misc Functions
 
-		private static bool RouteIsValid(Route RT)
+		private static bool RouteIsValid(ref Route RT)
 		{
 			return ((RT.Subscriber != null) && (RT.Address != null) && (RT.RouteEvent != RoutingEvent.Null));
 		}
 
-		private static bool RouteIsRegistered(Route RT)
+		private static bool RouteIsRegistered(ref Route RT)
 		{
-			return (EventIsRegistered(RT.RouteEvent) && RouteTable[RT.RouteEvent].Contains(RT));
+			return (EventIsRegistered(ref RT.RouteEvent) && RouteTable[RT.RouteEvent].Contains(RT));
 		}
 
-		private static bool KeyHasValue(RoutingEvent EventType)
+		private static bool KeyHasValue(ref RoutingEvent EventType)
 		{
 			return (PointerTable.ContainsKey(EventType) && (PointerTable[EventType] != null));
 		}
 
-		private static bool EventIsPopulated(RoutingEvent EventType)
+		private static bool EventIsPopulated(ref RoutingEvent EventType)
 		{
-			return (EventIsRegistered(EventType) && (RouteTable[EventType].Count >= 1));
+			return (EventIsRegistered(ref EventType) && (RouteTable[EventType].Count >= 1));
 		}
 
-		private static bool EventIsRegistered(RoutingEvent EventType)
+		private static bool EventIsRegistered(ref RoutingEvent EventType)
 		{
 			return (RouteTable.ContainsKey(EventType) && (RouteTable[EventType] != null));
 		}
 
-		private static bool ScopeIsValid(GameObject Scope)
+		private static bool ScopeIsValid(ref GameObject Scope)
 		{
 			return (Scope != null);
 		}
 
-		private static bool ScopeIsValid(Component Scope)
+		private static bool ScopeIsValid(ref Component Scope)
 		{
 			return (Scope != null);
 		}
