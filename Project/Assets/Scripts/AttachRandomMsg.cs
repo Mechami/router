@@ -7,7 +7,7 @@ public class AttachRandomMsg : MonoBehaviour
 
 	void LateUpdate()
 	{
-		this.gameObject.AddComponent<ReceiveMsgRandom>();
+		this.gameObject.AddComponent<ReceiveMsg>();
 
 		Count++;
 

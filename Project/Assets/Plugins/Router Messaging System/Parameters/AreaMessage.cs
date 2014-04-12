@@ -14,7 +14,7 @@ namespace RouterMessagingSystem
 		public readonly RoutingEvent AreaEvent;
 
 		/** \brief Standard constructor for new AreaMessages. */
-		AreaMessage(ref Vector3 OriginCoord, ref float AreaRadius, ref RoutingEvent Event)
+		public AreaMessage(ref Vector3 OriginCoord, ref float AreaRadius, ref RoutingEvent Event)
 		{
 			Origin = OriginCoord;
 			Radius = Mathf.Abs(AreaRadius);
@@ -22,7 +22,7 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Constructor that constructs a new AreaMessage from a Vector3 and another AreaMessage. */
-		AreaMessage(ref Vector3 OriginCoord, ref AreaMessage AM)
+		public AreaMessage(ref Vector3 OriginCoord, ref AreaMessage AM)
 		{
 			Origin = OriginCoord;
 			Radius = AM.Radius;
@@ -30,7 +30,7 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Constructor that constructs a new AreaMessage from a float and another AreaMessage. */
-		AreaMessage(ref float AreaRadius, ref AreaMessage AM)
+		public AreaMessage(ref float AreaRadius, ref AreaMessage AM)
 		{
 			Origin = AM.Origin;
 			Radius = Mathf.Abs(AreaRadius);
@@ -38,7 +38,7 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Constructor that constructs a new AreaMessage from a RoutingEvent and another AreaMessage. */
-		AreaMessage(ref RoutingEvent Event, ref AreaMessage AM)
+		public AreaMessage(ref RoutingEvent Event, ref AreaMessage AM)
 		{
 			Origin = AM.Origin;
 			Radius = AM.Radius;
@@ -49,15 +49,15 @@ namespace RouterMessagingSystem
 		/// \return Returns true if all attributes are the same, otherwise false.
 		public bool Equals(AreaMessage AM /**< AreaMessage to compare with the calling AreaMessage. */)
 		{
-			return ((this.Origin == AM.Origin) && (this.Radius == AM.Radius) && (this.AreaEvent == AM.AreaEvent));
+			return ((this.Origin == AM.Origin) && (new Decimal(this.Radius) == new Decimal(AM.Radius)) && (this.AreaEvent == AM.AreaEvent));
 		}
 
 		/// \brief Compares the passed object to the calling AreaMessage.
 		/// \return Returns true if Obj is an AreaMessage and all attributes are equivalent.\n
-		/// \return Immediately returns false if Obj is not a AreaMessage at all.
+		/// \return Immediately returns false if Obj is not an AreaMessage at all.
 		public override bool Equals(System.Object Obj /**< Object to check for equivalency. */)
 		{
-			return ((Obj is AreaMessage) && (this.Origin == ((AreaMessage)Obj).Origin) && (this.Radius == ((AreaMessage)Obj).Radius) && (this.AreaEvent == ((AreaMessage)Obj).AreaEvent));
+			return ((Obj is AreaMessage) && (this.Origin == ((AreaMessage)Obj).Origin) && (new Decimal(this.Radius) == new Decimal(((AreaMessage)Obj).Radius)) && (this.AreaEvent == ((AreaMessage)Obj).AreaEvent));
 		}
 
 		/// \brief Compares the calling AreaMessage's radius to the specified AreaMessage's radius.
@@ -87,7 +87,7 @@ namespace RouterMessagingSystem
 		/// \returns False if any attribute of the left-side operand is different from the respective attribute of the right-side operand.
 		public static bool operator ==(AreaMessage AM1 /**< Left-side operand */, AreaMessage AM2 /**< Right-side operand */)
 		{
-			return ((AM1.Origin == AM2.Origin) && (AM1.Radius == AM2.Radius) && (AM1.AreaEvent == AM2.AreaEvent));
+			return ((AM1.Origin == AM2.Origin) && (new Decimal(AM1.Radius) == new Decimal(AM2.Radius)) && (AM1.AreaEvent == AM2.AreaEvent));
 		}
 
 		/// \brief Contrasts two AreaMessages for differing attributes.
@@ -95,7 +95,7 @@ namespace RouterMessagingSystem
 		/// \returns False if all attributes of the left-side operand are the same as their respective attributes of the right-side operand.
 		public static bool operator !=(AreaMessage AM1 /**< Left-side operand */, AreaMessage AM2 /**< Right-side operand */)
 		{
-			return ((AM1.Origin != AM2.Origin) || (AM1.Radius != AM2.Radius) || (AM1.AreaEvent != AM2.AreaEvent));
+			return ((AM1.Origin != AM2.Origin) || (new Decimal(AM1.Radius) != new Decimal(AM2.Radius)) || (AM1.AreaEvent != AM2.AreaEvent));
 		}
 
 		/// \brief Compares two AreaMessages for the smaller radius.

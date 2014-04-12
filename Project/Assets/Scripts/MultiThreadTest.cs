@@ -16,15 +16,17 @@ public class MultiThreadTest : MonoBehaviour
 		Playing = Application.isPlaying;
 		Thread1 = new Thread(new ThreadStart(ThreadTest));
 		Thread2 = new Thread(new ThreadStart(ThreadTest));
-		Thread1.Name = "Thread 1";
-		Thread2.Name = "Thread 2";
+		Thread1.Name = (this + " [Thread 1]");
+		Thread2.Name = (this + " [Thread 2]");
 		Thread1.Start();
 		Thread2.Start();
 	}
 
-	public void OnDisable()
+	public void OnDestroy()
 	{
 		Playing = false;
+		Thread1.Join();
+		Thread2.Join();
 	}
 
 	public void ThreadTest()

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['origin',['Origin',['../struct_router_messaging_system_1_1_area_message.html#ab0d9a861f7b8fd77757d28470b9ceceb',1,'RouterMessagingSystem::AreaMessage']]]
+  ['innerradius',['InnerRadius',['../struct_router_messaging_system_1_1_area_band_message.html#a7231db0a1712cbe274a7438f2987ec37',1,'RouterMessagingSystem::AreaBandMessage']]]
 ];

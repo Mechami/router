@@ -262,8 +262,9 @@ readonly <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b
 
 <p>Definition at line <a class="el" href="_area_message_8cs_source.html#l00050">50</a> of file <a class="el" href="_area_message_8cs_source.html">AreaMessage.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">return</span> ((this.<a class="code" href="struct_router_messaging_system_1_1_area_message.html#ab0d9a861f7b8fd77757d28470b9ceceb">Origin</a> == AM.Origin) &amp;&amp; (<span class="keyword">this</span>.Radius == AM.Radius) &amp;&amp; (<span class="keyword">this</span>.AreaEvent == AM.AreaEvent));</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">return</span> ((this.<a class="code" href="struct_router_messaging_system_1_1_area_message.html#ab0d9a861f7b8fd77757d28470b9ceceb">Origin</a> == AM.Origin) &amp;&amp; (<span class="keyword">new</span> Decimal(this.<a class="code" href="struct_router_messaging_system_1_1_area_message.html#aa34e8658fca3a67b884b26446651ddae">Radius</a>) == <span class="keyword">new</span> Decimal(AM.Radius)) &amp;&amp; (<span class="keyword">this</span>.AreaEvent == AM.AreaEvent));</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
+<div class="ttc" id="struct_router_messaging_system_1_1_area_message_html_aa34e8658fca3a67b884b26446651ddae"><div class="ttname"><a href="struct_router_messaging_system_1_1_area_message.html#aa34e8658fca3a67b884b26446651ddae">RouterMessagingSystem.AreaMessage.Radius</a></div><div class="ttdeci">readonly float Radius</div><div class="ttdoc">Radius of the area in meters. </div><div class="ttdef"><b>Definition:</b> <a href="_area_message_8cs_source.html#l00012">AreaMessage.cs:12</a></div></div>
 <div class="ttc" id="struct_router_messaging_system_1_1_area_message_html_ab0d9a861f7b8fd77757d28470b9ceceb"><div class="ttname"><a href="struct_router_messaging_system_1_1_area_message.html#ab0d9a861f7b8fd77757d28470b9ceceb">RouterMessagingSystem.AreaMessage.Origin</a></div><div class="ttdeci">readonly Vector3 Origin</div><div class="ttdoc">Vector3 representing the origin coordinate for the area. </div><div class="ttdef"><b>Definition:</b> <a href="_area_message_8cs_source.html#l00010">AreaMessage.cs:10</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -294,7 +295,7 @@ readonly <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b
 <dl class="section return"><dt>Returns</dt><dd>Returns true if Obj is an <a class="el" href="struct_router_messaging_system_1_1_area_message.html" title="Struct for passing parameters to Router for broadcasting area messages. ">AreaMessage</a> and all attributes are equivalent.<br/>
 </dd>
 <dd>
-Immediately returns false if Obj is not a <a class="el" href="struct_router_messaging_system_1_1_area_message.html" title="Struct for passing parameters to Router for broadcasting area messages. ">AreaMessage</a> at all. </dd></dl>
+Immediately returns false if Obj is not an <a class="el" href="struct_router_messaging_system_1_1_area_message.html" title="Struct for passing parameters to Router for broadcasting area messages. ">AreaMessage</a> at all. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Obj</td><td>Object to check for equivalency. </td></tr>
@@ -304,7 +305,7 @@ Immediately returns false if Obj is not a <a class="el" href="struct_router_mess
 
 <p>Definition at line <a class="el" href="_area_message_8cs_source.html#l00058">58</a> of file <a class="el" href="_area_message_8cs_source.html">AreaMessage.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">return</span> ((Obj is <a class="code" href="struct_router_messaging_system_1_1_area_message.html#aa337577c0261fbc2d6318d715927112b">AreaMessage</a>) &amp;&amp; (this.<a class="code" href="struct_router_messaging_system_1_1_area_message.html#ab0d9a861f7b8fd77757d28470b9ceceb">Origin</a> == ((AreaMessage)Obj).<a class="code" href="struct_router_messaging_system_1_1_area_message.html#ab0d9a861f7b8fd77757d28470b9ceceb">Origin</a>) &amp;&amp; (this.<a class="code" href="struct_router_messaging_system_1_1_area_message.html#aa34e8658fca3a67b884b26446651ddae">Radius</a> == ((AreaMessage)Obj).<a class="code" href="struct_router_messaging_system_1_1_area_message.html#aa34e8658fca3a67b884b26446651ddae">Radius</a>) &amp;&amp; (this.<a class="code" href="struct_router_messaging_system_1_1_area_message.html#a0d87d336786e5db72c3375d847112052">AreaEvent</a> == ((AreaMessage)Obj).<a class="code" href="struct_router_messaging_system_1_1_area_message.html#a0d87d336786e5db72c3375d847112052">AreaEvent</a>));</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">return</span> ((Obj is <a class="code" href="struct_router_messaging_system_1_1_area_message.html#aa337577c0261fbc2d6318d715927112b">AreaMessage</a>) &amp;&amp; (this.<a class="code" href="struct_router_messaging_system_1_1_area_message.html#ab0d9a861f7b8fd77757d28470b9ceceb">Origin</a> == ((AreaMessage)Obj).<a class="code" href="struct_router_messaging_system_1_1_area_message.html#ab0d9a861f7b8fd77757d28470b9ceceb">Origin</a>) &amp;&amp; (<span class="keyword">new</span> Decimal(this.<a class="code" href="struct_router_messaging_system_1_1_area_message.html#aa34e8658fca3a67b884b26446651ddae">Radius</a>) == <span class="keyword">new</span> Decimal(((AreaMessage)Obj).<a class="code" href="struct_router_messaging_system_1_1_area_message.html#aa34e8658fca3a67b884b26446651ddae">Radius</a>)) &amp;&amp; (this.<a class="code" href="struct_router_messaging_system_1_1_area_message.html#a0d87d336786e5db72c3375d847112052">AreaEvent</a> == ((AreaMessage)Obj).<a class="code" href="struct_router_messaging_system_1_1_area_message.html#a0d87d336786e5db72c3375d847112052">AreaEvent</a>));</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
 <div class="ttc" id="struct_router_messaging_system_1_1_area_message_html_aa34e8658fca3a67b884b26446651ddae"><div class="ttname"><a href="struct_router_messaging_system_1_1_area_message.html#aa34e8658fca3a67b884b26446651ddae">RouterMessagingSystem.AreaMessage.Radius</a></div><div class="ttdeci">readonly float Radius</div><div class="ttdoc">Radius of the area in meters. </div><div class="ttdef"><b>Definition:</b> <a href="_area_message_8cs_source.html#l00012">AreaMessage.cs:12</a></div></div>
 <div class="ttc" id="struct_router_messaging_system_1_1_area_message_html_aa337577c0261fbc2d6318d715927112b"><div class="ttname"><a href="struct_router_messaging_system_1_1_area_message.html#aa337577c0261fbc2d6318d715927112b">RouterMessagingSystem.AreaMessage.AreaMessage</a></div><div class="ttdeci">AreaMessage(ref Vector3 OriginCoord, ref float AreaRadius, ref RoutingEvent Event)</div><div class="ttdoc">Standard constructor for new AreaMessages. </div><div class="ttdef"><b>Definition:</b> <a href="_area_message_8cs_source.html#l00017">AreaMessage.cs:17</a></div></div>
@@ -393,7 +394,7 @@ False if all attributes of the left-side operand are the same as their respectiv
 
 <p>Definition at line <a class="el" href="_area_message_8cs_source.html#l00096">96</a> of file <a class="el" href="_area_message_8cs_source.html">AreaMessage.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">return</span> ((AM1.Origin != AM2.Origin) || (AM1.Radius != AM2.Radius) || (AM1.AreaEvent != AM2.AreaEvent));</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">return</span> ((AM1.Origin != AM2.Origin) || (<span class="keyword">new</span> Decimal(AM1.Radius) != <span class="keyword">new</span> Decimal(AM2.Radius)) || (AM1.AreaEvent != AM2.AreaEvent));</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
@@ -543,7 +544,7 @@ False if any attribute of the left-side operand is different from the respective
 
 <p>Definition at line <a class="el" href="_area_message_8cs_source.html#l00088">88</a> of file <a class="el" href="_area_message_8cs_source.html">AreaMessage.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">return</span> ((AM1.Origin == AM2.Origin) &amp;&amp; (AM1.Radius == AM2.Radius) &amp;&amp; (AM1.AreaEvent == AM2.AreaEvent));</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">return</span> ((AM1.Origin == AM2.Origin) &amp;&amp; (<span class="keyword">new</span> Decimal(AM1.Radius) == <span class="keyword">new</span> Decimal(AM2.Radius)) &amp;&amp; (AM1.AreaEvent == AM2.AreaEvent));</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
@@ -681,7 +682,7 @@ False if any attribute of the left-side operand is different from the respective
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>Project/Assets/Plugins/Router Messaging System/Parameters/<a class="el" href="_area_message_8cs_source.html">AreaMessage.cs (507ecd0d156607dad5823bf535a2ad35ff4f596a)</a></li>
+<li>Project/Assets/Plugins/Router Messaging System/Parameters/<a class="el" href="_area_message_8cs_source.html">AreaMessage.cs (6e3a18d0706cea0b76677f2f06640397edcd9333)</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -689,7 +690,7 @@ False if any attribute of the left-side operand is different from the respective
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_router_messaging_system.html">RouterMessagingSystem</a></li><li class="navelem"><a class="el" href="struct_router_messaging_system_1_1_area_message.html">AreaMessage</a></li>
-    <li class="footer">Generated on Tue Apr 8 2014 22:24:39 for Router Messaging System by
+    <li class="footer">Generated on Fri Apr 11 2014 18:09:15 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

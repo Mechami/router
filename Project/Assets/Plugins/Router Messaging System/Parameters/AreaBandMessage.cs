@@ -17,7 +17,7 @@ namespace RouterMessagingSystem
 		public readonly RoutingEvent AreaEvent;
 
 		/** \brief Standard constructor for new AreaBandMessages. */
-		AreaBandMessage(ref Vector3 OriginCoord, ref float InnerAreaRadius, ref float OuterAreaRadius, ref RoutingEvent Event)
+		public AreaBandMessage(ref Vector3 OriginCoord, ref float InnerAreaRadius, ref float OuterAreaRadius, ref RoutingEvent Event)
 		{
 			Origin = OriginCoord;
 			decimal ID = new Decimal(Mathf.Abs(InnerAreaRadius)), OD = new Decimal(Mathf.Abs(OuterAreaRadius));
@@ -27,7 +27,7 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Constructor that constructs a new AreaBandMessage from a Vector3 and another AreaBandMessage. */
-		AreaBandMessage(ref Vector3 OriginCoord, ref AreaBandMessage ABM)
+		public AreaBandMessage(ref Vector3 OriginCoord, ref AreaBandMessage ABM)
 		{
 			Origin = OriginCoord;
 			InnerRadius = ABM.InnerRadius;
@@ -36,27 +36,27 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Constructor that constructs a new AreaBandMessage from a float and another AreaBandMessage. */
-		AreaBandMessage(ref float InnerAreaRadius, ref AreaBandMessage ABM)
+		public AreaBandMessage(ref float InnerAreaRadius, ref AreaBandMessage ABM)
 		{
 			Origin = ABM.Origin;
-			decimal ID = new Decimal(Mathf.Abs(InnerAreaRadius)), OD = new Decimal(ABM.OuterRadius));
+			decimal ID = new Decimal(Mathf.Abs(InnerAreaRadius)), OD = new Decimal(ABM.OuterRadius);
 			InnerRadius = (ID >= OD)? ABM.OuterRadius : Mathf.Abs(InnerAreaRadius);
 			OuterRadius = (OD <= ID)? Mathf.Abs(InnerAreaRadius) : ABM.OuterRadius;
 			AreaEvent = ABM.AreaEvent;
 		}
 
 		/** \brief Constructor that constructs a new AreaBandMessage from a float and another AreaBandMessage. */
-		AreaBandMessage(ref float OuterAreaRadius, ref AreaBandMessage ABM)
+		public AreaBandMessage(ref AreaBandMessage ABM, ref float OuterAreaRadius)
 		{
 			Origin = ABM.Origin;
-			decimal ID = new Decimal(ABM.InnerRadius), OD = new Decimal(Mathf.Abs(OuterAreaRadius)));
+			decimal ID = new Decimal(ABM.InnerRadius), OD = new Decimal(Mathf.Abs(OuterAreaRadius));
 			InnerRadius = (ID >= OD)? Mathf.Abs(OuterAreaRadius) : ABM.InnerRadius;
 			OuterRadius = (OD <= ID)? ABM.InnerRadius : Mathf.Abs(OuterAreaRadius);
 			AreaEvent = ABM.AreaEvent;
 		}
 
 		/** \brief Constructor that constructs a new AreaBandMessage from a RoutingEvent and another AreaBandMessage. */
-		AreaBandMessage(ref RoutingEvent Event, ref AreaBandMessage ABM)
+		public AreaBandMessage(ref RoutingEvent Event, ref AreaBandMessage ABM)
 		{
 			Origin = ABM.Origin;
 			InnerRadius = ABM.InnerRadius;
@@ -68,7 +68,7 @@ namespace RouterMessagingSystem
 		/// \return Returns true if all attributes are the sABMe, otherwise false.
 		public bool Equals(AreaBandMessage ABM /**< AreaBandMessage to compare with the calling AreaBandMessage. */)
 		{
-			return ((this.Origin == ABM.Origin) && (this.Radius == ABM.Radius) && (this.AreaEvent == ABM.AreaEvent));
+			return ((this.Origin == ABM.Origin) && (new Decimal(this.InnerRadius) == new Decimal(ABM.InnerRadius)) && (new Decimal(this.OuterRadius) == new Decimal(ABM.OuterRadius)) && (this.AreaEvent == ABM.AreaEvent));
 		}
 
 		/// \brief Compares the passed object to the calling AreaBandMessage.
@@ -76,7 +76,7 @@ namespace RouterMessagingSystem
 		/// \return Immediately returns false if Obj is not a AreaBandMessage at all.
 		public override bool Equals(System.Object Obj /**< Object to check for equivalency. */)
 		{
-			return ((Obj is AreaBandMessage) && (this.Origin == ((AreaBandMessage)Obj).Origin) && (this.Radius == ((AreaBandMessage)Obj).Radius) && (this.AreaEvent == ((AreaBandMessage)Obj).AreaEvent));
+			return ((Obj is AreaBandMessage) && (this.Origin == ((AreaBandMessage)Obj).Origin) && (new Decimal(this.InnerRadius) == new Decimal(((AreaBandMessage)Obj).InnerRadius)) && (new Decimal(this.OuterRadius) == new Decimal(((AreaBandMessage)Obj).OuterRadius)) && (this.AreaEvent == ((AreaBandMessage)Obj).AreaEvent));
 		}
 
 		/// \brief Compares the calling AreaBandMessage's radius to the specified AreaBandMessage's radius.
@@ -91,14 +91,14 @@ namespace RouterMessagingSystem
 		/// \returns Hash generated from combined member attribute hashes.
 		public override int GetHashCode()
 		{
-			return (this.Origin.GetHashCode() + this.Radius.GetHashCode() + this.AreaEvent.GetHashCode());
+			return (this.Origin.GetHashCode() + this.InnerRadius.GetHashCode() + this.OuterRadius.GetHashCode() + this.AreaEvent.GetHashCode());
 		}
 
 		/// \brief Returns a string listing this AreaBandMessage's parameters.
 		/// \returns A string containing the origin coordinate, the message radius and the event type.
 		public override string ToString()
 		{
-			return ("[" + Origin + ", " + Radius + ", " + AreaEvent + "]");
+			return ("[" + Origin + ", " + InnerRadius + ", " + OuterRadius + ", " + AreaEvent + "]");
 		}
 
 		/// \brief Compares two AreaBandMessages for equivalent attributes.

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Threading;
 using System.Collections.Generic;
 
 /** \brief Namespace for Router Messaging System */
@@ -85,7 +86,7 @@ namespace RouterMessagingSystem
 		{
 			CleanDeadRoutes(ref EventType);
 
-			if (TablesExist && KeyHasValue(ref EventType) && EventIsPopulated(ref EventType))
+			if (TablesExist && KeyHasValue(ref EventType))
 			{
 				PointerTable[EventType]();
 			}
@@ -153,9 +154,9 @@ namespace RouterMessagingSystem
 		/// \note Only works for subscribed GameObjects.
 		public static void RouteMessageArea(AreaMessage MessageParameters /**< Struct containing parameters for the area message. */)
 		{
-			CleanDeadRoutes(ref MessageParameters.AreaEvent);
+			CleanDeadRoutes(MessageParameters.AreaEvent);
 
-			if (TablesExist && EventIsPopulated(ref MessageParameters.AreaEvent))
+			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent))
 			{
 				decimal RadiusD = new Decimal(MessageParameters.Radius);
 				List<Route> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) <= RadiusD));
@@ -165,11 +166,11 @@ namespace RouterMessagingSystem
 
 		/** \brief Routes a message of the specified event to all subscribers outside the specified radius. */
 		/// \note Only works for subscribed GameObjects.
-		public static void RouteMessageAreaInverse(ref AreaMessage MessageParameters /**< Struct containing parameters for the area message. */)
+		public static void RouteMessageAreaInverse(AreaMessage MessageParameters /**< Struct containing parameters for the area message. */)
 		{
-			CleanDeadRoutes(ref MessageParameters.AreaEvent);
+			CleanDeadRoutes(MessageParameters.AreaEvent);
 
-			if (TablesExist && EventIsPopulated(ref MessageParameters.AreaEvent))
+			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent))
 			{
 				decimal RadiusD = new Decimal(MessageParameters.Radius);
 				List<Route> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) > RadiusD));
@@ -181,11 +182,11 @@ namespace RouterMessagingSystem
 		/// Uses the specified Vector3 as the origin point.
 		/// \note Only works for subscribed GameObjects.
 		/** \todo Clean up the parameter list. */
-		public static void RouteMessageAreaBand(ref AreaBandMessage MessageParameters)
+		public static void RouteMessageAreaBand(AreaBandMessage MessageParameters)
 		{
-			CleanDeadRoutes(ref MessageParameters.AreaEvent);
+			CleanDeadRoutes(MessageParameters.AreaEvent);
 
-			if (TablesExist && EventIsPopulated(ref MessageParameters.AreaEvent))
+			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent))
 			{
 				decimal InnerRadiusD = new Decimal(MessageParameters.InnerRadius), OuterRadiusD = new Decimal(MessageParameters.OuterRadius);
 				List<Route> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance >= InnerRadiusD) && (Distance <= OuterRadiusD)); });
@@ -197,11 +198,11 @@ namespace RouterMessagingSystem
 		/// Uses the specified Vector3 as the origin point.
 		/// \note Only works for subscribed GameObjects.
 		/** \todo Clean up the parameter list. */
-		public static void RouteMessageInverseAreaBand(ref AreaBandMessage MessageParameters)
+		public static void RouteMessageInverseAreaBand(AreaBandMessage MessageParameters)
 		{
-			CleanDeadRoutes(ref MessageParameters.AreaEvent);
+			CleanDeadRoutes(MessageParameters.AreaEvent);
 
-			if (TablesExist && EventIsPopulated(ref MessageParameters.AreaEvent))
+			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent))
 			{
 				decimal InnerRadiusD = new Decimal(MessageParameters.InnerRadius), OuterRadiusD = new Decimal(MessageParameters.OuterRadius);
 				List<Route> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance < InnerRadiusD) || (Distance > OuterRadiusD)); });
@@ -267,7 +268,7 @@ namespace RouterMessagingSystem
 
 		private static void DeregisterRoute(ref Route RT)
 		{
-			if (EventIsPopulated(ref RT.RouteEvent))
+			if (EventIsPopulated(RT.RouteEvent))
 			{
 				RouteTable[RT.RouteEvent].Remove(RT);
 			}
@@ -291,7 +292,7 @@ namespace RouterMessagingSystem
 
 		private static void DetachAddress(ref Route RT)
 		{
-			if (!KeyHasValue(ref RT.RouteEvent))
+			if (!KeyHasValue(RT.RouteEvent))
 			{
 				PointerTable.Remove(RT.RouteEvent);
 			}
@@ -303,10 +304,21 @@ namespace RouterMessagingSystem
 
 		/// \internal Janitorial Functions
 
-		private static void CleanDeadRoutes(ref RoutingEvent EventType)
+		private static void CleanDeadRoutes(RoutingEvent EventType)
 		{
 			// Without the check this is supposedly at most a 3(O(n)) operation.
 			// With the check this ranges from a max of 4(O(n)) to 1 O(n) operation.
+			if (TablesExist && EventIsPopulated(ref EventType) && TableIsPolluted(ref EventType))
+			{
+				Route[] DeadRoutes = Array.FindAll(RouteTable[EventType].ToArray(), x => (x.Subscriber == null));
+				Array.ForEach(DeadRoutes, x => {DeregisterRoute(ref x); DetachAddress(ref x);});
+				TablesExist = (TablesExist? DeconstructTables() : TablesExist);
+			}
+		}
+
+		/// \internal Overload to allow passing-by-reference where possible.
+		private static void CleanDeadRoutes(ref RoutingEvent EventType)
+		{
 			if (TablesExist && EventIsPopulated(ref EventType) && TableIsPolluted(ref EventType))
 			{
 				Route[] DeadRoutes = Array.FindAll(RouteTable[EventType].ToArray(), x => (x.Subscriber == null));
@@ -329,19 +341,37 @@ namespace RouterMessagingSystem
 
 		private static bool RouteIsRegistered(ref Route RT)
 		{
-			return (EventIsRegistered(ref RT.RouteEvent) && RouteTable[RT.RouteEvent].Contains(RT));
+			return (EventIsRegistered(RT.RouteEvent) && RouteTable[RT.RouteEvent].Contains(RT));
 		}
 
+		private static bool KeyHasValue(RoutingEvent EventType)
+		{
+			return (PointerTable.ContainsKey(EventType) && (PointerTable[EventType] != null));
+		}
+
+		/// \internal Overload to allow passing-by-reference where possible.
 		private static bool KeyHasValue(ref RoutingEvent EventType)
 		{
 			return (PointerTable.ContainsKey(EventType) && (PointerTable[EventType] != null));
 		}
 
+		private static bool EventIsPopulated(RoutingEvent EventType)
+		{
+			return (EventIsRegistered(ref EventType) && (RouteTable[EventType].Count >= 1));
+		}
+
+		/// \internal Overload to allow passing-by-reference where possible.
 		private static bool EventIsPopulated(ref RoutingEvent EventType)
 		{
 			return (EventIsRegistered(ref EventType) && (RouteTable[EventType].Count >= 1));
 		}
 
+		private static bool EventIsRegistered(RoutingEvent EventType)
+		{
+			return (RouteTable.ContainsKey(EventType) && (RouteTable[EventType] != null));
+		}
+
+		/// \internal Overload to allow passing-by-reference where possible.
 		private static bool EventIsRegistered(ref RoutingEvent EventType)
 		{
 			return (RouteTable.ContainsKey(EventType) && (RouteTable[EventType] != null));
