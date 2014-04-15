@@ -24,12 +24,12 @@ namespace RouterMessagingSystem
 		/// \warning Any Routes with null attributes will not be registered.
 		public static void AddRoute(Route NewRoute /**< Route to be registered. */)
 		{
-			TablesExist = (TablesExist? TablesExist : ConstructTables());
+			TablesExist = (RouteIsValid(NewRoute)? ConstructTables() : TablesExist);
 
-			if (RouteIsValid(ref NewRoute) && !RouteIsRegistered(ref NewRoute))
+			if (TablesExist && !RouteIsRegistered(NewRoute))
 			{
-				RegisterRoute(ref NewRoute);
-				AttachAddress(ref NewRoute);
+				RegisterRoute(NewRoute);
+				AttachAddress(NewRoute);
 			}
 		}
 
@@ -38,8 +38,8 @@ namespace RouterMessagingSystem
 		{
 			if (TablesExist)
 			{
-				DeregisterRoute(ref OldRoute);
-				DetachAddress(ref OldRoute);
+				DeregisterRoute(OldRoute);
+				DetachAddress(OldRoute);
 			}
 
 			TablesExist = (TablesExist? DeconstructTables() : TablesExist);
@@ -48,7 +48,7 @@ namespace RouterMessagingSystem
 		/** \brief Flushes all Routes from the routing table. */
 		/// \warning Only use this if you absolutely need to reset the entire routing table at runtime.\n
 		/// \warning Every subscriber will need to re-register with the Router after the tables are flushed.\n
-		/// \warning This is a relatively slow operation, depending on the amount of subscribers that need to be re-added.
+		/// \warning This can potentially be a slow operation, depending on the amount of subscribers that need to be re-registered.
 		public static void FlushRoutes()
 		{
 			// Wondering if this will have any affect on performance.
@@ -84,9 +84,9 @@ namespace RouterMessagingSystem
 		/** \brief Routes a message of the specified event to all subscribers. */
 		public static void RouteMessage(RoutingEvent EventType /**< Type of event to send. */)
 		{
-			CleanDeadRoutes(ref EventType);
+			CleanDeadRoutes(EventType);
 
-			if (TablesExist && KeyHasValue(ref EventType))
+			if (TablesExist && KeyHasValue(EventType))
 			{
 				PointerTable[EventType]();
 			}
@@ -97,9 +97,9 @@ namespace RouterMessagingSystem
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
 		public static void RouteMessageDescendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
-			CleanDeadRoutes(ref EventType);
+			CleanDeadRoutes(EventType);
 
-			if (TablesExist && ScopeIsValid(ref Scope) && EventIsPopulated(ref EventType))
+			if (TablesExist && ScopeIsValid(Scope) && EventIsPopulated(EventType))
 			{
 				List<Route> RT = RouteTable[EventType].FindAll(x => x.Subscriber.transform.IsChildOf(Scope.transform));
 				RT.ForEach(x => x.Address());
@@ -112,9 +112,9 @@ namespace RouterMessagingSystem
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
 		public static void RouteMessageDescendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
-			CleanDeadRoutes(ref EventType);
+			CleanDeadRoutes(EventType);
 
-			if (TablesExist && ScopeIsValid(ref Scope) && EventIsPopulated(ref EventType))
+			if (TablesExist && ScopeIsValid(Scope) && EventIsPopulated(EventType))
 			{
 				List<Route> RT = RouteTable[EventType].FindAll(x => x.Subscriber.transform.IsChildOf(Scope.transform));
 				RT.ForEach(x => x.Address());
@@ -126,9 +126,9 @@ namespace RouterMessagingSystem
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
 		public static void RouteMessageAscendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
-			CleanDeadRoutes(ref EventType);
+			CleanDeadRoutes(EventType);
 
-			if (TablesExist && ScopeIsValid(ref Scope) && EventIsPopulated(ref EventType))
+			if (TablesExist && ScopeIsValid(Scope) && EventIsPopulated(EventType))
 			{
 				List<Route> RT = RouteTable[EventType].FindAll(x => Scope.transform.IsChildOf(x.Subscriber.transform));
 				RT.ForEach(x => x.Address());
@@ -141,9 +141,9 @@ namespace RouterMessagingSystem
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
 		public static void RouteMessageAscendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component.*/, RoutingEvent EventType /**< Type of event to send. */)
 		{
-			CleanDeadRoutes(ref EventType);
+			CleanDeadRoutes(EventType);
 
-			if (TablesExist && ScopeIsValid(ref Scope) && EventIsPopulated(ref EventType))
+			if (TablesExist && ScopeIsValid(Scope) && EventIsPopulated(EventType))
 			{
 				List<Route> RT = RouteTable[EventType].FindAll(x => Scope.transform.IsChildOf(x.Subscriber.transform));
 				RT.ForEach(x => x.Address());
@@ -213,9 +213,9 @@ namespace RouterMessagingSystem
 		/** \brief Routes a message to inactive subscribers. */
 		public static void RouteMessageInactiveObjects(RoutingEvent EventType /**< Type of event to send. */)
 		{
-			CleanDeadRoutes(ref EventType);
+			CleanDeadRoutes(EventType);
 
-			if (TablesExist && EventIsPopulated(ref EventType))
+			if (TablesExist && EventIsPopulated(EventType))
 			{
 				List<Route> RT = RouteTable[EventType].FindAll(x => !x.Subscriber.gameObject.activeInHierarchy);
 				RT.ForEach(x => x.Address());
@@ -225,9 +225,9 @@ namespace RouterMessagingSystem
 		/** \brief Routes a message to active subscribers. */
 		public static void RouteMessageActiveObjects(RoutingEvent EventType /**< Type of event to send. */)
 		{
-			CleanDeadRoutes(ref EventType);
+			CleanDeadRoutes(EventType);
 
-			if (TablesExist && EventIsPopulated(ref EventType))
+			if (TablesExist && EventIsPopulated(EventType))
 			{
 				List<Route> RT = RouteTable[EventType].FindAll(x => x.Subscriber.gameObject.activeInHierarchy);
 				RT.ForEach(x => x.Address());
@@ -256,7 +256,7 @@ namespace RouterMessagingSystem
 
 		/// \internal Registration Functions
 
-		private static void RegisterRoute(ref Route RT)
+		private static void RegisterRoute(Route RT)
 		{
 			if (!RouteTable.ContainsKey(RT.RouteEvent))
 			{
@@ -266,7 +266,7 @@ namespace RouterMessagingSystem
 			RouteTable[RT.RouteEvent].Add(RT);
 		}
 
-		private static void DeregisterRoute(ref Route RT)
+		private static void DeregisterRoute(Route RT)
 		{
 			if (EventIsPopulated(RT.RouteEvent))
 			{
@@ -278,7 +278,7 @@ namespace RouterMessagingSystem
 			}
 		}
 
-		private static void AttachAddress(ref Route RT)
+		private static void AttachAddress(Route RT)
 		{
 			if (!PointerTable.ContainsKey(RT.RouteEvent))
 			{
@@ -290,7 +290,7 @@ namespace RouterMessagingSystem
 			}
 		}
 
-		private static void DetachAddress(ref Route RT)
+		private static void DetachAddress(Route RT)
 		{
 			if (!KeyHasValue(RT.RouteEvent))
 			{
@@ -308,38 +308,28 @@ namespace RouterMessagingSystem
 		{
 			// Without the check this is supposedly at most a 3(O(n)) operation.
 			// With the check this ranges from a max of 4(O(n)) to 1 O(n) operation.
-			if (TablesExist && EventIsPopulated(ref EventType) && TableIsPolluted(ref EventType))
+			if (TablesExist && EventIsPopulated(EventType) && TableIsPolluted(EventType))
 			{
 				Route[] DeadRoutes = Array.FindAll(RouteTable[EventType].ToArray(), x => (x.Subscriber == null));
-				Array.ForEach(DeadRoutes, x => {DeregisterRoute(ref x); DetachAddress(ref x);});
+				Array.ForEach(DeadRoutes, x => {DeregisterRoute(x); DetachAddress(x);});
 				TablesExist = (TablesExist? DeconstructTables() : TablesExist);
 			}
 		}
 
-		/// \internal Overload to allow passing-by-reference where possible.
-		private static void CleanDeadRoutes(ref RoutingEvent EventType)
-		{
-			if (TablesExist && EventIsPopulated(ref EventType) && TableIsPolluted(ref EventType))
-			{
-				Route[] DeadRoutes = Array.FindAll(RouteTable[EventType].ToArray(), x => (x.Subscriber == null));
-				Array.ForEach(DeadRoutes, x => {DeregisterRoute(ref x); DetachAddress(ref x);});
-				TablesExist = (TablesExist? DeconstructTables() : TablesExist);
-			}
-		}
-
-		private static bool TableIsPolluted(ref RoutingEvent EventType)
+		// This check was moved to its own function because it was causing the code to be compiled into a nested if-statement.
+		private static bool TableIsPolluted(RoutingEvent EventType)
 		{
 			return !RouteTable[EventType].TrueForAll(x => (x.Subscriber != null));
 		}
 
 		/// \internal Misc Functions
 
-		private static bool RouteIsValid(ref Route RT)
+		private static bool RouteIsValid(Route RT)
 		{
 			return ((RT.Subscriber != null) && (RT.Address != null) && (RT.RouteEvent != RoutingEvent.Null));
 		}
 
-		private static bool RouteIsRegistered(ref Route RT)
+		private static bool RouteIsRegistered(Route RT)
 		{
 			return (EventIsRegistered(RT.RouteEvent) && RouteTable[RT.RouteEvent].Contains(RT));
 		}
@@ -349,21 +339,9 @@ namespace RouterMessagingSystem
 			return (PointerTable.ContainsKey(EventType) && (PointerTable[EventType] != null));
 		}
 
-		/// \internal Overload to allow passing-by-reference where possible.
-		private static bool KeyHasValue(ref RoutingEvent EventType)
-		{
-			return (PointerTable.ContainsKey(EventType) && (PointerTable[EventType] != null));
-		}
-
 		private static bool EventIsPopulated(RoutingEvent EventType)
 		{
-			return (EventIsRegistered(ref EventType) && (RouteTable[EventType].Count >= 1));
-		}
-
-		/// \internal Overload to allow passing-by-reference where possible.
-		private static bool EventIsPopulated(ref RoutingEvent EventType)
-		{
-			return (EventIsRegistered(ref EventType) && (RouteTable[EventType].Count >= 1));
+			return (EventIsRegistered(EventType) && (RouteTable[EventType].Count >= 1));
 		}
 
 		private static bool EventIsRegistered(RoutingEvent EventType)
@@ -371,18 +349,12 @@ namespace RouterMessagingSystem
 			return (RouteTable.ContainsKey(EventType) && (RouteTable[EventType] != null));
 		}
 
-		/// \internal Overload to allow passing-by-reference where possible.
-		private static bool EventIsRegistered(ref RoutingEvent EventType)
-		{
-			return (RouteTable.ContainsKey(EventType) && (RouteTable[EventType] != null));
-		}
-
-		private static bool ScopeIsValid(ref GameObject Scope)
+		private static bool ScopeIsValid(GameObject Scope)
 		{
 			return (Scope != null);
 		}
 
-		private static bool ScopeIsValid(ref Component Scope)
+		private static bool ScopeIsValid(Component Scope)
 		{
 			return (Scope != null);
 		}
