@@ -24,7 +24,7 @@ namespace RouterMessagingSystem
 		/// \warning Any Routes with null attributes will not be registered.
 		public static void AddRoute(Route NewRoute /**< Route to be registered. */)
 		{
-			TablesExist = (RouteIsValid(NewRoute)? ConstructTables() : TablesExist);
+			TablesExist = ((RouteIsValid(NewRoute) && !TablesExist)? ConstructTables() : TablesExist);
 
 			if (TablesExist && !RouteIsRegistered(NewRoute))
 			{
