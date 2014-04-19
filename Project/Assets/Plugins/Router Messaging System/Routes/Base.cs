@@ -38,7 +38,17 @@ namespace RouterMessagingSystem
 		/// \return Immediately returns false if Obj is not a Route at all.
 		public override bool Equals(System.Object Obj /**< Object to check for equivalency. */)
 		{
-			return ((Obj is Route) && (this.Subscriber == ((Route)Obj).Subscriber) && (this.Address == ((Route)Obj).Address) && (this.RouteEvent == ((Route)Obj).RouteEvent));
+			// Originally this was a one-line series of shortcircuit &&s, but Obj was getting typecasted to Route 3 times.
+			// This changes causes Obj be typecasted to a Route only once.
+			if (Obj is Route)
+			{
+				Route That = (Route)Obj;
+				return ((this.Subscriber == That.Subscriber) && (this.Address == That.Address) && (this.RouteEvent == That.RouteEvent));
+			}
+			else
+			{
+				return false;
+			}
 		}
 
 		/// \brief Returns a hash of this Route.
@@ -52,7 +62,7 @@ namespace RouterMessagingSystem
 		/// \returns A string containing the subscribing Component, the subscribing event and the callback function.
 		public override string ToString()
 		{
-			return ("[" + Address.Target + ", " + RouteEvent + ", " + Address.Method + "]");
+			return ("[" + ((Subscriber != null)? Subscriber.ToString() : "Null") + ", " + RouteEvent.ToString() + ", " + ((Address != null)? Address.Method.ToString() : "Null") + "]");
 		}
 
 		/// \brief Compares two Routes for equivalent attributes.

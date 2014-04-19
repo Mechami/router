@@ -21,12 +21,25 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Registers a new Route with the Router. */
-		/// \warning Any Routes with null attributes will not be registered.
+		/// \note Prints an error if the specified Route is invalid or cannot be registered.\n
+		/// \note An invalid Route contains null properties.
+		/// \todo Find a cleaner way to perform error printing.
 		public static void AddRoute(Route NewRoute /**< Route to be registered. */)
 		{
-			TablesExist = ((RouteIsValid(NewRoute) && !TablesExist)? ConstructTables() : TablesExist);
+			bool ValidRoute = RouteIsValid(NewRoute);
+			TablesExist = ((ValidRoute && !TablesExist)? ConstructTables() : TablesExist);
 
-			if (TablesExist && !RouteIsRegistered(NewRoute))
+			if (!ValidRoute)
+			{
+				Debug.LogError("[Router] Cannot register invalid route " + NewRoute + ".", NewRoute.Subscriber);
+			}
+
+			if (ValidRoute && RouteIsRegistered(NewRoute))
+			{
+				Debug.LogError("[Router] Cannot register duplicate route " + NewRoute + ".", NewRoute.Subscriber);
+			}
+
+			if (ValidRoute && !RouteIsRegistered(NewRoute))
 			{
 				RegisterRoute(NewRoute);
 				AttachAddress(NewRoute);
@@ -34,12 +47,17 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Removes a Route from routing table. */
+		/// \note Prints an error if the specified Route cannot be removed.
 		public static void RemoveRoute(Route OldRoute /**< Route to be removed. */)
 		{
-			if (TablesExist)
+			if (TablesExist && RouteIsValid(OldRoute))
 			{
-				DeregisterRoute(OldRoute);
 				DetachAddress(OldRoute);
+				DeregisterRoute(OldRoute);
+			}
+			else
+			{
+				Debug.LogError("[Router] Cannot remove route " + OldRoute + ".", OldRoute.Subscriber);
 			}
 
 			TablesExist = (TablesExist? DeconstructTables() : TablesExist);
@@ -57,6 +75,7 @@ namespace RouterMessagingSystem
 				RouteTable = null;
 				PointerTable = null;
 				TablesExist = false;
+				Debug.LogWarning("[Router] Routing tables have been flushed!");
 			}
 		}
 
@@ -86,7 +105,7 @@ namespace RouterMessagingSystem
 		{
 			CleanDeadRoutes(EventType);
 
-			if (TablesExist && KeyHasValue(EventType))
+			if (TablesExist && KeyHasAddress(EventType))
 			{
 				PointerTable[EventType]();
 			}
@@ -244,7 +263,7 @@ namespace RouterMessagingSystem
 		{
 			RouteTable = new Dictionary<RoutingEvent, List<Route>>();
 			PointerTable = new Dictionary<RoutingEvent, RoutePointer>();
-			return ((RouteTable != null) && (PointerTable != null));
+			return true;
 		}
 
 		private static bool DeconstructTables()
@@ -292,7 +311,7 @@ namespace RouterMessagingSystem
 
 		private static void DetachAddress(Route RT)
 		{
-			if (!KeyHasValue(RT.RouteEvent))
+			if (!KeyHasAddress(RT.RouteEvent))
 			{
 				PointerTable.Remove(RT.RouteEvent);
 			}
@@ -334,7 +353,7 @@ namespace RouterMessagingSystem
 			return (EventIsRegistered(RT.RouteEvent) && RouteTable[RT.RouteEvent].Contains(RT));
 		}
 
-		private static bool KeyHasValue(RoutingEvent EventType)
+		private static bool KeyHasAddress(RoutingEvent EventType)
 		{
 			return (PointerTable.ContainsKey(EventType) && (PointerTable[EventType] != null));
 		}

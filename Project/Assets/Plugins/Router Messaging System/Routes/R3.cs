@@ -49,7 +49,7 @@ namespace RouterMessagingSystem
 		/// \returns A string containing the subscribing Component, the subscribing event and the callback function.
 		public override string ToString()
 		{
-			return ("[" + Address.Target + ", " + RouteEvent + ", " + Address.Method + "]");
+			return ("[" + ((Subscriber != null)? Subscriber.ToString() : "Null") + ", " + RouteEvent.ToString() + ", " + ((Address != null)? Address.Method.ToString() : "Null") + "]");
 		}
 
 		/// \brief Compares two Route<R, T1, T2, T3>'s for equivalent attributes.
