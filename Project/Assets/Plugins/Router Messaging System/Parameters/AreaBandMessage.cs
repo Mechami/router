@@ -4,7 +4,6 @@ using System;
 namespace RouterMessagingSystem
 {
 	/** \brief Struct for passing parameters to Router for broadcasting area messages. */
-	/** \todo Redocument functions changed to compare area bands. */
 	public struct AreaBandMessage : IEquatable<AreaBandMessage>, IComparable<AreaBandMessage>
 	{
 		/** \brief Vector3 representing the origin coordinate for the area. */
@@ -65,7 +64,7 @@ namespace RouterMessagingSystem
 		}
 
 		/// \brief Compares the calling AreaBandMessage's attributes to the specified AreaBandMessage's attributes.
-		/// \return Returns true if all attributes are the sABMe, otherwise false.
+		/// \return Returns true if all attributes are the same, otherwise false.
 		public bool Equals(AreaBandMessage ABM /**< AreaBandMessage to compare with the calling AreaBandMessage. */)
 		{
 			return ((this.Origin == ABM.Origin) && (new Decimal(this.InnerRadius) == new Decimal(ABM.InnerRadius)) && (new Decimal(this.OuterRadius) == new Decimal(ABM.OuterRadius)) && (this.AreaEvent == ABM.AreaEvent));
@@ -79,8 +78,8 @@ namespace RouterMessagingSystem
 			return ((Obj is AreaBandMessage) && (this.Origin == ((AreaBandMessage)Obj).Origin) && (new Decimal(this.InnerRadius) == new Decimal(((AreaBandMessage)Obj).InnerRadius)) && (new Decimal(this.OuterRadius) == new Decimal(((AreaBandMessage)Obj).OuterRadius)) && (this.AreaEvent == ((AreaBandMessage)Obj).AreaEvent));
 		}
 
-		/// \brief Compares the calling AreaBandMessage's radius to the specified AreaBandMessage's radius.
-		/// \return Returns positive if the caller has a larger radius, negative if a smaller radius and zero if equivalent.
+		/// \brief Compares the calling AreaBandMessage's band area to the specified AreaBandMessage's band area.
+		/// \return Returns positive if the caller has a larger area, negative if a smaller area and zero if equivalent.
 		public int CompareTo(AreaBandMessage ABM)
 		{
 			decimal OurRadius = (new Decimal(this.OuterRadius) - new Decimal(this.InnerRadius)), TheirRadius = (new Decimal(ABM.OuterRadius) - new Decimal(ABM.InnerRadius));
@@ -117,7 +116,7 @@ namespace RouterMessagingSystem
 			return ((ABM1.Origin != ABM2.Origin) || (new Decimal(ABM1.InnerRadius) != new Decimal(ABM2.InnerRadius)) || (new Decimal(ABM1.OuterRadius) != new Decimal(ABM2.OuterRadius)) || (ABM1.AreaEvent != ABM2.AreaEvent));
 		}
 
-		/// \brief Compares two AreaBandMessages for the smaller radius.
+		/// \brief Compares two AreaBandMessages for the smaller area.
 		/// \returns True if the left-side operand is less than the right-side operand, otherwise false.
 		public static bool operator <(AreaBandMessage ABM1 /**< Left-side operand */, AreaBandMessage ABM2 /**< Right-side operand */)
 		{
@@ -125,7 +124,7 @@ namespace RouterMessagingSystem
 			return (ABM1Radius < ABM2Radius);
 		}
 
-		/// \brief Compares two AreaBandMessages for the larger radius.
+		/// \brief Compares two AreaBandMessages for the larger area.
 		/// \returns True if the left-side operand is greater than the right-side operand, otherwise false.
 		public static bool operator >(AreaBandMessage ABM1 /**< Left-side operand */, AreaBandMessage ABM2 /**< Right-side operand */)
 		{
@@ -133,7 +132,7 @@ namespace RouterMessagingSystem
 			return (ABM1Radius > ABM2Radius);
 		}
 
-		/// \brief Compares two AreaBandMessages for an equivalent or smaller radius.
+		/// \brief Compares two AreaBandMessages for an equivalent or smaller area.
 		/// \returns True if the left-side operand is less than or equal to the right-side operand, otherwise false.
 		public static bool operator <=(AreaBandMessage ABM1 /**< Left-side operand */, AreaBandMessage ABM2 /**< Right-side operand */)
 		{
@@ -141,7 +140,7 @@ namespace RouterMessagingSystem
 			return (ABM1Radius <= ABM2Radius);
 		}
 
-		/// \brief Compares two AreaBandMessages for an equivalent or larger radius.
+		/// \brief Compares two AreaBandMessages for an equivalent or larger area.
 		/// \returns True if the left-side operand is greater than or equal to the right-side operand, otherwise false.
 		public static bool operator >=(AreaBandMessage ABM1 /**< Left-side operand */, AreaBandMessage ABM2 /**< Right-side operand */)
 		{

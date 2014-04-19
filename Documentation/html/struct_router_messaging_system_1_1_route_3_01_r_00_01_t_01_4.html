@@ -481,15 +481,16 @@ False if any attribute of the left-side operand is different from the respective
 
 <p>Definition at line <a class="el" href="_routes_2_r1_8cs_source.html#l00050">50</a> of file <a class="el" href="_routes_2_r1_8cs_source.html">R1.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">return</span> (<span class="stringliteral">&quot;[&quot;</span> + <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html#ac929152dc30e8d484dd8d865c3d616d8">Address</a>.Target + <span class="stringliteral">&quot;, &quot;</span> + <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html#a852878296a3e4de0d14a7e00a70a31b3">RouteEvent</a> + <span class="stringliteral">&quot;, &quot;</span> + <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html#ac929152dc30e8d484dd8d865c3d616d8">Address</a>.Method + <span class="stringliteral">&quot;]&quot;</span>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">return</span> (<span class="stringliteral">&quot;[&quot;</span> + ((<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html#acadc530ab2a223111d52bd368388181d">Subscriber</a> != null)? <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html#acadc530ab2a223111d52bd368388181d">Subscriber</a>.ToString() : <span class="stringliteral">&quot;Null&quot;</span>) + <span class="stringliteral">&quot;, &quot;</span> + <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html#a852878296a3e4de0d14a7e00a70a31b3">RouteEvent</a>.ToString() + <span class="stringliteral">&quot;, &quot;</span> + ((<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html#ac929152dc30e8d484dd8d865c3d616d8">Address</a> != null)? <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html#ac929152dc30e8d484dd8d865c3d616d8">Address</a>.Method.ToString() : <span class="stringliteral">&quot;Null&quot;</span>) + <span class="stringliteral">&quot;]&quot;</span>);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
 <div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4_html_ac929152dc30e8d484dd8d865c3d616d8"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html#ac929152dc30e8d484dd8d865c3d616d8">RouterMessagingSystem.Route&lt; R, T &gt;.Address</a></div><div class="ttdeci">readonly RoutePointer&lt; R, T &gt; Address</div><div class="ttdoc">Reference to the function this route calls. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r1_8cs_source.html#l00012">R1.cs:12</a></div></div>
 <div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4_html_a852878296a3e4de0d14a7e00a70a31b3"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html#a852878296a3e4de0d14a7e00a70a31b3">RouterMessagingSystem.Route&lt; R, T &gt;.RouteEvent</a></div><div class="ttdeci">readonly RoutingEvent RouteEvent</div><div class="ttdoc">Value for the RouteEvent that calls this Route&#39;s address. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r1_8cs_source.html#l00014">R1.cs:14</a></div></div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4_html_acadc530ab2a223111d52bd368388181d"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html#acadc530ab2a223111d52bd368388181d">RouterMessagingSystem.Route&lt; R, T &gt;.Subscriber</a></div><div class="ttdeci">readonly Component Subscriber</div><div class="ttdoc">Reference to the originator of this route. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r1_8cs_source.html#l00010">R1.cs:10</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>Project/Assets/Plugins/Router Messaging System/Routes/<a class="el" href="_routes_2_r1_8cs_source.html">R1.cs (56f46418e1dc2899797246a8338745aa9b443a0c)</a></li>
+<li>Project/Assets/Plugins/Router Messaging System/Routes/<a class="el" href="_routes_2_r1_8cs_source.html">R1.cs (1d4892fcd98806fa531c5dcc14fa0d004eeaa591)</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -497,7 +498,7 @@ False if any attribute of the left-side operand is different from the respective
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_router_messaging_system.html">RouterMessagingSystem</a></li><li class="navelem"><a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html">Route< R, T ></a></li>
-    <li class="footer">Generated on Fri Apr 11 2014 18:09:15 for Router Messaging System by
+    <li class="footer">Generated on Sat Apr 19 2014 14:02:06 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

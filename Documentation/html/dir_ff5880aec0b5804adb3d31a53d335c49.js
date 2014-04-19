@@ -13,5 +13,6 @@ var dir_ff5880aec0b5804adb3d31a53d335c49 =
     [ "SendMsgActive.cs", "_send_msg_active_8cs_source.html", null ],
     [ "SendMsgRandom.cs", "_send_msg_random_8cs_source.html", null ],
     [ "StringTest.cs", "_string_test_8cs_source.html", null ],
-    [ "TestDetach.cs", "_test_detach_8cs_source.html", null ]
+    [ "TestDetach.cs", "_test_detach_8cs_source.html", null ],
+    [ "ValidityTest.cs", "_validity_test_8cs_source.html", null ]
 ];

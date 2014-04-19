@@ -7,7 +7,6 @@ using System.Collections.Generic;
 namespace RouterMessagingSystem
 {
 	/** \brief Router that calls basic functions only. */
-	/// \todo Redocument the entire class.\n
 	/// \todo Implement RouteMessageContinuously.
 	public static class Router
 	{
@@ -200,7 +199,6 @@ namespace RouterMessagingSystem
 		/** \brief Routes a message of the specified event to all subscribers inside a ring specified by an inner and outer radius. */
 		/// Uses the specified Vector3 as the origin point.
 		/// \note Only works for subscribed GameObjects.
-		/** \todo Clean up the parameter list. */
 		public static void RouteMessageAreaBand(AreaBandMessage MessageParameters)
 		{
 			CleanDeadRoutes(MessageParameters.AreaEvent);
@@ -216,7 +214,6 @@ namespace RouterMessagingSystem
 		/** \brief Routes a message of the specified event to all subscribers outside a ring specified by an inner and outer radius. */
 		/// Uses the specified Vector3 as the origin point.
 		/// \note Only works for subscribed GameObjects.
-		/** \todo Clean up the parameter list. */
 		public static void RouteMessageInverseAreaBand(AreaBandMessage MessageParameters)
 		{
 			CleanDeadRoutes(MessageParameters.AreaEvent);
