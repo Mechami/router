@@ -25,7 +25,8 @@ namespace RouterMessagingSystem
 		/// \todo Find a cleaner way to perform error printing.
 		public static void AddRoute(Route NewRoute /**< Route to be registered. */)
 		{
-			bool ValidRoute = RouteIsValid(NewRoute);
+			// bool ValidRoute = RouteIsValid(NewRoute); // Debating on whether if using NewRoute directly is too confusing or not.
+			bool ValidRoute = NewRoute; // Compute if the new route is valid then cache the results here.
 			TablesExist = ((ValidRoute && !TablesExist)? ConstructTables() : TablesExist);
 
 			if (!ValidRoute)
@@ -49,7 +50,8 @@ namespace RouterMessagingSystem
 		/// \note Prints an error if the specified Route cannot be removed.
 		public static void RemoveRoute(Route OldRoute /**< Route to be removed. */)
 		{
-			if (TablesExist && RouteIsValid(OldRoute))
+			// if (TablesExist && RouteIsValid(OldRoute))
+			if (TablesExist && OldRoute)
 			{
 				DetachAddress(OldRoute);
 				DeregisterRoute(OldRoute);
@@ -126,13 +128,13 @@ namespace RouterMessagingSystem
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its children. */
 		/// Both direct and indirect children of the specified GameObject receive the event.\n
-		/// Accepts a Component that is used to derive a reference to the target GameObject.
+		/// Accepts a Component that is used to obtain a reference to the target GameObject.
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
-		public static void RouteMessageDescendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component. */, RoutingEvent EventType /**< Type of event to send. */)
+		public static void RouteMessageDescendants<T>(T Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component. */, RoutingEvent EventType /**< Type of event to send. */) where T: Component
 		{
 			CleanDeadRoutes(EventType);
 
-			if (TablesExist && ScopeIsValid(Scope) && EventIsPopulated(EventType))
+			if (TablesExist && ScopeIsValid<T>(Scope) && EventIsPopulated(EventType))
 			{
 				List<Route> RT = RouteTable[EventType].FindAll(x => x.Subscriber.transform.IsChildOf(Scope.transform));
 				RT.ForEach(x => x.Address());
@@ -155,13 +157,13 @@ namespace RouterMessagingSystem
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its parents. */
 		/// Both direct and indirect parents of the specified GameObject receive the event.\n
-		/// Accepts a Component that is used to derive a reference to the target GameObject.
+		/// Accepts a Component that is used to obtain a reference to the target GameObject.
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
-		public static void RouteMessageAscendants(Component Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component.*/, RoutingEvent EventType /**< Type of event to send. */)
+		public static void RouteMessageAscendants<T>(T Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component.*/, RoutingEvent EventType /**< Type of event to send. */) where T: Component
 		{
 			CleanDeadRoutes(EventType);
 
-			if (TablesExist && ScopeIsValid(Scope) && EventIsPopulated(EventType))
+			if (TablesExist && ScopeIsValid<T>(Scope) && EventIsPopulated(EventType))
 			{
 				List<Route> RT = RouteTable[EventType].FindAll(x => Scope.transform.IsChildOf(x.Subscriber.transform));
 				RT.ForEach(x => x.Address());
@@ -370,7 +372,7 @@ namespace RouterMessagingSystem
 			return (Scope != null);
 		}
 
-		private static bool ScopeIsValid(Component Scope)
+		private static bool ScopeIsValid<T>(T Scope) where T: Component
 		{
 			return (Scope != null);
 		}

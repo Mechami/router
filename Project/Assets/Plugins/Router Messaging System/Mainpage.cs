@@ -19,6 +19,7 @@
 	\page todo Todo List
 	\details General changes:
 		- Propagate changes from base to RX routers.
+		- Propagate changes from base to RX routes.
 		- Redocument everything.
 		.
 	___

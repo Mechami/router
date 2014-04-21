@@ -80,5 +80,26 @@ namespace RouterMessagingSystem
 		{
 			return ((RT1.Subscriber != RT2.Subscriber) || (RT1.Address != RT2.Address) || (RT1.RouteEvent != RT2.RouteEvent));
 		}
+
+		/// \brief Checks if this Route is valid.
+		/// \returns True if this Route is valid, otherwise false.
+		public static bool operator true(Route RT)
+		{
+			return ((RT.Subscriber != null) && (RT.Address != null) && (RT.RouteEvent != RoutingEvent.Null));
+		}
+
+		/// \brief Checks if this Route is invalid.
+		/// \returns True if this Route is invalid, otherwise false.
+		public static bool operator false(Route RT)
+		{
+			return ((RT.Subscriber == null) || (RT.Address == null) || (RT.RouteEvent == RoutingEvent.Null));
+		}
+
+		/// \brief Returns a bool indicating whether this Route is valid or not.
+		/// \returns True if this Route is valid, otherwise false.
+		public static implicit operator bool(Route RT)
+		{
+			return ((RT.Subscriber != null) && (RT.Address != null) && (RT.RouteEvent != RoutingEvent.Null));
+		}
 	}
 }
