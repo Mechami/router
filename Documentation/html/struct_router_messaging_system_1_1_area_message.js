@@ -1,9 +1,9 @@
 var struct_router_messaging_system_1_1_area_message =
 [
-    [ "AreaMessage", "struct_router_messaging_system_1_1_area_message.html#aa337577c0261fbc2d6318d715927112b", null ],
-    [ "AreaMessage", "struct_router_messaging_system_1_1_area_message.html#a613b713e12d69557dd6e2abeccbb2e14", null ],
-    [ "AreaMessage", "struct_router_messaging_system_1_1_area_message.html#a5271017f5575c018c78305977aa55a50", null ],
-    [ "AreaMessage", "struct_router_messaging_system_1_1_area_message.html#aa54236350505b6e055d2396e53a2f5ce", null ],
+    [ "AreaMessage", "struct_router_messaging_system_1_1_area_message.html#a5e4a0f4264c45d3b10e2180e3a3cc4b8", null ],
+    [ "AreaMessage", "struct_router_messaging_system_1_1_area_message.html#a158a4b1a0d3845d0020e3dbdbc6a235b", null ],
+    [ "AreaMessage", "struct_router_messaging_system_1_1_area_message.html#a1f3c6be57cf506121d0367af9bd25e77", null ],
+    [ "AreaMessage", "struct_router_messaging_system_1_1_area_message.html#a1e561a5fada0612a77814fc47b43c8e4", null ],
     [ "CompareTo", "struct_router_messaging_system_1_1_area_message.html#aa9591e725011ebf9295d269340649ee1", null ],
     [ "Equals", "struct_router_messaging_system_1_1_area_message.html#aae338d734ce2b0a9d5d28190512d1e63", null ],
     [ "Equals", "struct_router_messaging_system_1_1_area_message.html#a66c5c0ef4336b4eb25949846571cad6a", null ],
@@ -16,6 +16,7 @@ var struct_router_messaging_system_1_1_area_message =
     [ "operator>=", "struct_router_messaging_system_1_1_area_message.html#a32832fb4d89056301649cca27658401f", null ],
     [ "ToString", "struct_router_messaging_system_1_1_area_message.html#af4c7a663ea2f1a5563245b8f3694993c", null ],
     [ "AreaEvent", "struct_router_messaging_system_1_1_area_message.html#a0d87d336786e5db72c3375d847112052", null ],
+    [ "IsPoint", "struct_router_messaging_system_1_1_area_message.html#a9a0a6d0df09ef9d341138be91ff5b056", null ],
     [ "Origin", "struct_router_messaging_system_1_1_area_message.html#ab0d9a861f7b8fd77757d28470b9ceceb", null ],
     [ "Radius", "struct_router_messaging_system_1_1_area_message.html#aa34e8658fca3a67b884b26446651ddae", null ]
 ];

@@ -4,6 +4,7 @@ using System;
 namespace RouterMessagingSystem
 {
 	/** \brief Struct for passing parameters to Router for broadcasting area messages. */
+	/// \todo Implement HasVolume for route checking.
 	public struct AreaBandMessage : IEquatable<AreaBandMessage>, IComparable<AreaBandMessage>
 	{
 		/** \brief Vector3 representing the origin coordinate for the area. */
@@ -16,7 +17,7 @@ namespace RouterMessagingSystem
 		public readonly RoutingEvent AreaEvent;
 
 		/** \brief Standard constructor for new AreaBandMessages. */
-		public AreaBandMessage(ref Vector3 OriginCoord, ref float InnerAreaRadius, ref float OuterAreaRadius, ref RoutingEvent Event)
+		public AreaBandMessage(Vector3 OriginCoord, float InnerAreaRadius, float OuterAreaRadius, RoutingEvent Event)
 		{
 			Origin = OriginCoord;
 			decimal ID = new Decimal(Mathf.Abs(InnerAreaRadius)), OD = new Decimal(Mathf.Abs(OuterAreaRadius));
@@ -26,7 +27,7 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Constructor that constructs a new AreaBandMessage from a Vector3 and another AreaBandMessage. */
-		public AreaBandMessage(ref Vector3 OriginCoord, ref AreaBandMessage ABM)
+		public AreaBandMessage(Vector3 OriginCoord, AreaBandMessage ABM)
 		{
 			Origin = OriginCoord;
 			InnerRadius = ABM.InnerRadius;
@@ -35,7 +36,7 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Constructor that constructs a new AreaBandMessage from a float and another AreaBandMessage. */
-		public AreaBandMessage(ref float InnerAreaRadius, ref AreaBandMessage ABM)
+		public AreaBandMessage(float InnerAreaRadius, AreaBandMessage ABM)
 		{
 			Origin = ABM.Origin;
 			decimal ID = new Decimal(Mathf.Abs(InnerAreaRadius)), OD = new Decimal(ABM.OuterRadius);
@@ -45,7 +46,7 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Constructor that constructs a new AreaBandMessage from a float and another AreaBandMessage. */
-		public AreaBandMessage(ref AreaBandMessage ABM, ref float OuterAreaRadius)
+		public AreaBandMessage(AreaBandMessage ABM, float OuterAreaRadius)
 		{
 			Origin = ABM.Origin;
 			decimal ID = new Decimal(ABM.InnerRadius), OD = new Decimal(Mathf.Abs(OuterAreaRadius));
@@ -55,7 +56,7 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Constructor that constructs a new AreaBandMessage from a RoutingEvent and another AreaBandMessage. */
-		public AreaBandMessage(ref RoutingEvent Event, ref AreaBandMessage ABM)
+		public AreaBandMessage(RoutingEvent Event, AreaBandMessage ABM)
 		{
 			Origin = ABM.Origin;
 			InnerRadius = ABM.InnerRadius;

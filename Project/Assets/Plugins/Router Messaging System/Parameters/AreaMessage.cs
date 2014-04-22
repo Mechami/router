@@ -12,37 +12,45 @@ namespace RouterMessagingSystem
 		public readonly float Radius;
 		/** \brief Event occuring in the area. */
 		public readonly RoutingEvent AreaEvent;
+		/** \brief Value stating if this AreaMessage is a point or not. */
+		public readonly bool IsPoint;
 
 		/** \brief Standard constructor for new AreaMessages. */
-		public AreaMessage(ref Vector3 OriginCoord, ref float AreaRadius, ref RoutingEvent Event)
+		public AreaMessage(Vector3 OriginCoord, float AreaRadius, RoutingEvent Event)
 		{
+			float AbsR = Mathf.Abs(AreaRadius);
 			Origin = OriginCoord;
-			Radius = Mathf.Abs(AreaRadius);
+			Radius = AbsR;
 			AreaEvent = Event;
+			IsPoint = (new Decimal(AbsR) == 0m);
 		}
 
 		/** \brief Constructor that constructs a new AreaMessage from a Vector3 and another AreaMessage. */
-		public AreaMessage(ref Vector3 OriginCoord, ref AreaMessage AM)
+		public AreaMessage(Vector3 OriginCoord, AreaMessage AM)
 		{
 			Origin = OriginCoord;
 			Radius = AM.Radius;
 			AreaEvent = AM.AreaEvent;
+			IsPoint = AM.IsPoint;
 		}
 
 		/** \brief Constructor that constructs a new AreaMessage from a float and another AreaMessage. */
-		public AreaMessage(ref float AreaRadius, ref AreaMessage AM)
+		public AreaMessage(float AreaRadius, AreaMessage AM)
 		{
+			float AbsR = Mathf.Abs(AreaRadius);
 			Origin = AM.Origin;
-			Radius = Mathf.Abs(AreaRadius);
+			Radius = AbsR;
 			AreaEvent = AM.AreaEvent;
+			IsPoint = (new Decimal(AbsR) > 0m);
 		}
 
 		/** \brief Constructor that constructs a new AreaMessage from a RoutingEvent and another AreaMessage. */
-		public AreaMessage(ref RoutingEvent Event, ref AreaMessage AM)
+		public AreaMessage(RoutingEvent Event, AreaMessage AM)
 		{
 			Origin = AM.Origin;
 			Radius = AM.Radius;
 			AreaEvent = Event;
+			IsPoint = AM.IsPoint;
 		}
 
 		/// \brief Compares the calling AreaMessage's attributes to the specified AreaMessage's attributes.

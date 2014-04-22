@@ -7,7 +7,9 @@ using System.Collections.Generic;
 namespace RouterMessagingSystem
 {
 	/** \brief Router that calls basic functions only. */
-	/// \todo Implement RouteMessageContinuously.
+	/// \todo Implement RouteMessageContinuously.\n
+	/// \todo Determine if MonoBehaviour->Component boxing is as costly as Struct->Object boxing.
+	/// \todo Change RouteMessageAreaBand to only route messages if band has volume.
 	public static class Router
 	{
 		private static Dictionary<RoutingEvent, RoutePointer> PointerTable = null;
@@ -22,25 +24,18 @@ namespace RouterMessagingSystem
 		/** \brief Registers a new Route with the Router. */
 		/// \note Prints an error if the specified Route is invalid or cannot be registered.\n
 		/// \note An invalid Route contains null properties.
-		/// \todo Find a cleaner way to perform error printing.
 		public static void AddRoute(Route NewRoute /**< Route to be registered. */)
 		{
 			TablesExist = ((NewRoute.IsValid && !TablesExist)? ConstructTables() : TablesExist);
-
-			if (!NewRoute.IsValid)
-			{
-				Debug.LogError("[Router] Cannot register invalid route " + NewRoute + ".", NewRoute.Subscriber);
-			}
-
-			if (NewRoute.IsValid && RouteIsRegistered(NewRoute))
-			{
-				Debug.LogError("[Router] Cannot register duplicate route " + NewRoute + ".", NewRoute.Subscriber);
-			}
 
 			if (NewRoute.IsValid && !RouteIsRegistered(NewRoute))
 			{
 				RegisterRoute(NewRoute);
 				AttachAddress(NewRoute);
+			}
+			else
+			{
+				Debug.LogError("[Router] Cannot register " + (NewRoute.IsValid? "duplicate" : "invalid") + " route " + NewRoute + ".", NewRoute.Subscriber);
 			}
 		}
 
@@ -48,14 +43,14 @@ namespace RouterMessagingSystem
 		/// \note Prints an error if the specified Route cannot be removed.
 		public static void RemoveRoute(Route OldRoute /**< Route to be removed. */)
 		{
-			if (TablesExist && OldRoute.IsValid)
+			if (TablesExist && OldRoute.IsValid && RouteIsRegistered(OldRoute))
 			{
 				DetachAddress(OldRoute);
 				DeregisterRoute(OldRoute);
 			}
 			else
 			{
-				Debug.LogError("[Router] Cannot remove route " + OldRoute + ".", OldRoute.Subscriber);
+				Debug.LogError("[Router] Cannot remove " + (OldRoute.IsValid? "non-existant" : "invalid") + " route " + OldRoute + ".", OldRoute.Subscriber);
 			}
 
 			TablesExist = (TablesExist? DeconstructTables() : TablesExist);
@@ -173,7 +168,7 @@ namespace RouterMessagingSystem
 		{
 			CleanDeadRoutes(MessageParameters.AreaEvent);
 
-			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent))
+			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent) && !MessageParameters.IsPoint)
 			{
 				decimal RadiusD = new Decimal(MessageParameters.Radius);
 				List<Route> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) <= RadiusD));
@@ -187,7 +182,7 @@ namespace RouterMessagingSystem
 		{
 			CleanDeadRoutes(MessageParameters.AreaEvent);
 
-			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent))
+			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent) && !MessageParameters.IsPoint)
 			{
 				decimal RadiusD = new Decimal(MessageParameters.Radius);
 				List<Route> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) > RadiusD));
@@ -341,7 +336,7 @@ namespace RouterMessagingSystem
 
 		private static bool RouteIsRegistered(Route RT)
 		{
-			return (EventIsRegistered(RT.RouteEvent) && RouteTable[RT.RouteEvent].Contains(RT));
+			return (EventIsPopulated(RT.RouteEvent) && RouteTable[RT.RouteEvent].Contains(RT));
 		}
 
 		private static bool KeyHasAddress(RoutingEvent EventType)

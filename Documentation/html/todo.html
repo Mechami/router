@@ -111,10 +111,14 @@ $(document).ready(function(){initNavTree('todo.html','');});
 <hr/>
 <p>Specific changes:</p>
 <dl class="reflist">
-<dt><a class="anchor" id="_todo000001"></a>Class <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>  </dt>
-<dd>Implement RouteMessageContinuously.  </dd>
-<dt><a class="anchor" id="_todo000002"></a>Member <a class="el" href="class_router_messaging_system_1_1_router.html#aee00d3d6636e9a50b69d317ea378b06d">RouterMessagingSystem.Router.AddRoute</a>  (Route NewRoute)</dt>
-<dd>Find a cleaner way to perform error printing.  </dd>
+<dt><a class="anchor" id="_todo000001"></a>Class <a class="el" href="struct_router_messaging_system_1_1_area_band_message.html">RouterMessagingSystem.AreaBandMessage</a>  </dt>
+<dd>Implement HasVolume for route checking.  </dd>
+<dt><a class="anchor" id="_todo000002"></a>Class <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>  </dt>
+<dd><p class="startdd">Implement RouteMessageContinuously.<br/>
+ </p>
+<p>Determine if MonoBehaviour-&gt;Component boxing is as costly as Struct-&gt;Object boxing. </p>
+<p class="enddd">Change RouteMessageAreaBand to only route messages if band has volume.  </p>
+</dd>
 <dt><a class="anchor" id="_todo000003"></a>Class <a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html">RouterMessagingSystem.Router&lt; R &gt;</a>  </dt>
 <dd>Redocument this.  </dd>
 <dt><a class="anchor" id="_todo000004"></a>Class <a class="el" href="class_router_messaging_system_1_1_router_3_01_r_00_01_t_01_4.html">RouterMessagingSystem.Router&lt; R, T &gt;</a>  </dt>
@@ -129,7 +133,7 @@ $(document).ready(function(){initNavTree('todo.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Apr 21 2014 17:39:53 for Router Messaging System by
+    <li class="footer">Generated on Mon Apr 21 2014 20:15:18 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
