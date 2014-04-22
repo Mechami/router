@@ -25,21 +25,19 @@ namespace RouterMessagingSystem
 		/// \todo Find a cleaner way to perform error printing.
 		public static void AddRoute(Route NewRoute /**< Route to be registered. */)
 		{
-			// bool ValidRoute = RouteIsValid(NewRoute); // Debating on whether if using NewRoute directly is too confusing or not.
-			bool ValidRoute = NewRoute; // Compute if the new route is valid then cache the results here.
-			TablesExist = ((ValidRoute && !TablesExist)? ConstructTables() : TablesExist);
+			TablesExist = ((NewRoute.IsValid && !TablesExist)? ConstructTables() : TablesExist);
 
-			if (!ValidRoute)
+			if (!NewRoute.IsValid)
 			{
 				Debug.LogError("[Router] Cannot register invalid route " + NewRoute + ".", NewRoute.Subscriber);
 			}
 
-			if (ValidRoute && RouteIsRegistered(NewRoute))
+			if (NewRoute.IsValid && RouteIsRegistered(NewRoute))
 			{
 				Debug.LogError("[Router] Cannot register duplicate route " + NewRoute + ".", NewRoute.Subscriber);
 			}
 
-			if (ValidRoute && !RouteIsRegistered(NewRoute))
+			if (NewRoute.IsValid && !RouteIsRegistered(NewRoute))
 			{
 				RegisterRoute(NewRoute);
 				AttachAddress(NewRoute);
@@ -50,8 +48,7 @@ namespace RouterMessagingSystem
 		/// \note Prints an error if the specified Route cannot be removed.
 		public static void RemoveRoute(Route OldRoute /**< Route to be removed. */)
 		{
-			// if (TablesExist && RouteIsValid(OldRoute))
-			if (TablesExist && OldRoute)
+			if (TablesExist && OldRoute.IsValid)
 			{
 				DetachAddress(OldRoute);
 				DeregisterRoute(OldRoute);
@@ -328,7 +325,7 @@ namespace RouterMessagingSystem
 			// With the check this ranges from a max of 4(O(n)) to 1 O(n) operation.
 			if (TablesExist && EventIsPopulated(EventType) && TableIsPolluted(EventType))
 			{
-				Route[] DeadRoutes = Array.FindAll(RouteTable[EventType].ToArray(), x => (x.Subscriber == null));
+				Route[] DeadRoutes = Array.FindAll(RouteTable[EventType].ToArray(), x => x.IsDead());
 				Array.ForEach(DeadRoutes, x => {DeregisterRoute(x); DetachAddress(x);});
 				TablesExist = (TablesExist? DeconstructTables() : TablesExist);
 			}
@@ -337,15 +334,10 @@ namespace RouterMessagingSystem
 		// This check was moved to its own function because it was causing the code to be compiled into a nested if-statement.
 		private static bool TableIsPolluted(RoutingEvent EventType)
 		{
-			return !RouteTable[EventType].TrueForAll(x => (x.Subscriber != null));
+			return RouteTable[EventType].TrueForAll(x => !x.IsDead());
 		}
 
 		/// \internal Misc Functions
-
-		private static bool RouteIsValid(Route RT)
-		{
-			return ((RT.Subscriber != null) && (RT.Address != null) && (RT.RouteEvent != RoutingEvent.Null));
-		}
 
 		private static bool RouteIsRegistered(Route RT)
 		{

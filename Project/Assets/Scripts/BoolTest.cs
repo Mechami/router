@@ -19,13 +19,22 @@ public class BoolTest : MonoBehaviour
 
 	private void TestRT(Route LRT)
 	{
-		if (LRT)
+		if (LRT.IsValid)
 		{
 			Debug.Log("Valid.");
 		}
 		else
 		{
 			Debug.Log("Invalid.");
+		}
+
+		if (LRT.IsDead())
+		{
+			Debug.Log("Dead Route.");
+		}
+		else
+		{
+			Debug.Log("Live Route.");
 		}
 	}
 

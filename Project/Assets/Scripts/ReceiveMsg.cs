@@ -23,8 +23,8 @@ public class ReceiveMsg : MonoBehaviour
 
 	public void Test()
 	{
-		//Debug.Log(this);
 		int i = (1 + 1);
 		i = ~i;
+		//Debug.Log(i);
 	}
 }

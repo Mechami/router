@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Router Messaging System: Project/Assets/Scripts/BoolTest.cs (fa4c18328f8e24453088821147254c481c8c7a97) Source File</title>
+<title>Router Messaging System: Project/Assets/Scripts/BoolTest.cs (72238b11aff06b291122c201fa78193d185b6a97) Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('_bool_test_8cs_source.html','');});
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> TestRT(<a class="code" href="struct_router_messaging_system_1_1_route.html">Route</a> LRT)</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">if</span> (LRT)</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">if</span> (LRT.<a class="code" href="struct_router_messaging_system_1_1_route.html#ad4f8dde3b506e3390484f7dabe6f6230">IsValid</a>)</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            Debug.Log(<span class="stringliteral">&quot;Valid.&quot;</span>);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        }</div>
@@ -136,13 +136,24 @@ $(document).ready(function(){initNavTree('_bool_test_8cs_source.html','');});
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            Debug.Log(<span class="stringliteral">&quot;Invalid.&quot;</span>);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> Dummy()</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">if</span> (LRT.<a class="code" href="struct_router_messaging_system_1_1_route.html#a0afe12cb919ca76118056ab44db05fd7">IsDead</a>())</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            Debug.Log(<span class="stringliteral">&quot;Dead Route.&quot;</span>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            Debug.Log(<span class="stringliteral">&quot;Live Route.&quot;</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> Dummy()</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_html_ad4f8dde3b506e3390484f7dabe6f6230"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html#ad4f8dde3b506e3390484f7dabe6f6230">RouterMessagingSystem.Route.IsValid</a></div><div class="ttdeci">readonly bool IsValid</div><div class="ttdoc">Value representing the validity of this Route. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00019">Base.cs:19</a></div></div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_html_a0afe12cb919ca76118056ab44db05fd7"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html#a0afe12cb919ca76118056ab44db05fd7">RouterMessagingSystem.Route.IsDead</a></div><div class="ttdeci">bool IsDead()</div><div class="ttdoc">Checks if this Route is still alive. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00034">Base.cs:34</a></div></div>
 <div class="ttc" id="namespace_router_messaging_system_html_abf90ac1a99b75a99768e976718e09340"><div class="ttname"><a href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RouterMessagingSystem.RoutingEvent</a></div><div class="ttdeci">RoutingEvent</div><div class="ttdoc">Enumeration for event types. </div><div class="ttdef"><b>Definition:</b> <a href="_events_8cs_source.html#l00004">Events.cs:4</a></div></div>
 <div class="ttc" id="struct_router_messaging_system_1_1_route_html"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html">RouterMessagingSystem.Route</a></div><div class="ttdoc">Route struct for use with Router Messaging System. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00010">Base.cs:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -151,7 +162,7 @@ $(document).ready(function(){initNavTree('_bool_test_8cs_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_ffd1f789ec7bd0a45fc6ad92579c5070.html">Project</a></li><li class="navelem"><a class="el" href="dir_879de4fd393548c22b98301f5b1bb4c5.html">Assets</a></li><li class="navelem"><a class="el" href="dir_ff5880aec0b5804adb3d31a53d335c49.html">Scripts</a></li><li class="navelem"><b>BoolTest.cs</b></li>
-    <li class="footer">Generated on Sun Apr 20 2014 22:45:12 for Router Messaging System by
+    <li class="footer">Generated on Mon Apr 21 2014 17:39:53 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

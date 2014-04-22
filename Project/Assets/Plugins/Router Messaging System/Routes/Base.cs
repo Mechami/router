@@ -15,6 +15,8 @@ namespace RouterMessagingSystem
 		public readonly RoutePointer Address;
 		/// Value for the RouteEvent that calls this Route's address.
 		public readonly RoutingEvent RouteEvent;
+		/// Value representing the validity of this Route.
+		public readonly bool IsValid;
 
 		/// \brief Constructor that accepts a Component, a RoutePointer and a RoutingEvent.
 		/// \warning Do not pass null as any parameters.\n
@@ -24,6 +26,14 @@ namespace RouterMessagingSystem
 			Subscriber = RouteSubscriber;
 			Address = RoutingAddress;
 			RouteEvent = Event;
+			IsValid = ((this.Subscriber != null) && (this.Address != null) && (this.RouteEvent != RoutingEvent.Null));
+		}
+
+		/// \brief Checks if this Route is still alive.
+		/// \return True if this route's subscriber is null, otherwise false.
+		public bool IsDead()
+		{
+			return (this.Subscriber == null);
 		}
 
 		/// \brief Checks if the attributes of the passed Route are the same as the calling Route's attributes.
@@ -79,27 +89,6 @@ namespace RouterMessagingSystem
 		public static bool operator !=(Route RT1 /**< Left-side operand */, Route RT2 /**< Right-side operand */)
 		{
 			return ((RT1.Subscriber != RT2.Subscriber) || (RT1.Address != RT2.Address) || (RT1.RouteEvent != RT2.RouteEvent));
-		}
-
-		/// \brief Checks if this Route is valid.
-		/// \returns True if this Route is valid, otherwise false.
-		public static bool operator true(Route RT)
-		{
-			return ((RT.Subscriber != null) && (RT.Address != null) && (RT.RouteEvent != RoutingEvent.Null));
-		}
-
-		/// \brief Checks if this Route is invalid.
-		/// \returns True if this Route is invalid, otherwise false.
-		public static bool operator false(Route RT)
-		{
-			return ((RT.Subscriber == null) || (RT.Address == null) || (RT.RouteEvent == RoutingEvent.Null));
-		}
-
-		/// \brief Returns a bool indicating whether this Route is valid or not.
-		/// \returns True if this Route is valid, otherwise false.
-		public static implicit operator bool(Route RT)
-		{
-			return ((RT.Subscriber != null) && (RT.Address != null) && (RT.RouteEvent != RoutingEvent.Null));
 		}
 	}
 }
