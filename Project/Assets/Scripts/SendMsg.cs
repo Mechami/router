@@ -9,6 +9,5 @@ public class SendMsg : MonoBehaviour
 	public void Update()
 	{
 		Router.RouteMessage(Event);
-		Debug.Log(Router.RouteCount());
 	}
 }

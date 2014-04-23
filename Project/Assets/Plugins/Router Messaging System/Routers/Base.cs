@@ -7,8 +7,8 @@ using System.Collections.Generic;
 namespace RouterMessagingSystem
 {
 	/** \brief Router that calls basic functions only. */
-	/// \todo Implement RouteMessageContinuously.\n
-	/// \todo Determine if MonoBehaviour->Component boxing is as costly as Struct->Object boxing.
+	/// \todo Implement RouteMessageContinuously <- Reconsider this.\n
+	/// \todo Determine if MonoBehaviour->Component boxing is as costly as Struct->Object boxing.\n
 	/// \todo Change RouteMessageAreaBand to only route messages if band has volume.
 	public static class Router
 	{
@@ -76,14 +76,17 @@ namespace RouterMessagingSystem
 		/// \returns Int representing the Routes registered.
 		public static int RouteCount()
 		{
+			// Debating on moving TotalRoutes into a function-wide scope.
+			// That way it could be assigned inside the if block should the tables exist and remain zero otherwise.
+			// Then only one return statement would be needed, but an int would be created regardless of whether the tables exist or not.
 			if (TablesExist)
 			{
 				int TotalRoutes = 0;
 
-				foreach (KeyValuePair<RoutingEvent, List<Route>> KVP in RouteTable)
-				{
-					TotalRoutes += KVP.Value.Count;
-				}
+				List<Route>[] Lists = new List<Route>[RouteTable.Values.Count];
+				RouteTable.Values.CopyTo(Lists, 0);
+
+				Array.ForEach(Lists, x => TotalRoutes += x.Count);
 
 				return TotalRoutes;
 			}
