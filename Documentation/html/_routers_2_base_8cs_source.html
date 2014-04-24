@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Router Messaging System: Project/Assets/Plugins/Router Messaging System/Routers/Base.cs (eaba2473c800506bd184c21f10605f39e7f33809) Source File</title>
+<title>Router Messaging System: Project/Assets/Plugins/Router Messaging System/Routers/Base.cs (296c096d7e091bde3f26f13b4804ec7120ff8f1f) Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -271,7 +271,7 @@ $(document).ready(function(){initNavTree('_routers_2_base_8cs_source.html','');}
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        {</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            CleanDeadRoutes(MessageParameters.AreaEvent);</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.AreaEvent))</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.AreaEvent) &amp;&amp; MessageParameters.HasVolume)</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            {</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                decimal InnerRadiusD = <span class="keyword">new</span> Decimal(MessageParameters.InnerRadius), OuterRadiusD = <span class="keyword">new</span> Decimal(MessageParameters.OuterRadius);</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                List&lt;Route&gt; RT = RouteTable[MessageParameters.AreaEvent].FindAll(x =&gt; { decimal Distance = <span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); <span class="keywordflow">return</span> ((Distance &gt;= InnerRadiusD) &amp;&amp; (Distance &lt;= OuterRadiusD)); });</div>
@@ -283,7 +283,7 @@ $(document).ready(function(){initNavTree('_routers_2_base_8cs_source.html','');}
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        {</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            CleanDeadRoutes(MessageParameters.AreaEvent);</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.AreaEvent))</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.AreaEvent) &amp;&amp; MessageParameters.HasVolume)</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            {</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                decimal InnerRadiusD = <span class="keyword">new</span> Decimal(MessageParameters.InnerRadius), OuterRadiusD = <span class="keyword">new</span> Decimal(MessageParameters.OuterRadius);</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                List&lt;Route&gt; RT = RouteTable[MessageParameters.AreaEvent].FindAll(x =&gt; { decimal Distance = <span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); <span class="keywordflow">return</span> ((Distance &lt; InnerRadiusD) || (Distance &gt; OuterRadiusD)); });</div>
@@ -448,7 +448,7 @@ $(document).ready(function(){initNavTree('_routers_2_base_8cs_source.html','');}
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_ffd1f789ec7bd0a45fc6ad92579c5070.html">Project</a></li><li class="navelem"><a class="el" href="dir_879de4fd393548c22b98301f5b1bb4c5.html">Assets</a></li><li class="navelem"><a class="el" href="dir_b5c0ad125fda175bded5335c6e0b3543.html">Plugins</a></li><li class="navelem"><a class="el" href="dir_b9153762626c4c54c9f7fb8eedc47a78.html">Router Messaging System</a></li><li class="navelem"><a class="el" href="dir_9b03a082fd188e431d2249e59b725049.html">Routers</a></li><li class="navelem"><b>Base.cs</b></li>
-    <li class="footer">Generated on Tue Apr 22 2014 20:24:50 for Router Messaging System by
+    <li class="footer">Generated on Thu Apr 24 2014 16:14:14 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

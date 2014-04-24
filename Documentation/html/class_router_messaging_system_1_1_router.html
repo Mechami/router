@@ -526,7 +526,7 @@ This can potentially be a slow operation, depending on the amount of subscribers
 <div class="fragment"><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        {</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            CleanDeadRoutes(MessageParameters.AreaEvent);</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.AreaEvent))</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.AreaEvent) &amp;&amp; MessageParameters.HasVolume)</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            {</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                decimal InnerRadiusD = <span class="keyword">new</span> Decimal(MessageParameters.InnerRadius), OuterRadiusD = <span class="keyword">new</span> Decimal(MessageParameters.OuterRadius);</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                List&lt;Route&gt; RT = RouteTable[MessageParameters.AreaEvent].FindAll(x =&gt; { decimal Distance = <span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); <span class="keywordflow">return</span> ((Distance &gt;= InnerRadiusD) &amp;&amp; (Distance &lt;= OuterRadiusD)); });</div>
@@ -899,7 +899,7 @@ Accepts a Component that is used to obtain a reference to the target GameObject.
 <div class="fragment"><div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        {</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            CleanDeadRoutes(MessageParameters.AreaEvent);</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.AreaEvent))</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.AreaEvent) &amp;&amp; MessageParameters.HasVolume)</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            {</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                decimal InnerRadiusD = <span class="keyword">new</span> Decimal(MessageParameters.InnerRadius), OuterRadiusD = <span class="keyword">new</span> Decimal(MessageParameters.OuterRadius);</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                List&lt;Route&gt; RT = RouteTable[MessageParameters.AreaEvent].FindAll(x =&gt; { decimal Distance = <span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); <span class="keywordflow">return</span> ((Distance &lt; InnerRadiusD) || (Distance &gt; OuterRadiusD)); });</div>
@@ -910,7 +910,7 @@ Accepts a Component that is used to obtain a reference to the target GameObject.
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>Project/Assets/Plugins/Router Messaging System/Routers/<a class="el" href="_routers_2_base_8cs_source.html">Base.cs (eaba2473c800506bd184c21f10605f39e7f33809)</a></li>
+<li>Project/Assets/Plugins/Router Messaging System/Routers/<a class="el" href="_routers_2_base_8cs_source.html">Base.cs (296c096d7e091bde3f26f13b4804ec7120ff8f1f)</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -918,7 +918,7 @@ Accepts a Component that is used to obtain a reference to the target GameObject.
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_router_messaging_system.html">RouterMessagingSystem</a></li><li class="navelem"><a class="el" href="class_router_messaging_system_1_1_router.html">Router</a></li>
-    <li class="footer">Generated on Tue Apr 22 2014 20:24:50 for Router Messaging System by
+    <li class="footer">Generated on Thu Apr 24 2014 16:14:14 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

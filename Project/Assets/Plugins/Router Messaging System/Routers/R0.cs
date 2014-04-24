@@ -6,6 +6,7 @@ namespace RouterMessagingSystem
 {
 	/** \brief Router that returns R from sending messages. */
 	/// \todo Redocument this.
+	/// \todo Add RouteMessage(RoutingEvent, Queue)
 	public static class Router<R>
 	{
 		private static Dictionary<RoutingEvent, RoutePointer<R>> PointerTable = null;

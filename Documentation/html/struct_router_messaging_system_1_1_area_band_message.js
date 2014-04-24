@@ -17,6 +17,7 @@ var struct_router_messaging_system_1_1_area_band_message =
     [ "operator>=", "struct_router_messaging_system_1_1_area_band_message.html#aae092800b80ff4c7a1fa279a7cdc13b9", null ],
     [ "ToString", "struct_router_messaging_system_1_1_area_band_message.html#a43454e1c04da3c9ac6230ad432bdb93a", null ],
     [ "AreaEvent", "struct_router_messaging_system_1_1_area_band_message.html#a73ebb29fa57874157245031853e7e358", null ],
+    [ "HasVolume", "struct_router_messaging_system_1_1_area_band_message.html#a66d206b15c3765b223f77d3d07ba820f", null ],
     [ "InnerRadius", "struct_router_messaging_system_1_1_area_band_message.html#a7231db0a1712cbe274a7438f2987ec37", null ],
     [ "Origin", "struct_router_messaging_system_1_1_area_band_message.html#a6dcd355ac82437b1e4ab8a9fac40dc6d", null ],
     [ "OuterRadius", "struct_router_messaging_system_1_1_area_band_message.html#a114994cda02c498a60fe3e906c45e0cd", null ]

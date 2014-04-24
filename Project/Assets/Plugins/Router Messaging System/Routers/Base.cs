@@ -200,7 +200,7 @@ namespace RouterMessagingSystem
 		{
 			CleanDeadRoutes(MessageParameters.AreaEvent);
 
-			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent))
+			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent) && MessageParameters.HasVolume)
 			{
 				decimal InnerRadiusD = new Decimal(MessageParameters.InnerRadius), OuterRadiusD = new Decimal(MessageParameters.OuterRadius);
 				List<Route> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance >= InnerRadiusD) && (Distance <= OuterRadiusD)); });
@@ -215,7 +215,7 @@ namespace RouterMessagingSystem
 		{
 			CleanDeadRoutes(MessageParameters.AreaEvent);
 
-			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent))
+			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent) && MessageParameters.HasVolume)
 			{
 				decimal InnerRadiusD = new Decimal(MessageParameters.InnerRadius), OuterRadiusD = new Decimal(MessageParameters.OuterRadius);
 				List<Route> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance < InnerRadiusD) || (Distance > OuterRadiusD)); });

@@ -15,6 +15,8 @@ namespace RouterMessagingSystem
 		public readonly float OuterRadius;
 		/** \brief Event occuring in the area. */
 		public readonly RoutingEvent AreaEvent;
+		/** \brief Value stating if this AreaBandMessage has volume or not. */
+		public readonly bool HasVolume;
 
 		/** \brief Standard constructor for new AreaBandMessages. */
 		public AreaBandMessage(Vector3 OriginCoord, float InnerAreaRadius, float OuterAreaRadius, RoutingEvent Event)
@@ -24,6 +26,7 @@ namespace RouterMessagingSystem
 			InnerRadius = (ID >= OD)? Mathf.Abs(OuterAreaRadius) : Mathf.Abs(InnerAreaRadius);
 			OuterRadius = (OD <= ID)? Mathf.Abs(InnerAreaRadius) : Mathf.Abs(OuterAreaRadius);
 			AreaEvent = Event;
+			HasVolume = (ID < OD);
 		}
 
 		/** \brief Constructor that constructs a new AreaBandMessage from a Vector3 and another AreaBandMessage. */
@@ -33,6 +36,7 @@ namespace RouterMessagingSystem
 			InnerRadius = ABM.InnerRadius;
 			OuterRadius = ABM.OuterRadius;
 			AreaEvent = ABM.AreaEvent;
+			HasVolume = ABM.HasVolume;
 		}
 
 		/** \brief Constructor that constructs a new AreaBandMessage from a float and another AreaBandMessage. */
@@ -43,6 +47,7 @@ namespace RouterMessagingSystem
 			InnerRadius = (ID >= OD)? ABM.OuterRadius : Mathf.Abs(InnerAreaRadius);
 			OuterRadius = (OD <= ID)? Mathf.Abs(InnerAreaRadius) : ABM.OuterRadius;
 			AreaEvent = ABM.AreaEvent;
+			HasVolume = (ID < OD);
 		}
 
 		/** \brief Constructor that constructs a new AreaBandMessage from a float and another AreaBandMessage. */
@@ -53,6 +58,7 @@ namespace RouterMessagingSystem
 			InnerRadius = (ID >= OD)? Mathf.Abs(OuterAreaRadius) : ABM.InnerRadius;
 			OuterRadius = (OD <= ID)? ABM.InnerRadius : Mathf.Abs(OuterAreaRadius);
 			AreaEvent = ABM.AreaEvent;
+			HasVolume = (ID < OD);
 		}
 
 		/** \brief Constructor that constructs a new AreaBandMessage from a RoutingEvent and another AreaBandMessage. */
@@ -62,6 +68,7 @@ namespace RouterMessagingSystem
 			InnerRadius = ABM.InnerRadius;
 			OuterRadius = ABM.OuterRadius;
 			AreaEvent = Event;
+			HasVolume = ABM.HasVolume;
 		}
 
 		/// \brief Compares the calling AreaBandMessage's attributes to the specified AreaBandMessage's attributes.
