@@ -2,7 +2,8 @@ var NAVTREE =
 [
   [ "Router Messaging System", "index.html", [
     [ "Usage", "usage.html", null ],
-    [ "Notes", "notes.html", null ],
+    [ "Routers", "routers.html", null ],
+    [ "Routes", "routes.html", null ],
     [ "Todo List", "todo.html", null ],
     [ "Bug List", "bug.html", null ],
     [ "Namespaces", null, [
@@ -20,7 +21,8 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", null ],
+        [ "Properties", "functions_prop.html", null ]
       ] ]
     ] ],
     [ "Files", null, [
@@ -31,7 +33,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_a_m_test_8cs_source.html"
+"_a_m_test_8cs_source.html",
+"struct_router_messaging_system_1_1_route_3_01_r_01_4.html#aed92c87239c6f0f883b6a5eb5000e140"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

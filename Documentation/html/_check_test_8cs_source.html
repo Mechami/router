@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Router Messaging System: Project/Assets/Scripts/CheckTest.cs (2b06aec2241897886a0f98d64a7123338680f77f) Source File</title>
+<title>Router Messaging System: Project/Assets/Scripts/CheckTest.cs (26c0d05ada79d86109d9e7530be36cb8dd0f8f63) Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('_check_test_8cs_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('_check_test_8cs_source.html','');});
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span>CheckTest : MonoBehaviour</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keyword">public</span> Component Com = null;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keyword">private</span> <a class="code" href="struct_router_messaging_system_1_1_message_target.html">MessageTarget</a> MT = <span class="keyword">new</span> <a class="code" href="struct_router_messaging_system_1_1_message_target.html">MessageTarget</a>();</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> Awake()</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
@@ -121,22 +121,23 @@ $(document).ready(function(){initNavTree('_check_test_8cs_source.html','');});
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> Update()</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        Router.RouteMessageAscendants((null as Component), <a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>.Test1);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        Router.RouteMessageAscendants(MT, RoutingEvent.Test1);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    }</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> Temp()</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
+<div class="ttc" id="struct_router_messaging_system_1_1_message_target_html"><div class="ttname"><a href="struct_router_messaging_system_1_1_message_target.html">RouterMessagingSystem.MessageTarget</a></div><div class="ttdoc">Struct for passing a target for a message. </div><div class="ttdef"><b>Definition:</b> <a href="_message_target_8cs_source.html#l00007">MessageTarget.cs:7</a></div></div>
 <div class="ttc" id="namespace_router_messaging_system_html_abf90ac1a99b75a99768e976718e09340"><div class="ttname"><a href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RouterMessagingSystem.RoutingEvent</a></div><div class="ttdeci">RoutingEvent</div><div class="ttdoc">Enumeration for event types. </div><div class="ttdef"><b>Definition:</b> <a href="_events_8cs_source.html#l00004">Events.cs:4</a></div></div>
-<div class="ttc" id="struct_router_messaging_system_1_1_route_html"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html">RouterMessagingSystem.Route</a></div><div class="ttdoc">Route struct for use with Router Messaging System. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00010">Base.cs:10</a></div></div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_html"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html">RouterMessagingSystem.Route</a></div><div class="ttdoc">A route to a function that accepts no parameters and returns nothing. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00008">Base.cs:8</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_ffd1f789ec7bd0a45fc6ad92579c5070.html">Project</a></li><li class="navelem"><a class="el" href="dir_879de4fd393548c22b98301f5b1bb4c5.html">Assets</a></li><li class="navelem"><a class="el" href="dir_ff5880aec0b5804adb3d31a53d335c49.html">Scripts</a></li><li class="navelem"><b>CheckTest.cs</b></li>
-    <li class="footer">Generated on Thu Apr 24 2014 16:14:14 for Router Messaging System by
+    <li class="footer">Generated on Thu Apr 24 2014 23:18:12 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

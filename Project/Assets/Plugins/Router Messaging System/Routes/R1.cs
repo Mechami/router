@@ -3,15 +3,17 @@ using System;
 
 namespace RouterMessagingSystem
 {
-	/** \brief Route that returns a value of type R and accepts a parameter of type T. */
-	public struct Route<R, T> : IEquatable<Route<R, T>>
+	/// \brief A route to a function that accepts one parameter of type T and returns an object of type R.
+	public struct Route<R, T> : IRoutable<Route<R, T>>
 	{
 		/// Reference to the originator of this route.
 		public readonly Component Subscriber;
 		/// Reference to the function this route calls.
 		public readonly RoutePointer<R, T> Address;
-		/// Value for the RouteEvent that calls this Route's address.
+		/// Value for the RouteEvent that calls this route's address.
 		public readonly RoutingEvent RouteEvent;
+		/// Value representing the validity of this route.
+		public readonly bool IsValid;
 
 		/// \brief Constructor that accepts a Component, a RoutePointer<R, T> and a RoutingEvent.
 		/// \warning Do not pass null as any parameters.\n
@@ -19,8 +21,16 @@ namespace RouterMessagingSystem
 		public Route(Component RouteSubscriber /**< Reference to the subscribing Component.\n Can be of any type derived from Component. */, RoutePointer<R, T> RoutingAddress /**< Reference to a function that this route calls.\n R is return type, T is parameter type. */, RoutingEvent Event /**< Value stating which event calls this Route. */) : this()
 		{
 			Subscriber = RouteSubscriber;
-			Address = RoutingAddress;
+			Address = (RoutePointer<R, T>)(RoutingAddress.GetInvocationList()[0]);
 			RouteEvent = Event;
+			IsValid = ((this.Subscriber != null) && (this.Address != null) && (this.RouteEvent != RoutingEvent.Null));
+		}
+
+		/// \brief Checks if this route is still alive.
+		/// \return True if this route's subscriber is null, otherwise false.
+		public bool IsDead()
+		{
+			return (this.Subscriber == null);
 		}
 
 		/// \brief Checks if the attributes of the passed Route<R, T> are the same as the calling Route<R, T>'s attributes.
@@ -35,7 +45,15 @@ namespace RouterMessagingSystem
 		/// \return Immediately returns false if Obj is not a Route<R, T> at all.\n
 		public override bool Equals(System.Object Obj /**< Object to check for equivalency. */)
 		{
-			return ((Obj is Route<R, T>) && (this.Subscriber == ((Route<R, T>)Obj).Subscriber) && (this.Address == ((Route<R, T>)Obj).Address) && (this.RouteEvent == ((Route<R, T>)Obj).RouteEvent));
+			bool Result = false;
+
+			if (Obj is Route<R, T>)
+			{
+				Route<R, T> That = (Route<R, T>)Obj;
+				Result = ((this.Subscriber == That.Subscriber) && (this.Address == That.Address) && (this.RouteEvent == That.RouteEvent));
+			}
+
+			return Result;
 		}
 
 		/// \brief Returns a hash of this Route<R, T>.

@@ -95,7 +95,7 @@ $(document).ready(function(){initNavTree('struct_router_messaging_system_1_1_rou
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -115,36 +115,39 @@ $(document).ready(function(){initNavTree('struct_router_messaging_system_1_1_rou
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a> that returns a value of type R and accepts one parameter of type T1 and one parameter of T2.  
+<p>A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type R.  
  <a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#details">More...</a></p>
 
-<p>Inherits IEquatable&lt; Route&lt; R, T1, T2 &gt;&gt;.</p>
+<p>Inherits RouterMessagingSystem.IRoutable&lt; T &gt;.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac9ebecd9c429582eb98662be412f0477"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ac9ebecd9c429582eb98662be412f0477">Route</a> (Component RouteSubscriber, <a class="el" href="namespace_router_messaging_system.html#a4f3d5cc295a94c6034645b81af7bf9cc">RoutePointer</a>&lt; R, T1, T2 &gt; RoutingAddress, <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> Event)</td></tr>
 <tr class="memdesc:ac9ebecd9c429582eb98662be412f0477"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that accepts a Component, a RoutePointer&lt;R, T1, T2&gt; and a RoutingEvent.  <a href="#ac9ebecd9c429582eb98662be412f0477">More...</a><br/></td></tr>
 <tr class="separator:ac9ebecd9c429582eb98662be412f0477"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a724bd6c24b47bb7c0b1cccf228bd1220"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a724bd6c24b47bb7c0b1cccf228bd1220">IsDead</a> ()</td></tr>
+<tr class="memdesc:a724bd6c24b47bb7c0b1cccf228bd1220"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if this route is still alive.  <a href="#a724bd6c24b47bb7c0b1cccf228bd1220">More...</a><br/></td></tr>
+<tr class="separator:a724bd6c24b47bb7c0b1cccf228bd1220"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e51723a7e0380a75563193844dc793f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a4e51723a7e0380a75563193844dc793f">Equals</a> (<a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&lt; R, T1, T2 &gt; RT)</td></tr>
-<tr class="memdesc:a4e51723a7e0380a75563193844dc793f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the attributes of the passed <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="Route that returns a value of type R and accepts one parameter of type T1 and one parameter of T2...">Route&lt;R, T1, T2&gt;</a> are the same as the calling <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="Route that returns a value of type R and accepts one parameter of type T1 and one parameter of T2...">Route&lt;R, T1, T2&gt;</a>'s attributes.  <a href="#a4e51723a7e0380a75563193844dc793f">More...</a><br/></td></tr>
+<tr class="memdesc:a4e51723a7e0380a75563193844dc793f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the attributes of the passed <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type...">Route&lt;R, T1, T2&gt;</a> are the same as the calling <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type...">Route&lt;R, T1, T2&gt;</a>'s attributes.  <a href="#a4e51723a7e0380a75563193844dc793f">More...</a><br/></td></tr>
 <tr class="separator:a4e51723a7e0380a75563193844dc793f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d5cac0c11802d743ec139d3ba62f038"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a1d5cac0c11802d743ec139d3ba62f038">Equals</a> (System.Object Obj)</td></tr>
-<tr class="memdesc:a1d5cac0c11802d743ec139d3ba62f038"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the passed object is the same as the calling <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="Route that returns a value of type R and accepts one parameter of type T1 and one parameter of T2...">Route&lt;R, T1, T2&gt;</a>.  <a href="#a1d5cac0c11802d743ec139d3ba62f038">More...</a><br/></td></tr>
+<tr class="memdesc:a1d5cac0c11802d743ec139d3ba62f038"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the passed object is the same as the calling <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type...">Route&lt;R, T1, T2&gt;</a>.  <a href="#a1d5cac0c11802d743ec139d3ba62f038">More...</a><br/></td></tr>
 <tr class="separator:a1d5cac0c11802d743ec139d3ba62f038"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeaa60bbc917a406fab31c8a4c9f4a955"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#aeaa60bbc917a406fab31c8a4c9f4a955">GetHashCode</a> ()</td></tr>
-<tr class="memdesc:aeaa60bbc917a406fab31c8a4c9f4a955"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a hash of this <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="Route that returns a value of type R and accepts one parameter of type T1 and one parameter of T2...">Route&lt;R, T1, T2&gt;</a>.  <a href="#aeaa60bbc917a406fab31c8a4c9f4a955">More...</a><br/></td></tr>
+<tr class="memdesc:aeaa60bbc917a406fab31c8a4c9f4a955"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a hash of this <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type...">Route&lt;R, T1, T2&gt;</a>.  <a href="#aeaa60bbc917a406fab31c8a4c9f4a955">More...</a><br/></td></tr>
 <tr class="separator:aeaa60bbc917a406fab31c8a4c9f4a955"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae95e896d19743e60210526406c09d500"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ae95e896d19743e60210526406c09d500">ToString</a> ()</td></tr>
-<tr class="memdesc:ae95e896d19743e60210526406c09d500"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string listing this <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="Route that returns a value of type R and accepts one parameter of type T1 and one parameter of T2...">Route&lt;R, T1, T2&gt;</a>'s routing data.  <a href="#ae95e896d19743e60210526406c09d500">More...</a><br/></td></tr>
+<tr class="memdesc:ae95e896d19743e60210526406c09d500"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string listing this <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type...">Route&lt;R, T1, T2&gt;</a>'s routing data.  <a href="#ae95e896d19743e60210526406c09d500">More...</a><br/></td></tr>
 <tr class="separator:ae95e896d19743e60210526406c09d500"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a2bb4cca0b221f653dab337a945e24f7f"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a2bb4cca0b221f653dab337a945e24f7f">operator==</a> (<a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&lt; R, T1, T2 &gt; RT1, <a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&lt; R, T1, T2 &gt; RT2)</td></tr>
-<tr class="memdesc:a2bb4cca0b221f653dab337a945e24f7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="Route that returns a value of type R and accepts one parameter of type T1 and one parameter of T2...">Route&lt;R, T1, T2&gt;</a>'s for equivalent attributes.  <a href="#a2bb4cca0b221f653dab337a945e24f7f">More...</a><br/></td></tr>
+<tr class="memdesc:a2bb4cca0b221f653dab337a945e24f7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type...">Route&lt;R, T1, T2&gt;</a>'s for equivalent attributes.  <a href="#a2bb4cca0b221f653dab337a945e24f7f">More...</a><br/></td></tr>
 <tr class="separator:a2bb4cca0b221f653dab337a945e24f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9f2364ce5cdcd24d1c5387cf0f6ac76"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#af9f2364ce5cdcd24d1c5387cf0f6ac76">operator!=</a> (<a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&lt; R, T1, T2 &gt; RT1, <a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&lt; R, T1, T2 &gt; RT2)</td></tr>
-<tr class="memdesc:af9f2364ce5cdcd24d1c5387cf0f6ac76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contrasts two <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="Route that returns a value of type R and accepts one parameter of type T1 and one parameter of T2...">Route&lt;R, T1, T2&gt;</a>'s for differing attributes.  <a href="#af9f2364ce5cdcd24d1c5387cf0f6ac76">More...</a><br/></td></tr>
+<tr class="memdesc:af9f2364ce5cdcd24d1c5387cf0f6ac76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contrasts two <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type...">Route&lt;R, T1, T2&gt;</a>'s for differing attributes.  <a href="#af9f2364ce5cdcd24d1c5387cf0f6ac76">More...</a><br/></td></tr>
 <tr class="separator:af9f2364ce5cdcd24d1c5387cf0f6ac76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -159,11 +162,15 @@ readonly <a class="el" href="namespace_router_messaging_system.html#a4f3d5cc295a
 <tr class="separator:a1fd2115262c134f7b028747cabf68c17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8da6ad2e47b7568192ab1e693e9e2da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad8da6ad2e47b7568192ab1e693e9e2da"></a>
 readonly <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ad8da6ad2e47b7568192ab1e693e9e2da">RouteEvent</a></td></tr>
-<tr class="memdesc:ad8da6ad2e47b7568192ab1e693e9e2da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value for the RouteEvent that calls this <a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a>'s address. <br/></td></tr>
+<tr class="memdesc:ad8da6ad2e47b7568192ab1e693e9e2da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value for the RouteEvent that calls this route's address. <br/></td></tr>
 <tr class="separator:ad8da6ad2e47b7568192ab1e693e9e2da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17dad3ef50c4bf91fa4c96c0cf4bf6cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17dad3ef50c4bf91fa4c96c0cf4bf6cb"></a>
+readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a17dad3ef50c4bf91fa4c96c0cf4bf6cb">IsValid</a></td></tr>
+<tr class="memdesc:a17dad3ef50c4bf91fa4c96c0cf4bf6cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value representing the validity of this route. <br/></td></tr>
+<tr class="separator:a17dad3ef50c4bf91fa4c96c0cf4bf6cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a> that returns a value of type R and accepts one parameter of type T1 and one parameter of T2. </p>
+<div class="textblock"><p>A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type R. </p>
 
 <p>Definition at line <a class="el" href="_routes_2_r2_8cs_source.html#l00007">7</a> of file <a class="el" href="_routes_2_r2_8cs_source.html">R2.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -209,26 +216,28 @@ readonly <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b
 <dl class="section warning"><dt>Warning</dt><dd>Do not pass null as any parameters.<br/>
 </dd>
 <dd>
-<a class="el" href="class_router_messaging_system_1_1_router.html" title="Router that calls basic functions only. ">Router</a> will discard any Routes with null attributes. </dd></dl>
+<a class="el" href="class_router_messaging_system_1_1_router.html" title="A router that operates on standard routes. ">Router</a> will discard any Routes with null attributes. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">RouteSubscriber</td><td>Reference to the subscribing Component.<br/>
  Can be of any type derived from Component. </td></tr>
     <tr><td class="paramname">RoutingAddress</td><td>Reference to a function that this route calls.<br/>
  R is return type, T1 and T2 are parameter types. </td></tr>
-    <tr><td class="paramname">Event</td><td>Value stating which event calls this <a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a>. </td></tr>
+    <tr><td class="paramname">Event</td><td>Value stating which event calls this <a class="el" href="struct_router_messaging_system_1_1_route.html" title="A route to a function that accepts no parameters and returns nothing. ">Route</a>. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_routes_2_r2_8cs_source.html#l00019">19</a> of file <a class="el" href="_routes_2_r2_8cs_source.html">R2.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                                                                                                                  : <span class="keyword">this</span>()</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">Subscriber</a> = RouteSubscriber;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a1fd2115262c134f7b028747cabf68c17">Address</a> = RoutingAddress;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ad8da6ad2e47b7568192ab1e693e9e2da">RouteEvent</a> = Event;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
-<div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4_html_ad8da6ad2e47b7568192ab1e693e9e2da"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ad8da6ad2e47b7568192ab1e693e9e2da">RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.RouteEvent</a></div><div class="ttdeci">readonly RoutingEvent RouteEvent</div><div class="ttdoc">Value for the RouteEvent that calls this Route&#39;s address. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r2_8cs_source.html#l00014">R2.cs:14</a></div></div>
+<p>Definition at line <a class="el" href="_routes_2_r2_8cs_source.html#l00021">21</a> of file <a class="el" href="_routes_2_r2_8cs_source.html">R2.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                                                                                                                  : <span class="keyword">this</span>()</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">Subscriber</a> = RouteSubscriber;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a1fd2115262c134f7b028747cabf68c17">Address</a> = (RoutePointer&lt;R, T1, T2&gt;)(RoutingAddress.GetInvocationList()[0]);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ad8da6ad2e47b7568192ab1e693e9e2da">RouteEvent</a> = Event;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a17dad3ef50c4bf91fa4c96c0cf4bf6cb">IsValid</a> = ((this.Subscriber != null) &amp;&amp; (this.<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a1fd2115262c134f7b028747cabf68c17">Address</a> != null) &amp;&amp; (this.RouteEvent != RoutingEvent.Null));</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4_html_a17dad3ef50c4bf91fa4c96c0cf4bf6cb"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a17dad3ef50c4bf91fa4c96c0cf4bf6cb">RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.IsValid</a></div><div class="ttdeci">readonly bool IsValid</div><div class="ttdoc">Value representing the validity of this route. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r2_8cs_source.html#l00016">R2.cs:16</a></div></div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4_html_ad8da6ad2e47b7568192ab1e693e9e2da"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ad8da6ad2e47b7568192ab1e693e9e2da">RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.RouteEvent</a></div><div class="ttdeci">readonly RoutingEvent RouteEvent</div><div class="ttdoc">Value for the RouteEvent that calls this route&#39;s address. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r2_8cs_source.html#l00014">R2.cs:14</a></div></div>
 <div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4_html_a7e9d3e0a1f78bc7ab1d1a6501155e3f8"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.Subscriber</a></div><div class="ttdeci">readonly Component Subscriber</div><div class="ttdoc">Reference to the originator of this route. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r2_8cs_source.html#l00010">R2.cs:10</a></div></div>
 <div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4_html_a1fd2115262c134f7b028747cabf68c17"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a1fd2115262c134f7b028747cabf68c17">RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.Address</a></div><div class="ttdeci">readonly RoutePointer&lt; R, T1, T2 &gt; Address</div><div class="ttdoc">Reference to the function this route calls. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r2_8cs_source.html#l00012">R2.cs:12</a></div></div>
 </div><!-- fragment -->
@@ -257,19 +266,19 @@ readonly <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b
 </table>
 </div><div class="memdoc">
 
-<p>Checks if the attributes of the passed <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="Route that returns a value of type R and accepts one parameter of type T1 and one parameter of T2...">Route&lt;R, T1, T2&gt;</a> are the same as the calling <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="Route that returns a value of type R and accepts one parameter of type T1 and one parameter of T2...">Route&lt;R, T1, T2&gt;</a>'s attributes. </p>
+<p>Checks if the attributes of the passed <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type...">Route&lt;R, T1, T2&gt;</a> are the same as the calling <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type...">Route&lt;R, T1, T2&gt;</a>'s attributes. </p>
 <dl class="section return"><dt>Returns</dt><dd>Returns true if all attributes are the same, otherwise false. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">RT</td><td><a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a> to compare with the calling <a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a>. </td></tr>
+    <tr><td class="paramname">RT</td><td><a class="el" href="struct_router_messaging_system_1_1_route.html" title="A route to a function that accepts no parameters and returns nothing. ">Route</a> to compare with the calling <a class="el" href="struct_router_messaging_system_1_1_route.html" title="A route to a function that accepts no parameters and returns nothing. ">Route</a>. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_routes_2_r2_8cs_source.html#l00028">28</a> of file <a class="el" href="_routes_2_r2_8cs_source.html">R2.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">return</span> ((this.<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">Subscriber</a> == RT.Subscriber) &amp;&amp; (<span class="keyword">this</span>.Address == RT.Address) &amp;&amp; (<span class="keyword">this</span>.RouteEvent == RT.RouteEvent));</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="_routes_2_r2_8cs_source.html#l00038">38</a> of file <a class="el" href="_routes_2_r2_8cs_source.html">R2.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">return</span> ((this.<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">Subscriber</a> == RT.Subscriber) &amp;&amp; (<span class="keyword">this</span>.Address == RT.Address) &amp;&amp; (<span class="keyword">this</span>.RouteEvent == RT.RouteEvent));</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
 <div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4_html_a7e9d3e0a1f78bc7ab1d1a6501155e3f8"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.Subscriber</a></div><div class="ttdeci">readonly Component Subscriber</div><div class="ttdoc">Reference to the originator of this route. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r2_8cs_source.html#l00010">R2.cs:10</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -296,11 +305,11 @@ readonly <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b
 </table>
 </div><div class="memdoc">
 
-<p>Checks if the passed object is the same as the calling <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="Route that returns a value of type R and accepts one parameter of type T1 and one parameter of T2...">Route&lt;R, T1, T2&gt;</a>. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns true if Obj is a <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="Route that returns a value of type R and accepts one parameter of type T1 and one parameter of T2...">Route&lt;R, T1, T2&gt;</a> and all attributes are the same as the calling <a class="el" href="struct_router_messaging_system_1_1_route.html" title="Route struct for use with Router Messaging System. ">Route</a>.<br/>
+<p>Checks if the passed object is the same as the calling <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type...">Route&lt;R, T1, T2&gt;</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if Obj is a <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type...">Route&lt;R, T1, T2&gt;</a> and all attributes are the same as the calling <a class="el" href="struct_router_messaging_system_1_1_route.html" title="A route to a function that accepts no parameters and returns nothing. ">Route</a>.<br/>
 </dd>
 <dd>
-Immediately returns false if Obj is not a <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="Route that returns a value of type R and accepts one parameter of type T1 and one parameter of T2...">Route&lt;R, T1, T2&gt;</a> at all.<br/>
+Immediately returns false if Obj is not a <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type...">Route&lt;R, T1, T2&gt;</a> at all.<br/>
  </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -309,12 +318,18 @@ Immediately returns false if Obj is not a <a class="el" href="struct_router_mess
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_routes_2_r2_8cs_source.html#l00036">36</a> of file <a class="el" href="_routes_2_r2_8cs_source.html">R2.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">return</span> ((Obj is Route&lt;R, T1, T2&gt;) &amp;&amp; (this.<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">Subscriber</a> == ((Route&lt;R, T1, T2&gt;)Obj).<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">Subscriber</a>) &amp;&amp; (this.<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a1fd2115262c134f7b028747cabf68c17">Address</a> == ((Route&lt;R, T1, T2&gt;)Obj).<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a1fd2115262c134f7b028747cabf68c17">Address</a>) &amp;&amp; (this.<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ad8da6ad2e47b7568192ab1e693e9e2da">RouteEvent</a> == ((Route&lt;R, T1, T2&gt;)Obj).<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ad8da6ad2e47b7568192ab1e693e9e2da">RouteEvent</a>));</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
-<div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4_html_ad8da6ad2e47b7568192ab1e693e9e2da"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ad8da6ad2e47b7568192ab1e693e9e2da">RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.RouteEvent</a></div><div class="ttdeci">readonly RoutingEvent RouteEvent</div><div class="ttdoc">Value for the RouteEvent that calls this Route&#39;s address. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r2_8cs_source.html#l00014">R2.cs:14</a></div></div>
-<div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4_html_a7e9d3e0a1f78bc7ab1d1a6501155e3f8"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.Subscriber</a></div><div class="ttdeci">readonly Component Subscriber</div><div class="ttdoc">Reference to the originator of this route. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r2_8cs_source.html#l00010">R2.cs:10</a></div></div>
+<p>Definition at line <a class="el" href="_routes_2_r2_8cs_source.html#l00046">46</a> of file <a class="el" href="_routes_2_r2_8cs_source.html">R2.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordtype">bool</span> Result = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keywordflow">if</span> (Obj is Route&lt;R, T1, T2&gt;)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                Route&lt;R, T1, T2&gt; That = (Route&lt;R, T1, T2&gt;)Obj;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                Result = ((this.Subscriber == That.Subscriber) &amp;&amp; (this.<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a1fd2115262c134f7b028747cabf68c17">Address</a> == That.Address) &amp;&amp; (this.RouteEvent == That.RouteEvent));</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">return</span> Result;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
 <div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4_html_a1fd2115262c134f7b028747cabf68c17"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a1fd2115262c134f7b028747cabf68c17">RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.Address</a></div><div class="ttdeci">readonly RoutePointer&lt; R, T1, T2 &gt; Address</div><div class="ttdoc">Reference to the function this route calls. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r2_8cs_source.html#l00012">R2.cs:12</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -340,14 +355,46 @@ Immediately returns false if Obj is not a <a class="el" href="struct_router_mess
 </table>
 </div><div class="memdoc">
 
-<p>Returns a hash of this <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="Route that returns a value of type R and accepts one parameter of type T1 and one parameter of T2...">Route&lt;R, T1, T2&gt;</a>. </p>
+<p>Returns a hash of this <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type...">Route&lt;R, T1, T2&gt;</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>Hash generated from combined member attribute hashes. </dd></dl>
 
-<p>Definition at line <a class="el" href="_routes_2_r2_8cs_source.html#l00043">43</a> of file <a class="el" href="_routes_2_r2_8cs_source.html">R2.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">return</span> (this.<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">Subscriber</a>.GetHashCode() + this.Address.GetHashCode() + this.<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ad8da6ad2e47b7568192ab1e693e9e2da">RouteEvent</a>.GetHashCode());</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
-<div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4_html_ad8da6ad2e47b7568192ab1e693e9e2da"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ad8da6ad2e47b7568192ab1e693e9e2da">RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.RouteEvent</a></div><div class="ttdeci">readonly RoutingEvent RouteEvent</div><div class="ttdoc">Value for the RouteEvent that calls this Route&#39;s address. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r2_8cs_source.html#l00014">R2.cs:14</a></div></div>
+<p>Definition at line <a class="el" href="_routes_2_r2_8cs_source.html#l00061">61</a> of file <a class="el" href="_routes_2_r2_8cs_source.html">R2.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">return</span> (this.<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">Subscriber</a>.GetHashCode() + this.Address.GetHashCode() + this.<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ad8da6ad2e47b7568192ab1e693e9e2da">RouteEvent</a>.GetHashCode());</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4_html_ad8da6ad2e47b7568192ab1e693e9e2da"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ad8da6ad2e47b7568192ab1e693e9e2da">RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.RouteEvent</a></div><div class="ttdeci">readonly RoutingEvent RouteEvent</div><div class="ttdoc">Value for the RouteEvent that calls this route&#39;s address. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r2_8cs_source.html#l00014">R2.cs:14</a></div></div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4_html_a7e9d3e0a1f78bc7ab1d1a6501155e3f8"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.Subscriber</a></div><div class="ttdeci">readonly Component Subscriber</div><div class="ttdoc">Reference to the originator of this route. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r2_8cs_source.html#l00010">R2.cs:10</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a724bd6c24b47bb7c0b1cccf228bd1220"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="struct_router_messaging_system_1_1_route.html">RouterMessagingSystem.Route</a>&lt; R, T1, T2 &gt;.IsDead </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if this route is still alive. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if this route's subscriber is null, otherwise false. </dd></dl>
+
+<p>Definition at line <a class="el" href="_routes_2_r2_8cs_source.html#l00031">31</a> of file <a class="el" href="_routes_2_r2_8cs_source.html">R2.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">return</span> (this.<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">Subscriber</a> == null);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
 <div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4_html_a7e9d3e0a1f78bc7ab1d1a6501155e3f8"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.Subscriber</a></div><div class="ttdeci">readonly Component Subscriber</div><div class="ttdoc">Reference to the originator of this route. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r2_8cs_source.html#l00010">R2.cs:10</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -384,7 +431,7 @@ Immediately returns false if Obj is not a <a class="el" href="struct_router_mess
 </table>
 </div><div class="memdoc">
 
-<p>Contrasts two <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="Route that returns a value of type R and accepts one parameter of type T1 and one parameter of T2...">Route&lt;R, T1, T2&gt;</a>'s for differing attributes. </p>
+<p>Contrasts two <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type...">Route&lt;R, T1, T2&gt;</a>'s for differing attributes. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if any attribute of the left-side operand is different from the respective attribute of the right-side operand.<br/>
 </dd>
 <dd>
@@ -397,10 +444,10 @@ False if all attributes of the left-side operand are the same as their respectiv
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_routes_2_r2_8cs_source.html#l00066">66</a> of file <a class="el" href="_routes_2_r2_8cs_source.html">R2.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">return</span> ((RT1.Subscriber != RT2.Subscriber) || (RT1.Address != RT2.Address) || (RT1.RouteEvent != RT2.RouteEvent));</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="_routes_2_r2_8cs_source.html#l00084">84</a> of file <a class="el" href="_routes_2_r2_8cs_source.html">R2.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">return</span> ((RT1.Subscriber != RT2.Subscriber) || (RT1.Address != RT2.Address) || (RT1.RouteEvent != RT2.RouteEvent));</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -436,7 +483,7 @@ False if all attributes of the left-side operand are the same as their respectiv
 </table>
 </div><div class="memdoc">
 
-<p>Compares two <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="Route that returns a value of type R and accepts one parameter of type T1 and one parameter of T2...">Route&lt;R, T1, T2&gt;</a>'s for equivalent attributes. </p>
+<p>Compares two <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type...">Route&lt;R, T1, T2&gt;</a>'s for equivalent attributes. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if all attributes of the left-side operand are the same as their respective attributes of the right-side operand. </dd>
 <dd>
 False if any attribute of the left-side operand is different from the respective attribute of the right-side operand. </dd></dl>
@@ -448,10 +495,10 @@ False if any attribute of the left-side operand is different from the respective
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_routes_2_r2_8cs_source.html#l00058">58</a> of file <a class="el" href="_routes_2_r2_8cs_source.html">R2.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">return</span> ((RT1.Subscriber == RT2.Subscriber) &amp;&amp; (RT1.Address == RT2.Address) &amp;&amp; (RT1.RouteEvent == RT2.RouteEvent));</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="_routes_2_r2_8cs_source.html#l00076">76</a> of file <a class="el" href="_routes_2_r2_8cs_source.html">R2.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">return</span> ((RT1.Subscriber == RT2.Subscriber) &amp;&amp; (RT1.Address == RT2.Address) &amp;&amp; (RT1.RouteEvent == RT2.RouteEvent));</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -476,21 +523,21 @@ False if any attribute of the left-side operand is different from the respective
 </table>
 </div><div class="memdoc">
 
-<p>Returns a string listing this <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="Route that returns a value of type R and accepts one parameter of type T1 and one parameter of T2...">Route&lt;R, T1, T2&gt;</a>'s routing data. </p>
+<p>Returns a string listing this <a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type...">Route&lt;R, T1, T2&gt;</a>'s routing data. </p>
 <dl class="section return"><dt>Returns</dt><dd>A string containing the subscribing Component, the subscribing event and the callback function. </dd></dl>
 
-<p>Definition at line <a class="el" href="_routes_2_r2_8cs_source.html#l00050">50</a> of file <a class="el" href="_routes_2_r2_8cs_source.html">R2.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">return</span> (<span class="stringliteral">&quot;[&quot;</span> + ((<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">Subscriber</a> != null)? <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">Subscriber</a>.ToString() : <span class="stringliteral">&quot;Null&quot;</span>) + <span class="stringliteral">&quot;, &quot;</span> + <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ad8da6ad2e47b7568192ab1e693e9e2da">RouteEvent</a>.ToString() + <span class="stringliteral">&quot;, &quot;</span> + ((<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a1fd2115262c134f7b028747cabf68c17">Address</a> != null)? <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a1fd2115262c134f7b028747cabf68c17">Address</a>.Method.ToString() : <span class="stringliteral">&quot;Null&quot;</span>) + <span class="stringliteral">&quot;]&quot;</span>);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
-<div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4_html_ad8da6ad2e47b7568192ab1e693e9e2da"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ad8da6ad2e47b7568192ab1e693e9e2da">RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.RouteEvent</a></div><div class="ttdeci">readonly RoutingEvent RouteEvent</div><div class="ttdoc">Value for the RouteEvent that calls this Route&#39;s address. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r2_8cs_source.html#l00014">R2.cs:14</a></div></div>
+<p>Definition at line <a class="el" href="_routes_2_r2_8cs_source.html#l00068">68</a> of file <a class="el" href="_routes_2_r2_8cs_source.html">R2.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">return</span> (<span class="stringliteral">&quot;[&quot;</span> + ((<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">Subscriber</a> != null)? <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">Subscriber</a>.ToString() : <span class="stringliteral">&quot;Null&quot;</span>) + <span class="stringliteral">&quot;, &quot;</span> + <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ad8da6ad2e47b7568192ab1e693e9e2da">RouteEvent</a>.ToString() + <span class="stringliteral">&quot;, &quot;</span> + ((<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a1fd2115262c134f7b028747cabf68c17">Address</a> != null)? <a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a1fd2115262c134f7b028747cabf68c17">Address</a>.Method.ToString() : <span class="stringliteral">&quot;Null&quot;</span>) + <span class="stringliteral">&quot;]&quot;</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
+<div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4_html_ad8da6ad2e47b7568192ab1e693e9e2da"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ad8da6ad2e47b7568192ab1e693e9e2da">RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.RouteEvent</a></div><div class="ttdeci">readonly RoutingEvent RouteEvent</div><div class="ttdoc">Value for the RouteEvent that calls this route&#39;s address. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r2_8cs_source.html#l00014">R2.cs:14</a></div></div>
 <div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4_html_a7e9d3e0a1f78bc7ab1d1a6501155e3f8"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a7e9d3e0a1f78bc7ab1d1a6501155e3f8">RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.Subscriber</a></div><div class="ttdeci">readonly Component Subscriber</div><div class="ttdoc">Reference to the originator of this route. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r2_8cs_source.html#l00010">R2.cs:10</a></div></div>
 <div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4_html_a1fd2115262c134f7b028747cabf68c17"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#a1fd2115262c134f7b028747cabf68c17">RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.Address</a></div><div class="ttdeci">readonly RoutePointer&lt; R, T1, T2 &gt; Address</div><div class="ttdoc">Reference to the function this route calls. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r2_8cs_source.html#l00012">R2.cs:12</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>Project/Assets/Plugins/Router Messaging System/Routes/<a class="el" href="_routes_2_r2_8cs_source.html">R2.cs (620bf00fd81416976d862544cb87f7fc73b2587e)</a></li>
+<li>Project/Assets/Plugins/Router Messaging System/Routes/<a class="el" href="_routes_2_r2_8cs_source.html">R2.cs (073402801cf6fbad9b63fb6c8bb0307050767807)</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -498,7 +545,7 @@ False if any attribute of the left-side operand is different from the respective
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_router_messaging_system.html">RouterMessagingSystem</a></li><li class="navelem"><a class="el" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html">Route< R, T1, T2 ></a></li>
-    <li class="footer">Generated on Thu Apr 24 2014 16:14:14 for Router Messaging System by
+    <li class="footer">Generated on Thu Apr 24 2014 23:18:12 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

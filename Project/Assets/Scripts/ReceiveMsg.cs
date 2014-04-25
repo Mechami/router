@@ -25,6 +25,5 @@ public class ReceiveMsg : MonoBehaviour
 	{
 		int i = (1 + 1);
 		i = ~i;
-		//Debug.Log(i);
 	}
 }

@@ -16,7 +16,7 @@ namespace RouterMessagingSystem
 		public readonly bool IsPoint;
 
 		/** \brief Standard constructor for new AreaMessages. */
-		public AreaMessage(Vector3 OriginCoord, float AreaRadius, RoutingEvent Event)
+		public AreaMessage(Vector3 OriginCoord, float AreaRadius, RoutingEvent Event) : this()
 		{
 			float AbsR = Mathf.Abs(AreaRadius);
 			Origin = OriginCoord;
@@ -26,7 +26,7 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Constructor that constructs a new AreaMessage from a Vector3 and another AreaMessage. */
-		public AreaMessage(Vector3 OriginCoord, AreaMessage AM)
+		public AreaMessage(Vector3 OriginCoord, AreaMessage AM) : this()
 		{
 			Origin = OriginCoord;
 			Radius = AM.Radius;
@@ -35,7 +35,7 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Constructor that constructs a new AreaMessage from a float and another AreaMessage. */
-		public AreaMessage(float AreaRadius, AreaMessage AM)
+		public AreaMessage(float AreaRadius, AreaMessage AM) : this()
 		{
 			float AbsR = Mathf.Abs(AreaRadius);
 			Origin = AM.Origin;
@@ -45,7 +45,7 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Constructor that constructs a new AreaMessage from a RoutingEvent and another AreaMessage. */
-		public AreaMessage(RoutingEvent Event, AreaMessage AM)
+		public AreaMessage(RoutingEvent Event, AreaMessage AM) : this()
 		{
 			Origin = AM.Origin;
 			Radius = AM.Radius;

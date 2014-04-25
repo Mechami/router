@@ -4,8 +4,7 @@ using System.Collections.Generic;
 
 namespace RouterMessagingSystem
 {
-	/** \brief Router that returns R from sending messages and accepts two parameters. */
-	/// \todo Redocument this.
+	/// \brief A router that operates on routes that accept one parameter each of type T1 and T2 and return an object of type R.
 	public static class Router<R, T1, T2>
 	{
 		private static Dictionary<RoutingEvent, RoutePointer<R, T1, T2>> PointerTable = null;

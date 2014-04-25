@@ -3,7 +3,7 @@ using RouterMessagingSystem;
 
 public class CheckTest : MonoBehaviour
 {
-	public Component Com = null;
+	private MessageTarget MT = new MessageTarget();
 
 	public void Awake()
 	{
@@ -12,7 +12,7 @@ public class CheckTest : MonoBehaviour
 
 	public void Update()
 	{
-		Router.RouteMessageAscendants((null as Component), RoutingEvent.Test1);
+		Router.RouteMessageAscendants(MT, RoutingEvent.Test1);
 	}
 
 	public void Temp()

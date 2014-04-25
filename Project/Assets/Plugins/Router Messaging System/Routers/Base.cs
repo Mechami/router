@@ -6,10 +6,10 @@ using System.Collections.Generic;
 /** \brief Namespace for Router Messaging System */
 namespace RouterMessagingSystem
 {
-	/** \brief Router that calls basic functions only. */
+	/// \brief A router that operates on standard routes.
 	/// \todo Implement RouteMessageContinuously <- Reconsider this.\n
 	/// \todo Determine if MonoBehaviour->Component boxing is as costly as Struct->Object boxing.\n
-	/// \todo Change RouteMessageAreaBand to only route messages if band has volume.
+	/// \todo Find a way to prevent Router from calling private functions.
 	public static class Router
 	{
 		private static Dictionary<RoutingEvent, RoutePointer> PointerTable = null;
@@ -76,24 +76,17 @@ namespace RouterMessagingSystem
 		/// \returns Int representing the Routes registered.
 		public static int RouteCount()
 		{
-			// Debating on moving TotalRoutes into a function-wide scope.
-			// That way it could be assigned inside the if block should the tables exist and remain zero otherwise.
-			// Then only one return statement would be needed, but an int would be created regardless of whether the tables exist or not.
+			int TotalRoutes = 0;
+
 			if (TablesExist)
 			{
-				int TotalRoutes = 0;
-
 				List<Route>[] Lists = new List<Route>[RouteTable.Values.Count];
 				RouteTable.Values.CopyTo(Lists, 0);
 
 				Array.ForEach(Lists, x => TotalRoutes += x.Count);
+			}
 
-				return TotalRoutes;
-			}
-			else
-			{
-				return 0;
-			}
+			return TotalRoutes;
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers. */
@@ -110,28 +103,13 @@ namespace RouterMessagingSystem
 		/** \brief Routes a message of the specified event to the specified GameObject and its children. */
 		/// Both direct and indirect children of the specified GameObject receive the event.
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
-		public static void RouteMessageDescendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */)
+		public static void RouteMessageDescendants(MessageTarget Scope /**< MessageTarget specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
 			CleanDeadRoutes(EventType);
 
-			if (TablesExist && ScopeIsValid(Scope) && EventIsPopulated(EventType))
+			if (TablesExist && Scope.IsValid && EventIsPopulated(EventType))
 			{
-				List<Route> RT = RouteTable[EventType].FindAll(x => x.Subscriber.transform.IsChildOf(Scope.transform));
-				RT.ForEach(x => x.Address());
-			}
-		}
-
-		/** \brief Routes a message of the specified event to the specified GameObject and its children. */
-		/// Both direct and indirect children of the specified GameObject receive the event.\n
-		/// Accepts a Component that is used to obtain a reference to the target GameObject.
-		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
-		public static void RouteMessageDescendants<T>(T Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component. */, RoutingEvent EventType /**< Type of event to send. */) where T: Component
-		{
-			CleanDeadRoutes(EventType);
-
-			if (TablesExist && ScopeIsValid<T>(Scope) && EventIsPopulated(EventType))
-			{
-				List<Route> RT = RouteTable[EventType].FindAll(x => x.Subscriber.transform.IsChildOf(Scope.transform));
+				List<Route> RT = RouteTable[EventType].FindAll(x => x.Subscriber.transform.IsChildOf(Scope.Recipient));
 				RT.ForEach(x => x.Address());
 			}
 		}
@@ -139,28 +117,13 @@ namespace RouterMessagingSystem
 		/** \brief Routes a message of the specified event to the specified GameObject and its parents. */
 		/// Both direct and indirect parents of the specified GameObject receive the event.\n
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
-		public static void RouteMessageAscendants(GameObject Scope /**< GameObject specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */)
+		public static void RouteMessageAscendants(MessageTarget Scope /**< MessageTarget specifying the scope of the message. */, RoutingEvent EventType /**< Type of event to send. */)
 		{
 			CleanDeadRoutes(EventType);
 
-			if (TablesExist && ScopeIsValid(Scope) && EventIsPopulated(EventType))
+			if (TablesExist && Scope.IsValid && EventIsPopulated(EventType))
 			{
-				List<Route> RT = RouteTable[EventType].FindAll(x => Scope.transform.IsChildOf(x.Subscriber.transform));
-				RT.ForEach(x => x.Address());
-			}
-		}
-
-		/** \brief Routes a message of the specified event to the specified GameObject and its parents. */
-		/// Both direct and indirect parents of the specified GameObject receive the event.\n
-		/// Accepts a Component that is used to obtain a reference to the target GameObject.
-		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
-		public static void RouteMessageAscendants<T>(T Scope /**< Component specifying the scope of the message.\n Can be of any type derived from Component.*/, RoutingEvent EventType /**< Type of event to send. */) where T: Component
-		{
-			CleanDeadRoutes(EventType);
-
-			if (TablesExist && ScopeIsValid<T>(Scope) && EventIsPopulated(EventType))
-			{
-				List<Route> RT = RouteTable[EventType].FindAll(x => Scope.transform.IsChildOf(x.Subscriber.transform));
+				List<Route> RT = RouteTable[EventType].FindAll(x => Scope.Recipient.IsChildOf(x.Subscriber.transform));
 				RT.ForEach(x => x.Address());
 			}
 		}
@@ -194,7 +157,6 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers inside a ring specified by an inner and outer radius. */
-		/// Uses the specified Vector3 as the origin point.
 		/// \note Only works for subscribed GameObjects.
 		public static void RouteMessageAreaBand(AreaBandMessage MessageParameters)
 		{
@@ -209,7 +171,6 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers outside a ring specified by an inner and outer radius. */
-		/// Uses the specified Vector3 as the origin point.
 		/// \note Only works for subscribed GameObjects.
 		public static void RouteMessageInverseAreaBand(AreaBandMessage MessageParameters)
 		{
@@ -355,16 +316,6 @@ namespace RouterMessagingSystem
 		private static bool EventIsRegistered(RoutingEvent EventType)
 		{
 			return (RouteTable.ContainsKey(EventType) && (RouteTable[EventType] != null));
-		}
-
-		private static bool ScopeIsValid(GameObject Scope)
-		{
-			return (Scope != null);
-		}
-
-		private static bool ScopeIsValid<T>(T Scope) where T: Component
-		{
-			return (Scope != null);
 		}
 	}
 }

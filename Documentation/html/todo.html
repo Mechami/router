@@ -88,7 +88,7 @@ $(document).ready(function(){initNavTree('todo.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -104,39 +104,29 @@ $(document).ready(function(){initNavTree('todo.html','');});
 <div class="contents">
 <div class="textblock"><p>General changes:</p>
 <ul>
-<li>Propagate changes from base to RX routers.</li>
-<li>Propagate changes from base to RX routes.</li>
+<li>Propagate changes from R0 to RX routers.</li>
+<li>Determine if IsValid can cause problems compared to IsDead.</li>
 <li>Redocument everything.</li>
 </ul>
 <hr/>
 <p>Specific changes:</p>
 <dl class="reflist">
-<dt><a class="anchor" id="_todo000001"></a>Class <a class="el" href="struct_router_messaging_system_1_1_area_band_message.html">RouterMessagingSystem.AreaBandMessage</a>  </dt>
-<dd>Implement HasVolume for route checking.  </dd>
-<dt><a class="anchor" id="_todo000002"></a>Class <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>  </dt>
+<dt><a class="anchor" id="_todo000001"></a>Class <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>  </dt>
 <dd><p class="startdd">Implement RouteMessageContinuously &lt;- Reconsider this.<br/>
  </p>
 <p>Determine if MonoBehaviour-&gt;Component boxing is as costly as Struct-&gt;Object boxing.<br/>
  </p>
-<p class="enddd">Change RouteMessageAreaBand to only route messages if band has volume.  </p>
+<p class="enddd">Find a way to prevent Router from calling private functions.  </p>
 </dd>
-<dt><a class="anchor" id="_todo000003"></a>Class <a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html">RouterMessagingSystem.Router&lt; R &gt;</a>  </dt>
-<dd><p class="startdd">Redocument this. </p>
-<p class="enddd">Add RouteMessage(RoutingEvent, Queue)  </p>
-</dd>
-<dt><a class="anchor" id="_todo000004"></a>Class <a class="el" href="class_router_messaging_system_1_1_router_3_01_r_00_01_t_01_4.html">RouterMessagingSystem.Router&lt; R, T &gt;</a>  </dt>
-<dd>Redocument this.  </dd>
-<dt><a class="anchor" id="_todo000005"></a>Class <a class="el" href="class_router_messaging_system_1_1_router_3_01_r_00_01_t1_00_01_t2_01_4.html">RouterMessagingSystem.Router&lt; R, T1, T2 &gt;</a>  </dt>
-<dd>Redocument this.  </dd>
-<dt><a class="anchor" id="_todo000006"></a>Class <a class="el" href="class_router_messaging_system_1_1_router_3_01_r_00_01_t1_00_01_t2_00_01_t3_01_4.html">RouterMessagingSystem.Router&lt; R, T1, T2, T3 &gt;</a>  </dt>
-<dd>Redocument this. </dd>
+<dt><a class="anchor" id="_todo000002"></a>Class <a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html">RouterMessagingSystem.Router&lt; R &gt;</a>  </dt>
+<dd>Finish implementing OutputList and OutputQueue overloads. </dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Apr 24 2014 16:14:14 for Router Messaging System by
+    <li class="footer">Generated on Thu Apr 24 2014 23:18:12 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

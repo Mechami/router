@@ -3,19 +3,17 @@ using System;
 
 namespace RouterMessagingSystem
 {
-	/** \brief Route struct for use with Router Messaging System */
-	/// \details Routes encapsulate the subscribing Component, the subscribed function and the subscribed event all in one object.\n
-	/// \details Multiple Routes can be used to subscribe a Component to multiple events at once.\n
-	/// \note It is not advised to pass a multicast delegate as a RoutePointer.
-	public struct Route : IEquatable<Route>
+	/// \brief A route to a function that accepts no parameters and returns nothing.
+	/// \details This is the standard route.
+	public struct Route : IRoutable<Route>
 	{
 		/// Reference to the originator of this route.
 		public readonly Component Subscriber;
 		/// Reference to the function this route calls.
 		public readonly RoutePointer Address;
-		/// Value for the RouteEvent that calls this Route's address.
+		/// Value for the RouteEvent that calls this route's address.
 		public readonly RoutingEvent RouteEvent;
-		/// Value representing the validity of this Route.
+		/// Value representing the validity of this route.
 		public readonly bool IsValid;
 
 		/// \brief Constructor that accepts a Component, a RoutePointer and a RoutingEvent.
@@ -24,12 +22,12 @@ namespace RouterMessagingSystem
 		public Route(Component RouteSubscriber /**< Reference to the subscribing Component.\n Can be of any type derived from Component. */, RoutePointer RoutingAddress /**< Reference to a function that this route calls.\n Must return void and accept no parameters. */, RoutingEvent Event /**< Value stating which event calls this Route. */) : this()
 		{
 			Subscriber = RouteSubscriber;
-			Address = RoutingAddress;
+			Address = (RoutePointer)(RoutingAddress.GetInvocationList()[0]);
 			RouteEvent = Event;
 			IsValid = ((this.Subscriber != null) && (this.Address != null) && (this.RouteEvent != RoutingEvent.Null));
 		}
 
-		/// \brief Checks if this Route is still alive.
+		/// \brief Checks if this route is still alive.
 		/// \return True if this route's subscriber is null, otherwise false.
 		public bool IsDead()
 		{
@@ -50,15 +48,15 @@ namespace RouterMessagingSystem
 		{
 			// Originally this was a one-line series of shortcircuit &&s, but Obj was getting typecasted to Route 3 times.
 			// This changes causes Obj be typecasted to a Route only once.
+			bool Result = false;
+
 			if (Obj is Route)
 			{
 				Route That = (Route)Obj;
-				return ((this.Subscriber == That.Subscriber) && (this.Address == That.Address) && (this.RouteEvent == That.RouteEvent));
+				Result = ((this.Subscriber == That.Subscriber) && (this.Address == That.Address) && (this.RouteEvent == That.RouteEvent));
 			}
-			else
-			{
-				return false;
-			}
+
+			return Result;
 		}
 
 		/// \brief Returns a hash of this Route.
