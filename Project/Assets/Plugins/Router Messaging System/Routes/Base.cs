@@ -13,8 +13,16 @@ namespace RouterMessagingSystem
 		public readonly RoutePointer Address;
 		/// Value for the RouteEvent that calls this route's address.
 		public readonly RoutingEvent RouteEvent;
-		/// Value representing the validity of this route.
+		/// Value representing the validity of this route at creation.
 		public readonly bool IsValid;
+		/// Value representing the current status of this route.
+		public bool IsDead
+		{
+			get
+			{
+				return (this.Subscriber == null);
+			}
+		}
 
 		/// \brief Constructor that accepts a Component, a RoutePointer and a RoutingEvent.
 		/// \warning Do not pass null as any parameters.\n
@@ -25,13 +33,6 @@ namespace RouterMessagingSystem
 			Address = (RoutePointer)(RoutingAddress.GetInvocationList()[0]);
 			RouteEvent = Event;
 			IsValid = ((this.Subscriber != null) && (this.Address != null) && (this.RouteEvent != RoutingEvent.Null));
-		}
-
-		/// \brief Checks if this route is still alive.
-		/// \return True if this route's subscriber is null, otherwise false.
-		public bool IsDead()
-		{
-			return (this.Subscriber == null);
 		}
 
 		/// \brief Checks if the attributes of the passed Route are the same as the calling Route's attributes.

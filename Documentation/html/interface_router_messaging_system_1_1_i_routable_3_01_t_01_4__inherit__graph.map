@@ -1,0 +1,7 @@
+<map id="RouterMessagingSystem.IRoutable&lt; T &gt;" name="RouterMessagingSystem.IRoutable&lt; T &gt;">
+<area shape="rect" id="node2" href="$struct_router_messaging_system_1_1_route.html" title="A route to a function that accepts no parameters and returns nothing. " alt="" coords="329,5,535,32"/>
+<area shape="rect" id="node3" href="$struct_router_messaging_system_1_1_route_3_01_r_01_4.html" title="A route to a function that accepts no parameters and returns an object of type R. ..." alt="" coords="313,56,551,83"/>
+<area shape="rect" id="node4" href="$struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html" title="A route to a function that accepts one parameter of type T and returns an object of type R..." alt="" coords="329,107,535,149"/>
+<area shape="rect" id="node5" href="$struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html" title="A route to a function that accepts one parameter each of type T1 and T2 and returns an object of type..." alt="" coords="329,173,535,214"/>
+<area shape="rect" id="node6" href="$struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_00_01_t3_01_4.html" title="A route to a function that accepts one parameter each of type T1, T2 and T3 and returns an object of ..." alt="" coords="329,238,535,279"/>
+</map>

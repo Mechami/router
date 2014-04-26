@@ -26,7 +26,6 @@
 	\page todo Todo List
 	\details General changes:
 		- Propagate changes from R0 to RX routers.
-		- Determine if IsValid can cause problems compared to IsDead.
 		- Redocument everything.
 		.
 	___

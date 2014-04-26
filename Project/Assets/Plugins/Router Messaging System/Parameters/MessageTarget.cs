@@ -8,6 +8,8 @@ namespace RouterMessagingSystem
 	{
 		/// \brief Recipient of the message.
 		public readonly Transform Recipient;
+		/// \brief Event to send to the recipient.
+		public readonly RoutingEvent MessageEvent;
 		/// \brief Value stating if the recipient is valid.
 		public bool IsValid
 		{
@@ -18,15 +20,17 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Constructor for new MessageTargets that accepts a GameObject. */
-		public MessageTarget(GameObject MessageRecipient) : this()
+		public MessageTarget(GameObject MessageRecipient, RoutingEvent Event) : this()
 		{
 			this.Recipient = MessageRecipient.transform;
+			this.MessageEvent = Event;
 		}
 
 		/** \brief Constructor for new MessageTargets that accepts a Component. */
-		public MessageTarget(Component MessageRecipient) : this()
+		public MessageTarget(Component MessageRecipient, RoutingEvent Event) : this()
 		{
 			this.Recipient = MessageRecipient.transform;
+			this.MessageEvent = Event;
 		}
 
 		/// \brief Compares the calling MessageTarget's attributes to the specified MessageTarget's attributes.

@@ -7,9 +7,9 @@ using System.Collections.Generic;
 namespace RouterMessagingSystem
 {
 	/// \brief A router that operates on standard routes.
-	/// \todo Implement RouteMessageContinuously <- Reconsider this.\n
+	/// \todo Implement RouteMessageContinuously. <- Reconsider this\n
 	/// \todo Determine if MonoBehaviour->Component boxing is as costly as Struct->Object boxing.\n
-	/// \todo Find a way to prevent Router from calling private functions.
+	/// \todo Find a way to prevent Router from calling private functions. <- Reconsider this
 	public static class Router
 	{
 		private static Dictionary<RoutingEvent, RoutePointer> PointerTable = null;
@@ -284,7 +284,7 @@ namespace RouterMessagingSystem
 			// With the check this ranges from a max of 4(O(n)) to 1 O(n) operation.
 			if (TablesExist && EventIsPopulated(EventType) && TableIsPolluted(EventType))
 			{
-				Route[] DeadRoutes = Array.FindAll(RouteTable[EventType].ToArray(), x => x.IsDead());
+				Route[] DeadRoutes = Array.FindAll(RouteTable[EventType].ToArray(), x => x.IsDead);
 				Array.ForEach(DeadRoutes, x => {DeregisterRoute(x); DetachAddress(x);});
 				TablesExist = (TablesExist? DeconstructTables() : TablesExist);
 			}
@@ -293,7 +293,7 @@ namespace RouterMessagingSystem
 		// This check was moved to its own function because it was causing the code to be compiled into a nested if-statement.
 		private static bool TableIsPolluted(RoutingEvent EventType)
 		{
-			return RouteTable[EventType].TrueForAll(x => !x.IsDead());
+			return RouteTable[EventType].TrueForAll(x => !x.IsDead);
 		}
 
 		/// \internal Misc Functions

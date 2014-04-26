@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['radius',['Radius',['../struct_router_messaging_system_1_1_area_message.html#aa34e8658fca3a67b884b26446651ddae',1,'RouterMessagingSystem::AreaMessage']]],
-  ['recipient',['Recipient',['../struct_router_messaging_system_1_1_message_target.html#a39e7bbbc3144498771a697cb8a34491b',1,'RouterMessagingSystem::MessageTarget']]],
-  ['routeevent',['RouteEvent',['../struct_router_messaging_system_1_1_route.html#a33a154b5c9c8b9c281cb8529017bf68e',1,'RouterMessagingSystem.Route.RouteEvent()'],['../struct_router_messaging_system_1_1_route_3_01_r_01_4.html#a8dcfd3e66c54df1a9d20997249f5b60e',1,'RouterMessagingSystem.Route&lt; R &gt;.RouteEvent()'],['../struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html#a852878296a3e4de0d14a7e00a70a31b3',1,'RouterMessagingSystem.Route&lt; R, T &gt;.RouteEvent()'],['../struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_01_4.html#ad8da6ad2e47b7568192ab1e693e9e2da',1,'RouterMessagingSystem.Route&lt; R, T1, T2 &gt;.RouteEvent()'],['../struct_router_messaging_system_1_1_route_3_01_r_00_01_t1_00_01_t2_00_01_t3_01_4.html#a34875b9187b9423cbfde8b4e740ed244',1,'RouterMessagingSystem.Route&lt; R, T1, T2, T3 &gt;.RouteEvent()']]]
+  ['origin',['Origin',['../struct_router_messaging_system_1_1_area_band_message.html#a6dcd355ac82437b1e4ab8a9fac40dc6d',1,'RouterMessagingSystem.AreaBandMessage.Origin()'],['../struct_router_messaging_system_1_1_area_message.html#ab0d9a861f7b8fd77757d28470b9ceceb',1,'RouterMessagingSystem.AreaMessage.Origin()']]],
+  ['outerradius',['OuterRadius',['../struct_router_messaging_system_1_1_area_band_message.html#a114994cda02c498a60fe3e906c45e0cd',1,'RouterMessagingSystem::AreaBandMessage']]]
 ];

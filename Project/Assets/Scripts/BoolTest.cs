@@ -20,7 +20,7 @@ public class BoolTest : MonoBehaviour
 	private void TestRT(Route LRT)
 	{
 		Debug.Log(LRT.IsValid? "Valid." : "Invalid.");
-		Debug.Log(LRT.IsDead()? "Dead Route." : "Live Route.");
+		Debug.Log(LRT.IsDead? "Dead Route." : "Live Route.");
 	}
 
 	public void Dummy()
