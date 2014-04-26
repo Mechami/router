@@ -2,6 +2,7 @@ var hierarchy =
 [
     [ "RouterMessagingSystem.AreaBandMessage", "struct_router_messaging_system_1_1_area_band_message.html", null ],
     [ "RouterMessagingSystem.AreaMessage", "struct_router_messaging_system_1_1_area_message.html", null ],
+    [ "RouterMessagingSystem.Hub", "class_router_messaging_system_1_1_hub.html", null ],
     [ "RouterMessagingSystem.IRoutable< T >", "interface_router_messaging_system_1_1_i_routable_3_01_t_01_4.html", [
       [ "RouterMessagingSystem.Route", "struct_router_messaging_system_1_1_route.html", null ],
       [ "RouterMessagingSystem.Route< R >", "struct_router_messaging_system_1_1_route_3_01_r_01_4.html", null ],

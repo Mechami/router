@@ -12,9 +12,10 @@
 		\details Components can register multiple Routes with the Router to subscribe to multiple events.
 
 	\page routers Routers
-		Router internally maintains routing tables for all registered Routes.\n
-		These tables do not exists until the first Route has been registered.\n
-		If all Routes are removed then Router will destroy these tables and recreate them again when they are needed.
+		Routers are the base system in RMS as they are used be to pass messages between objects.
+		Routers internally maintain routing tables for all registered routes.\n
+		These tables do not exists until the first route has been registered.\n
+		If all routes are removed then the router will destroy these tables and recreate them again when they are needed.
 
 	\page routes Routes
 		Routes are the structs used by Router to register and access subscribers.\n
@@ -23,9 +24,15 @@
 		A Route is considered valid as long as all three of this fields are non-null.
 		Components can create any number of Routes to subscribe multiple functions to multiple events; however, when constructing a Route if you pass a multicast delegate then the Route will only use the delegate at index 0 in the invocation list.
 
+	\page hub Hubs
+		Hubs are lightweight routers designed to handle message passing within objects.\n
+		A hub component is attached to a GameObject and that GameObject's components can then use the hub to pass messages between each other.
+
 	\page todo Todo List
 	\details General changes:
 		- Propagate changes from R0 to RX routers.
+		- Propagate changes from Base to RX routes.
+		- Implement table destruction for when the sole route in a router dies.
 		- Redocument everything.
 		.
 	___

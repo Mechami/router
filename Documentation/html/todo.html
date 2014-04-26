@@ -105,20 +105,25 @@ $(document).ready(function(){initNavTree('todo.html','');});
 <div class="textblock"><p>General changes:</p>
 <ul>
 <li>Propagate changes from R0 to RX routers.</li>
-<li>Determine if IsValid can cause problems compared to IsDead.</li>
+<li>Propagate changes from Base to RX routes.</li>
+<li>Implement table destruction for when the sole route in a router dies.</li>
 <li>Redocument everything.</li>
 </ul>
 <hr/>
 <p>Specific changes:</p>
 <dl class="reflist">
-<dt><a class="anchor" id="_todo000001"></a>Class <a class="el" href="interface_router_messaging_system_1_1_i_routable_3_01_t_01_4.html">RouterMessagingSystem.IRoutable&lt; T &gt;</a>  </dt>
+<dt><a class="anchor" id="_todo000001"></a>Class <a class="el" href="class_router_messaging_system_1_1_hub.html">RouterMessagingSystem.Hub</a>  </dt>
+<dd>Implement cleanup system for dead components.  </dd>
+<dt><a class="anchor" id="_todo000002"></a>Class <a class="el" href="interface_router_messaging_system_1_1_i_routable_3_01_t_01_4.html">RouterMessagingSystem.IRoutable&lt; T &gt;</a>  </dt>
 <dd>Clean this up.  </dd>
-<dt><a class="anchor" id="_todo000002"></a>Class <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>  </dt>
+<dt><a class="anchor" id="_todo000003"></a>Class <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>  </dt>
 <dd><p class="startdd">Implement RouteMessageContinuously. &lt;- Reconsider this<br/>
  </p>
 <p>Determine if MonoBehaviour-&gt;Component boxing is as costly as Struct-&gt;Object boxing.<br/>
  </p>
-<p class="enddd">Find a way to prevent Router from calling private functions. &lt;- Reconsider this </p>
+<p>Find a way to prevent Router from calling private functions. &lt;- Reconsider this </p>
+<p>Refactor KeyHasAddress logic. </p>
+<p class="enddd">Consider changing Router to non-static to allow for "team" routing. </p>
 </dd>
 </dl>
 </div></div><!-- contents -->
@@ -126,7 +131,7 @@ $(document).ready(function(){initNavTree('todo.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Apr 25 2014 23:39:54 for Router Messaging System by
+    <li class="footer">Generated on Sat Apr 26 2014 14:39:53 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

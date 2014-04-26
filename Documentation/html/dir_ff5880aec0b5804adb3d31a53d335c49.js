@@ -6,6 +6,8 @@ var dir_ff5880aec0b5804adb3d31a53d335c49 =
     [ "CheckTest.cs", "_check_test_8cs_source.html", null ],
     [ "CompareTest.cs", "_compare_test_8cs_source.html", null ],
     [ "CountTest.cs", "_count_test_8cs_source.html", null ],
+    [ "HashTest.cs", "_hash_test_8cs_source.html", null ],
+    [ "HubTest.cs", "_hub_test_8cs_source.html", null ],
     [ "MultiThreadTest.cs", "_multi_thread_test_8cs_source.html", null ],
     [ "PrivateRouteTest.cs", "_private_route_test_8cs_source.html", null ],
     [ "ReceiveMsg.cs", "_receive_msg_8cs_source.html", null ],

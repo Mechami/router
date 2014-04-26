@@ -11,10 +11,10 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-34 162,-34 162,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:href="class_router_messaging_system_1_1_router_3_01_r_00_01_t1_00_01_t2_01_4.html" target="_top" xlink:title="A router that operates on routes that accept one parameter each of type T1 and T2 and return an objec...">
+<g id="a_node1"><a xlink:href="class_router_messaging_system_1_1_router_3_01_r_00_01_t_01_4.html" target="_top" xlink:title="A router that operates on routes that accept one parameter of type T and return an object of type R...">
 <polygon fill="white" stroke="black" points="0,-0 0,-30 158,-30 158,-0 0,-0"/>
 <text text-anchor="start" x="8" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">RouterMessagingSystem.Router</text>
-<text text-anchor="middle" x="79" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; R, T1, T2 &gt;</text>
+<text text-anchor="middle" x="79" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; R, T &gt;</text>
 </a>
 </g>
 </g>

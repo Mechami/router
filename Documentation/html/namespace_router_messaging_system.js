@@ -1,5 +1,6 @@
 var namespace_router_messaging_system =
 [
+    [ "Hub", "class_router_messaging_system_1_1_hub.html", null ],
     [ "IRoutable< T >", "interface_router_messaging_system_1_1_i_routable_3_01_t_01_4.html", null ],
     [ "AreaBandMessage", "struct_router_messaging_system_1_1_area_band_message.html", "struct_router_messaging_system_1_1_area_band_message" ],
     [ "AreaMessage", "struct_router_messaging_system_1_1_area_message.html", "struct_router_messaging_system_1_1_area_message" ],

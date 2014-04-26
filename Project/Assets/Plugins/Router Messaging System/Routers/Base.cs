@@ -1,6 +1,5 @@
 using UnityEngine;
 using System;
-using System.Threading;
 using System.Collections.Generic;
 
 /** \brief Namespace for Router Messaging System */
@@ -10,6 +9,8 @@ namespace RouterMessagingSystem
 	/// \todo Implement RouteMessageContinuously. <- Reconsider this\n
 	/// \todo Determine if MonoBehaviour->Component boxing is as costly as Struct->Object boxing.\n
 	/// \todo Find a way to prevent Router from calling private functions. <- Reconsider this
+	/// \todo Refactor KeyHasAddress logic.
+	/// \todo Consider changing Router to non-static to allow for "team" routing.
 	public static class Router
 	{
 		private static Dictionary<RoutingEvent, RoutePointer> PointerTable = null;
