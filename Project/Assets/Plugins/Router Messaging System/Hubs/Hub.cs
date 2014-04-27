@@ -13,6 +13,7 @@ namespace RouterMessagingSystem
 	{
 		private Dictionary<RoutingEvent, RoutePointer> PointerTable = null;
 		private bool TablesExist = false;
+		public bool PrintDebugOutput = true; // Find a more elegant way to do this.
 
 		/// \brief Registers a new route with the hub.
 		/// Prints an error if the specified route cannot be registered.
@@ -24,7 +25,7 @@ namespace RouterMessagingSystem
 
 			if (External || RouteIsRegistered(NewRoute))
 			{
-				Debug.LogError("[" + this + "] Cannot register " + (Dead? "dead" : (External? "external" : (NewRoute.IsValid? "duplicate" : "invalid"))) + " route " + NewRoute + ".", this);
+				PrintError("[" + this + "] Cannot register " + (Dead? "dead" : (External? "external" : (NewRoute.IsValid? "duplicate" : "invalid"))) + " route " + NewRoute + ".", this);
 			}
 			else
 			{
@@ -44,7 +45,7 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				Debug.LogError("[" + this + "] Cannot remove " + (Dead? "dead" : (External? "external" : (OldRoute.IsValid? "non-existant" : "invalid"))) + " route " + OldRoute + ".", this);
+				PrintError("[" + this + "] Cannot remove " + (Dead? "dead" : (External? "external" : (OldRoute.IsValid? "non-existant" : "invalid"))) + " route " + OldRoute + ".", this);
 			}
 
 			TablesExist = (TablesExist? DeconstructTable() : TablesExist);
@@ -59,7 +60,7 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				Debug.LogWarning("[" + this + "] Cannot broadcast messages as no routes are registered under event " + EventType + ".", this);
+				PrintWarning("[" + this + "] Cannot broadcast messages as no routes are registered under event " + EventType + ".", this);
 			}
 		}
 
@@ -73,21 +74,22 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				Debug.LogWarning("[" + this + "] Cannot broadcast messages as no routes are registered under event " + EventType + ".", this);
+				PrintWarning("[" + this + "] Cannot broadcast messages as no routes are registered under event " + EventType + ".", this);
 			}
 
-			
 			for (int i = 0; i < this.transform.childCount; i++)
 			{
-				Hub ChildHub = Hub.GetHub(this.transform.GetChild(i));
+				Transform Child = this.transform.GetChild(i);
+				Hub ChildHub = Hub.GetHub(Child);
 
 				if (ChildHub != null)
 				{
 					ChildHub.BroadcastDownwards(EventType);
 				}
-
-				// Find a way to speed this segment up.
-				//BroadcastDown(this.transform.GetChild(i), EventType);
+				/* else
+				{
+					UseTempHub(Child, EventType);
+				} */
 			}
 		}
 
@@ -101,7 +103,7 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				Debug.LogWarning("[" + this + "] Cannot broadcast messages as no routes are registered under event " + EventType + ".", this);
+				PrintWarning("[" + this + "] Cannot broadcast messages as no routes are registered under event " + EventType + ".", this);
 			}
 
 			Hub ParentHub = Hub.GetHub(this.transform.parent);
@@ -126,25 +128,13 @@ namespace RouterMessagingSystem
 			return (CP != null)? (CP.GetComponent<Hub>()?? CP.gameObject.AddComponent<Hub>()) : null;
 		}
 
-		private void BroadcastDown(Transform TR, RoutingEvent EventType)
+		private void UseTempHub(Transform TR, RoutingEvent EventType)
 		{
-			Hub ChildHub = Hub.GetHub(TR);
-
-			if (ChildHub != null)
+			if (TR != null)
 			{
-				ChildHub.BroadcastDownwards(EventType);
-			}
-			else
-			{
-				BroadcastToSubChildren(TR, EventType);
-			}
-		}
-
-		private void BroadcastToSubChildren(Transform TR, RoutingEvent EventType)
-		{
-			for (int i = 0; i < TR.childCount; i++)
-			{
-				BroadcastDown(TR.GetChild(i), EventType);
+				Hub TempHub = Hub.GetOrAddHub(TR);
+				TempHub.BroadcastDownwards(EventType);
+				Component.Destroy(TempHub, 0f);
 			}
 		}
 
@@ -200,6 +190,22 @@ namespace RouterMessagingSystem
 		private bool KeyHasAddress(RoutingEvent EventType)
 		{
 			return (PointerTable.ContainsKey(EventType) && (PointerTable[EventType] != null));
+		}
+
+		private void PrintError(string Input, Hub InputHub)
+		{
+			if (PrintDebugOutput)
+			{
+				Debug.LogError(Input, InputHub);
+			}
+		}
+
+		private void PrintWarning(string Input, Hub InputHub)
+		{
+			if (PrintDebugOutput)
+			{
+				Debug.LogWarning(Input, InputHub);
+			}
 		}
 	}
 }
