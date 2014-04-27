@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Router Messaging System: Project/Assets/Plugins/Router Messaging System/Routers/R0.cs (426982a44662dd3b24ca5183d7c13cc18a30a1d8) Source File</title>
+<title>Router Messaging System: Project/Assets/Plugins/Router Messaging System/Routers/R0.cs (34857230846c55a1543188797ad248ef120e01cb) Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -450,7 +450,7 @@ $(document).ready(function(){initNavTree('_routers_2_r0_8cs_source.html','');});
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            }</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        }</div>
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> List&lt;R&gt; <a class="code" href="class_router_messaging_system_1_1_router.html#af5717979f3c309b0ebafbfa6390376f1">RouteMessageAreaBand</a>(AreaBandMessage MessageParameters)</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> List&lt;R&gt; <a class="code" href="class_router_messaging_system_1_1_router.html#af5717979f3c309b0ebafbfa6390376f1">RouteMessageAreaBand</a>(AreaBandMessage MessageParameters )</div>
 <div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        {</div>
 <div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;            CleanDeadRoutes(MessageParameters.AreaEvent);</div>
 <div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;</div>
@@ -473,7 +473,7 @@ $(document).ready(function(){initNavTree('_routers_2_r0_8cs_source.html','');});
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            <span class="keywordflow">return</span> Results;</div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        }</div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#af5717979f3c309b0ebafbfa6390376f1">RouteMessageAreaBand</a>(AreaBandMessage MessageParameters, out List&lt;R&gt; OutputList )</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#af5717979f3c309b0ebafbfa6390376f1">RouteMessageAreaBand</a>(AreaBandMessage MessageParameters , out List&lt;R&gt; OutputList )</div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        {</div>
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;            CleanDeadRoutes(MessageParameters.AreaEvent);</div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;            OutputList = null;</div>
@@ -493,7 +493,7 @@ $(document).ready(function(){initNavTree('_routers_2_r0_8cs_source.html','');});
 <div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;            }</div>
 <div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;        }</div>
 <div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#af5717979f3c309b0ebafbfa6390376f1">RouteMessageAreaBand</a>(AreaBandMessage MessageParameters, Queue&lt;R&gt; OutputQueue )</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#af5717979f3c309b0ebafbfa6390376f1">RouteMessageAreaBand</a>(AreaBandMessage MessageParameters , Queue&lt;R&gt; OutputQueue )</div>
 <div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;        {</div>
 <div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;            CleanDeadRoutes(MessageParameters.AreaEvent);</div>
 <div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;</div>
@@ -505,7 +505,7 @@ $(document).ready(function(){initNavTree('_routers_2_r0_8cs_source.html','');});
 <div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;            }</div>
 <div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;        }</div>
 <div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> List&lt;R&gt; <a class="code" href="class_router_messaging_system_1_1_router.html#a0077bc872417ef9d6148c82ecf70a983">RouteMessageInverseAreaBand</a>(AreaBandMessage MessageParameters)</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> List&lt;R&gt; <a class="code" href="class_router_messaging_system_1_1_router.html#a0077bc872417ef9d6148c82ecf70a983">RouteMessageInverseAreaBand</a>(AreaBandMessage MessageParameters )</div>
 <div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        {</div>
 <div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            CleanDeadRoutes(MessageParameters.AreaEvent);</div>
 <div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;</div>
@@ -528,7 +528,7 @@ $(document).ready(function(){initNavTree('_routers_2_r0_8cs_source.html','');});
 <div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;            <span class="keywordflow">return</span> Results;</div>
 <div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;        }</div>
 <div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#a0077bc872417ef9d6148c82ecf70a983">RouteMessageInverseAreaBand</a>(AreaBandMessage MessageParameters, out List&lt;R&gt; OutputList )</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#a0077bc872417ef9d6148c82ecf70a983">RouteMessageInverseAreaBand</a>(AreaBandMessage MessageParameters , out List&lt;R&gt; OutputList )</div>
 <div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;        {</div>
 <div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;            CleanDeadRoutes(MessageParameters.AreaEvent);</div>
 <div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;            OutputList = null;</div>
@@ -548,7 +548,7 @@ $(document).ready(function(){initNavTree('_routers_2_r0_8cs_source.html','');});
 <div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;            }</div>
 <div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;        }</div>
 <div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#a0077bc872417ef9d6148c82ecf70a983">RouteMessageInverseAreaBand</a>(AreaBandMessage MessageParameters, Queue&lt;R&gt; OutputQueue )</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#a0077bc872417ef9d6148c82ecf70a983">RouteMessageInverseAreaBand</a>(AreaBandMessage MessageParameters , Queue&lt;R&gt; OutputQueue )</div>
 <div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;        {</div>
 <div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;            CleanDeadRoutes(MessageParameters.AreaEvent);</div>
 <div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;</div>
@@ -793,7 +793,7 @@ $(document).ready(function(){initNavTree('_routers_2_r0_8cs_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_ffd1f789ec7bd0a45fc6ad92579c5070.html">Project</a></li><li class="navelem"><a class="el" href="dir_879de4fd393548c22b98301f5b1bb4c5.html">Assets</a></li><li class="navelem"><a class="el" href="dir_b5c0ad125fda175bded5335c6e0b3543.html">Plugins</a></li><li class="navelem"><a class="el" href="dir_b9153762626c4c54c9f7fb8eedc47a78.html">Router Messaging System</a></li><li class="navelem"><a class="el" href="dir_9b03a082fd188e431d2249e59b725049.html">Routers</a></li><li class="navelem"><b>R0.cs</b></li>
-    <li class="footer">Generated on Sat Apr 26 2014 14:39:53 for Router Messaging System by
+    <li class="footer">Generated on Sat Apr 26 2014 16:57:41 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

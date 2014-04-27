@@ -33,6 +33,7 @@
 		- Propagate changes from R0 to RX routers.
 		- Propagate changes from Base to RX routes.
 		- Implement table destruction for when the sole route in a router dies.
+		- Add null-checks for GetHashCode and other functions in structs.
 		- Redocument everything.
 		.
 	___

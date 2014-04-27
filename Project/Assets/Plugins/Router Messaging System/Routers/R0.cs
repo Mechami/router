@@ -408,7 +408,7 @@ namespace RouterMessagingSystem
 		/// \returns Returns a List<R> containing all returned data from subscribers of this event type.\n
 		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects.
-		public static List<R> RouteMessageAreaBand(AreaBandMessage MessageParameters)
+		public static List<R> RouteMessageAreaBand(AreaBandMessage MessageParameters /**< Struct containing parameters for the area message. */)
 		{
 			CleanDeadRoutes(MessageParameters.AreaEvent);
 
@@ -434,7 +434,7 @@ namespace RouterMessagingSystem
 		/** \brief Routes a message of the specified event to all subscribers inside a ring specified by an inner and outer radius. */
 		/// \returns Adds all returned data from subscribers of this event type to the specified list.\n
 		/// \returns Assigns null to OutputList if the message cannot be sent.
-		public static void RouteMessageAreaBand(AreaBandMessage MessageParameters, out List<R> OutputList /**< List to output returned values into. */)
+		public static void RouteMessageAreaBand(AreaBandMessage MessageParameters /**< Struct containing parameters for the area message. */, out List<R> OutputList /**< List to output returned values into. */)
 		{
 			CleanDeadRoutes(MessageParameters.AreaEvent);
 			OutputList = null;
@@ -457,7 +457,7 @@ namespace RouterMessagingSystem
 		/** \brief Routes a message of the specified event to all subscribers inside a ring specified by an inner and outer radius. */
 		/// \returns Enqueues all returned data from subscribers of this event type in the specified queue.\n
 		/// \returns Enqueues nothing if the message cannot be sent.
-		public static void RouteMessageAreaBand(AreaBandMessage MessageParameters, Queue<R> OutputQueue /**< Queue to output returned values into. */)
+		public static void RouteMessageAreaBand(AreaBandMessage MessageParameters /**< Struct containing parameters for the area message. */, Queue<R> OutputQueue /**< Queue to output returned values into. */)
 		{
 			CleanDeadRoutes(MessageParameters.AreaEvent);
 
@@ -473,7 +473,7 @@ namespace RouterMessagingSystem
 		/// \returns Returns a List<R> containing all returned data from subscribers of this event type.\n
 		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects.
-		public static List<R> RouteMessageInverseAreaBand(AreaBandMessage MessageParameters)
+		public static List<R> RouteMessageInverseAreaBand(AreaBandMessage MessageParameters /**< Struct containing parameters for the area message. */)
 		{
 			CleanDeadRoutes(MessageParameters.AreaEvent);
 
@@ -499,7 +499,7 @@ namespace RouterMessagingSystem
 		/** \brief Routes a message of the specified event to all subscribers outside a ring specified by an inner and outer radius. */
 		/// \returns Adds all returned data from subscribers of this event type to the specified list.\n
 		/// \returns Assigns null to OutputList if the message cannot be sent.
-		public static void RouteMessageInverseAreaBand(AreaBandMessage MessageParameters, out List<R> OutputList /**< List to output returned values into. */)
+		public static void RouteMessageInverseAreaBand(AreaBandMessage MessageParameters /**< Struct containing parameters for the area message. */, out List<R> OutputList /**< List to output returned values into. */)
 		{
 			CleanDeadRoutes(MessageParameters.AreaEvent);
 			OutputList = null;
@@ -522,7 +522,7 @@ namespace RouterMessagingSystem
 		/** \brief Routes a message of the specified event to all subscribers outside a ring specified by an inner and outer radius. */
 		/// \returns Enqueues all returned data from subscribers of this event type in the specified queue.\n
 		/// \returns Enqueues nothing if the message cannot be sent.
-		public static void RouteMessageInverseAreaBand(AreaBandMessage MessageParameters, Queue<R> OutputQueue /**< Queue to output returned values into. */)
+		public static void RouteMessageInverseAreaBand(AreaBandMessage MessageParameters /**< Struct containing parameters for the area message. */, Queue<R> OutputQueue /**< Queue to output returned values into. */)
 		{
 			CleanDeadRoutes(MessageParameters.AreaEvent);
 

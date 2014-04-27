@@ -107,6 +107,8 @@ $(document).ready(function(){initNavTree('class_router_messaging_system_1_1_hub.
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="class_router_messaging_system_1_1_hub-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">RouterMessagingSystem.Hub Class Reference</div>  </div>
@@ -117,13 +119,198 @@ $(document).ready(function(){initNavTree('class_router_messaging_system_1_1_hub.
  <a href="class_router_messaging_system_1_1_hub.html#details">More...</a></p>
 
 <p>Inherits MonoBehaviour.</p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ad16141fc6b4ccd93b5d2826b071555be"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad16141fc6b4ccd93b5d2826b071555be"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_hub.html#ad16141fc6b4ccd93b5d2826b071555be">AddRoute</a> (<a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a> NewRoute)</td></tr>
+<tr class="memdesc:ad16141fc6b4ccd93b5d2826b071555be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a new route with the hub. Prints an error if the specified route cannot be registered. <br/></td></tr>
+<tr class="separator:ad16141fc6b4ccd93b5d2826b071555be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac41b8edfeb9467f9ca88bc02c6657d6a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac41b8edfeb9467f9ca88bc02c6657d6a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_hub.html#ac41b8edfeb9467f9ca88bc02c6657d6a">RemoveRoute</a> (<a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a> OldRoute)</td></tr>
+<tr class="memdesc:ac41b8edfeb9467f9ca88bc02c6657d6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a route from the hub. Prints an error if the specified route is cannot be removed. <br/></td></tr>
+<tr class="separator:ac41b8edfeb9467f9ca88bc02c6657d6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4537f14d30ea9b3a53023fd985a6fb0d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4537f14d30ea9b3a53023fd985a6fb0d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_hub.html#a4537f14d30ea9b3a53023fd985a6fb0d">Broadcast</a> (<a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
+<tr class="memdesc:a4537f14d30ea9b3a53023fd985a6fb0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broadcasts a message to all registered components on this GameObject. <br/></td></tr>
+<tr class="separator:a4537f14d30ea9b3a53023fd985a6fb0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71cc46f860dce102c1191f81b16e2950"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_hub.html#a71cc46f860dce102c1191f81b16e2950">BroadcastDownwards</a> (<a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
+<tr class="memdesc:a71cc46f860dce102c1191f81b16e2950"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broadcasts a message to this and all children of this GameObject.  <a href="#a71cc46f860dce102c1191f81b16e2950">More...</a><br/></td></tr>
+<tr class="separator:a71cc46f860dce102c1191f81b16e2950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a095cb0813bf3363939db9a49ae1ec2e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_hub.html#a095cb0813bf3363939db9a49ae1ec2e8">BroadcastUpwards</a> (<a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
+<tr class="memdesc:a095cb0813bf3363939db9a49ae1ec2e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broadcasts a message to this and all parents of this GameObject.  <a href="#a095cb0813bf3363939db9a49ae1ec2e8">More...</a><br/></td></tr>
+<tr class="separator:a095cb0813bf3363939db9a49ae1ec2e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a9f5cd62c88b9846392cc5dfe217cbaeb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_router_messaging_system_1_1_hub.html">Hub</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_hub.html#a9f5cd62c88b9846392cc5dfe217cbaeb">GetHub</a> (Component CP)</td></tr>
+<tr class="memdesc:a9f5cd62c88b9846392cc5dfe217cbaeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the hub associated with the component's GameObject.  <a href="#a9f5cd62c88b9846392cc5dfe217cbaeb">More...</a><br/></td></tr>
+<tr class="separator:a9f5cd62c88b9846392cc5dfe217cbaeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab81c920b4a4a14e47dfc7b166fbf5306"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_router_messaging_system_1_1_hub.html">Hub</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_hub.html#ab81c920b4a4a14e47dfc7b166fbf5306">GetOrAddHub</a> (Component CP)</td></tr>
+<tr class="memdesc:ab81c920b4a4a14e47dfc7b166fbf5306"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the hub associated with the component's GameObject.  <a href="#ab81c920b4a4a14e47dfc7b166fbf5306">More...</a><br/></td></tr>
+<tr class="separator:ab81c920b4a4a14e47dfc7b166fbf5306"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A router for passing messages to one-self. </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Implement cleanup system for dead components. </dd></dl>
 
 <p>Definition at line <a class="el" href="_hub_8cs_source.html#l00010">10</a> of file <a class="el" href="_hub_8cs_source.html">Hub.cs</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>Project/Assets/Plugins/Router Messaging System/Hubs/<a class="el" href="_hub_8cs_source.html">Hub.cs (897ec54e8f6e37f6a1059515f7d8e78a6648f45c)</a></li>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a71cc46f860dce102c1191f81b16e2950"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RouterMessagingSystem.Hub.BroadcastDownwards </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td>
+          <td class="paramname"><em>EventType</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Broadcasts a message to this and all children of this GameObject. </p>
+<dl class="section note"><dt>Note</dt><dd>This function is recursive. </dd></dl>
+
+<p>Definition at line <a class="el" href="_hub_8cs_source.html#l00062">62</a> of file <a class="el" href="_hub_8cs_source.html">Hub.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; KeyHasAddress(EventType))</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                PointerTable[EventType]();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; this.transform.childCount; i++)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                Hub ChildHub = Hub.GetHub(this.transform.GetChild(i));</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keywordflow">if</span> (ChildHub != null)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                    ChildHub.BroadcastDownwards(EventType);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a095cb0813bf3363939db9a49ae1ec2e8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RouterMessagingSystem.Hub.BroadcastUpwards </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td>
+          <td class="paramname"><em>EventType</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Broadcasts a message to this and all parents of this GameObject. </p>
+<dl class="section note"><dt>Note</dt><dd>This function is recursive. </dd></dl>
+
+<p>Definition at line <a class="el" href="_hub_8cs_source.html#l00082">82</a> of file <a class="el" href="_hub_8cs_source.html">Hub.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; KeyHasAddress(EventType))</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                PointerTable[EventType]();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            Hub ParentHub = Hub.GetHub(this.transform.parent);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">if</span> (ParentHub != null)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                ParentHub.BroadcastUpwards(EventType);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a9f5cd62c88b9846392cc5dfe217cbaeb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_router_messaging_system_1_1_hub.html">Hub</a> RouterMessagingSystem.Hub.GetHub </td>
+          <td>(</td>
+          <td class="paramtype">Component&#160;</td>
+          <td class="paramname"><em>CP</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the hub associated with the component's GameObject. </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns null if null is passed as parameter. </dd></dl>
+
+<p>Definition at line <a class="el" href="_hub_8cs_source.html#l00098">98</a> of file <a class="el" href="_hub_8cs_source.html">Hub.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">return</span> (CP != null)? CP.GetComponent&lt;Hub&gt;() : null;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ab81c920b4a4a14e47dfc7b166fbf5306"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_router_messaging_system_1_1_hub.html">Hub</a> RouterMessagingSystem.Hub.GetOrAddHub </td>
+          <td>(</td>
+          <td class="paramtype">Component&#160;</td>
+          <td class="paramname"><em>CP</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the hub associated with the component's GameObject. </p>
+<dl class="section return"><dt>Returns</dt><dd>Attaches and returns a new hub if one isn't attached.<br/>
+</dd>
+<dd>
+Returns null if null is passed as parameter. </dd></dl>
+
+<p>Definition at line <a class="el" href="_hub_8cs_source.html#l00106">106</a> of file <a class="el" href="_hub_8cs_source.html">Hub.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">return</span> (CP != null)? (CP.GetComponent&lt;Hub&gt;()?? CP.gameObject.AddComponent&lt;Hub&gt;()) : null;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>Project/Assets/Plugins/Router Messaging System/Hubs/<a class="el" href="_hub_8cs_source.html">Hub.cs (c9998865f0dd3540abab8a2865269b5ad47f6a53)</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -131,7 +318,7 @@ $(document).ready(function(){initNavTree('class_router_messaging_system_1_1_hub.
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_router_messaging_system.html">RouterMessagingSystem</a></li><li class="navelem"><a class="el" href="class_router_messaging_system_1_1_hub.html">Hub</a></li>
-    <li class="footer">Generated on Sat Apr 26 2014 14:39:53 for Router Messaging System by
+    <li class="footer">Generated on Sat Apr 26 2014 16:57:41 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
