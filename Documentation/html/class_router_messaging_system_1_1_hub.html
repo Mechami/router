@@ -152,9 +152,13 @@ Static Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A router for passing messages to one-self. </p>
+<dl class="section warning"><dt>Warning</dt><dd>Hubs currently do not have a system for cleaning dead routes introduced from sudden component destruction.<br/>
+</dd>
+<dd>
+It is advised to remove routes manually within OnDestroy or OnDisable for the time being. </dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Implement cleanup system for dead components. </dd></dl>
 
-<p>Definition at line <a class="el" href="_hub_8cs_source.html#l00010">10</a> of file <a class="el" href="_hub_8cs_source.html">Hub.cs</a>.</p>
+<p>Definition at line <a class="el" href="_hub_8cs_source.html#l00012">12</a> of file <a class="el" href="_hub_8cs_source.html">Hub.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a71cc46f860dce102c1191f81b16e2950"></a>
 <div class="memitem">
@@ -181,23 +185,31 @@ Static Public Member Functions</h2></td></tr>
 <p>Broadcasts a message to this and all children of this GameObject. </p>
 <dl class="section note"><dt>Note</dt><dd>This function is recursive. </dd></dl>
 
-<p>Definition at line <a class="el" href="_hub_8cs_source.html#l00062">62</a> of file <a class="el" href="_hub_8cs_source.html">Hub.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; KeyHasAddress(EventType))</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                PointerTable[EventType]();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            }</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; this.transform.childCount; i++)</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                Hub ChildHub = Hub.GetHub(this.transform.GetChild(i));</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keywordflow">if</span> (ChildHub != null)</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                    ChildHub.BroadcastDownwards(EventType);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                }</div>
+<p>Definition at line <a class="el" href="_hub_8cs_source.html#l00068">68</a> of file <a class="el" href="_hub_8cs_source.html">Hub.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; KeyHasAddress(EventType))</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                PointerTable[EventType]();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                Debug.LogWarning(<span class="stringliteral">&quot;[&quot;</span> + <span class="keyword">this</span> + <span class="stringliteral">&quot;] Cannot broadcast messages as no routes are registered under event &quot;</span> + EventType + <span class="stringliteral">&quot;.&quot;</span>, <span class="keyword">this</span>);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; this.transform.childCount; i++)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                Hub ChildHub = Hub.GetHub(this.transform.GetChild(i));</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="keywordflow">if</span> (ChildHub != null)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    ChildHub.BroadcastDownwards(EventType);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <span class="comment">// Find a way to speed this segment up.</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                <span class="comment">//BroadcastDown(this.transform.GetChild(i), EventType);</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -226,19 +238,23 @@ Static Public Member Functions</h2></td></tr>
 <p>Broadcasts a message to this and all parents of this GameObject. </p>
 <dl class="section note"><dt>Note</dt><dd>This function is recursive. </dd></dl>
 
-<p>Definition at line <a class="el" href="_hub_8cs_source.html#l00082">82</a> of file <a class="el" href="_hub_8cs_source.html">Hub.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; KeyHasAddress(EventType))</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                PointerTable[EventType]();</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            Hub ParentHub = Hub.GetHub(this.transform.parent);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">if</span> (ParentHub != null)</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                ParentHub.BroadcastUpwards(EventType);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="_hub_8cs_source.html#l00096">96</a> of file <a class="el" href="_hub_8cs_source.html">Hub.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; KeyHasAddress(EventType))</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                PointerTable[EventType]();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                Debug.LogWarning(<span class="stringliteral">&quot;[&quot;</span> + <span class="keyword">this</span> + <span class="stringliteral">&quot;] Cannot broadcast messages as no routes are registered under event &quot;</span> + EventType + <span class="stringliteral">&quot;.&quot;</span>, <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            Hub ParentHub = Hub.GetHub(this.transform.parent);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">if</span> (ParentHub != null)</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                ParentHub.BroadcastUpwards(EventType);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -265,12 +281,12 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the hub associated with the component's GameObject. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns null if null is passed as parameter. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns null if one isn't attached or if null is passed in as parameter. </dd></dl>
 
-<p>Definition at line <a class="el" href="_hub_8cs_source.html#l00098">98</a> of file <a class="el" href="_hub_8cs_source.html">Hub.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">return</span> (CP != null)? CP.GetComponent&lt;Hub&gt;() : null;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="_hub_8cs_source.html#l00116">116</a> of file <a class="el" href="_hub_8cs_source.html">Hub.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordflow">return</span> (CP != null)? CP.GetComponent&lt;Hub&gt;() : null;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -300,17 +316,17 @@ Static Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Attaches and returns a new hub if one isn't attached.<br/>
 </dd>
 <dd>
-Returns null if null is passed as parameter. </dd></dl>
+Returns null if null is passed in as parameter. </dd></dl>
 
-<p>Definition at line <a class="el" href="_hub_8cs_source.html#l00106">106</a> of file <a class="el" href="_hub_8cs_source.html">Hub.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">return</span> (CP != null)? (CP.GetComponent&lt;Hub&gt;()?? CP.gameObject.AddComponent&lt;Hub&gt;()) : null;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="_hub_8cs_source.html#l00124">124</a> of file <a class="el" href="_hub_8cs_source.html">Hub.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordflow">return</span> (CP != null)? (CP.GetComponent&lt;Hub&gt;()?? CP.gameObject.AddComponent&lt;Hub&gt;()) : null;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>Project/Assets/Plugins/Router Messaging System/Hubs/<a class="el" href="_hub_8cs_source.html">Hub.cs (c9998865f0dd3540abab8a2865269b5ad47f6a53)</a></li>
+<li>Project/Assets/Plugins/Router Messaging System/Hubs/<a class="el" href="_hub_8cs_source.html">Hub.cs (60212d7e8c6a5a5b8d0a88b5957411ffe07b110c)</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -318,7 +334,7 @@ Returns null if null is passed as parameter. </dd></dl>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_router_messaging_system.html">RouterMessagingSystem</a></li><li class="navelem"><a class="el" href="class_router_messaging_system_1_1_hub.html">Hub</a></li>
-    <li class="footer">Generated on Sat Apr 26 2014 16:57:41 for Router Messaging System by
+    <li class="footer">Generated on Sat Apr 26 2014 22:31:18 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -6,8 +6,8 @@ using System.Collections.Generic;
 namespace RouterMessagingSystem
 {
 	/// \brief A router that operates on standard routes.
-	/// \todo Implement RouteMessageContinuously. <- Reconsider this\n
-	/// \todo Determine if MonoBehaviour->Component boxing is as costly as Struct->Object boxing.\n
+	/// \todo Implement RouteMessageContinuously. <- Reconsider this
+	/// \todo Determine if MonoBehaviour->Component boxing is as costly as Struct->Object boxing.
 	/// \todo Find a way to prevent Router from calling private functions. <- Reconsider this
 	/// \todo Refactor KeyHasAddress logic.
 	/// \todo Consider changing Router to non-static to allow for "team" routing.

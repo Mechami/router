@@ -5,6 +5,8 @@ using System.Collections.Generic;
 namespace RouterMessagingSystem
 {
 	/// \brief A router for passing messages to one-self.
+	/// \warning Hubs currently do not have a system for cleaning dead routes introduced from sudden component destruction.\n
+	/// \warning It is advised to remove routes manually within OnDestroy or OnDisable for the time being.
 	/// \todo Implement cleanup system for dead components.
 	[AddComponentMenu("Router Messaging System/Hub")]
 	public sealed class Hub : MonoBehaviour
@@ -55,6 +57,10 @@ namespace RouterMessagingSystem
 			{
 				PointerTable[EventType]();
 			}
+			else
+			{
+				Debug.LogWarning("[" + this + "] Cannot broadcast messages as no routes are registered under event " + EventType + ".", this);
+			}
 		}
 
 		/// \brief Broadcasts a message to this and all children of this GameObject.
@@ -65,7 +71,12 @@ namespace RouterMessagingSystem
 			{
 				PointerTable[EventType]();
 			}
+			else
+			{
+				Debug.LogWarning("[" + this + "] Cannot broadcast messages as no routes are registered under event " + EventType + ".", this);
+			}
 
+			
 			for (int i = 0; i < this.transform.childCount; i++)
 			{
 				Hub ChildHub = Hub.GetHub(this.transform.GetChild(i));
@@ -74,6 +85,9 @@ namespace RouterMessagingSystem
 				{
 					ChildHub.BroadcastDownwards(EventType);
 				}
+
+				// Find a way to speed this segment up.
+				//BroadcastDown(this.transform.GetChild(i), EventType);
 			}
 		}
 
@@ -85,6 +99,10 @@ namespace RouterMessagingSystem
 			{
 				PointerTable[EventType]();
 			}
+			else
+			{
+				Debug.LogWarning("[" + this + "] Cannot broadcast messages as no routes are registered under event " + EventType + ".", this);
+			}
 
 			Hub ParentHub = Hub.GetHub(this.transform.parent);
 			if (ParentHub != null)
@@ -94,7 +112,7 @@ namespace RouterMessagingSystem
 		}
 
 		/// \brief Returns the hub associated with the component's GameObject.
-		/// \return Returns null if null is passed as parameter.
+		/// \return Returns null if one isn't attached or if null is passed in as parameter.
 		public static Hub GetHub(Component CP)
 		{
 			return (CP != null)? CP.GetComponent<Hub>() : null;
@@ -102,10 +120,32 @@ namespace RouterMessagingSystem
 
 		/// \brief Returns the hub associated with the component's GameObject.
 		/// \return Attaches and returns a new hub if one isn't attached.\n
-		/// \return Returns null if null is passed as parameter.
+		/// \return Returns null if null is passed in as parameter.
 		public static Hub GetOrAddHub(Component CP)
 		{
 			return (CP != null)? (CP.GetComponent<Hub>()?? CP.gameObject.AddComponent<Hub>()) : null;
+		}
+
+		private void BroadcastDown(Transform TR, RoutingEvent EventType)
+		{
+			Hub ChildHub = Hub.GetHub(TR);
+
+			if (ChildHub != null)
+			{
+				ChildHub.BroadcastDownwards(EventType);
+			}
+			else
+			{
+				BroadcastToSubChildren(TR, EventType);
+			}
+		}
+
+		private void BroadcastToSubChildren(Transform TR, RoutingEvent EventType)
+		{
+			for (int i = 0; i < TR.childCount; i++)
+			{
+				BroadcastDown(TR.GetChild(i), EventType);
+			}
 		}
 
 		private bool ConstructTable()
