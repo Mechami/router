@@ -2,9 +2,13 @@ using System;
 
 namespace RouterMessagingSystem
 {
-	/// \todo Clean this up.
+	/// \brief Interface defining routable objects.
 	interface IRoutable<T> : IEquatable<T>
 	{
-		//bool IsDead();
+		/// Property representing the current status of a routable object.
+		bool IsDead
+		{
+			get;
+		}
 	}
 }

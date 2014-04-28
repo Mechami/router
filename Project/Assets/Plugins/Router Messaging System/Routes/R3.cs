@@ -29,7 +29,7 @@ namespace RouterMessagingSystem
 		public Route(Component RouteSubscriber /**< Reference to the subscribing Component.\n Can be of any type derived from Component. */, RoutePointer<R, T1, T2, T3> RoutingAddress /**< Reference to a function that this route calls.\n R is return type while T1, T2 and T3 are parameter types. */, RoutingEvent Event /**< Value stating which event calls this Route. */) : this()
 		{
 			Subscriber = RouteSubscriber;
-			Address = (RoutePointer<R, T1, T2, T3>)(RoutingAddress.GetInvocationList()[0]);
+			Address = (RoutingAddress != null)? (RoutePointer<R, T1, T2, T3>)(RoutingAddress.GetInvocationList()[0]) : null;
 			RouteEvent = Event;
 			IsValid = ((this.Subscriber != null) && (this.Address != null) && (this.RouteEvent != RoutingEvent.Null));
 		}
@@ -61,7 +61,7 @@ namespace RouterMessagingSystem
 		/// \returns Hash generated from combined member attribute hashes.
 		public override int GetHashCode()
 		{
-			return (this.Subscriber.GetHashCode() + this.Address.GetHashCode() + this.RouteEvent.GetHashCode());
+			return (((Subscriber != null)? Subscriber.GetHashCode() : 0) + ((Address != null)? Address.GetHashCode() : 0) + RouteEvent.GetHashCode());
 		}
 
 		/// \brief Returns a string listing this Route<R, T1, T2, T3>'s routing data.
