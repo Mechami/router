@@ -29,7 +29,7 @@ namespace RouterMessagingSystem
 		public Route(Component RouteSubscriber /**< Reference to the subscribing Component.\n Can be of any type derived from Component. */, RoutePointer<R> RoutingAddress /**< Reference to a function that this route calls.\n R is return type. */, RoutingEvent Event /**< Value stating which event calls this Route. */) : this()
 		{
 			Subscriber = RouteSubscriber;
-			Address = (RoutingAddress != null)? (RoutePointer)(RoutingAddress.GetInvocationList()[0]) : null;
+			Address = (RoutingAddress != null)? (RoutePointer<R>)(RoutingAddress.GetInvocationList()[0]) : null;
 			RouteEvent = Event;
 			IsValid = ((this.Subscriber != null) && (this.Address != null) && (this.RouteEvent != RoutingEvent.Null));
 		}
