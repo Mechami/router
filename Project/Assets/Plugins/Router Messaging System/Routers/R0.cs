@@ -154,13 +154,13 @@ namespace RouterMessagingSystem
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
 		public static List<R> RouteMessageDescendants(MessageTarget Scope /**< MessageTarget specifying the scope and event of the message. */)
 		{
-			CleanDeadRoutes(Scope.MessageEvent);
+			CleanDeadRoutes(Scope.EventType);
 
 			List<R> Results = null;
 
-			if (TablesExist && Scope.IsValid && EventIsPopulated(Scope.MessageEvent))
+			if (TablesExist && Scope.IsValid && EventIsPopulated(Scope.EventType))
 			{
-				List<Route<R>> RT = RouteTable[Scope.MessageEvent].FindAll(x => x.Subscriber.transform.IsChildOf(Scope.Recipient));
+				List<Route<R>> RT = RouteTable[Scope.EventType].FindAll(x => x.Subscriber.transform.IsChildOf(Scope.Recipient));
 				Results = new List<R>(RT.Count);
 
 				for (int i = 0; i < RT.Count; i++)
@@ -179,12 +179,12 @@ namespace RouterMessagingSystem
 		/// \returns Assigns null to OutputList if the message cannot be sent.
 		public static void RouteMessageDescendants(MessageTarget Scope /**< MessageTarget specifying the scope and event of the message. */, out List<R> OutputList /**< List to output returned values into. */)
 		{
-			CleanDeadRoutes(Scope.MessageEvent);
+			CleanDeadRoutes(Scope.EventType);
 			OutputList = null;
 
-			if (TablesExist && Scope.IsValid && EventIsPopulated(Scope.MessageEvent))
+			if (TablesExist && Scope.IsValid && EventIsPopulated(Scope.EventType))
 			{
-				List<Route<R>> RT = RouteTable[Scope.MessageEvent].FindAll(x => x.Subscriber.transform.IsChildOf(Scope.Recipient));
+				List<Route<R>> RT = RouteTable[Scope.EventType].FindAll(x => x.Subscriber.transform.IsChildOf(Scope.Recipient));
 				OutputList = new List<R>(RT.Count);
 
 				for (int i = 0; i < RT.Count; i++)
@@ -201,11 +201,11 @@ namespace RouterMessagingSystem
 		/// \returns Enqueues nothing if the message cannot be sent.
 		public static void RouteMessageDescendants(MessageTarget Scope /**< MessageTarget specifying the scope and event of the message. */, Queue<R> OutputQueue /**< Queue to output returned values into. */)
 		{
-			CleanDeadRoutes(Scope.MessageEvent);
+			CleanDeadRoutes(Scope.EventType);
 
-			if (TablesExist && Scope.IsValid && EventIsPopulated(Scope.MessageEvent))
+			if (TablesExist && Scope.IsValid && EventIsPopulated(Scope.EventType))
 			{
-				List<Route<R>> RT = RouteTable[Scope.MessageEvent].FindAll(x => x.Subscriber.transform.IsChildOf(Scope.Recipient));
+				List<Route<R>> RT = RouteTable[Scope.EventType].FindAll(x => x.Subscriber.transform.IsChildOf(Scope.Recipient));
 				RT.ForEach(x => OutputQueue.Enqueue(x.Address()));
 			}
 		}
@@ -217,13 +217,13 @@ namespace RouterMessagingSystem
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
 		public static List<R> RouteMessageAscendants(MessageTarget Scope /**< MessageTarget specifying the scope and event of the message. */)
 		{
-			CleanDeadRoutes(Scope.MessageEvent);
+			CleanDeadRoutes(Scope.EventType);
 
 			List<R> Results = null;
 
-			if (TablesExist && Scope.IsValid && EventIsPopulated(Scope.MessageEvent))
+			if (TablesExist && Scope.IsValid && EventIsPopulated(Scope.EventType))
 			{
-				List<Route<R>> RT = RouteTable[Scope.MessageEvent].FindAll(x => Scope.Recipient.IsChildOf(x.Subscriber.transform));
+				List<Route<R>> RT = RouteTable[Scope.EventType].FindAll(x => Scope.Recipient.IsChildOf(x.Subscriber.transform));
 				Results = new List<R>(RT.Count);
 
 				for (int i = 0; i < RT.Count; i++)
@@ -242,12 +242,12 @@ namespace RouterMessagingSystem
 		/// \returns Assigns null to OutputList if the message cannot be sent.
 		public static void RouteMessageAscendants(MessageTarget Scope /**< MessageTarget specifying the scope and event of the message. */, out List<R> OutputList /**< List to output returned values into. */)
 		{
-			CleanDeadRoutes(Scope.MessageEvent);
+			CleanDeadRoutes(Scope.EventType);
 			OutputList = null;
 
-			if (TablesExist && Scope.IsValid && EventIsPopulated(Scope.MessageEvent))
+			if (TablesExist && Scope.IsValid && EventIsPopulated(Scope.EventType))
 			{
-				List<Route<R>> RT = RouteTable[Scope.MessageEvent].FindAll(x => Scope.Recipient.IsChildOf(x.Subscriber.transform));
+				List<Route<R>> RT = RouteTable[Scope.EventType].FindAll(x => Scope.Recipient.IsChildOf(x.Subscriber.transform));
 				OutputList = new List<R>(RT.Count);
 
 				for (int i = 0; i < RT.Count; i++)
@@ -264,11 +264,11 @@ namespace RouterMessagingSystem
 		/// \returns Enqueues nothing if the message cannot be sent.
 		public static void RouteMessageAscendants(MessageTarget Scope /**< MessageTarget specifying the scope and event of the message. */, Queue<R> OutputQueue /**< Queue to output returned values into. */)
 		{
-			CleanDeadRoutes(Scope.MessageEvent);
+			CleanDeadRoutes(Scope.EventType);
 
-			if (TablesExist && Scope.IsValid && EventIsPopulated(Scope.MessageEvent))
+			if (TablesExist && Scope.IsValid && EventIsPopulated(Scope.EventType))
 			{
-				List<Route<R>> RT = RouteTable[Scope.MessageEvent].FindAll(x => Scope.Recipient.IsChildOf(x.Subscriber.transform));
+				List<Route<R>> RT = RouteTable[Scope.EventType].FindAll(x => Scope.Recipient.IsChildOf(x.Subscriber.transform));
 				RT.ForEach(x => OutputQueue.Enqueue(x.Address()));
 			}
 		}
@@ -280,14 +280,14 @@ namespace RouterMessagingSystem
 		/// \bug Seems to call some routes twice; Possibly present in other methods as-well. <- Test after re-implementation.
 		public static List<R> RouteMessageArea(AreaMessage MessageParameters /**< Struct containing parameters for the area message. */)
 		{
-			CleanDeadRoutes(MessageParameters.AreaEvent);
+			CleanDeadRoutes(MessageParameters.EventType);
 
 			List<R> Results = null;
 
-			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent) && !MessageParameters.IsPoint)
+			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && !MessageParameters.IsPoint)
 			{
 				decimal RadiusD = new Decimal(MessageParameters.Radius);
-				List<Route<R>> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) <= RadiusD));
+				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) <= RadiusD));
 				Results = new List<R>(RT.Count);
 
 				for (int i = 0; i < RT.Count; i++)
@@ -306,13 +306,13 @@ namespace RouterMessagingSystem
 		/// \returns Assigns null to OutputList if the message cannot be sent.
 		public static void RouteMessageArea(AreaMessage MessageParameters /**< Struct containing parameters for the area message. */, out List<R> OutputList /**< List to output returned values into. */)
 		{
-			CleanDeadRoutes(MessageParameters.AreaEvent);
+			CleanDeadRoutes(MessageParameters.EventType);
 			OutputList = null;
 
-			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent) && !MessageParameters.IsPoint)
+			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && !MessageParameters.IsPoint)
 			{
 				decimal RadiusD = new Decimal(MessageParameters.Radius);
-				List<Route<R>> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) <= RadiusD));
+				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) <= RadiusD));
 				OutputList = new List<R>(RT.Count);
 
 				for (int i = 0; i < RT.Count; i++)
@@ -329,12 +329,12 @@ namespace RouterMessagingSystem
 		/// \returns Enqueues nothing if the message cannot be sent.
 		public static void RouteMessageArea(AreaMessage MessageParameters /**< Struct containing parameters for the area message. */, Queue<R> OutputQueue /**< Queue to output returned values into. */)
 		{
-			CleanDeadRoutes(MessageParameters.AreaEvent);
+			CleanDeadRoutes(MessageParameters.EventType);
 
-			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent) && !MessageParameters.IsPoint)
+			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && !MessageParameters.IsPoint)
 			{
 				decimal RadiusD = new Decimal(MessageParameters.Radius);
-				List<Route<R>> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) <= RadiusD));
+				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) <= RadiusD));
 				RT.ForEach(x => OutputQueue.Enqueue(x.Address()));
 			}
 		}
@@ -345,14 +345,14 @@ namespace RouterMessagingSystem
 		/// \note Only works for subscribed GameObjects.
 		public static List<R> RouteMessageAreaInverse(AreaMessage MessageParameters /**< Struct containing parameters for the area message. */)
 		{
-			CleanDeadRoutes(MessageParameters.AreaEvent);
+			CleanDeadRoutes(MessageParameters.EventType);
 
 			List<R> Results = null;
 
-			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent) && !MessageParameters.IsPoint)
+			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && !MessageParameters.IsPoint)
 			{
 				decimal RadiusD = new Decimal(MessageParameters.Radius);
-				List<Route<R>> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) > RadiusD));
+				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) > RadiusD));
 				Results = new List<R>(RT.Count);
 
 				for (int i = 0; i < RT.Count; i++)
@@ -371,13 +371,13 @@ namespace RouterMessagingSystem
 		/// \returns Assigns null to OutputList if the message cannot be sent.
 		public static void RouteMessageAreaInverse(AreaMessage MessageParameters /**< Struct containing parameters for the area message. */, out List<R> OutputList /**< List to output returned values into. */)
 		{
-			CleanDeadRoutes(MessageParameters.AreaEvent);
+			CleanDeadRoutes(MessageParameters.EventType);
 			OutputList = null;
 
-			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent) && !MessageParameters.IsPoint)
+			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && !MessageParameters.IsPoint)
 			{
 				decimal RadiusD = new Decimal(MessageParameters.Radius);
-				List<Route<R>> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) > RadiusD));
+				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) > RadiusD));
 				OutputList = new List<R>(RT.Count);
 
 				for (int i = 0; i < RT.Count; i++)
@@ -394,12 +394,12 @@ namespace RouterMessagingSystem
 		/// \returns Enqueues nothing if the message cannot be sent.
 		public static void RouteMessageAreaInverse(AreaMessage MessageParameters /**< Struct containing parameters for the area message. */, Queue<R> OutputQueue /**< Queue to output returned values into. */)
 		{
-			CleanDeadRoutes(MessageParameters.AreaEvent);
+			CleanDeadRoutes(MessageParameters.EventType);
 	
-			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent) && !MessageParameters.IsPoint)
+			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && !MessageParameters.IsPoint)
 			{
 				decimal RadiusD = new Decimal(MessageParameters.Radius);
-				List<Route<R>> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) > RadiusD));
+				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) > RadiusD));
 				RT.ForEach(x => OutputQueue.Enqueue(x.Address()));
 			}
 		}
@@ -410,14 +410,14 @@ namespace RouterMessagingSystem
 		/// \note Only works for subscribed GameObjects.
 		public static List<R> RouteMessageAreaBand(AreaBandMessage MessageParameters /**< Struct containing parameters for the area message. */)
 		{
-			CleanDeadRoutes(MessageParameters.AreaEvent);
+			CleanDeadRoutes(MessageParameters.EventType);
 
 			List<R> Results = null;
 
-			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent) && MessageParameters.HasVolume)
+			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && MessageParameters.HasVolume)
 			{
 				decimal InnerRadiusD = new Decimal(MessageParameters.InnerRadius), OuterRadiusD = new Decimal(MessageParameters.OuterRadius);
-				List<Route<R>> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance >= InnerRadiusD) && (Distance <= OuterRadiusD)); });
+				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance >= InnerRadiusD) && (Distance <= OuterRadiusD)); });
 				Results = new List<R>(RT.Count);
 
 				for (int i = 0; i < RT.Count; i++)
@@ -436,13 +436,13 @@ namespace RouterMessagingSystem
 		/// \returns Assigns null to OutputList if the message cannot be sent.
 		public static void RouteMessageAreaBand(AreaBandMessage MessageParameters /**< Struct containing parameters for the area message. */, out List<R> OutputList /**< List to output returned values into. */)
 		{
-			CleanDeadRoutes(MessageParameters.AreaEvent);
+			CleanDeadRoutes(MessageParameters.EventType);
 			OutputList = null;
 
-			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent) && MessageParameters.HasVolume)
+			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && MessageParameters.HasVolume)
 			{
 				decimal InnerRadiusD = new Decimal(MessageParameters.InnerRadius), OuterRadiusD = new Decimal(MessageParameters.OuterRadius);
-				List<Route<R>> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance >= InnerRadiusD) && (Distance <= OuterRadiusD)); });
+				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance >= InnerRadiusD) && (Distance <= OuterRadiusD)); });
 				OutputList = new List<R>(RT.Count);
 
 				for (int i = 0; i < RT.Count; i++)
@@ -459,12 +459,12 @@ namespace RouterMessagingSystem
 		/// \returns Enqueues nothing if the message cannot be sent.
 		public static void RouteMessageAreaBand(AreaBandMessage MessageParameters /**< Struct containing parameters for the area message. */, Queue<R> OutputQueue /**< Queue to output returned values into. */)
 		{
-			CleanDeadRoutes(MessageParameters.AreaEvent);
+			CleanDeadRoutes(MessageParameters.EventType);
 
-			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent) && MessageParameters.HasVolume)
+			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && MessageParameters.HasVolume)
 			{
 				decimal InnerRadiusD = new Decimal(MessageParameters.InnerRadius), OuterRadiusD = new Decimal(MessageParameters.OuterRadius);
-				List<Route<R>> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance >= InnerRadiusD) && (Distance <= OuterRadiusD)); });
+				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance >= InnerRadiusD) && (Distance <= OuterRadiusD)); });
 				RT.ForEach(x => OutputQueue.Enqueue(x.Address()));
 			}
 		}
@@ -475,14 +475,14 @@ namespace RouterMessagingSystem
 		/// \note Only works for subscribed GameObjects.
 		public static List<R> RouteMessageInverseAreaBand(AreaBandMessage MessageParameters /**< Struct containing parameters for the area message. */)
 		{
-			CleanDeadRoutes(MessageParameters.AreaEvent);
+			CleanDeadRoutes(MessageParameters.EventType);
 
 			List<R> Results = null;
 
-			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent) && MessageParameters.HasVolume)
+			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && MessageParameters.HasVolume)
 			{
 				decimal InnerRadiusD = new Decimal(MessageParameters.InnerRadius), OuterRadiusD = new Decimal(MessageParameters.OuterRadius);
-				List<Route<R>> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance < InnerRadiusD) || (Distance > OuterRadiusD)); });
+				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance < InnerRadiusD) || (Distance > OuterRadiusD)); });
 				Results = new List<R>(RT.Count);
 
 				for (int i = 0; i < RT.Count; i++)
@@ -501,13 +501,13 @@ namespace RouterMessagingSystem
 		/// \returns Assigns null to OutputList if the message cannot be sent.
 		public static void RouteMessageInverseAreaBand(AreaBandMessage MessageParameters /**< Struct containing parameters for the area message. */, out List<R> OutputList /**< List to output returned values into. */)
 		{
-			CleanDeadRoutes(MessageParameters.AreaEvent);
+			CleanDeadRoutes(MessageParameters.EventType);
 			OutputList = null;
 
-			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent) && MessageParameters.HasVolume)
+			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && MessageParameters.HasVolume)
 			{
 				decimal InnerRadiusD = new Decimal(MessageParameters.InnerRadius), OuterRadiusD = new Decimal(MessageParameters.OuterRadius);
-				List<Route<R>> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance < InnerRadiusD) || (Distance > OuterRadiusD)); });
+				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance < InnerRadiusD) || (Distance > OuterRadiusD)); });
 				OutputList = new List<R>(RT.Count);
 
 				for (int i = 0; i < RT.Count; i++)
@@ -524,12 +524,12 @@ namespace RouterMessagingSystem
 		/// \returns Enqueues nothing if the message cannot be sent.
 		public static void RouteMessageInverseAreaBand(AreaBandMessage MessageParameters /**< Struct containing parameters for the area message. */, Queue<R> OutputQueue /**< Queue to output returned values into. */)
 		{
-			CleanDeadRoutes(MessageParameters.AreaEvent);
+			CleanDeadRoutes(MessageParameters.EventType);
 
-			if (TablesExist && EventIsPopulated(MessageParameters.AreaEvent) && MessageParameters.HasVolume)
+			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && MessageParameters.HasVolume)
 			{
 				decimal InnerRadiusD = new Decimal(MessageParameters.InnerRadius), OuterRadiusD = new Decimal(MessageParameters.OuterRadius);
-				List<Route<R>> RT = RouteTable[MessageParameters.AreaEvent].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance < InnerRadiusD) || (Distance > OuterRadiusD)); });
+				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance < InnerRadiusD) || (Distance > OuterRadiusD)); });
 				RT.ForEach(x => OutputQueue.Enqueue(x.Address()));
 			}
 		}

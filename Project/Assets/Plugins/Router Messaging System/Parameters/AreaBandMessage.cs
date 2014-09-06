@@ -13,7 +13,7 @@ namespace RouterMessagingSystem
 		/** \brief Outer radius of the area in meters. */
 		public readonly float OuterRadius;
 		/** \brief Event occuring in the area. */
-		public readonly RoutingEvent AreaEvent;
+		public readonly RoutingEvent EventType;
 		/** \brief Value stating if this AreaBandMessage has volume or not. */
 		public readonly bool HasVolume;
 
@@ -24,7 +24,7 @@ namespace RouterMessagingSystem
 			decimal ID = new Decimal(Mathf.Abs(InnerAreaRadius)), OD = new Decimal(Mathf.Abs(OuterAreaRadius));
 			InnerRadius = (ID >= OD)? Mathf.Abs(OuterAreaRadius) : Mathf.Abs(InnerAreaRadius);
 			OuterRadius = (OD <= ID)? Mathf.Abs(InnerAreaRadius) : Mathf.Abs(OuterAreaRadius);
-			AreaEvent = Event;
+			EventType = Event;
 			HasVolume = (ID < OD);
 		}
 
@@ -34,7 +34,7 @@ namespace RouterMessagingSystem
 			Origin = OriginCoord;
 			InnerRadius = ABM.InnerRadius;
 			OuterRadius = ABM.OuterRadius;
-			AreaEvent = ABM.AreaEvent;
+			EventType = ABM.EventType;
 			HasVolume = ABM.HasVolume;
 		}
 
@@ -45,7 +45,7 @@ namespace RouterMessagingSystem
 			decimal ID = new Decimal(Mathf.Abs(InnerAreaRadius)), OD = new Decimal(ABM.OuterRadius);
 			InnerRadius = (ID >= OD)? ABM.OuterRadius : Mathf.Abs(InnerAreaRadius);
 			OuterRadius = (OD <= ID)? Mathf.Abs(InnerAreaRadius) : ABM.OuterRadius;
-			AreaEvent = ABM.AreaEvent;
+			EventType = ABM.EventType;
 			HasVolume = (ID < OD);
 		}
 
@@ -56,7 +56,7 @@ namespace RouterMessagingSystem
 			decimal ID = new Decimal(ABM.InnerRadius), OD = new Decimal(Mathf.Abs(OuterAreaRadius));
 			InnerRadius = (ID >= OD)? Mathf.Abs(OuterAreaRadius) : ABM.InnerRadius;
 			OuterRadius = (OD <= ID)? ABM.InnerRadius : Mathf.Abs(OuterAreaRadius);
-			AreaEvent = ABM.AreaEvent;
+			EventType = ABM.EventType;
 			HasVolume = (ID < OD);
 		}
 
@@ -66,7 +66,7 @@ namespace RouterMessagingSystem
 			Origin = ABM.Origin;
 			InnerRadius = ABM.InnerRadius;
 			OuterRadius = ABM.OuterRadius;
-			AreaEvent = Event;
+			EventType = Event;
 			HasVolume = ABM.HasVolume;
 		}
 
@@ -74,7 +74,7 @@ namespace RouterMessagingSystem
 		/// \return Returns true if all attributes are the same, otherwise false.
 		public bool Equals(AreaBandMessage ABM /**< AreaBandMessage to compare with the calling AreaBandMessage. */)
 		{
-			return ((this.Origin == ABM.Origin) && (new Decimal(this.InnerRadius) == new Decimal(ABM.InnerRadius)) && (new Decimal(this.OuterRadius) == new Decimal(ABM.OuterRadius)) && (this.AreaEvent == ABM.AreaEvent));
+			return ((this.Origin == ABM.Origin) && (new Decimal(this.InnerRadius) == new Decimal(ABM.InnerRadius)) && (new Decimal(this.OuterRadius) == new Decimal(ABM.OuterRadius)) && (this.EventType == ABM.EventType));
 		}
 
 		/// \brief Compares the passed object to the calling AreaBandMessage.
@@ -82,7 +82,7 @@ namespace RouterMessagingSystem
 		/// \return Immediately returns false if Obj is not a AreaBandMessage at all.
 		public override bool Equals(System.Object Obj /**< Object to check for equivalency. */)
 		{
-			return ((Obj is AreaBandMessage) && (this.Origin == ((AreaBandMessage)Obj).Origin) && (new Decimal(this.InnerRadius) == new Decimal(((AreaBandMessage)Obj).InnerRadius)) && (new Decimal(this.OuterRadius) == new Decimal(((AreaBandMessage)Obj).OuterRadius)) && (this.AreaEvent == ((AreaBandMessage)Obj).AreaEvent));
+			return ((Obj is AreaBandMessage) && (this.Origin == ((AreaBandMessage)Obj).Origin) && (new Decimal(this.InnerRadius) == new Decimal(((AreaBandMessage)Obj).InnerRadius)) && (new Decimal(this.OuterRadius) == new Decimal(((AreaBandMessage)Obj).OuterRadius)) && (this.EventType == ((AreaBandMessage)Obj).EventType));
 		}
 
 		/// \brief Compares the calling AreaBandMessage's band area to the specified AreaBandMessage's band area.
@@ -97,14 +97,14 @@ namespace RouterMessagingSystem
 		/// \returns Hash generated from combined member attribute hashes.
 		public override int GetHashCode()
 		{
-			return (this.Origin.GetHashCode() + this.InnerRadius.GetHashCode() + this.OuterRadius.GetHashCode() + this.AreaEvent.GetHashCode());
+			return (this.Origin.GetHashCode() + this.InnerRadius.GetHashCode() + this.OuterRadius.GetHashCode() + this.EventType.GetHashCode());
 		}
 
 		/// \brief Returns a string listing this AreaBandMessage's parameters.
 		/// \returns A string containing the origin coordinate, the message radius and the event type.
 		public override string ToString()
 		{
-			return ("[" + Origin + ", " + InnerRadius + ", " + OuterRadius + ", " + AreaEvent + "]");
+			return ("[" + Origin + ", " + InnerRadius + ", " + OuterRadius + ", " + EventType + "]");
 		}
 
 		/// \brief Compares two AreaBandMessages for equivalent attributes.
@@ -112,7 +112,7 @@ namespace RouterMessagingSystem
 		/// \returns False if any attribute of the left-side operand is different from the respective attribute of the right-side operand.
 		public static bool operator ==(AreaBandMessage ABM1 /**< Left-side operand */, AreaBandMessage ABM2 /**< Right-side operand */)
 		{
-			return ((ABM1.Origin == ABM2.Origin) && (new Decimal(ABM1.InnerRadius) == new Decimal(ABM2.InnerRadius)) && (new Decimal(ABM1.OuterRadius) == new Decimal(ABM2.OuterRadius)) && (ABM1.AreaEvent == ABM2.AreaEvent));
+			return ((ABM1.Origin == ABM2.Origin) && (new Decimal(ABM1.InnerRadius) == new Decimal(ABM2.InnerRadius)) && (new Decimal(ABM1.OuterRadius) == new Decimal(ABM2.OuterRadius)) && (ABM1.EventType == ABM2.EventType));
 		}
 
 		/// \brief Contrasts two AreaBandMessages for differing attributes.
@@ -120,7 +120,7 @@ namespace RouterMessagingSystem
 		/// \returns False if all attributes of the left-side operand are the same as their respective attributes of the right-side operand.
 		public static bool operator !=(AreaBandMessage ABM1 /**< Left-side operand */, AreaBandMessage ABM2 /**< Right-side operand */)
 		{
-			return ((ABM1.Origin != ABM2.Origin) || (new Decimal(ABM1.InnerRadius) != new Decimal(ABM2.InnerRadius)) || (new Decimal(ABM1.OuterRadius) != new Decimal(ABM2.OuterRadius)) || (ABM1.AreaEvent != ABM2.AreaEvent));
+			return ((ABM1.Origin != ABM2.Origin) || (new Decimal(ABM1.InnerRadius) != new Decimal(ABM2.InnerRadius)) || (new Decimal(ABM1.OuterRadius) != new Decimal(ABM2.OuterRadius)) || (ABM1.EventType != ABM2.EventType));
 		}
 
 		/// \brief Compares two AreaBandMessages for the smaller area.

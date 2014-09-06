@@ -4,10 +4,17 @@ using System.Collections.Generic;
 
 public class SendMsg : MonoBehaviour
 {
-	public RoutingEvent Event = RoutingEvent.Test1;
+	public MessageTarget MT;
+
+	public void Awake()
+	{
+		MT = new MessageTarget(this, RoutingEvent.Test1);
+	}
 
 	public void Update()
 	{
-		Router.RouteMessage(Event);
+		Router.RouteMessage(RoutingEvent.Test1);
+		Router.RouteMessageDescendants(MT);
+		Router.RouteMessageAscendants(MT);
 	}
 }

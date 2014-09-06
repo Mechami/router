@@ -11,7 +11,7 @@ namespace RouterMessagingSystem
 		/** \brief Radius of the area in meters. */
 		public readonly float Radius;
 		/** \brief Event occuring in the area. */
-		public readonly RoutingEvent AreaEvent;
+		public readonly RoutingEvent EventType;
 		/** \brief Value stating if this AreaMessage is a point or not. */
 		public readonly bool IsPoint;
 
@@ -21,7 +21,7 @@ namespace RouterMessagingSystem
 			float AbsR = Mathf.Abs(AreaRadius);
 			Origin = OriginCoord;
 			Radius = AbsR;
-			AreaEvent = Event;
+			EventType = Event;
 			IsPoint = (new Decimal(AbsR) == 0m);
 		}
 
@@ -30,7 +30,7 @@ namespace RouterMessagingSystem
 		{
 			Origin = OriginCoord;
 			Radius = AM.Radius;
-			AreaEvent = AM.AreaEvent;
+			EventType = AM.EventType;
 			IsPoint = AM.IsPoint;
 		}
 
@@ -40,7 +40,7 @@ namespace RouterMessagingSystem
 			float AbsR = Mathf.Abs(AreaRadius);
 			Origin = AM.Origin;
 			Radius = AbsR;
-			AreaEvent = AM.AreaEvent;
+			EventType = AM.EventType;
 			IsPoint = (new Decimal(AbsR) > 0m);
 		}
 
@@ -49,7 +49,7 @@ namespace RouterMessagingSystem
 		{
 			Origin = AM.Origin;
 			Radius = AM.Radius;
-			AreaEvent = Event;
+			EventType = Event;
 			IsPoint = AM.IsPoint;
 		}
 
@@ -57,7 +57,7 @@ namespace RouterMessagingSystem
 		/// \return Returns true if all attributes are the same, otherwise false.
 		public bool Equals(AreaMessage AM /**< AreaMessage to compare with the calling AreaMessage. */)
 		{
-			return ((this.Origin == AM.Origin) && (new Decimal(this.Radius) == new Decimal(AM.Radius)) && (this.AreaEvent == AM.AreaEvent));
+			return ((this.Origin == AM.Origin) && (new Decimal(this.Radius) == new Decimal(AM.Radius)) && (this.EventType == AM.EventType));
 		}
 
 		/// \brief Compares the passed object to the calling AreaMessage.
@@ -65,7 +65,7 @@ namespace RouterMessagingSystem
 		/// \return Immediately returns false if Obj is not an AreaMessage at all.
 		public override bool Equals(System.Object Obj /**< Object to check for equivalency. */)
 		{
-			return ((Obj is AreaMessage) && (this.Origin == ((AreaMessage)Obj).Origin) && (new Decimal(this.Radius) == new Decimal(((AreaMessage)Obj).Radius)) && (this.AreaEvent == ((AreaMessage)Obj).AreaEvent));
+			return ((Obj is AreaMessage) && (this.Origin == ((AreaMessage)Obj).Origin) && (new Decimal(this.Radius) == new Decimal(((AreaMessage)Obj).Radius)) && (this.EventType == ((AreaMessage)Obj).EventType));
 		}
 
 		/// \brief Compares the calling AreaMessage's radius to the specified AreaMessage's radius.
@@ -80,14 +80,14 @@ namespace RouterMessagingSystem
 		/// \returns Hash generated from combined member attribute hashes.
 		public override int GetHashCode()
 		{
-			return (this.Origin.GetHashCode() + this.Radius.GetHashCode() + this.AreaEvent.GetHashCode());
+			return (this.Origin.GetHashCode() + this.Radius.GetHashCode() + this.EventType.GetHashCode());
 		}
 
 		/// \brief Returns a string listing this AreaMessage's parameters.
 		/// \returns A string containing the origin coordinate, the message radius and the event type.
 		public override string ToString()
 		{
-			return ("[" + Origin + ", " + Radius + ", " + AreaEvent + "]");
+			return ("[" + Origin + ", " + Radius + ", " + EventType + "]");
 		}
 
 		/// \brief Compares two AreaMessages for equivalent attributes.
@@ -95,7 +95,7 @@ namespace RouterMessagingSystem
 		/// \returns False if any attribute of the left-side operand is different from the respective attribute of the right-side operand.
 		public static bool operator ==(AreaMessage AM1 /**< Left-side operand */, AreaMessage AM2 /**< Right-side operand */)
 		{
-			return ((AM1.Origin == AM2.Origin) && (new Decimal(AM1.Radius) == new Decimal(AM2.Radius)) && (AM1.AreaEvent == AM2.AreaEvent));
+			return ((AM1.Origin == AM2.Origin) && (new Decimal(AM1.Radius) == new Decimal(AM2.Radius)) && (AM1.EventType == AM2.EventType));
 		}
 
 		/// \brief Contrasts two AreaMessages for differing attributes.
@@ -103,7 +103,7 @@ namespace RouterMessagingSystem
 		/// \returns False if all attributes of the left-side operand are the same as their respective attributes of the right-side operand.
 		public static bool operator !=(AreaMessage AM1 /**< Left-side operand */, AreaMessage AM2 /**< Right-side operand */)
 		{
-			return ((AM1.Origin != AM2.Origin) || (new Decimal(AM1.Radius) != new Decimal(AM2.Radius)) || (AM1.AreaEvent != AM2.AreaEvent));
+			return ((AM1.Origin != AM2.Origin) || (new Decimal(AM1.Radius) != new Decimal(AM2.Radius)) || (AM1.EventType != AM2.EventType));
 		}
 
 		/// \brief Compares two AreaMessages for the smaller radius.
