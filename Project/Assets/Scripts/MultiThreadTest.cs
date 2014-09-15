@@ -6,6 +6,7 @@ using System.Threading;
 public class MultiThreadTest : MonoBehaviour
 {
 	public RoutingEvent Event = RoutingEvent.Null;
+	private Router RTR = RouterBox.GetRouter();
 	private Thread Thread1 = null;
 	private Thread Thread2 = null;
 	private bool Playing = false;
@@ -34,7 +35,7 @@ public class MultiThreadTest : MonoBehaviour
 		while (Playing)
 		{
 			Debug.Log("Routing from " + Thread.CurrentThread.Name);
-			Router.RouteMessage(Event);
+			RTR.RouteMessage(Event);
 			Thread.Sleep(1000);
 		}
 	}

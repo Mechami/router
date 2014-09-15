@@ -3,8 +3,10 @@ using RouterMessagingSystem;
 
 public class CountTest : MonoBehaviour
 {
+	private Router RTR = RouterBox.GetRouter();
+
 	public void Update()
 	{
-		Debug.Log(Router.RouteCount());
+		Debug.Log(RTR.RouteCount());
 	}
 }

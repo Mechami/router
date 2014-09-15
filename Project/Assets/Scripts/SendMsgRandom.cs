@@ -4,12 +4,13 @@ using RouterMessagingSystem;
 
 public class SendMsgRandom : MonoBehaviour
 {
-	RoutingEvent Event = RoutingEvent.Null;
-	System.Random RNG = new System.Random();
+	private RoutingEvent Event = RoutingEvent.Null;
+	private Router RTR = RouterBox.GetRouter();
+	private System.Random RNG = new System.Random();
 
 	public void Update()
 	{
 		Event = (RoutingEvent)Enum.Parse(typeof(RoutingEvent), RNG.Next(1, 17).ToString());
-		Router.RouteMessage(Event);
+		RTR.RouteMessage(Event);
 	}
 }

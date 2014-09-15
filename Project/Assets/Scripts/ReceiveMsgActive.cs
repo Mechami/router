@@ -6,13 +6,14 @@ public class ReceiveMsgActive : MonoBehaviour
 {
 	public RoutingEvent Event = RoutingEvent.Test1;
 	public bool Active = false;
+	private Router RTR = RouterBox.GetRouter();
 	private Route RT = new Route();
 	private ulong TimesCalled = 0ul;
 
 	public void Awake()
 	{
 		RT = new Route(this, Target, Event);
-		Router.AddRoute(RT);
+		RTR.AddRoute(RT);
 		this.gameObject.SetActive(Active);
 	}
 

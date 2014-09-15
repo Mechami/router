@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class SendMsg : MonoBehaviour
 {
 	public MessageTarget MT;
+	private Router RTR = RouterBox.GetRouter();
 
 	public void Awake()
 	{
@@ -13,8 +14,8 @@ public class SendMsg : MonoBehaviour
 
 	public void Update()
 	{
-		Router.RouteMessage(RoutingEvent.Test1);
-		Router.RouteMessageDescendants(MT);
-		Router.RouteMessageAscendants(MT);
+		RTR.RouteMessage(RoutingEvent.Test1);
+		RTR.RouteMessageDescendants(MT);
+		RTR.RouteMessageAscendants(MT);
 	}
 }

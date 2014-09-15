@@ -30,16 +30,25 @@ namespace RouterMessagingSystem
 		public Route(Component RouteSubscriber /**< Reference to the subscribing Component.\n Can be of any type derived from Component. */, RoutePointer RoutingAddress /**< Reference to a function that this route calls.\n Must return void and accept no parameters. */, RoutingEvent Event /**< Value stating which event calls this Route. */) : this()
 		{
 			Subscriber = RouteSubscriber;
-			Address = (RoutingAddress != null)? (RoutePointer)(RoutingAddress.GetInvocationList()[0]) : null;
 			RouteEvent = Event;
-			IsValid = ((this.Subscriber != null) && (this.Address != null) && (this.RouteEvent != RoutingEvent.Null));
+
+			Address = (RoutingAddress != null)?
+				(RoutePointer)(RoutingAddress.GetInvocationList()[0]) :
+				null;
+
+			IsValid = (this.Subscriber != null) &&
+					  (this.Address != null) &&
+					  (((Component)this.Address.Target) == this.Subscriber) &&
+					  (this.RouteEvent != RoutingEvent.Null);
 		}
 
 		/// \brief Checks if the attributes of the passed Route are the same as the calling Route's attributes.
 		/// \return Returns true if all attributes are the same, otherwise false.
 		public bool Equals(Route RT /**< Route to compare with the calling Route. */)
 		{
-			return ((this.Subscriber == RT.Subscriber) && (this.Address == RT.Address) && (this.RouteEvent == RT.RouteEvent));
+			return (this.Subscriber == RT.Subscriber) &&
+				   (this.Address == RT.Address) &&
+				   (this.RouteEvent == RT.RouteEvent);
 		}
 
 		/// \brief Checks if the passed object is the same as the calling Route.
@@ -47,14 +56,14 @@ namespace RouterMessagingSystem
 		/// \return Immediately returns false if Obj is not a Route at all.
 		public override bool Equals(System.Object Obj /**< Object to check for equivalency. */)
 		{
-			// Originally this was a one-line series of shortcircuit &&s, but Obj was getting typecasted to Route 3 times.
-			// This changes causes Obj be typecasted to a Route only once.
 			bool Result = false;
 
 			if (Obj is Route)
 			{
 				Route That = (Route)Obj;
-				Result = ((this.Subscriber == That.Subscriber) && (this.Address == That.Address) && (this.RouteEvent == That.RouteEvent));
+				Result = (this.Subscriber == That.Subscriber) &&
+						 (this.Address == That.Address) &&
+						 (this.RouteEvent == That.RouteEvent);
 			}
 
 			return Result;
@@ -64,14 +73,20 @@ namespace RouterMessagingSystem
 		/// \returns Hash generated from combined member attribute hashes.
 		public override int GetHashCode()
 		{
-			return (((Subscriber != null)? Subscriber.GetHashCode() : 0) + ((Address != null)? Address.GetHashCode() : 0) + RouteEvent.GetHashCode());
+			return ((Subscriber != null)? Subscriber.GetHashCode() : 0) + 
+				   ((Address != null)? Address.GetHashCode() : 0) +
+				     RouteEvent.GetHashCode();
 		}
 
 		/// \brief Returns a string listing this Route's routing data.
 		/// \returns A string containing the subscribing Component, the subscribing event and the callback function.
 		public override string ToString()
 		{
-			return ("[" + ((Subscriber != null)? Subscriber.ToString() : "Null") + ", " + RouteEvent.ToString() + ", " + ((Address != null)? Address.Method.ToString() : "Null") + "]");
+			return "[" +
+				   ((Subscriber != null)? Subscriber.ToString() : "Null") +
+				   ", " + RouteEvent.ToString() + ", " +
+				   ((Address != null)? Address.Method.ToString() : "Null") +
+				   "]";
 		}
 
 		/// \brief Compares two Routes for equivalent attributes.
@@ -79,7 +94,9 @@ namespace RouterMessagingSystem
 		/// \returns False if any attribute of the left-side operand is different from the respective attribute of the right-side operand.
 		public static bool operator ==(Route RT1 /**< Left-side operand */, Route RT2 /**< Right-side operand */)
 		{
-			return ((RT1.Subscriber == RT2.Subscriber) && (RT1.Address == RT2.Address) && (RT1.RouteEvent == RT2.RouteEvent));
+			return ((RT1.Subscriber == RT2.Subscriber) &&
+					(RT1.Address == RT2.Address) &&
+					(RT1.RouteEvent == RT2.RouteEvent));
 		}
 
 		/// \brief Contrasts two Routes for differing attributes.
@@ -87,7 +104,9 @@ namespace RouterMessagingSystem
 		/// \returns False if all attributes of the left-side operand are the same as their respective attributes of the right-side operand.
 		public static bool operator !=(Route RT1 /**< Left-side operand */, Route RT2 /**< Right-side operand */)
 		{
-			return ((RT1.Subscriber != RT2.Subscriber) || (RT1.Address != RT2.Address) || (RT1.RouteEvent != RT2.RouteEvent));
+			return ((RT1.Subscriber != RT2.Subscriber) ||
+					(RT1.Address != RT2.Address) ||
+					(RT1.RouteEvent != RT2.RouteEvent));
 		}
 	}
 }

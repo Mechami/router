@@ -6,6 +6,7 @@ public class ReceiveMsgRandom : MonoBehaviour
 {
 	private Route RT = new Route();
 	private RoutingEvent Event = RoutingEvent.Null;
+	private Router RTR = RouterBox.GetRouter();
 	private System.Random RNG = new System.Random();
 	public int Min = 1, Max = 1;
 
@@ -17,12 +18,12 @@ public class ReceiveMsgRandom : MonoBehaviour
 
 	public void OnEnable()
 	{
-		Router.AddRoute(RT);
+		RTR.AddRoute(RT);
 	}
 
 	public void OnDisable()
 	{
-		Router.RemoveRoute(RT);
+		RTR.RemoveRoute(RT);
 	}
 
 	public void Test()

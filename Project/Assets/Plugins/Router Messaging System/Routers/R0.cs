@@ -284,7 +284,7 @@ namespace RouterMessagingSystem
 
 			List<R> Results = null;
 
-			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && !MessageParameters.IsPoint)
+			if (TablesExist && EventIsPopulated(MessageParameters.EventType))
 			{
 				decimal RadiusD = new Decimal(MessageParameters.Radius);
 				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) <= RadiusD));
@@ -309,7 +309,7 @@ namespace RouterMessagingSystem
 			CleanDeadRoutes(MessageParameters.EventType);
 			OutputList = null;
 
-			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && !MessageParameters.IsPoint)
+			if (TablesExist && EventIsPopulated(MessageParameters.EventType))
 			{
 				decimal RadiusD = new Decimal(MessageParameters.Radius);
 				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) <= RadiusD));
@@ -331,7 +331,7 @@ namespace RouterMessagingSystem
 		{
 			CleanDeadRoutes(MessageParameters.EventType);
 
-			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && !MessageParameters.IsPoint)
+			if (TablesExist && EventIsPopulated(MessageParameters.EventType))
 			{
 				decimal RadiusD = new Decimal(MessageParameters.Radius);
 				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) <= RadiusD));
@@ -349,7 +349,7 @@ namespace RouterMessagingSystem
 
 			List<R> Results = null;
 
-			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && !MessageParameters.IsPoint)
+			if (TablesExist && EventIsPopulated(MessageParameters.EventType))
 			{
 				decimal RadiusD = new Decimal(MessageParameters.Radius);
 				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) > RadiusD));
@@ -374,7 +374,7 @@ namespace RouterMessagingSystem
 			CleanDeadRoutes(MessageParameters.EventType);
 			OutputList = null;
 
-			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && !MessageParameters.IsPoint)
+			if (TablesExist && EventIsPopulated(MessageParameters.EventType))
 			{
 				decimal RadiusD = new Decimal(MessageParameters.Radius);
 				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) > RadiusD));
@@ -396,140 +396,10 @@ namespace RouterMessagingSystem
 		{
 			CleanDeadRoutes(MessageParameters.EventType);
 	
-			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && !MessageParameters.IsPoint)
+			if (TablesExist && EventIsPopulated(MessageParameters.EventType))
 			{
 				decimal RadiusD = new Decimal(MessageParameters.Radius);
 				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => (new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) > RadiusD));
-				RT.ForEach(x => OutputQueue.Enqueue(x.Address()));
-			}
-		}
-
-		/** \brief Routes a message of the specified event to all subscribers inside a ring specified by an inner and outer radius. */
-		/// \returns Returns a List<R> containing all returned data from subscribers of this event type.\n
-		/// \returns Otherwise returns null if the message cannot be sent.
-		/// \note Only works for subscribed GameObjects.
-		public static List<R> RouteMessageAreaBand(AreaBandMessage MessageParameters /**< Struct containing parameters for the area message. */)
-		{
-			CleanDeadRoutes(MessageParameters.EventType);
-
-			List<R> Results = null;
-
-			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && MessageParameters.HasVolume)
-			{
-				decimal InnerRadiusD = new Decimal(MessageParameters.InnerRadius), OuterRadiusD = new Decimal(MessageParameters.OuterRadius);
-				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance >= InnerRadiusD) && (Distance <= OuterRadiusD)); });
-				Results = new List<R>(RT.Count);
-
-				for (int i = 0; i < RT.Count; i++)
-				{
-					Results.Add(RT[i].Address());
-				}
-
-				Results.TrimExcess();	
-			}
-
-			return Results;
-		}
-
-		/** \brief Routes a message of the specified event to all subscribers inside a ring specified by an inner and outer radius. */
-		/// \returns Adds all returned data from subscribers of this event type to the specified list.\n
-		/// \returns Assigns null to OutputList if the message cannot be sent.
-		public static void RouteMessageAreaBand(AreaBandMessage MessageParameters /**< Struct containing parameters for the area message. */, out List<R> OutputList /**< List to output returned values into. */)
-		{
-			CleanDeadRoutes(MessageParameters.EventType);
-			OutputList = null;
-
-			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && MessageParameters.HasVolume)
-			{
-				decimal InnerRadiusD = new Decimal(MessageParameters.InnerRadius), OuterRadiusD = new Decimal(MessageParameters.OuterRadius);
-				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance >= InnerRadiusD) && (Distance <= OuterRadiusD)); });
-				OutputList = new List<R>(RT.Count);
-
-				for (int i = 0; i < RT.Count; i++)
-				{
-					OutputList.Add(RT[i].Address());
-				}
-
-				OutputList.TrimExcess();	
-			}
-		}
-
-		/** \brief Routes a message of the specified event to all subscribers inside a ring specified by an inner and outer radius. */
-		/// \returns Enqueues all returned data from subscribers of this event type in the specified queue.\n
-		/// \returns Enqueues nothing if the message cannot be sent.
-		public static void RouteMessageAreaBand(AreaBandMessage MessageParameters /**< Struct containing parameters for the area message. */, Queue<R> OutputQueue /**< Queue to output returned values into. */)
-		{
-			CleanDeadRoutes(MessageParameters.EventType);
-
-			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && MessageParameters.HasVolume)
-			{
-				decimal InnerRadiusD = new Decimal(MessageParameters.InnerRadius), OuterRadiusD = new Decimal(MessageParameters.OuterRadius);
-				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance >= InnerRadiusD) && (Distance <= OuterRadiusD)); });
-				RT.ForEach(x => OutputQueue.Enqueue(x.Address()));
-			}
-		}
-
-		/** \brief Routes a message of the specified event to all subscribers outside a ring specified by an inner and outer radius. */
-		/// \returns Returns a List<R> containing all returned data from subscribers of this event type.\n
-		/// \returns Otherwise returns null if the message cannot be sent.
-		/// \note Only works for subscribed GameObjects.
-		public static List<R> RouteMessageInverseAreaBand(AreaBandMessage MessageParameters /**< Struct containing parameters for the area message. */)
-		{
-			CleanDeadRoutes(MessageParameters.EventType);
-
-			List<R> Results = null;
-
-			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && MessageParameters.HasVolume)
-			{
-				decimal InnerRadiusD = new Decimal(MessageParameters.InnerRadius), OuterRadiusD = new Decimal(MessageParameters.OuterRadius);
-				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance < InnerRadiusD) || (Distance > OuterRadiusD)); });
-				Results = new List<R>(RT.Count);
-
-				for (int i = 0; i < RT.Count; i++)
-				{
-					Results.Add(RT[i].Address());
-				}
-
-				Results.TrimExcess();	
-			}
-
-			return Results;
-		}
-
-		/** \brief Routes a message of the specified event to all subscribers outside a ring specified by an inner and outer radius. */
-		/// \returns Adds all returned data from subscribers of this event type to the specified list.\n
-		/// \returns Assigns null to OutputList if the message cannot be sent.
-		public static void RouteMessageInverseAreaBand(AreaBandMessage MessageParameters /**< Struct containing parameters for the area message. */, out List<R> OutputList /**< List to output returned values into. */)
-		{
-			CleanDeadRoutes(MessageParameters.EventType);
-			OutputList = null;
-
-			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && MessageParameters.HasVolume)
-			{
-				decimal InnerRadiusD = new Decimal(MessageParameters.InnerRadius), OuterRadiusD = new Decimal(MessageParameters.OuterRadius);
-				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance < InnerRadiusD) || (Distance > OuterRadiusD)); });
-				OutputList = new List<R>(RT.Count);
-
-				for (int i = 0; i < RT.Count; i++)
-				{
-					OutputList.Add(RT[i].Address());
-				}
-
-				OutputList.TrimExcess();	
-			}
-		}
-
-		/** \brief Routes a message of the specified event to all subscribers outside a ring specified by an inner and outer radius. */
-		/// \returns Enqueues all returned data from subscribers of this event type in the specified queue.\n
-		/// \returns Enqueues nothing if the message cannot be sent.
-		public static void RouteMessageInverseAreaBand(AreaBandMessage MessageParameters /**< Struct containing parameters for the area message. */, Queue<R> OutputQueue /**< Queue to output returned values into. */)
-		{
-			CleanDeadRoutes(MessageParameters.EventType);
-
-			if (TablesExist && EventIsPopulated(MessageParameters.EventType) && MessageParameters.HasVolume)
-			{
-				decimal InnerRadiusD = new Decimal(MessageParameters.InnerRadius), OuterRadiusD = new Decimal(MessageParameters.OuterRadius);
-				List<Route<R>> RT = RouteTable[MessageParameters.EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); return ((Distance < InnerRadiusD) || (Distance > OuterRadiusD)); });
 				RT.ForEach(x => OutputQueue.Enqueue(x.Address()));
 			}
 		}

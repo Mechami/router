@@ -12,17 +12,20 @@ namespace RouterMessagingSystem
 		public readonly float Radius;
 		/** \brief Event occuring in the area. */
 		public readonly RoutingEvent EventType;
-		/** \brief Value stating if this AreaMessage is a point or not. */
-		public readonly bool IsPoint;
+		/** \brief Specify whether this area message should check for occlusion before sending messages. */
+		public bool DoRayCheck;
+		/** \brief Check outside the specified radius instead of inside. */
+		public bool UseInverse;
 
 		/** \brief Standard constructor for new AreaMessages. */
 		public AreaMessage(Vector3 OriginCoord, float AreaRadius, RoutingEvent Event) : this()
 		{
 			float AbsR = Mathf.Abs(AreaRadius);
 			Origin = OriginCoord;
-			Radius = AbsR;
+			Radius = (AbsR < 0.5f)? 0.5f : AbsR;
 			EventType = Event;
-			IsPoint = (new Decimal(AbsR) == 0m);
+			DoRayCheck = false;
+			UseInverse = false;
 		}
 
 		/** \brief Constructor that constructs a new AreaMessage from a Vector3 and another AreaMessage. */
@@ -31,7 +34,8 @@ namespace RouterMessagingSystem
 			Origin = OriginCoord;
 			Radius = AM.Radius;
 			EventType = AM.EventType;
-			IsPoint = AM.IsPoint;
+			DoRayCheck = AM.DoRayCheck;
+			UseInverse = AM.UseInverse;
 		}
 
 		/** \brief Constructor that constructs a new AreaMessage from a float and another AreaMessage. */
@@ -39,9 +43,10 @@ namespace RouterMessagingSystem
 		{
 			float AbsR = Mathf.Abs(AreaRadius);
 			Origin = AM.Origin;
-			Radius = AbsR;
+			Radius = (AbsR < 0.5f)? 0.5f : AbsR;
 			EventType = AM.EventType;
-			IsPoint = (new Decimal(AbsR) > 0m);
+			DoRayCheck = AM.DoRayCheck;
+			UseInverse = AM.UseInverse;
 		}
 
 		/** \brief Constructor that constructs a new AreaMessage from a RoutingEvent and another AreaMessage. */
@@ -50,7 +55,8 @@ namespace RouterMessagingSystem
 			Origin = AM.Origin;
 			Radius = AM.Radius;
 			EventType = Event;
-			IsPoint = AM.IsPoint;
+			DoRayCheck = AM.DoRayCheck;
+			UseInverse = AM.UseInverse;
 		}
 
 		/// \brief Compares the calling AreaMessage's attributes to the specified AreaMessage's attributes.

@@ -4,6 +4,7 @@ using RouterMessagingSystem;
 public class TestDetach : MonoBehaviour
 {
 	private Route RT = new Route();
+	private Router RTR = RouterBox.GetRouter();
 
 	public void Awake()
 	{
@@ -12,8 +13,8 @@ public class TestDetach : MonoBehaviour
 
 	public void Update()
 	{
-		Debug.Log(Router.RouteCount());
-		Router.RemoveRoute(RT);
+		Debug.Log(RTR.RouteCount());
+		RTR.RemoveRoute(RT);
 	}
 
 	public void DetachmentTest()

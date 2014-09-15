@@ -4,6 +4,7 @@ using RouterMessagingSystem;
 public class ReceiveMsg : MonoBehaviour
 {
 	public RoutingEvent Event = RoutingEvent.Test1;
+	private Router RTR = RouterBox.GetRouter();
 	private Route RT = new Route();
 
 	public void Awake()
@@ -13,12 +14,12 @@ public class ReceiveMsg : MonoBehaviour
 
 	public void OnEnable()
 	{
-		Router.AddRoute(RT);
+		RTR.AddRoute(RT);
 	}
 
 	public void OnDisable()
 	{
-		Router.RemoveRoute(RT);
+		RTR.RemoveRoute(RT);
 	}
 
 	public void Test()

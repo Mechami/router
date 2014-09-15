@@ -4,16 +4,17 @@ using RouterMessagingSystem;
 public class CheckTest : MonoBehaviour
 {
 	private MessageTarget MT;
+	private Router RTR = RouterBox.GetRouter();
 
 	public void Awake()
 	{
-		Router.AddRoute(new Route(this, Temp, RoutingEvent.Test1));
+		RTR.AddRoute(new Route(this, Temp, RoutingEvent.Test1));
 		MT = new MessageTarget(this, RoutingEvent.Test1);
 	}
 
 	public void Update()
 	{
-		Router.RouteMessageAscendants(MT);
+		RTR.RouteMessageAscendants(MT);
 	}
 
 	public void Temp()

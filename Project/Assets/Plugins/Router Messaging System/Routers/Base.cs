@@ -11,21 +11,40 @@ namespace RouterMessagingSystem
 	/// \todo Determine if MonoBehaviour->Component boxing is as costly as Struct->Object boxing.
 	/// \todo Find a way to prevent Router from calling private functions. <- Reconsider this
 	/// \todo Consider changing Router to non-static to allow for "team" routing.
-	/// \todo Find a way to do descendant/ancestor/area messaging with only 1 O(n) operation.
-	public static class Router
+	/// \todo Find a way to do area messaging with only 1 O(n) operation.
+	public class Router
 	{
-		private static Dictionary<RoutingEvent, List<Route>> RouteTable = null;
-		private static bool TableExists = false;
-
-		static Router()
+		private Dictionary<RoutingEvent, List<Route>> RouteTable = null;
+		private bool TableExists = false;
+		private string Identifier = string.Empty;
+		public string Name
 		{
-			Debug.Log("Router initialized!");
+			get
+			{
+				return Identifier;
+			}
+			set
+			{
+				Identifier = Name;
+			}
+		}
+
+		public Router()
+		{
+			Identifier = "Router";
+			Debug.Log("[" + Identifier + "] Router initialized!");
+		}
+
+		public Router(string RouterName)
+		{
+			Identifier = RouterName;
+			Debug.Log("[" + Identifier + "] Router initialized!");
 		}
 
 		/** \brief Registers a new Route with the Router. */
 		/// \note Prints an error if the specified Route is invalid or cannot be registered.\n
 		/// \note An invalid Route contains null properties.
-		public static void AddRoute(Route NewRoute /**< Route to be registered. */)
+		public void AddRoute(Route NewRoute /**< Route to be registered. */)
 		{
 			if (!TableExists && NewRoute.IsValid)
 			{
@@ -38,13 +57,15 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				Debug.LogError("[Router] Cannot register " + (NewRoute.IsValid? "duplicate" : "invalid") + " route " + NewRoute + ".", NewRoute.Subscriber);
+				Debug.LogError("[" + Identifier + "] Cannot register " +
+							  (NewRoute.IsValid? "duplicate" : "invalid") +
+							   " route " + NewRoute + ".", NewRoute.Subscriber);
 			}
 		}
 
 		/** \brief Removes a Route from routing table. */
 		/// \note Prints an error if the specified Route cannot be removed.
-		public static void RemoveRoute(Route OldRoute /**< Route to be removed. */)
+		public void RemoveRoute(Route OldRoute /**< Route to be removed. */)
 		{
 			if (TableExists && OldRoute.IsValid && RouteIsRegistered(OldRoute))
 			{
@@ -52,7 +73,9 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				Debug.LogError("[Router] Cannot remove " + (OldRoute.IsValid? "non-existant" : "invalid") + " route " + OldRoute + ".", OldRoute.Subscriber);
+				Debug.LogError("[" + Identifier + "] Cannot remove " +
+							  (OldRoute.IsValid? "non-existant" : "invalid") +
+							   " route " + OldRoute + ".", OldRoute.Subscriber);
 			}
 
 			DeleteEmptyTable();
@@ -62,21 +85,24 @@ namespace RouterMessagingSystem
 		/// \warning Only use this if you absolutely need to reset the entire routing table at runtime.\n
 		/// \warning Every subscriber will need to re-register with the Router after the tables are flushed.\n
 		/// \warning This can potentially be a slow operation, depending on the amount of subscribers that need to be re-registered.
-		public static void FlushRoutes()
+		public void FlushRoutes()
 		{
 			/*	Is there a point to checking if the table exists
-				if we're just going to destroy it anyways? */
+				if we're just going to destroy it anyways?
+				Because at what point does the overhead of doing a boolean check
+				become greater than the overhead of writing constant
+				pre-determined values to a set of variables? */
 			if (TableExists)
 			{
 				RouteTable = null;
 				TableExists = false;
-				Debug.LogWarning("[Router] Routing table has been flushed!");
+				Debug.LogWarning("[" + Identifier + "] Flushed routing table!");
 			}
 		}
 
 		/** \brief Returns the total amount of Routes registered with the Router. */
 		/// \returns Int representing the Routes registered.
-		public static int RouteCount()
+		public int RouteCount()
 		{
 			int TotalRoutes = 0;
 
@@ -92,7 +118,7 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers. */
-		public static void RouteMessage(RoutingEvent EventType /**< Type of event to send. */)
+		public void RouteMessage(RoutingEvent EventType /**< Type of event to send. */)
 		{
 			CleanDeadRoutes(EventType);
 
@@ -105,87 +131,54 @@ namespace RouterMessagingSystem
 		/** \brief Routes a message of the specified event to the specified GameObject and its children. */
 		/// Both direct and indirect children of the specified GameObject receive the event.
 		/// \note Only works for subscribed GameObjects. Children must be subscribed as-well in order to receive the event.
-		public static void RouteMessageDescendants(MessageTarget Parameters /**< MessageTarget specifying the scope of the message. */)
+		public void RouteMessageDescendants(MessageTarget Parameters /**< MessageTarget specifying the scope of the message. */)
 		{
 			CleanDeadRoutes(Parameters.EventType);
 
-			if (TableExists && Parameters.IsValid && EventIsPopulated(Parameters.EventType))
+			if (TableExists &&
+				Parameters.IsValid &&
+				EventIsPopulated(Parameters.EventType))
 			{
-				RouteTable[Parameters.EventType].ForEach(x => SendChild(x, Parameters.Recipient));
+				RouteTable[Parameters.EventType].ForEach(
+									x => SendChild(x, Parameters.Recipient));
 			}
 		}
 
 		/** \brief Routes a message of the specified event to the specified GameObject and its parents. */
 		/// Both direct and indirect parents of the specified GameObject receive the event.\n
 		/// \note Only works for subscribed GameObjects. Parents must be subscribed as-well in order to receive the event.
-		public static void RouteMessageAscendants(MessageTarget Parameters /**< MessageTarget specifying the scope of the message. */)
+		public void RouteMessageAscendants(MessageTarget Parameters /**< MessageTarget specifying the scope of the message. */)
 		{
 			CleanDeadRoutes(Parameters.EventType);
 
-			if (TableExists && Parameters.IsValid && EventIsPopulated(Parameters.EventType))
+			if (TableExists &&
+				Parameters.IsValid &&
+				EventIsPopulated(Parameters.EventType))
 			{
-				RouteTable[Parameters.EventType].ForEach(x => SendParent(x, Parameters.Recipient));
+				RouteTable[Parameters.EventType].ForEach(
+									x => SendParent(x, Parameters.Recipient));
 			}
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers inside the specified radius. */
+		/** If UseInverse is true then a message will be routed to all subscribers outside the specified radius. */
 		/// \note Only works for subscribed GameObjects.
-		public static void RouteMessageArea(AreaMessage Parameters /**< Struct containing parameters for the area message. */)
+		public void RouteMessageArea(AreaMessage Parameters /**< Struct containing parameters for the area message. */, bool DoRayCheck = false /**< Send messages only to entities that pass a Line-Of-Sight check. */ /*, int LM = 0 /**< Layermask value for LoS check.\nNot used if DoRayCheck is false. */)
 		{
 			CleanDeadRoutes(Parameters.EventType);
 
-			if (TableExists && EventIsPopulated(Parameters.EventType) && !Parameters.IsPoint)
+			if (TableExists && EventIsPopulated(Parameters.EventType))
 			{
-				decimal RadiusD = new Decimal(Parameters.Radius);
-				List<Route> RT = RouteTable[Parameters.EventType].FindAll(x => (new Decimal(Vector3.Distance(Parameters.Origin, x.Subscriber.transform.position)) <= RadiusD));
-				RT.ForEach(x => x.Address());
-			}
-		}
+				Action<Route> Mailman = DoRayCheck?
+					new Action<Route>(x => SendAreaChecked(x, Parameters)) :
+					new Action<Route>(x => SendArea(x, Parameters));
 
-		/** \brief Routes a message of the specified event to all subscribers outside the specified radius. */
-		/// \note Only works for subscribed GameObjects.
-		public static void RouteMessageAreaInverse(AreaMessage Parameters /**< Struct containing parameters for the area message. */)
-		{
-			CleanDeadRoutes(Parameters.EventType);
-
-			if (TableExists && EventIsPopulated(Parameters.EventType) && !Parameters.IsPoint)
-			{
-				decimal RadiusD = new Decimal(Parameters.Radius);
-				List<Route> RT = RouteTable[Parameters.EventType].FindAll(x => (new Decimal(Vector3.Distance(Parameters.Origin, x.Subscriber.transform.position)) > RadiusD));
-				RT.ForEach(x => x.Address());
-			}
-		}
-
-		/** \brief Routes a message of the specified event to all subscribers inside a ring specified by an inner and outer radius. */
-		/// \note Only works for subscribed GameObjects.
-		public static void RouteMessageAreaBand(AreaBandMessage Parameters)
-		{
-			CleanDeadRoutes(Parameters.EventType);
-
-			if (TableExists && EventIsPopulated(Parameters.EventType) && Parameters.HasVolume)
-			{
-				decimal InnerRadiusD = new Decimal(Parameters.InnerRadius), OuterRadiusD = new Decimal(Parameters.OuterRadius);
-				List<Route> RT = RouteTable[Parameters.EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(Parameters.Origin, x.Subscriber.transform.position)); return ((Distance >= InnerRadiusD) && (Distance <= OuterRadiusD)); });
-				RT.ForEach(x => x.Address());
-			}
-		}
-
-		/** \brief Routes a message of the specified event to all subscribers outside a ring specified by an inner and outer radius. */
-		/// \note Only works for subscribed GameObjects.
-		public static void RouteMessageInverseAreaBand(AreaBandMessage Parameters)
-		{
-			CleanDeadRoutes(Parameters.EventType);
-
-			if (TableExists && EventIsPopulated(Parameters.EventType) && Parameters.HasVolume)
-			{
-				decimal InnerRadiusD = new Decimal(Parameters.InnerRadius), OuterRadiusD = new Decimal(Parameters.OuterRadius);
-				List<Route> RT = RouteTable[Parameters.EventType].FindAll(x => { decimal Distance = new Decimal(Vector3.Distance(Parameters.Origin, x.Subscriber.transform.position)); return ((Distance < InnerRadiusD) || (Distance > OuterRadiusD)); });
-				RT.ForEach(x => x.Address());
+				RouteTable[Parameters.EventType].ForEach(Mailman);
 			}
 		}
 
 		/** \brief Routes a message to active subscribers. */
-		public static void RouteMessageActiveObjects(RoutingEvent EventType /**< Type of event to send. */)
+		public void RouteMessageActiveObjects(RoutingEvent EventType /**< Type of event to send. */)
 		{
 			CleanDeadRoutes(EventType);
 
@@ -196,7 +189,7 @@ namespace RouterMessagingSystem
 		}
 
 		/** \brief Routes a message to inactive subscribers. */
-		public static void RouteMessageInactiveObjects(RoutingEvent EventType /**< Type of event to send. */)
+		public void RouteMessageInactiveObjects(RoutingEvent EventType /**< Type of event to send. */)
 		{
 			CleanDeadRoutes(EventType);
 
@@ -212,13 +205,13 @@ namespace RouterMessagingSystem
 
 		/// \internal Structors
 
-		private static void CreateTable()
+		private void CreateTable()
 		{
 			RouteTable = new Dictionary<RoutingEvent, List<Route>>();
 			TableExists = true;
 		}
 
-		private static void DeleteEmptyTable()
+		private void DeleteEmptyTable()
 		{
 			if (TableExists && (RouteTable.Count < 1))
 			{
@@ -230,7 +223,7 @@ namespace RouterMessagingSystem
 
 		/// \internal Bookkeeping Functions
 
-		private static void RegisterRoute(Route RT)
+		private void RegisterRoute(Route RT)
 		{
 			if (!RouteTable.ContainsKey(RT.RouteEvent))
 			{
@@ -240,7 +233,7 @@ namespace RouterMessagingSystem
 			RouteTable[RT.RouteEvent].Add(RT);
 		}
 
-		private static void DeregisterRoute(Route RT)
+		private void DeregisterRoute(Route RT)
 		{
 			if (EventIsPopulated(RT.RouteEvent))
 			{
@@ -252,17 +245,19 @@ namespace RouterMessagingSystem
 			}
 		}
 
-		private static bool RouteIsRegistered(Route RT)
+		private bool RouteIsRegistered(Route RT)
 		{
-			return (EventIsPopulated(RT.RouteEvent) && RouteTable[RT.RouteEvent].Contains(RT));
+			return EventIsPopulated(RT.RouteEvent) &&
+				   RouteTable[RT.RouteEvent].Contains(RT);
 		}
 
-		private static bool EventIsPopulated(RoutingEvent EventType)
+		private bool EventIsPopulated(RoutingEvent EventType)
 		{
-			return (RouteTable.ContainsKey(EventType) && (RouteTable[EventType].Count >= 1));
+			return RouteTable.ContainsKey(EventType) &&
+				  (RouteTable[EventType].Count >= 1);
 		}
 
-		private static void CleanDeadRoutes(RoutingEvent EventType)
+		private void CleanDeadRoutes(RoutingEvent EventType)
 		{
 			if (TableExists && EventIsPopulated(EventType))
 			{
@@ -272,7 +267,7 @@ namespace RouterMessagingSystem
 			DeleteEmptyTable();
 		}
 
-		private static void PruneDead(Route RT)
+		private void PruneDead(Route RT)
 		{
 			if (RT.IsDead)
 			{
@@ -282,7 +277,7 @@ namespace RouterMessagingSystem
 
 		/// \internal Routing Functions
 
-		private static void SendActive(Route RT)
+		private void SendActive(Route RT)
 		{
 			if (RT.Subscriber.gameObject.activeInHierarchy)
 			{
@@ -290,7 +285,7 @@ namespace RouterMessagingSystem
 			}
 		}
 
-		private static void SendInactive(Route RT)
+		private void SendInactive(Route RT)
 		{
 			if (!RT.Subscriber.gameObject.activeInHierarchy)
 			{
@@ -298,7 +293,7 @@ namespace RouterMessagingSystem
 			}
 		}
 
-		private static void SendChild(Route Source, Transform Target)
+		private void SendChild(Route Source, Transform Target)
 		{
 			if (Source.Subscriber.transform.IsChildOf(Target))
 			{
@@ -306,11 +301,48 @@ namespace RouterMessagingSystem
 			}
 		}
 
-		private static void SendParent(Route Source, Transform Target)
+		private void SendParent(Route Source, Transform Target)
 		{
 			if (Target.IsChildOf(Source.Subscriber.transform))
 			{
 				Source.Address();
+			}
+		}
+
+		private void SendArea(Route RT, AreaMessage AM)
+		{
+			decimal Distance = new Decimal(
+				Vector3.Distance(AM.Origin, RT.Subscriber.transform.position));
+			decimal Radius = new Decimal(AM.Radius);
+
+			if (AM.UseInverse && (Distance >= Radius))
+			{
+				RT.Address();
+			}
+
+			if (!AM.UseInverse && (Distance < Radius))
+			{
+				RT.Address();
+			}
+		}
+
+		private void SendAreaChecked(Route RT, AreaMessage AM)
+		{
+			Vector3 Position = RT.Subscriber.transform.position;
+			decimal Distance = new Decimal(
+										Vector3.Distance(AM.Origin, Position));
+			decimal Radius = new Decimal(AM.Radius);
+
+			if (AM.UseInverse &&
+			   (Distance >= Radius) && !Physics.Linecast(AM.Origin, Position))
+			{
+				RT.Address();
+			}
+
+			if (!AM.UseInverse &&
+			   (Distance < Radius) && !Physics.Linecast(AM.Origin, Position))
+			{
+				RT.Address();
 			}
 		}
 	}
