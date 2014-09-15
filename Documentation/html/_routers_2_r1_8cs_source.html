@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Router Messaging System: Project/Assets/Plugins/Router Messaging System/Routers/R1.cs (47b6d69d293767ddfdbe696ce369716c8c3bf27e) Source File</title>
+<title>Router Messaging System: C:/Users/Philip/Unity Projects/router/Project/Assets/Plugins/Router Messaging System/Routers/R1.cs (47b6d69d293767ddfdbe696ce369716c8c3bf27e) Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -113,18 +113,18 @@ $(document).ready(function(){initNavTree('_routers_2_r1_8cs_source.html','');});
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>RouterMessagingSystem</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_router_messaging_system_1_1_router_3_01_r_00_01_t_01_4.html">    8</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span><a class="code" href="class_router_messaging_system_1_1_router.html">Router</a>&lt;R, T&gt;</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_router_messaging_system_1_1_router_3_01_r_00_01_t_01_4.html">    8</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>Router&lt;R, T&gt;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> Dictionary&lt;RoutingEvent, RoutePointer&lt;R, T&gt;&gt; PointerTable = null;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> Dictionary&lt;RoutingEvent, List&lt;Route&lt;R, T&gt;&gt;&gt; RouteTable = null;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> TablesExist = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">static</span> <a class="code" href="class_router_messaging_system_1_1_router.html">Router</a>()</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">static</span> Router()</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        {</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            Debug.Log(<span class="stringliteral">&quot;Router&lt;&quot;</span> + typeof(R) + <span class="stringliteral">&quot;, &quot;</span> + typeof(T) + <span class="stringliteral">&quot;&gt; initialized!&quot;</span>);</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        }</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#aee00d3d6636e9a50b69d317ea378b06d">AddRoute</a>(<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html">Route&lt;R, T&gt;</a> NewRoute )</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> AddRoute(<a class="code" href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html">Route&lt;R, T&gt;</a> NewRoute )</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            TablesExist = (TablesExist? TablesExist : ConstructTables());</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
@@ -146,14 +146,14 @@ $(document).ready(function(){initNavTree('_routers_2_r1_8cs_source.html','');});
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            TablesExist = (TablesExist? DeconstructTables() : TablesExist);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        }</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#ad40fee06b10339cc09228e9d175a8810">FlushRoutes</a>()</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> FlushRoutes()</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        {</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            RouteTable = null;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            PointerTable = null;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            TablesExist = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> List&lt;R&gt; <a class="code" href="class_router_messaging_system_1_1_router.html#a576e1f0b64ef7a64eb4ee535cbf37594">RouteMessage</a>(<a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType , T Parameter)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> List&lt;R&gt; RouteMessage(<a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType , T Parameter)</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; KeyHasValue(EventType) &amp;&amp; EventIsRegistered(EventType))</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            {</div>
@@ -175,7 +175,7 @@ $(document).ready(function(){initNavTree('_routers_2_r1_8cs_source.html','');});
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            }</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> List&lt;R&gt; <a class="code" href="class_router_messaging_system_1_1_router.html#ade5093fb6fdf687b262bae8ed1600e19">RouteMessageDescendants</a>(GameObject Scope , <a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType , T Parameter)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> List&lt;R&gt; RouteMessageDescendants(GameObject Scope , <a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType , T Parameter)</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; ScopeIsValid(Scope) &amp;&amp; EventIsRegistered(EventType))</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            {</div>
@@ -197,7 +197,7 @@ $(document).ready(function(){initNavTree('_routers_2_r1_8cs_source.html','');});
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            }</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        }</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> List&lt;R&gt; <a class="code" href="class_router_messaging_system_1_1_router.html#ade5093fb6fdf687b262bae8ed1600e19">RouteMessageDescendants</a>(Component Scope , <a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType , T Parameter)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> List&lt;R&gt; RouteMessageDescendants(Component Scope , <a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType , T Parameter)</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        {</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; ScopeIsValid(Scope) &amp;&amp; EventIsRegistered(EventType))</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            {</div>
@@ -219,7 +219,7 @@ $(document).ready(function(){initNavTree('_routers_2_r1_8cs_source.html','');});
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            }</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        }</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> List&lt;R&gt; <a class="code" href="class_router_messaging_system_1_1_router.html#aa7eaa78231b6b65a19ea6bcf17f2b906">RouteMessageAscendants</a>(GameObject Scope , <a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType , T Parameter)</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> List&lt;R&gt; RouteMessageAscendants(GameObject Scope , <a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType , T Parameter)</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        {</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; ScopeIsValid(Scope) &amp;&amp; EventIsRegistered(EventType))</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            {</div>
@@ -241,7 +241,7 @@ $(document).ready(function(){initNavTree('_routers_2_r1_8cs_source.html','');});
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            }</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        }</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> List&lt;R&gt; <a class="code" href="class_router_messaging_system_1_1_router.html#aa7eaa78231b6b65a19ea6bcf17f2b906">RouteMessageAscendants</a>(Component Scope , <a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType , T Parameter)</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> List&lt;R&gt; RouteMessageAscendants(Component Scope , <a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType , T Parameter)</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        {</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; ScopeIsValid(Scope) &amp;&amp; EventIsRegistered(EventType))</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            {</div>
@@ -263,7 +263,7 @@ $(document).ready(function(){initNavTree('_routers_2_r1_8cs_source.html','');});
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            }</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        }</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> List&lt;R&gt; <a class="code" href="class_router_messaging_system_1_1_router.html#abf3b4c8d5e60f7a8708685f393ffa2e0">RouteMessageArea</a>(GameObject Origin , <a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType , <span class="keywordtype">float</span> Radius , T Parameter)</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> List&lt;R&gt; RouteMessageArea(GameObject Origin , <a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType , <span class="keywordtype">float</span> Radius , T Parameter)</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        {</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; ScopeIsValid(Origin) &amp;&amp; EventIsRegistered(EventType))</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            {</div>
@@ -286,7 +286,7 @@ $(document).ready(function(){initNavTree('_routers_2_r1_8cs_source.html','');});
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            }</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        }</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> List&lt;R&gt; <a class="code" href="class_router_messaging_system_1_1_router.html#abf3b4c8d5e60f7a8708685f393ffa2e0">RouteMessageArea</a>(Component Origin , <a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType , <span class="keywordtype">float</span> Radius , T Parameter)</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> List&lt;R&gt; RouteMessageArea(Component Origin , <a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType , <span class="keywordtype">float</span> Radius , T Parameter)</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        {</div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; ScopeIsValid(Origin.gameObject) &amp;&amp; EventIsRegistered(EventType))</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            {</div>
@@ -407,17 +407,10 @@ $(document).ready(function(){initNavTree('_routers_2_r1_8cs_source.html','');});
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        }</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    }</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;}</div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_ad40fee06b10339cc09228e9d175a8810"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#ad40fee06b10339cc09228e9d175a8810">RouterMessagingSystem.Router.FlushRoutes</a></div><div class="ttdeci">static void FlushRoutes()</div><div class="ttdoc">Flushes all Routes from the routing table. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00064">Base.cs:64</a></div></div>
 <div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4_html_a852878296a3e4de0d14a7e00a70a31b3"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html#a852878296a3e4de0d14a7e00a70a31b3">RouterMessagingSystem.Route&lt; R, T &gt;.RouteEvent</a></div><div class="ttdeci">readonly RoutingEvent RouteEvent</div><div class="ttdoc">Value for the RouteEvent that calls this route&#39;s address. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r1_8cs_source.html#l00014">R1.cs:14</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_aee00d3d6636e9a50b69d317ea378b06d"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#aee00d3d6636e9a50b69d317ea378b06d">RouterMessagingSystem.Router.AddRoute</a></div><div class="ttdeci">static void AddRoute(Route NewRoute)</div><div class="ttdoc">Registers a new Route with the Router. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00028">Base.cs:28</a></div></div>
 <div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4_html"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html">RouterMessagingSystem.Route&lt; R, T &gt;</a></div><div class="ttdoc">A route to a function that accepts one parameter of type T and returns an object of type R...</div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r1_8cs_source.html#l00007">R1.cs:7</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_abf3b4c8d5e60f7a8708685f393ffa2e0"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#abf3b4c8d5e60f7a8708685f393ffa2e0">RouterMessagingSystem.Router.RouteMessageArea</a></div><div class="ttdeci">static void RouteMessageArea(AreaMessage MessageParameters)</div><div class="ttdoc">Routes a message of the specified event to all subscribers inside the specified radius. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00134">Base.cs:134</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_ade5093fb6fdf687b262bae8ed1600e19"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#ade5093fb6fdf687b262bae8ed1600e19">RouterMessagingSystem.Router.RouteMessageDescendants</a></div><div class="ttdeci">static void RouteMessageDescendants(MessageTarget Scope, RoutingEvent EventType)</div><div class="ttdoc">Routes a message of the specified event to the specified GameObject and its children. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00107">Base.cs:107</a></div></div>
 <div class="ttc" id="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4_html_acadc530ab2a223111d52bd368388181d"><div class="ttname"><a href="struct_router_messaging_system_1_1_route_3_01_r_00_01_t_01_4.html#acadc530ab2a223111d52bd368388181d">RouterMessagingSystem.Route&lt; R, T &gt;.Subscriber</a></div><div class="ttdeci">readonly Component Subscriber</div><div class="ttdoc">Reference to the originator of this route. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_r1_8cs_source.html#l00010">R1.cs:10</a></div></div>
 <div class="ttc" id="class_router_messaging_system_1_1_router_3_01_r_00_01_t_01_4_html_a366a9678fb8f01576d38f3e7b7c6b0e6"><div class="ttname"><a href="class_router_messaging_system_1_1_router_3_01_r_00_01_t_01_4.html#a366a9678fb8f01576d38f3e7b7c6b0e6">RouterMessagingSystem.Router&lt; R, T &gt;.RemoveRoute</a></div><div class="ttdeci">static void RemoveRoute(Route&lt; R, T &gt; OldRoute)</div><div class="ttdoc">Removes a Route from routing table. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_r1_8cs_source.html#l00033">R1.cs:33</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_aa7eaa78231b6b65a19ea6bcf17f2b906"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#aa7eaa78231b6b65a19ea6bcf17f2b906">RouterMessagingSystem.Router.RouteMessageAscendants</a></div><div class="ttdeci">static void RouteMessageAscendants(MessageTarget Scope, RoutingEvent EventType)</div><div class="ttdoc">Routes a message of the specified event to the specified GameObject and its parents. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00121">Base.cs:121</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_a576e1f0b64ef7a64eb4ee535cbf37594"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#a576e1f0b64ef7a64eb4ee535cbf37594">RouterMessagingSystem.Router.RouteMessage</a></div><div class="ttdeci">static void RouteMessage(RoutingEvent EventType)</div><div class="ttdoc">Routes a message of the specified event to all subscribers. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00094">Base.cs:94</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a></div><div class="ttdoc">A router that operates on standard routes. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00014">Base.cs:14</a></div></div>
 <div class="ttc" id="namespace_router_messaging_system_html_abf90ac1a99b75a99768e976718e09340"><div class="ttname"><a href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RouterMessagingSystem.RoutingEvent</a></div><div class="ttdeci">RoutingEvent</div><div class="ttdoc">Enumeration for event types. </div><div class="ttdef"><b>Definition:</b> <a href="_events_8cs_source.html#l00004">Events.cs:4</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -425,7 +418,7 @@ $(document).ready(function(){initNavTree('_routers_2_r1_8cs_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_ffd1f789ec7bd0a45fc6ad92579c5070.html">Project</a></li><li class="navelem"><a class="el" href="dir_879de4fd393548c22b98301f5b1bb4c5.html">Assets</a></li><li class="navelem"><a class="el" href="dir_b5c0ad125fda175bded5335c6e0b3543.html">Plugins</a></li><li class="navelem"><a class="el" href="dir_b9153762626c4c54c9f7fb8eedc47a78.html">Router Messaging System</a></li><li class="navelem"><a class="el" href="dir_9b03a082fd188e431d2249e59b725049.html">Routers</a></li><li class="navelem"><b>R1.cs</b></li>
-    <li class="footer">Generated on Sat Apr 26 2014 22:31:18 for Router Messaging System by
+    <li class="footer">Generated on Mon Sep 15 2014 14:21:58 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

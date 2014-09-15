@@ -15,8 +15,9 @@ var struct_router_messaging_system_1_1_area_message =
     [ "operator>", "struct_router_messaging_system_1_1_area_message.html#a8156cd3383de2de646ae8dc60fc63687", null ],
     [ "operator>=", "struct_router_messaging_system_1_1_area_message.html#a32832fb4d89056301649cca27658401f", null ],
     [ "ToString", "struct_router_messaging_system_1_1_area_message.html#af4c7a663ea2f1a5563245b8f3694993c", null ],
-    [ "AreaEvent", "struct_router_messaging_system_1_1_area_message.html#a0d87d336786e5db72c3375d847112052", null ],
-    [ "IsPoint", "struct_router_messaging_system_1_1_area_message.html#a9a0a6d0df09ef9d341138be91ff5b056", null ],
+    [ "DoRayCheck", "struct_router_messaging_system_1_1_area_message.html#ade751c6f47587742137a186f59680ace", null ],
+    [ "EventType", "struct_router_messaging_system_1_1_area_message.html#a770244e9651cb98c46f2ce8f237e527f", null ],
     [ "Origin", "struct_router_messaging_system_1_1_area_message.html#ab0d9a861f7b8fd77757d28470b9ceceb", null ],
-    [ "Radius", "struct_router_messaging_system_1_1_area_message.html#aa34e8658fca3a67b884b26446651ddae", null ]
+    [ "Radius", "struct_router_messaging_system_1_1_area_message.html#aa34e8658fca3a67b884b26446651ddae", null ],
+    [ "UseInverse", "struct_router_messaging_system_1_1_area_message.html#a27a5f119a4a1ff2b43b87d0032f7b158", null ]
 ];

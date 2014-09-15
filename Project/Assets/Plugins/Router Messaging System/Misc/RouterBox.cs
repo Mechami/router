@@ -15,7 +15,7 @@ namespace RouterMessagingSystem
 			SwitchTable.Add("system", new Router("System Router"));
 		}
 
-		/// \brief Creates and returns a new router with the associated key
+		/** \brief Creates and returns a new router with the associated key */
 		/// Creates a new router if none with the specified key exists
 		/// otherwise returns the already existing router.
 		public static Router AddRouter(string Key)
@@ -66,9 +66,8 @@ namespace RouterMessagingSystem
 			return SwitchTable["system"];
 		}
 
-		/// \brief Returns the router associated with the specified key
-		/// \returns The router associated with the specified key
-		/// \return otherwise null.
+		/** \brief Returns the router associated with the specified key */
+		/// \returns The router associated with the specified key or null.
 		public static Router GetRouter(string Key)
 		{
 			string Fixed = Key.ToLower();

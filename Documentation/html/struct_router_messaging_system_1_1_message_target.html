@@ -160,10 +160,10 @@ Public Attributes</h2></td></tr>
 readonly Transform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_router_messaging_system_1_1_message_target.html#a39e7bbbc3144498771a697cb8a34491b">Recipient</a></td></tr>
 <tr class="memdesc:a39e7bbbc3144498771a697cb8a34491b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recipient of the message. <br/></td></tr>
 <tr class="separator:a39e7bbbc3144498771a697cb8a34491b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05ee3a79606e055648c6b7e3ed67c557"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05ee3a79606e055648c6b7e3ed67c557"></a>
-readonly <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_router_messaging_system_1_1_message_target.html#a05ee3a79606e055648c6b7e3ed67c557">MessageEvent</a></td></tr>
-<tr class="memdesc:a05ee3a79606e055648c6b7e3ed67c557"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event to send to the recipient. <br/></td></tr>
-<tr class="separator:a05ee3a79606e055648c6b7e3ed67c557"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98a58f69fa534e3e1bdd9ba9ee2d06cf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98a58f69fa534e3e1bdd9ba9ee2d06cf"></a>
+readonly <a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_router_messaging_system_1_1_message_target.html#a98a58f69fa534e3e1bdd9ba9ee2d06cf">EventType</a></td></tr>
+<tr class="memdesc:a98a58f69fa534e3e1bdd9ba9ee2d06cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event to send to the recipient. <br/></td></tr>
+<tr class="separator:a98a58f69fa534e3e1bdd9ba9ee2d06cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -210,7 +210,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 
 <p>Definition at line <a class="el" href="_message_target_8cs_source.html#l00038">38</a> of file <a class="el" href="_message_target_8cs_source.html">MessageTarget.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">return</span> (this.<a class="code" href="struct_router_messaging_system_1_1_message_target.html#a39e7bbbc3144498771a697cb8a34491b">Recipient</a> == MT.Recipient);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">return</span> (this.<a class="code" href="struct_router_messaging_system_1_1_message_target.html#a39e7bbbc3144498771a697cb8a34491b">Recipient</a> == MT.Recipient) &amp;&amp; (this.EventType == MT.EventType);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
 <div class="ttc" id="struct_router_messaging_system_1_1_message_target_html_a39e7bbbc3144498771a697cb8a34491b"><div class="ttname"><a href="struct_router_messaging_system_1_1_message_target.html#a39e7bbbc3144498771a697cb8a34491b">RouterMessagingSystem.MessageTarget.Recipient</a></div><div class="ttdeci">readonly Transform Recipient</div><div class="ttdoc">Recipient of the message. </div><div class="ttdef"><b>Definition:</b> <a href="_message_target_8cs_source.html#l00010">MessageTarget.cs:10</a></div></div>
 </div><!-- fragment -->
@@ -337,7 +337,7 @@ False if all attributes of the left-side operand are the same as their respectiv
 
 <p>Definition at line <a class="el" href="_message_target_8cs_source.html#l00076">76</a> of file <a class="el" href="_message_target_8cs_source.html">MessageTarget.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">return</span> (MT1.Recipient != MT2.Recipient);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">return</span> (MT1.Recipient != MT2.Recipient) &amp;&amp; (MT1.EventType != MT2.EventType);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
@@ -389,7 +389,7 @@ False if any attribute of the left-side operand is different from the respective
 
 <p>Definition at line <a class="el" href="_message_target_8cs_source.html#l00068">68</a> of file <a class="el" href="_message_target_8cs_source.html">MessageTarget.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">return</span> (MT1.Recipient == MT2.Recipient);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">return</span> (MT1.Recipient == MT2.Recipient) &amp;&amp; (MT1.EventType == MT2.EventType);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
@@ -427,7 +427,7 @@ False if any attribute of the left-side operand is different from the respective
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>Project/Assets/Plugins/Router Messaging System/Parameters/<a class="el" href="_message_target_8cs_source.html">MessageTarget.cs (f7f7af1be3bd6ab158fd33e72caea6b9ad59234a)</a></li>
+<li>C:/Users/Philip/Unity Projects/router/Project/Assets/Plugins/Router Messaging System/Parameters/<a class="el" href="_message_target_8cs_source.html">MessageTarget.cs (34e058475be3e1a576723989b65e3253e4e3fb68)</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -435,7 +435,7 @@ False if any attribute of the left-side operand is different from the respective
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_router_messaging_system.html">RouterMessagingSystem</a></li><li class="navelem"><a class="el" href="struct_router_messaging_system_1_1_message_target.html">MessageTarget</a></li>
-    <li class="footer">Generated on Sat Apr 26 2014 22:31:18 for Router Messaging System by
+    <li class="footer">Generated on Mon Sep 15 2014 14:21:58 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

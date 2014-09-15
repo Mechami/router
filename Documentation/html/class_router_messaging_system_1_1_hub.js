@@ -6,5 +6,6 @@ var class_router_messaging_system_1_1_hub =
     [ "BroadcastUpwards", "class_router_messaging_system_1_1_hub.html#a095cb0813bf3363939db9a49ae1ec2e8", null ],
     [ "GetHub", "class_router_messaging_system_1_1_hub.html#a9f5cd62c88b9846392cc5dfe217cbaeb", null ],
     [ "GetOrAddHub", "class_router_messaging_system_1_1_hub.html#ab81c920b4a4a14e47dfc7b166fbf5306", null ],
-    [ "RemoveRoute", "class_router_messaging_system_1_1_hub.html#ac41b8edfeb9467f9ca88bc02c6657d6a", null ]
+    [ "RemoveRoute", "class_router_messaging_system_1_1_hub.html#ac41b8edfeb9467f9ca88bc02c6657d6a", null ],
+    [ "PrintDebugOutput", "class_router_messaging_system_1_1_hub.html#a8407627d944a16391e5b110b20411358", null ]
 ];

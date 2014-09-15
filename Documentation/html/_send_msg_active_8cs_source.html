@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Router Messaging System: Project/Assets/Scripts/SendMsgActive.cs (f18acb01ceeb8426d2eac47b6b332c4843c6c62c) Source File</title>
+<title>Router Messaging System: C:/Users/Philip/Unity Projects/router/Project/Assets/Scripts/SendMsgActive.cs (94d88c517db169daf79d6ae7929d936006449172) Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -113,22 +113,23 @@ $(document).ready(function(){initNavTree('_send_msg_active_8cs_source.html','');
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">public</span> <span class="keyword">class </span>SendMsgActive : MonoBehaviour</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keyword">public</span> <a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> Event = RoutingEvent.Test1;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">bool</span> RouteActive = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> Update()</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordflow">if</span> (RouteActive)</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;            Router.RouteMessageActiveObjects(Event);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            RouteActive = !RouteActive;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        }</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            Router.RouteMessageInactiveObjects(Event);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            RouteActive = !RouteActive;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        }</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">private</span> Router RTR = RouterBox.GetRouter();</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">bool</span> RouteActive = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> Update()</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordflow">if</span> (RouteActive)</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            RTR.RouteMessageActiveObjects(Event);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            RouteActive = !RouteActive;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        }</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            RTR.RouteMessageInactiveObjects(Event);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            RouteActive = !RouteActive;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
 <div class="ttc" id="namespace_router_messaging_system_html_abf90ac1a99b75a99768e976718e09340"><div class="ttname"><a href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RouterMessagingSystem.RoutingEvent</a></div><div class="ttdeci">RoutingEvent</div><div class="ttdoc">Enumeration for event types. </div><div class="ttdef"><b>Definition:</b> <a href="_events_8cs_source.html#l00004">Events.cs:4</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -136,7 +137,7 @@ $(document).ready(function(){initNavTree('_send_msg_active_8cs_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_ffd1f789ec7bd0a45fc6ad92579c5070.html">Project</a></li><li class="navelem"><a class="el" href="dir_879de4fd393548c22b98301f5b1bb4c5.html">Assets</a></li><li class="navelem"><a class="el" href="dir_ff5880aec0b5804adb3d31a53d335c49.html">Scripts</a></li><li class="navelem"><b>SendMsgActive.cs</b></li>
-    <li class="footer">Generated on Sat Apr 26 2014 22:31:18 for Router Messaging System by
+    <li class="footer">Generated on Mon Sep 15 2014 14:21:58 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

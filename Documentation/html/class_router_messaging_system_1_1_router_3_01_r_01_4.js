@@ -13,9 +13,6 @@ var class_router_messaging_system_1_1_router_3_01_r_01_4 =
     [ "RouteMessageArea", "class_router_messaging_system_1_1_router_3_01_r_01_4.html#a89f933728fcbc7c8d1e6c6add28f60b9", null ],
     [ "RouteMessageArea", "class_router_messaging_system_1_1_router_3_01_r_01_4.html#a07e845e3f4cbeaba75dd1985d36ac8c8", null ],
     [ "RouteMessageArea", "class_router_messaging_system_1_1_router_3_01_r_01_4.html#a4ed556a047a3fb2f6e832b8845dc94e8", null ],
-    [ "RouteMessageAreaBand", "class_router_messaging_system_1_1_router_3_01_r_01_4.html#a6a7d7642041dc31e7384976901169df5", null ],
-    [ "RouteMessageAreaBand", "class_router_messaging_system_1_1_router_3_01_r_01_4.html#aa171eaf68a777c31a8bc48737b18a554", null ],
-    [ "RouteMessageAreaBand", "class_router_messaging_system_1_1_router_3_01_r_01_4.html#a54ba5c9b14693c71cdbeb7a9124ccb19", null ],
     [ "RouteMessageAreaInverse", "class_router_messaging_system_1_1_router_3_01_r_01_4.html#a1eeaf1fc7d2d54cb4e2e42ee32edf3ea", null ],
     [ "RouteMessageAreaInverse", "class_router_messaging_system_1_1_router_3_01_r_01_4.html#a5c4b60c80577d564247cc8642f972554", null ],
     [ "RouteMessageAreaInverse", "class_router_messaging_system_1_1_router_3_01_r_01_4.html#ad4409155c2a213d118f5e5dc854e75f2", null ],
@@ -27,8 +24,5 @@ var class_router_messaging_system_1_1_router_3_01_r_01_4 =
     [ "RouteMessageDescendants", "class_router_messaging_system_1_1_router_3_01_r_01_4.html#a66dc77f3664454894ac741c976129a15", null ],
     [ "RouteMessageInactiveObjects", "class_router_messaging_system_1_1_router_3_01_r_01_4.html#ac70cf8547c21c698a200415f4d173738", null ],
     [ "RouteMessageInactiveObjects", "class_router_messaging_system_1_1_router_3_01_r_01_4.html#aba0c51f9fc257489a051f09c571a8af0", null ],
-    [ "RouteMessageInactiveObjects", "class_router_messaging_system_1_1_router_3_01_r_01_4.html#afac4ebc79ea0818a3ac72da57f4a9b30", null ],
-    [ "RouteMessageInverseAreaBand", "class_router_messaging_system_1_1_router_3_01_r_01_4.html#abffa945ffcba1b747384214ce8960098", null ],
-    [ "RouteMessageInverseAreaBand", "class_router_messaging_system_1_1_router_3_01_r_01_4.html#ab67713e3930c86e825c44f8119f86ee0", null ],
-    [ "RouteMessageInverseAreaBand", "class_router_messaging_system_1_1_router_3_01_r_01_4.html#a645a4a2dd3680a79f9326ae56b048f46", null ]
+    [ "RouteMessageInactiveObjects", "class_router_messaging_system_1_1_router_3_01_r_01_4.html#afac4ebc79ea0818a3ac72da57f4a9b30", null ]
 ];

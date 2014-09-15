@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['null',['Null',['../namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340abbb93ef26e3c101ff11cdd21cab08a94',1,'RouterMessagingSystem']]]
+  ['messagetarget',['MessageTarget',['../struct_router_messaging_system_1_1_message_target.html',1,'RouterMessagingSystem']]],
+  ['messagetarget',['MessageTarget',['../struct_router_messaging_system_1_1_message_target.html#aa7f90655f08bb809abed7678c54bb280',1,'RouterMessagingSystem.MessageTarget.MessageTarget(GameObject MessageRecipient, RoutingEvent Event)'],['../struct_router_messaging_system_1_1_message_target.html#a02923f7348972fac0150ae586be764f5',1,'RouterMessagingSystem.MessageTarget.MessageTarget(Component MessageRecipient, RoutingEvent Event)']]]
 ];

@@ -1,10 +1,11 @@
-<map id="Project/Assets/Plugins/Router Messaging System" name="Project/Assets/Plugins/Router Messaging System">
-<area shape="rect" id="node2" href="dir_de2a14ac9631bf0a26a411b07c406663.html" title="Hubs" alt="" coords="544,63,616,111"/>
-<area shape="rect" id="node3" href="dir_ee417f8834656c568581439a50672df4.html" title="Interfaces" alt="" coords="441,63,519,111"/>
-<area shape="rect" id="node4" href="dir_79e576cd475529e4e414a7059be572f2.html" title="Misc" alt="" coords="344,63,416,111"/>
-<area shape="rect" id="node5" href="dir_5d27f46ca1da7528cf5b862db7ea216a.html" title="Parameters" alt="" coords="230,63,319,111"/>
-<area shape="rect" id="node6" href="dir_9b03a082fd188e431d2249e59b725049.html" title="Routers" alt="" coords="133,63,205,111"/>
-<area shape="rect" id="node7" href="dir_9a9eab036ee1a6f29fd3bc1173c600e3.html" title="Routes" alt="" coords="37,63,109,111"/>
-<area shape="rect" id="clust2" href="dir_b9153762626c4c54c9f7fb8eedc47a78.html" alt="" coords="27,52,827,121"/>
-<area shape="rect" id="clust1" href="dir_b5c0ad125fda175bded5335c6e0b3543.html" title="Plugins" alt="" coords="16,16,837,132"/>
+<map id="C:/Users/Philip/Unity Projects/router/Project/Assets/Plugins/Router Messaging System" name="C:/Users/Philip/Unity Projects/router/Project/Assets/Plugins/Router Messaging System">
+<area shape="rect" id="node2" href="dir_a7c2d28578c5f9dda0650c8b3bebdf90.html" title="Documentation" alt="" coords="640,63,749,111"/>
+<area shape="rect" id="node3" href="dir_de2a14ac9631bf0a26a411b07c406663.html" title="Hubs" alt="" coords="544,63,616,111"/>
+<area shape="rect" id="node4" href="dir_ee417f8834656c568581439a50672df4.html" title="Interfaces" alt="" coords="441,63,519,111"/>
+<area shape="rect" id="node5" href="dir_79e576cd475529e4e414a7059be572f2.html" title="Misc" alt="" coords="344,63,416,111"/>
+<area shape="rect" id="node6" href="dir_5d27f46ca1da7528cf5b862db7ea216a.html" title="Parameters" alt="" coords="230,63,319,111"/>
+<area shape="rect" id="node7" href="dir_9b03a082fd188e431d2249e59b725049.html" title="Routers" alt="" coords="133,63,205,111"/>
+<area shape="rect" id="node8" href="dir_9a9eab036ee1a6f29fd3bc1173c600e3.html" title="Routes" alt="" coords="37,63,109,111"/>
+<area shape="rect" id="clust2" href="dir_b9153762626c4c54c9f7fb8eedc47a78.html" alt="" coords="27,52,960,121"/>
+<area shape="rect" id="clust1" href="dir_b5c0ad125fda175bded5335c6e0b3543.html" title="Plugins" alt="" coords="16,16,971,132"/>
 </map>

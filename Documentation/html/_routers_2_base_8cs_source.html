@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Router Messaging System: Project/Assets/Plugins/Router Messaging System/Routers/Base.cs (a8f50c6f4d7e9e520b3f7731f468f8b88721e0ad) Source File</title>
+<title>Router Messaging System: C:/Users/Philip/Unity Projects/router/Project/Assets/Plugins/Router Messaging System/Routers/Base.cs (48283735e98d7c2084be42639617bc84c1313035) Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -111,308 +111,321 @@ $(document).ready(function(){initNavTree('_routers_2_base_8cs_source.html','');}
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> System;</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> System.Collections.Generic;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>RouterMessagingSystem</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_router_messaging_system_1_1_router.html">   14</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span><a class="code" href="class_router_messaging_system_1_1_router.html">Router</a></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> Dictionary&lt;RoutingEvent, RoutePointer&gt; PointerTable = null;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> Dictionary&lt;RoutingEvent, List&lt;Route&gt;&gt; RouteTable = null;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> TablesExist = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">static</span> <a class="code" href="class_router_messaging_system_1_1_router.html">Router</a>()</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>RouterMessagingSystem</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span>Router</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">private</span> Dictionary&lt;RoutingEvent, List&lt;Route&gt;&gt; RouteTable = null;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> TableExists = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> Identifier = string.Empty;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> Name</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            Debug.Log(<span class="stringliteral">&quot;Router initialized!&quot;</span>);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#aee00d3d6636e9a50b69d317ea378b06d">AddRoute</a>(<a class="code" href="struct_router_messaging_system_1_1_route.html">Route</a> NewRoute )</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            TablesExist = ((NewRoute.IsValid &amp;&amp; !TablesExist)? ConstructTables() : TablesExist);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                <span class="keywordflow">return</span> Identifier;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            set</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                Identifier = Name;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        }</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keywordflow">if</span> (NewRoute.<a class="code" href="struct_router_messaging_system_1_1_route.html#ad4f8dde3b506e3390484f7dabe6f6230">IsValid</a> &amp;&amp; !RouteIsRegistered(NewRoute))</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                RegisterRoute(NewRoute);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                AttachAddress(NewRoute);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                Debug.LogError(<span class="stringliteral">&quot;[Router] Cannot register &quot;</span> + (NewRoute.IsValid? <span class="stringliteral">&quot;duplicate&quot;</span> : <span class="stringliteral">&quot;invalid&quot;</span>) + <span class="stringliteral">&quot; route &quot;</span> + NewRoute + <span class="stringliteral">&quot;.&quot;</span>, NewRoute.<a class="code" href="struct_router_messaging_system_1_1_route.html#a8a188c84ef9c822e63c5425fb61dafe7">Subscriber</a>);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#a40cec954f9e8bd1f0072331ae4610828">RemoveRoute</a>(<a class="code" href="struct_router_messaging_system_1_1_route.html">Route</a> OldRoute )</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; OldRoute.<a class="code" href="struct_router_messaging_system_1_1_route.html#ad4f8dde3b506e3390484f7dabe6f6230">IsValid</a> &amp;&amp; RouteIsRegistered(OldRoute))</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                DetachAddress(OldRoute);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                DeregisterRoute(OldRoute);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                Debug.LogError(<span class="stringliteral">&quot;[Router] Cannot remove &quot;</span> + (OldRoute.IsValid? <span class="stringliteral">&quot;non-existant&quot;</span> : <span class="stringliteral">&quot;invalid&quot;</span>) + <span class="stringliteral">&quot; route &quot;</span> + OldRoute + <span class="stringliteral">&quot;.&quot;</span>, OldRoute.<a class="code" href="struct_router_messaging_system_1_1_route.html#a8a188c84ef9c822e63c5425fb61dafe7">Subscriber</a>);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            TablesExist = (TablesExist? DeconstructTables() : TablesExist);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#ad40fee06b10339cc09228e9d175a8810">FlushRoutes</a>()</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="comment">// Wondering if this will have any affect on performance.</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">if</span> (TablesExist)</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                RouteTable = null;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                PointerTable = null;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                TablesExist = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                Debug.LogWarning(<span class="stringliteral">&quot;[Router] Routing tables have been flushed!&quot;</span>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">public</span> Router()</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            Identifier = <span class="stringliteral">&quot;Router&quot;</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            Debug.Log(<span class="stringliteral">&quot;[&quot;</span> + Identifier + <span class="stringliteral">&quot;] Router initialized!&quot;</span>);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">public</span> Router(<span class="keywordtype">string</span> RouterName)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            Identifier = RouterName;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            Debug.Log(<span class="stringliteral">&quot;[&quot;</span> + Identifier + <span class="stringliteral">&quot;] Router initialized!&quot;</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> AddRoute(Route NewRoute )</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">if</span> (!TableExists &amp;&amp; NewRoute.IsValid)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                CreateTable();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">if</span> (NewRoute.IsValid &amp;&amp; !RouteIsRegistered(NewRoute))</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                RegisterRoute(NewRoute);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                Debug.LogError(<span class="stringliteral">&quot;[&quot;</span> + Identifier + <span class="stringliteral">&quot;] Cannot register &quot;</span> +</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                              (NewRoute.IsValid? <span class="stringliteral">&quot;duplicate&quot;</span> : <span class="stringliteral">&quot;invalid&quot;</span>) +</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                               <span class="stringliteral">&quot; route &quot;</span> + NewRoute + <span class="stringliteral">&quot;.&quot;</span>, NewRoute.Subscriber);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> RemoveRoute(Route OldRoute )</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">if</span> (TableExists &amp;&amp; OldRoute.IsValid &amp;&amp; RouteIsRegistered(OldRoute))</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                DeregisterRoute(OldRoute);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_router_messaging_system_1_1_router.html#a4643b0753ed2cee7e09357bcb4e24fd6">RouteCount</a>()</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordtype">int</span> TotalRoutes = 0;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">if</span> (TablesExist)</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                List&lt;Route&gt;[] Lists = <span class="keyword">new</span> List&lt;Route&gt;[RouteTable.Values.Count];</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                RouteTable.Values.CopyTo(Lists, 0);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                Array.ForEach(Lists, x =&gt; TotalRoutes += x.Count);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">return</span> TotalRoutes;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="class_router_messaging_system_1_1_router.html#a576e1f0b64ef7a64eb4ee535cbf37594">   94</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#a576e1f0b64ef7a64eb4ee535cbf37594">RouteMessage</a>(<a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType )</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            CleanDeadRoutes(EventType);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; KeyHasAddress(EventType))</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                PointerTable[EventType]();</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#ade5093fb6fdf687b262bae8ed1600e19">RouteMessageDescendants</a>(<a class="code" href="struct_router_messaging_system_1_1_message_target.html">MessageTarget</a> Scope , <a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType )</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            CleanDeadRoutes(EventType);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; Scope.<a class="code" href="struct_router_messaging_system_1_1_message_target.html#a4bfae225a36cc3442e458c7fe64757cb">IsValid</a> &amp;&amp; EventIsPopulated(EventType))</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                List&lt;Route&gt; RT = RouteTable[EventType].FindAll(x =&gt; x.Subscriber.transform.IsChildOf(Scope.Recipient));</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                RT.ForEach(x =&gt; x.Address());</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                Debug.LogError(<span class="stringliteral">&quot;[&quot;</span> + Identifier + <span class="stringliteral">&quot;] Cannot remove &quot;</span> +</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                              (OldRoute.IsValid? <span class="stringliteral">&quot;non-existant&quot;</span> : <span class="stringliteral">&quot;invalid&quot;</span>) +</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                               <span class="stringliteral">&quot; route &quot;</span> + OldRoute + <span class="stringliteral">&quot;.&quot;</span>, OldRoute.Subscriber);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            DeleteEmptyTable();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> FlushRoutes()</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="comment">/*  Is there a point to checking if the table exists</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">                if we&#39;re just going to destroy it anyways?</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">                Because at what point does the overhead of doing a boolean check</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">                become greater than the overhead of writing constant</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">                pre-determined values to a set of variables? */</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">if</span> (TableExists)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                RouteTable = null;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                TableExists = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                Debug.LogWarning(<span class="stringliteral">&quot;[&quot;</span> + Identifier + <span class="stringliteral">&quot;] Flushed routing table!&quot;</span>);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> RouteCount()</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordtype">int</span> TotalRoutes = 0;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">if</span> (TableExists)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                List&lt;Route&gt;[] Lists = <span class="keyword">new</span> List&lt;Route&gt;[RouteTable.Values.Count];</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                RouteTable.Values.CopyTo(Lists, 0);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                Array.ForEach(Lists, x =&gt; TotalRoutes += x.Count);</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            }</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#aa7eaa78231b6b65a19ea6bcf17f2b906">RouteMessageAscendants</a>(MessageTarget Scope , <a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType )</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keywordflow">return</span> TotalRoutes;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> RouteMessage(<a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType )</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        {</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            CleanDeadRoutes(EventType);</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; Scope.IsValid &amp;&amp; EventIsPopulated(EventType))</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keywordflow">if</span> (TableExists &amp;&amp; EventIsPopulated(EventType))</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                List&lt;Route&gt; RT = RouteTable[EventType].FindAll(x =&gt; Scope.Recipient.IsChildOf(x.Subscriber.transform));</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                RT.ForEach(x =&gt; x.Address());</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            }</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#abf3b4c8d5e60f7a8708685f393ffa2e0">RouteMessageArea</a>(AreaMessage MessageParameters )</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                RouteTable[EventType].ForEach(x =&gt; x.Address());</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> RouteMessageDescendants(MessageTarget Parameters )</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            CleanDeadRoutes(MessageParameters.AreaEvent);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            CleanDeadRoutes(Parameters.EventType);</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.AreaEvent) &amp;&amp; !MessageParameters.IsPoint)</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            {</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                decimal RadiusD = <span class="keyword">new</span> Decimal(MessageParameters.Radius);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                List&lt;Route&gt; RT = RouteTable[MessageParameters.AreaEvent].FindAll(x =&gt; (<span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) &lt;= RadiusD));</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                RT.ForEach(x =&gt; x.Address());</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            }</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        }</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#ab1bdc0b58e3b03d9d12c4c8473627722">RouteMessageAreaInverse</a>(AreaMessage MessageParameters )</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        {</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            CleanDeadRoutes(MessageParameters.AreaEvent);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.AreaEvent) &amp;&amp; !MessageParameters.IsPoint)</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            {</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                decimal RadiusD = <span class="keyword">new</span> Decimal(MessageParameters.Radius);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                List&lt;Route&gt; RT = RouteTable[MessageParameters.AreaEvent].FindAll(x =&gt; (<span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) &gt; RadiusD));</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                RT.ForEach(x =&gt; x.Address());</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            }</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        }</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#af5717979f3c309b0ebafbfa6390376f1">RouteMessageAreaBand</a>(AreaBandMessage MessageParameters)</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        {</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            CleanDeadRoutes(MessageParameters.AreaEvent);</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.AreaEvent) &amp;&amp; MessageParameters.HasVolume)</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            {</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                decimal InnerRadiusD = <span class="keyword">new</span> Decimal(MessageParameters.InnerRadius), OuterRadiusD = <span class="keyword">new</span> Decimal(MessageParameters.OuterRadius);</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                List&lt;Route&gt; RT = RouteTable[MessageParameters.AreaEvent].FindAll(x =&gt; { decimal Distance = <span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); <span class="keywordflow">return</span> ((Distance &gt;= InnerRadiusD) &amp;&amp; (Distance &lt;= OuterRadiusD)); });</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                RT.ForEach(x =&gt; x.Address());</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            }</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        }</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#a0077bc872417ef9d6148c82ecf70a983">RouteMessageInverseAreaBand</a>(AreaBandMessage MessageParameters)</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        {</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            CleanDeadRoutes(MessageParameters.AreaEvent);</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.AreaEvent) &amp;&amp; MessageParameters.HasVolume)</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            {</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                decimal InnerRadiusD = <span class="keyword">new</span> Decimal(MessageParameters.InnerRadius), OuterRadiusD = <span class="keyword">new</span> Decimal(MessageParameters.OuterRadius);</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                List&lt;Route&gt; RT = RouteTable[MessageParameters.AreaEvent].FindAll(x =&gt; { decimal Distance = <span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)); <span class="keywordflow">return</span> ((Distance &lt; InnerRadiusD) || (Distance &gt; OuterRadiusD)); });</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                RT.ForEach(x =&gt; x.Address());</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            }</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        }</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
-<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="class_router_messaging_system_1_1_router.html#a63abb7735fb402562c2fc96bd629fb54">  189</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#a63abb7735fb402562c2fc96bd629fb54">RouteMessageInactiveObjects</a>(<a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType )</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        {</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            CleanDeadRoutes(EventType);</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            {</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                List&lt;Route&gt; RT = RouteTable[EventType].FindAll(x =&gt; !x.Subscriber.gameObject.activeInHierarchy);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                RT.ForEach(x =&gt; x.Address());</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            }</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
-<div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="class_router_messaging_system_1_1_router.html#a0cbdcf14ba6da8a5bd4aebb3882ddbb2">  201</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_router_messaging_system_1_1_router.html#a0cbdcf14ba6da8a5bd4aebb3882ddbb2">RouteMessageActiveObjects</a>(<a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType )</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        {</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            CleanDeadRoutes(EventType);</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            {</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                List&lt;Route&gt; RT = RouteTable[EventType].FindAll(x =&gt; x.Subscriber.gameObject.activeInHierarchy);</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                RT.ForEach(x =&gt; x.Address());</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            }</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        }</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> ConstructTables()</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        {</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            RouteTable = <span class="keyword">new</span> Dictionary&lt;RoutingEvent, List&lt;Route&gt;&gt;();</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            PointerTable = <span class="keyword">new</span> Dictionary&lt;RoutingEvent, RoutePointer&gt;();</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        }</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> DeconstructTables()</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        {</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            RouteTable = ((RouteTable.Count &gt; 0)? RouteTable : null);</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            PointerTable = ((PointerTable.Count &gt; 0)? PointerTable : null);</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <span class="keywordflow">return</span> ((RouteTable != null) &amp;&amp; (PointerTable != null));</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        }</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> RegisterRoute(Route RT)</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        {</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            <span class="keywordflow">if</span> (!RouteTable.ContainsKey(RT.RouteEvent))</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            {</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                RouteTable.Add(RT.RouteEvent, <span class="keyword">new</span> List&lt;Route&gt;());</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            }</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            RouteTable[RT.RouteEvent].Add(RT);</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        }</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> DeregisterRoute(Route RT)</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        {</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            <span class="keywordflow">if</span> (EventIsPopulated(RT.RouteEvent))</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            {</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                RouteTable[RT.RouteEvent].Remove(RT);</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            }</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            {</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                RouteTable.Remove(RT.RouteEvent);</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            }</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        }</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> AttachAddress(Route RT)</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        {</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordflow">if</span> (!PointerTable.ContainsKey(RT.RouteEvent))</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            {</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                PointerTable.Add(RT.RouteEvent, RT.Address);</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            }</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                PointerTable[RT.RouteEvent] = (PointerTable[RT.RouteEvent] + RT.Address);</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            }</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        }</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> DetachAddress(Route RT)</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        {</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="keywordflow">if</span> (!KeyHasAddress(RT.RouteEvent))</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            {</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                PointerTable.Remove(RT.RouteEvent);</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            }</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            {</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                PointerTable[RT.RouteEvent] = (PointerTable[RT.RouteEvent] - RT.Address);</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            }</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        }</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> CleanDeadRoutes(<a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        {</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            <span class="comment">// Without the check this is supposedly at most a 3(O(n)) operation.</span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            <span class="comment">// With the check this ranges from a max of 4(O(n)) to 1 O(n) operation.</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType) &amp;&amp; TableIsPolluted(EventType))</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            {</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                Route[] DeadRoutes = Array.FindAll(RouteTable[EventType].ToArray(), x =&gt; x.IsDead);</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                Array.ForEach(DeadRoutes, x =&gt; {DeregisterRoute(x); DetachAddress(x);});</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                TablesExist = (TablesExist? DeconstructTables() : TablesExist);</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            }</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        }</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        <span class="comment">// This check was moved to its own function because it was causing the code to be compiled into a nested if-statement.</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> TableIsPolluted(<a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        {</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <span class="keywordflow">return</span> RouteTable[EventType].TrueForAll(x =&gt; !x.IsDead);</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        }</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> RouteIsRegistered(Route RT)</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        {</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="keywordflow">return</span> (EventIsPopulated(RT.RouteEvent) &amp;&amp; RouteTable[RT.RouteEvent].Contains(RT));</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        }</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> KeyHasAddress(<a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        {</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            <span class="keywordflow">return</span> (PointerTable.ContainsKey(EventType) &amp;&amp; (PointerTable[EventType] != null));</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        }</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> EventIsPopulated(<a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        {</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            <span class="keywordflow">return</span> (EventIsRegistered(EventType) &amp;&amp; (RouteTable[EventType].Count &gt;= 1));</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        }</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> EventIsRegistered(<a class="code" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        {</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            <span class="keywordflow">return</span> (RouteTable.ContainsKey(EventType) &amp;&amp; (RouteTable[EventType] != null));</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        }</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    }</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;}</div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_ad40fee06b10339cc09228e9d175a8810"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#ad40fee06b10339cc09228e9d175a8810">RouterMessagingSystem.Router.FlushRoutes</a></div><div class="ttdeci">static void FlushRoutes()</div><div class="ttdoc">Flushes all Routes from the routing table. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00064">Base.cs:64</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_a4643b0753ed2cee7e09357bcb4e24fd6"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#a4643b0753ed2cee7e09357bcb4e24fd6">RouterMessagingSystem.Router.RouteCount</a></div><div class="ttdeci">static int RouteCount()</div><div class="ttdoc">Returns the total amount of Routes registered with the Router. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00078">Base.cs:78</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_aee00d3d6636e9a50b69d317ea378b06d"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#aee00d3d6636e9a50b69d317ea378b06d">RouterMessagingSystem.Router.AddRoute</a></div><div class="ttdeci">static void AddRoute(Route NewRoute)</div><div class="ttdoc">Registers a new Route with the Router. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00028">Base.cs:28</a></div></div>
-<div class="ttc" id="struct_router_messaging_system_1_1_message_target_html"><div class="ttname"><a href="struct_router_messaging_system_1_1_message_target.html">RouterMessagingSystem.MessageTarget</a></div><div class="ttdoc">Struct for passing a target for a message. </div><div class="ttdef"><b>Definition:</b> <a href="_message_target_8cs_source.html#l00007">MessageTarget.cs:7</a></div></div>
-<div class="ttc" id="struct_router_messaging_system_1_1_route_html_ad4f8dde3b506e3390484f7dabe6f6230"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html#ad4f8dde3b506e3390484f7dabe6f6230">RouterMessagingSystem.Route.IsValid</a></div><div class="ttdeci">readonly bool IsValid</div><div class="ttdoc">Value representing the validity of this route at creation. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00017">Base.cs:17</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_abf3b4c8d5e60f7a8708685f393ffa2e0"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#abf3b4c8d5e60f7a8708685f393ffa2e0">RouterMessagingSystem.Router.RouteMessageArea</a></div><div class="ttdeci">static void RouteMessageArea(AreaMessage MessageParameters)</div><div class="ttdoc">Routes a message of the specified event to all subscribers inside the specified radius. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00134">Base.cs:134</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_ade5093fb6fdf687b262bae8ed1600e19"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#ade5093fb6fdf687b262bae8ed1600e19">RouterMessagingSystem.Router.RouteMessageDescendants</a></div><div class="ttdeci">static void RouteMessageDescendants(MessageTarget Scope, RoutingEvent EventType)</div><div class="ttdoc">Routes a message of the specified event to the specified GameObject and its children. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00107">Base.cs:107</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_a40cec954f9e8bd1f0072331ae4610828"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#a40cec954f9e8bd1f0072331ae4610828">RouterMessagingSystem.Router.RemoveRoute</a></div><div class="ttdeci">static void RemoveRoute(Route OldRoute)</div><div class="ttdoc">Removes a Route from routing table. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00045">Base.cs:45</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_a63abb7735fb402562c2fc96bd629fb54"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#a63abb7735fb402562c2fc96bd629fb54">RouterMessagingSystem.Router.RouteMessageInactiveObjects</a></div><div class="ttdeci">static void RouteMessageInactiveObjects(RoutingEvent EventType)</div><div class="ttdoc">Routes a message to inactive subscribers. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00189">Base.cs:189</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_ab1bdc0b58e3b03d9d12c4c8473627722"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#ab1bdc0b58e3b03d9d12c4c8473627722">RouterMessagingSystem.Router.RouteMessageAreaInverse</a></div><div class="ttdeci">static void RouteMessageAreaInverse(AreaMessage MessageParameters)</div><div class="ttdoc">Routes a message of the specified event to all subscribers outside the specified radius. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00148">Base.cs:148</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_af5717979f3c309b0ebafbfa6390376f1"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#af5717979f3c309b0ebafbfa6390376f1">RouterMessagingSystem.Router.RouteMessageAreaBand</a></div><div class="ttdeci">static void RouteMessageAreaBand(AreaBandMessage MessageParameters)</div><div class="ttdoc">Routes a message of the specified event to all subscribers inside a ring specified by an inner and ou...</div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00162">Base.cs:162</a></div></div>
-<div class="ttc" id="struct_router_messaging_system_1_1_route_html_a8a188c84ef9c822e63c5425fb61dafe7"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html#a8a188c84ef9c822e63c5425fb61dafe7">RouterMessagingSystem.Route.Subscriber</a></div><div class="ttdeci">readonly Component Subscriber</div><div class="ttdoc">Reference to the originator of this route. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00011">Base.cs:11</a></div></div>
-<div class="ttc" id="struct_router_messaging_system_1_1_message_target_html_a4bfae225a36cc3442e458c7fe64757cb"><div class="ttname"><a href="struct_router_messaging_system_1_1_message_target.html#a4bfae225a36cc3442e458c7fe64757cb">RouterMessagingSystem.MessageTarget.IsValid</a></div><div class="ttdeci">bool IsValid</div><div class="ttdoc">Value stating if the recipient is valid. </div><div class="ttdef"><b>Definition:</b> <a href="_message_target_8cs_source.html#l00015">MessageTarget.cs:15</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_aa7eaa78231b6b65a19ea6bcf17f2b906"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#aa7eaa78231b6b65a19ea6bcf17f2b906">RouterMessagingSystem.Router.RouteMessageAscendants</a></div><div class="ttdeci">static void RouteMessageAscendants(MessageTarget Scope, RoutingEvent EventType)</div><div class="ttdoc">Routes a message of the specified event to the specified GameObject and its parents. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00121">Base.cs:121</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_a576e1f0b64ef7a64eb4ee535cbf37594"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#a576e1f0b64ef7a64eb4ee535cbf37594">RouterMessagingSystem.Router.RouteMessage</a></div><div class="ttdeci">static void RouteMessage(RoutingEvent EventType)</div><div class="ttdoc">Routes a message of the specified event to all subscribers. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00094">Base.cs:94</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_a0077bc872417ef9d6148c82ecf70a983"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#a0077bc872417ef9d6148c82ecf70a983">RouterMessagingSystem.Router.RouteMessageInverseAreaBand</a></div><div class="ttdeci">static void RouteMessageInverseAreaBand(AreaBandMessage MessageParameters)</div><div class="ttdoc">Routes a message of the specified event to all subscribers outside a ring specified by an inner and o...</div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00176">Base.cs:176</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a></div><div class="ttdoc">A router that operates on standard routes. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00014">Base.cs:14</a></div></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordflow">if</span> (TableExists &amp;&amp;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                Parameters.IsValid &amp;&amp;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                EventIsPopulated(Parameters.EventType))</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                RouteTable[Parameters.EventType].ForEach(</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                                    x =&gt; SendChild(x, Parameters.Recipient));</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            }</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> RouteMessageAscendants(MessageTarget Parameters )</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            CleanDeadRoutes(Parameters.EventType);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keywordflow">if</span> (TableExists &amp;&amp;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                Parameters.IsValid &amp;&amp;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                EventIsPopulated(Parameters.EventType))</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                RouteTable[Parameters.EventType].ForEach(</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                                    x =&gt; SendParent(x, Parameters.Recipient));</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> RouteMessageArea(AreaMessage Parameters , <span class="keywordtype">bool</span> DoRayCheck = <span class="keyword">false</span>  <span class="comment">/*, int LM = 0 )</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment">            CleanDeadRoutes(Parameters.EventType);</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment">            if (TableExists &amp;&amp; EventIsPopulated(Parameters.EventType))</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment">                Action&lt;Route&gt; Mailman = DoRayCheck?</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">                    new Action&lt;Route&gt;(x =&gt; SendAreaChecked(x, Parameters)) :</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">                    new Action&lt;Route&gt;(x =&gt; SendArea(x, Parameters));</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">                RouteTable[Parameters.EventType].ForEach(Mailman);</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">        public void RouteMessageActiveObjects(RoutingEvent EventType )</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">            CleanDeadRoutes(EventType);</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">            if (TableExists &amp;&amp; EventIsPopulated(EventType))</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">                RouteTable[EventType].ForEach(SendActive);</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">        public void RouteMessageInactiveObjects(RoutingEvent EventType )</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment">            CleanDeadRoutes(EventType);</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment">            if (TableExists &amp;&amp; EventIsPopulated(EventType))</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">                RouteTable[EventType].ForEach(SendInactive);</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">        private void CreateTable()</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">            RouteTable = new Dictionary&lt;RoutingEvent, List&lt;Route&gt;&gt;();</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment">            TableExists = true;</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment">        private void DeleteEmptyTable()</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment">            if (TableExists &amp;&amp; (RouteTable.Count &lt; 1))</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">                RouteTable = null;</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">            TableExists = (RouteTable != null);</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">        private void RegisterRoute(Route RT)</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">            if (!RouteTable.ContainsKey(RT.RouteEvent))</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment">                RouteTable.Add(RT.RouteEvent, new List&lt;Route&gt;());</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">            RouteTable[RT.RouteEvent].Add(RT);</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="comment">        private void DeregisterRoute(Route RT)</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="comment">            if (EventIsPopulated(RT.RouteEvent))</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment">                RouteTable[RT.RouteEvent].Remove(RT);</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="comment">            else</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="comment">                RouteTable.Remove(RT.RouteEvent);</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">        private bool RouteIsRegistered(Route RT)</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment">            return EventIsPopulated(RT.RouteEvent) &amp;&amp;</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="comment">                   RouteTable[RT.RouteEvent].Contains(RT);</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="comment">        private bool EventIsPopulated(RoutingEvent EventType)</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="comment">            return RouteTable.ContainsKey(EventType) &amp;&amp;</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="comment">                  (RouteTable[EventType].Count &gt;= 1);</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="comment">        private void CleanDeadRoutes(RoutingEvent EventType)</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="comment">            if (TableExists &amp;&amp; EventIsPopulated(EventType))</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment">                RouteTable[EventType].ForEach(PruneDead);</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment">            DeleteEmptyTable();</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="comment">        private void PruneDead(Route RT)</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment">            if (RT.IsDead)</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="comment">                DeregisterRoute(RT);</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="comment">        private void SendActive(Route RT)</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment">            if (RT.Subscriber.gameObject.activeInHierarchy)</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">                RT.Address();</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment">        private void SendInactive(Route RT)</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="comment">            if (!RT.Subscriber.gameObject.activeInHierarchy)</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="comment">                RT.Address();</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="comment">        private void SendChild(Route Source, Transform Target)</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="comment">            if (Source.Subscriber.transform.IsChildOf(Target))</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="comment">                Source.Address();</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="comment">        private void SendParent(Route Source, Transform Target)</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="comment">            if (Target.IsChildOf(Source.Subscriber.transform))</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="comment">                Source.Address();</span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="comment">        private void SendArea(Route RT, AreaMessage AM)</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="comment">            decimal Distance = new Decimal(</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="comment">                Vector3.Distance(AM.Origin, RT.Subscriber.transform.position));</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="comment">            decimal Radius = new Decimal(AM.Radius);</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="comment">            if (AM.UseInverse &amp;&amp; (Distance &gt;= Radius))</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="comment">                RT.Address();</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="comment">            if (!AM.UseInverse &amp;&amp; (Distance &lt; Radius))</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="comment">                RT.Address();</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="comment">        private void SendAreaChecked(Route RT, AreaMessage AM)</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;<span class="comment">            Vector3 Position = RT.Subscriber.transform.position;</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;<span class="comment">            decimal Distance = new Decimal(</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="comment">                                        Vector3.Distance(AM.Origin, Position));</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="comment">            decimal Radius = new Decimal(AM.Radius);</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="comment">            if (AM.UseInverse &amp;&amp;</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="comment">               (Distance &gt;= Radius) &amp;&amp; !Physics.Linecast(AM.Origin, Position))</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="comment">                RT.Address();</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="comment">            if (!AM.UseInverse &amp;&amp;</span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="comment">               (Distance &lt; Radius) &amp;&amp; !Physics.Linecast(AM.Origin, Position))</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="comment">                RT.Address();</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="comment">}</span></div>
 <div class="ttc" id="namespace_router_messaging_system_html_abf90ac1a99b75a99768e976718e09340"><div class="ttname"><a href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RouterMessagingSystem.RoutingEvent</a></div><div class="ttdeci">RoutingEvent</div><div class="ttdoc">Enumeration for event types. </div><div class="ttdef"><b>Definition:</b> <a href="_events_8cs_source.html#l00004">Events.cs:4</a></div></div>
-<div class="ttc" id="class_router_messaging_system_1_1_router_html_a0cbdcf14ba6da8a5bd4aebb3882ddbb2"><div class="ttname"><a href="class_router_messaging_system_1_1_router.html#a0cbdcf14ba6da8a5bd4aebb3882ddbb2">RouterMessagingSystem.Router.RouteMessageActiveObjects</a></div><div class="ttdeci">static void RouteMessageActiveObjects(RoutingEvent EventType)</div><div class="ttdoc">Routes a message to active subscribers. </div><div class="ttdef"><b>Definition:</b> <a href="_routers_2_base_8cs_source.html#l00201">Base.cs:201</a></div></div>
-<div class="ttc" id="struct_router_messaging_system_1_1_route_html"><div class="ttname"><a href="struct_router_messaging_system_1_1_route.html">RouterMessagingSystem.Route</a></div><div class="ttdoc">A route to a function that accepts no parameters and returns nothing. </div><div class="ttdef"><b>Definition:</b> <a href="_routes_2_base_8cs_source.html#l00008">Base.cs:8</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_ffd1f789ec7bd0a45fc6ad92579c5070.html">Project</a></li><li class="navelem"><a class="el" href="dir_879de4fd393548c22b98301f5b1bb4c5.html">Assets</a></li><li class="navelem"><a class="el" href="dir_b5c0ad125fda175bded5335c6e0b3543.html">Plugins</a></li><li class="navelem"><a class="el" href="dir_b9153762626c4c54c9f7fb8eedc47a78.html">Router Messaging System</a></li><li class="navelem"><a class="el" href="dir_9b03a082fd188e431d2249e59b725049.html">Routers</a></li><li class="navelem"><b>Base.cs</b></li>
-    <li class="footer">Generated on Sat Apr 26 2014 22:31:18 for Router Messaging System by
+    <li class="footer">Generated on Mon Sep 15 2014 14:21:58 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

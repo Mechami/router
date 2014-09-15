@@ -16,7 +16,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="interface_router_messaging_system_1_1_i_routable_3_01_t_01_4.html" target="_top" xlink:title="IRoutable\&lt; Route \&gt;">
+<g id="a_node2"><a xlink:href="interface_router_messaging_system_1_1_i_routable_3_01_t_01_4.html" target="_top" xlink:title="Interface defining routable objects. ">
 <polygon fill="white" stroke="black" points="26.5,-56.5 26.5,-75.5 127.5,-75.5 127.5,-56.5 26.5,-56.5"/>
 <text text-anchor="middle" x="77" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">IRoutable&lt; Route &gt;</text>
 </a>

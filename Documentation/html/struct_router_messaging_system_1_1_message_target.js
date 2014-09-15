@@ -8,7 +8,7 @@ var struct_router_messaging_system_1_1_message_target =
     [ "operator!=", "struct_router_messaging_system_1_1_message_target.html#a6c6ccc190301d82382d81e2556deb40e", null ],
     [ "operator==", "struct_router_messaging_system_1_1_message_target.html#a4e198a14aa813a44d73b11a38ef45114", null ],
     [ "ToString", "struct_router_messaging_system_1_1_message_target.html#a5730cef18bafb99c1ea568bbeefd2752", null ],
-    [ "MessageEvent", "struct_router_messaging_system_1_1_message_target.html#a05ee3a79606e055648c6b7e3ed67c557", null ],
+    [ "EventType", "struct_router_messaging_system_1_1_message_target.html#a98a58f69fa534e3e1bdd9ba9ee2d06cf", null ],
     [ "Recipient", "struct_router_messaging_system_1_1_message_target.html#a39e7bbbc3144498771a697cb8a34491b", null ],
     [ "IsValid", "struct_router_messaging_system_1_1_message_target.html#a4bfae225a36cc3442e458c7fe64757cb", null ]
 ];
