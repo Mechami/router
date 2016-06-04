@@ -5,6 +5,7 @@ public class TestDetach : MonoBehaviour
 {
 	private Route RT = new Route();
 	private Router RTR = RouterBox.GetRouter();
+	public RoutingEvent EventType = RoutingEvent.Null;
 
 	public void Awake()
 	{
@@ -13,7 +14,7 @@ public class TestDetach : MonoBehaviour
 
 	public void Update()
 	{
-		Debug.Log(RTR.RouteCount());
+		Debug.Log(RTR.RouteCount(EventType));
 		RTR.RemoveRoute(RT);
 	}
 

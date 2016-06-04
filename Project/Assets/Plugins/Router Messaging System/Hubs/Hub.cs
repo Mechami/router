@@ -20,7 +20,7 @@ namespace RouterMessagingSystem
 		public void AddRoute(Route NewRoute)
 		{
 			// This check is pretty long; Consider breaking it up.
-			bool Dead = NewRoute.IsDead, External = Dead? true : ((NewRoute.Subscriber.gameObject != this.gameObject) || (NewRoute.Address != null)? ((NewRoute.Address.Target as Component).gameObject != this.gameObject) : true);
+			bool Dead = NewRoute.IsDead, External = (!Dead && ((NewRoute.Subscriber.gameObject != this.gameObject) || (NewRoute.Address != null)? ((NewRoute.Address.Target as Component).gameObject != this.gameObject) : true));
 			TablesExist = ((NewRoute.IsValid && !External && !TablesExist)? ConstructTable() : TablesExist);
 
 			if (External || RouteIsRegistered(NewRoute))

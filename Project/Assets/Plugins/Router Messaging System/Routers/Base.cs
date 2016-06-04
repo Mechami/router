@@ -16,29 +16,18 @@ namespace RouterMessagingSystem
 	{
 		private Dictionary<RoutingEvent, List<Route>> RouteTable = null;
 		private bool TableExists = false;
-		private string Identifier = string.Empty;
-		public string Name
-		{
-			get
-			{
-				return Identifier;
-			}
-			set
-			{
-				Identifier = Name;
-			}
-		}
+		public string Name = string.Empty;
 
 		public Router()
 		{
-			Identifier = "Router";
-			Debug.Log("[" + Identifier + "] Router initialized!");
+			Name = "Router";
+			Debug.Log("[" + Name + "] Router initialized!");
 		}
 
 		public Router(string RouterName)
 		{
-			Identifier = RouterName;
-			Debug.Log("[" + Identifier + "] Router initialized!");
+			Name = RouterName;
+			Debug.Log("[" + Name + "] Router initialized!");
 		}
 
 		/** \brief Registers a new Route with the Router. */
@@ -48,7 +37,8 @@ namespace RouterMessagingSystem
 		{
 			if (!TableExists && NewRoute.IsValid)
 			{
-				CreateTable();
+				RouteTable = new Dictionary<RoutingEvent, List<Route>>();
+				TableExists = true;
 			}
 
 			if (NewRoute.IsValid && !RouteIsRegistered(NewRoute))
@@ -57,7 +47,7 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				Debug.LogError("[" + Identifier + "] Cannot register " +
+				Debug.LogError("[" + Name + "] Cannot register " +
 							  (NewRoute.IsValid? "duplicate" : "invalid") +
 							   " route " + NewRoute + ".", NewRoute.Subscriber);
 			}
@@ -73,7 +63,7 @@ namespace RouterMessagingSystem
 			}
 			else
 			{
-				Debug.LogError("[" + Identifier + "] Cannot remove " +
+				Debug.LogError("[" + Name + "] Cannot remove " +
 							  (OldRoute.IsValid? "non-existant" : "invalid") +
 							   " route " + OldRoute + ".", OldRoute.Subscriber);
 			}
@@ -87,34 +77,37 @@ namespace RouterMessagingSystem
 		/// \warning This can potentially be a slow operation, depending on the amount of subscribers that need to be re-registered.
 		public void FlushRoutes()
 		{
-			/*	Is there a point to checking if the table exists
-				if we're just going to destroy it anyways?
-				Because at what point does the overhead of doing a boolean check
-				become greater than the overhead of writing constant
-				pre-determined values to a set of variables? */
 			if (TableExists)
 			{
 				RouteTable = null;
 				TableExists = false;
-				Debug.LogWarning("[" + Identifier + "] Flushed routing table!");
+				Debug.LogWarning("[" + Name + "] Flushed routing table!");
 			}
 		}
 
-		/** \brief Returns the total amount of Routes registered with the Router. */
-		/// \returns Int representing the Routes registered.
-		public int RouteCount()
+		/** \brief Returns the amount of Routes registered with the Router under the specified event. */
+		/// \returns Returns the quantity of routes registered under the passed event type.
+		/// \returns If Null is passed as event type then the total quantity for all events is returned.
+		public int RouteCount(RoutingEvent EventType)
 		{
-			int TotalRoutes = 0;
+			int EventRoutes = 0;
 
-			if (TableExists)
+			if (TableExists &&
+			   (EventType != RoutingEvent.Null) &&
+				EventIsPopulated(EventType))
+			{
+				EventRoutes = RouteTable[EventType].Count;
+			}
+
+			if (TableExists && (EventType == RoutingEvent.Null))
 			{
 				List<Route>[] Lists = new List<Route>[RouteTable.Values.Count];
 				RouteTable.Values.CopyTo(Lists, 0);
 
-				Array.ForEach(Lists, x => TotalRoutes += x.Count);
+				Array.ForEach(Lists, x => EventRoutes += x.Count);
 			}
 
-			return TotalRoutes;
+			return EventRoutes;
 		}
 
 		/** \brief Routes a message of the specified event to all subscribers. */
@@ -205,20 +198,13 @@ namespace RouterMessagingSystem
 
 		/// \internal Structors
 
-		private void CreateTable()
-		{
-			RouteTable = new Dictionary<RoutingEvent, List<Route>>();
-			TableExists = true;
-		}
-
 		private void DeleteEmptyTable()
 		{
 			if (TableExists && (RouteTable.Count < 1))
 			{
 				RouteTable = null;
+				TableExists = false;
 			}
-
-			TableExists = (RouteTable != null);
 		}
 
 		/// \internal Bookkeeping Functions
