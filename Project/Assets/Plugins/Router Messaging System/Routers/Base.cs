@@ -156,7 +156,7 @@ namespace RouterMessagingSystem
 		/** \brief Routes a message of the specified event to all subscribers inside the specified radius. */
 		/** If UseInverse is true then a message will be routed to all subscribers outside the specified radius. */
 		/// \note Only works for subscribed GameObjects.
-		public void RouteMessageArea(AreaMessage Parameters /**< Struct containing parameters for the area message. */, bool DoRayCheck = false /**< Send messages only to entities that pass a Line-Of-Sight check. */ /*, int LM = 0 /**< Layermask value for LoS check.\nNot used if DoRayCheck is false. */)
+		public void RouteMessageArea(AreaMessage Parameters /**< Struct containing parameters for the area message. */, bool DoRayCheck = false /**< Send messages only to entities that pass a Line-Of-Sight check. */)
 		{
 			CleanDeadRoutes(Parameters.EventType);
 
