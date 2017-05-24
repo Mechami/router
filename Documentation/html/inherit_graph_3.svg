@@ -12,8 +12,8 @@
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
 <g id="a_node1"><a xlink:href="struct_router_messaging_system_1_1_message_target.html" target="_top" xlink:title="Struct for passing a target for a message. ">
-<polygon fill="white" stroke="black" points="0.5,-0 0.5,-30 169.5,-30 169.5,-0 0.5,-0"/>
-<text text-anchor="start" x="8.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">RouterMessagingSystem.Message</text>
+<polygon fill="white" stroke="black" points="0,-0 0,-30 170,-30 170,-0 0,-0"/>
+<text text-anchor="start" x="8" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">RouterMessagingSystem.Message</text>
 <text text-anchor="middle" x="85" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Target</text>
 </a>
 </g>

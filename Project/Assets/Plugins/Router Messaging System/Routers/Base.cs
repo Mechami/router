@@ -2,16 +2,16 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 
-/// \brief Namespace for Router Messaging System
-/// Contains all APIs and objects needed by RMS
+/// \brief Namespace for Router Messaging System.
+/// \details Contains all APIs and objects needed by RMS.
 namespace RouterMessagingSystem
 {
 	/// \brief A router that operates on standard routes.
-	/// \todo Implement RouteMessageContinuously. <- Reconsider this
-	/// \todo Determine if MonoBehaviour->Component boxing is as costly as Struct->Object boxing.
-	/// \todo Find a way to prevent Router from calling private functions. <- Reconsider this
-	/// \todo Consider changing Router to non-static to allow for "team" routing.
-	/// \todo Find a way to do area messaging with only 1 O(n) operation.
+	/// \internal Todo: Implement RouteMessageContinuously. <- Reconsider this
+	/// \internal Todo: Determine if MonoBehaviour->Component boxing is as costly as Struct->Object boxing.
+	/// \internal Todo: Find a way to prevent Router from calling private functions. <- Reconsider this
+	/// \internal Todo: Consider changing Router to non-static to allow for "team" routing.
+	/// \internal Todo: Find a way to do area messaging with only 1 O(n) operation.
 	public class Router
 	{
 		private Dictionary<RoutingEvent, List<Route>> RouteTable = null;

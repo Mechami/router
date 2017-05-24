@@ -32,7 +32,7 @@
    <div id="projectname">Router Messaging System
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">A replacement messaging system for Unity Engine built around not using blasted strings.</div>
+   <div id="projectbrief">A replacement messaging system for Unity Engine.</div>
   </td>
  </tr>
  </tbody>
@@ -120,7 +120,7 @@ $(document).ready(function(){initNavTree('class_router_messaging_system_1_1_rout
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ad0000ab04444d202b404987ce81199b2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html#ad0000ab04444d202b404987ce81199b2">AddRoute</a> (<a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&lt; R &gt; NewRoute)</td></tr>
-<tr class="memdesc:ad0000ab04444d202b404987ce81199b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a new <a class="el" href="struct_router_messaging_system_1_1_route.html" title="A route to a function that accepts no parameters and returns nothing. ">Route</a> with the Router.  <a href="#ad0000ab04444d202b404987ce81199b2">More...</a><br/></td></tr>
+<tr class="memdesc:ad0000ab04444d202b404987ce81199b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a new <a class="el" href="struct_router_messaging_system_1_1_route.html" title="A route to a function that accepts no parameters and returns nothing. ">Route</a> with the <a class="el" href="class_router_messaging_system_1_1_router.html" title="A router that operates on standard routes. ">Router</a>.  <a href="#ad0000ab04444d202b404987ce81199b2">More...</a><br/></td></tr>
 <tr class="separator:ad0000ab04444d202b404987ce81199b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa0f08cfa172eee64e9f0f7092082156"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html#afa0f08cfa172eee64e9f0f7092082156">RemoveRoute</a> (<a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&lt; R &gt; OldRoute)</td></tr>
 <tr class="memdesc:afa0f08cfa172eee64e9f0f7092082156"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a <a class="el" href="struct_router_messaging_system_1_1_route.html" title="A route to a function that accepts no parameters and returns nothing. ">Route</a> from routing table.  <a href="#afa0f08cfa172eee64e9f0f7092082156">More...</a><br/></td></tr>
@@ -129,7 +129,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memdesc:ab5c73911e9504bcc294fd17c51d13113"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flushes all Routes from the routing table.  <a href="#ab5c73911e9504bcc294fd17c51d13113">More...</a><br/></td></tr>
 <tr class="separator:ab5c73911e9504bcc294fd17c51d13113"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71f77f5b837a20116c84cdda1676c744"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html#a71f77f5b837a20116c84cdda1676c744">RouteCount</a> ()</td></tr>
-<tr class="memdesc:a71f77f5b837a20116c84cdda1676c744"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the total amount of Routes registered with the Router.  <a href="#a71f77f5b837a20116c84cdda1676c744">More...</a><br/></td></tr>
+<tr class="memdesc:a71f77f5b837a20116c84cdda1676c744"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the total amount of Routes registered with the <a class="el" href="class_router_messaging_system_1_1_router.html" title="A router that operates on standard routes. ">Router</a>.  <a href="#a71f77f5b837a20116c84cdda1676c744">More...</a><br/></td></tr>
 <tr class="separator:a71f77f5b837a20116c84cdda1676c744"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a199760a31ea3000bde9ac77264b3bb7a"><td class="memItemLeft" align="right" valign="top">static List&lt; R &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html#a199760a31ea3000bde9ac77264b3bb7a">RouteMessage</a> (<a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a> EventType)</td></tr>
 <tr class="memdesc:a199760a31ea3000bde9ac77264b3bb7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routes a message of the specified event to all subscribers and returns their values.  <a href="#a199760a31ea3000bde9ac77264b3bb7a">More...</a><br/></td></tr>
@@ -208,7 +208,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R &gt;.AddRoute </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.AddRoute </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&lt; R &gt;&#160;</td>
           <td class="paramname"><em>NewRoute</em></td><td>)</td>
@@ -222,7 +222,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Registers a new <a class="el" href="struct_router_messaging_system_1_1_route.html" title="A route to a function that accepts no parameters and returns nothing. ">Route</a> with the Router. </p>
+<p>Registers a new <a class="el" href="struct_router_messaging_system_1_1_route.html" title="A route to a function that accepts no parameters and returns nothing. ">Route</a> with the <a class="el" href="class_router_messaging_system_1_1_router.html" title="A router that operates on standard routes. ">Router</a>. </p>
 <dl class="section warning"><dt>Warning</dt><dd>Any Routes with null attributes will not be registered. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -256,7 +256,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R &gt;.FlushRoutes </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.FlushRoutes </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -273,7 +273,7 @@ Static Public Member Functions</h2></td></tr>
 <dl class="section warning"><dt>Warning</dt><dd>Only use this if you absolutely need to reset the entire routing table at runtime.<br/>
 </dd>
 <dd>
-Every subscriber will need to re-register with the Router after the tables are flushed.<br/>
+Every subscriber will need to re-register with the <a class="el" href="class_router_messaging_system_1_1_router.html" title="A router that operates on standard routes. ">Router</a> after the tables are flushed.<br/>
 </dd>
 <dd>
 This can potentially be a slow operation, depending on the amount of subscribers that need to be re-registered. </dd></dl>
@@ -299,7 +299,7 @@ This can potentially be a slow operation, depending on the amount of subscribers
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R &gt;.RemoveRoute </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RemoveRoute </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&lt; R &gt;&#160;</td>
           <td class="paramname"><em>OldRoute</em></td><td>)</td>
@@ -347,7 +347,7 @@ This can potentially be a slow operation, depending on the amount of subscribers
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static int RouterMessagingSystem.Router&lt; R &gt;.RouteCount </td>
+          <td class="memname">static int <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteCount </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -360,7 +360,7 @@ This can potentially be a slow operation, depending on the amount of subscribers
 </table>
 </div><div class="memdoc">
 
-<p>Returns the total amount of Routes registered with the Router. </p>
+<p>Returns the total amount of Routes registered with the <a class="el" href="class_router_messaging_system_1_1_router.html" title="A router that operates on standard routes. ">Router</a>. </p>
 <dl class="section return"><dt>Returns</dt><dd>Int representing the Routes registered. </dd></dl>
 
 <p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00070">70</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
@@ -388,7 +388,7 @@ This can potentially be a slow operation, depending on the amount of subscribers
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static List&lt;R&gt; RouterMessagingSystem.Router&lt; R &gt;.RouteMessage </td>
+          <td class="memname">static List&lt;R&gt; <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessage </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td>
           <td class="paramname"><em>EventType</em></td><td>)</td>
@@ -446,7 +446,7 @@ Otherwise returns null if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R &gt;.RouteMessage </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessage </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td>
           <td class="paramname"><em>EventType</em>, </td>
@@ -512,7 +512,7 @@ Assigns null to OutputList if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R &gt;.RouteMessage </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessage </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td>
           <td class="paramname"><em>EventType</em>, </td>
@@ -574,7 +574,7 @@ Enqueues nothing if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static List&lt;R&gt; RouterMessagingSystem.Router&lt; R &gt;.RouteMessageActiveObjects </td>
+          <td class="memname">static List&lt;R&gt; <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageActiveObjects </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td>
           <td class="paramname"><em>EventType</em></td><td>)</td>
@@ -600,27 +600,27 @@ Otherwise returns null if the message cannot be sent. </dd></dl>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00471">471</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;        {</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            CleanDeadRoutes(EventType);</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;</div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;            List&lt;R&gt; Results = null;</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            {</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;                List&lt;Route&lt;R&gt;&gt; RPL = RouteTable[EventType].FindAll(x =&gt; x.Subscriber.gameObject.activeInHierarchy);</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;                Results = <span class="keyword">new</span> List&lt;R&gt;(RPL.Count);</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; RPL.Count; i++)</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;                {</div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;                    Results.Add(RPL[i].Address());</div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;                }</div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;                Results.TrimExcess();   </div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;            }</div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;</div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;            <span class="keywordflow">return</span> Results;</div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00472">472</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;        {</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;            CleanDeadRoutes(EventType);</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;            List&lt;R&gt; Results = null;</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;            {</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;                List&lt;Route&lt;R&gt;&gt; RPL = RouteTable[EventType].FindAll(x =&gt; x.Subscriber.gameObject.activeInHierarchy);</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;                Results = <span class="keyword">new</span> List&lt;R&gt;(RPL.Count);</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; RPL.Count; i++)</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;                {</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;                    Results.Add(RPL[i].Address());</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;                }</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;                Results.TrimExcess();   </div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;            }</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;            <span class="keywordflow">return</span> Results;</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -632,7 +632,7 @@ Otherwise returns null if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R &gt;.RouteMessageActiveObjects </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageActiveObjects </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td>
           <td class="paramname"><em>EventType</em>, </td>
@@ -669,24 +669,24 @@ Assigns null to OutputList if the message cannot be sent. </dd></dl>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00496">496</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;        {</div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;            CleanDeadRoutes(EventType);</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;            OutputList = null;</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;            {</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;                List&lt;Route&lt;R&gt;&gt; RPL = RouteTable[EventType].FindAll(x =&gt; x.Subscriber.gameObject.activeInHierarchy);</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;                OutputList = <span class="keyword">new</span> List&lt;R&gt;(RPL.Count);</div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;</div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; RPL.Count; i++)</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;                {</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;                    OutputList.Add(RPL[i].Address());</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;                }</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;</div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;                OutputList.TrimExcess();    </div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;            }</div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00497">497</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;        {</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;            CleanDeadRoutes(EventType);</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;            OutputList = null;</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;            {</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;                List&lt;Route&lt;R&gt;&gt; RPL = RouteTable[EventType].FindAll(x =&gt; x.Subscriber.gameObject.activeInHierarchy);</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;                OutputList = <span class="keyword">new</span> List&lt;R&gt;(RPL.Count);</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; RPL.Count; i++)</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;                {</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;                    OutputList.Add(RPL[i].Address());</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;                }</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;                OutputList.TrimExcess();    </div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;            }</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -698,7 +698,7 @@ Assigns null to OutputList if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R &gt;.RouteMessageActiveObjects </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageActiveObjects </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td>
           <td class="paramname"><em>EventType</em>, </td>
@@ -735,16 +735,16 @@ Enqueues nothing if the message cannot be sent. </dd></dl>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00518">518</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;        {</div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;            CleanDeadRoutes(EventType);</div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;</div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;            {</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;                List&lt;Route&lt;R&gt;&gt; RPL = RouteTable[EventType].FindAll(x =&gt; x.Subscriber.gameObject.activeInHierarchy);</div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;                RPL.ForEach(x =&gt; OutputQueue.Enqueue(x.Address()));</div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;            }</div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00519">519</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;        {</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;            CleanDeadRoutes(EventType);</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;            {</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;                List&lt;Route&lt;R&gt;&gt; RPL = RouteTable[EventType].FindAll(x =&gt; x.Subscriber.gameObject.activeInHierarchy);</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;                RPL.ForEach(x =&gt; OutputQueue.Enqueue(x.Address()));</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;            }</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -756,7 +756,7 @@ Enqueues nothing if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static List&lt;R&gt; RouterMessagingSystem.Router&lt; R &gt;.RouteMessageArea </td>
+          <td class="memname">static List&lt;R&gt; <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageArea </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_area_message.html">AreaMessage</a>&#160;</td>
           <td class="paramname"><em>MessageParameters</em></td><td>)</td>
@@ -776,7 +776,8 @@ Enqueues nothing if the message cannot be sent. </dd></dl>
 <dd>
 Otherwise returns null if the message cannot be sent. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Only works for subscribed GameObjects. </dd></dl>
-<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000001">Bug:</a></b></dt><dd>Seems to call some routes twice; Possibly present in other methods as-well. &lt;- Test after re-implementation. </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000001">Bug:</a></b></dt><dd>Seems to call some routes twice; Possibly present in other methods as-well. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Regression testing for double-routing bug. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">MessageParameters</td><td>Struct containing parameters for the area message. </td></tr>
@@ -784,28 +785,28 @@ Otherwise returns null if the message cannot be sent. </dd></dl>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00281">281</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        {</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            CleanDeadRoutes(MessageParameters.EventType);</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            List&lt;R&gt; Results = null;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.EventType))</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            {</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                decimal RadiusD = <span class="keyword">new</span> Decimal(MessageParameters.Radius);</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                List&lt;Route&lt;R&gt;&gt; RT = RouteTable[MessageParameters.EventType].FindAll(x =&gt; (<span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) &lt;= RadiusD));</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                Results = <span class="keyword">new</span> List&lt;R&gt;(RT.Count);</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; RT.Count; i++)</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                {</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                    Results.Add(RT[i].Address());</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                }</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                Results.TrimExcess();   </div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            }</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            <span class="keywordflow">return</span> Results;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00282">282</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        {</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            CleanDeadRoutes(MessageParameters.EventType);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            List&lt;R&gt; Results = null;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.EventType))</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                decimal RadiusD = <span class="keyword">new</span> Decimal(MessageParameters.Radius);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                List&lt;Route&lt;R&gt;&gt; RT = RouteTable[MessageParameters.EventType].FindAll(x =&gt; (<span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) &lt;= RadiusD));</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                Results = <span class="keyword">new</span> List&lt;R&gt;(RT.Count);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; RT.Count; i++)</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                    Results.Add(RT[i].Address());</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                Results.TrimExcess();   </div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            }</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            <span class="keywordflow">return</span> Results;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -817,7 +818,7 @@ Otherwise returns null if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R &gt;.RouteMessageArea </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageArea </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_area_message.html">AreaMessage</a>&#160;</td>
           <td class="paramname"><em>MessageParameters</em>, </td>
@@ -854,25 +855,25 @@ Assigns null to OutputList if the message cannot be sent. </dd></dl>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00307">307</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        {</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            CleanDeadRoutes(MessageParameters.EventType);</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            OutputList = null;</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.EventType))</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            {</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                decimal RadiusD = <span class="keyword">new</span> Decimal(MessageParameters.Radius);</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                List&lt;Route&lt;R&gt;&gt; RT = RouteTable[MessageParameters.EventType].FindAll(x =&gt; (<span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) &lt;= RadiusD));</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                OutputList = <span class="keyword">new</span> List&lt;R&gt;(RT.Count);</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; RT.Count; i++)</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                {</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                    OutputList.Add(RT[i].Address());</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                }</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                OutputList.TrimExcess();    </div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            }</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00308">308</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        {</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            CleanDeadRoutes(MessageParameters.EventType);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            OutputList = null;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.EventType))</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            {</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                decimal RadiusD = <span class="keyword">new</span> Decimal(MessageParameters.Radius);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                List&lt;Route&lt;R&gt;&gt; RT = RouteTable[MessageParameters.EventType].FindAll(x =&gt; (<span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) &lt;= RadiusD));</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                OutputList = <span class="keyword">new</span> List&lt;R&gt;(RT.Count);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; RT.Count; i++)</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                    OutputList.Add(RT[i].Address());</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                }</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                OutputList.TrimExcess();    </div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -884,7 +885,7 @@ Assigns null to OutputList if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R &gt;.RouteMessageArea </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageArea </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_area_message.html">AreaMessage</a>&#160;</td>
           <td class="paramname"><em>MessageParameters</em>, </td>
@@ -921,17 +922,17 @@ Enqueues nothing if the message cannot be sent. </dd></dl>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00330">330</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        {</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            CleanDeadRoutes(MessageParameters.EventType);</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.EventType))</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            {</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                decimal RadiusD = <span class="keyword">new</span> Decimal(MessageParameters.Radius);</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                List&lt;Route&lt;R&gt;&gt; RT = RouteTable[MessageParameters.EventType].FindAll(x =&gt; (<span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) &lt;= RadiusD));</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                RT.ForEach(x =&gt; OutputQueue.Enqueue(x.Address()));</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            }</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00331">331</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        {</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            CleanDeadRoutes(MessageParameters.EventType);</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.EventType))</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            {</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                decimal RadiusD = <span class="keyword">new</span> Decimal(MessageParameters.Radius);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                List&lt;Route&lt;R&gt;&gt; RT = RouteTable[MessageParameters.EventType].FindAll(x =&gt; (<span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) &lt;= RadiusD));</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                RT.ForEach(x =&gt; OutputQueue.Enqueue(x.Address()));</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            }</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -943,7 +944,7 @@ Enqueues nothing if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static List&lt;R&gt; RouterMessagingSystem.Router&lt; R &gt;.RouteMessageAreaInverse </td>
+          <td class="memname">static List&lt;R&gt; <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageAreaInverse </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_area_message.html">AreaMessage</a>&#160;</td>
           <td class="paramname"><em>MessageParameters</em></td><td>)</td>
@@ -970,28 +971,28 @@ Otherwise returns null if the message cannot be sent. </dd></dl>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00346">346</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        {</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            CleanDeadRoutes(MessageParameters.EventType);</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            List&lt;R&gt; Results = null;</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.EventType))</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            {</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                decimal RadiusD = <span class="keyword">new</span> Decimal(MessageParameters.Radius);</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                List&lt;Route&lt;R&gt;&gt; RT = RouteTable[MessageParameters.EventType].FindAll(x =&gt; (<span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) &gt; RadiusD));</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                Results = <span class="keyword">new</span> List&lt;R&gt;(RT.Count);</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; RT.Count; i++)</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                {</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                    Results.Add(RT[i].Address());</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                }</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                Results.TrimExcess();   </div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            }</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            <span class="keywordflow">return</span> Results;</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00347">347</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        {</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            CleanDeadRoutes(MessageParameters.EventType);</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            List&lt;R&gt; Results = null;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.EventType))</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;            {</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                decimal RadiusD = <span class="keyword">new</span> Decimal(MessageParameters.Radius);</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                List&lt;Route&lt;R&gt;&gt; RT = RouteTable[MessageParameters.EventType].FindAll(x =&gt; (<span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) &gt; RadiusD));</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                Results = <span class="keyword">new</span> List&lt;R&gt;(RT.Count);</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; RT.Count; i++)</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                {</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                    Results.Add(RT[i].Address());</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                }</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                Results.TrimExcess();   </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            }</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            <span class="keywordflow">return</span> Results;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1003,7 +1004,7 @@ Otherwise returns null if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R &gt;.RouteMessageAreaInverse </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageAreaInverse </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_area_message.html">AreaMessage</a>&#160;</td>
           <td class="paramname"><em>MessageParameters</em>, </td>
@@ -1040,25 +1041,25 @@ Assigns null to OutputList if the message cannot be sent. </dd></dl>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00372">372</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        {</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            CleanDeadRoutes(MessageParameters.EventType);</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            OutputList = null;</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.EventType))</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            {</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                decimal RadiusD = <span class="keyword">new</span> Decimal(MessageParameters.Radius);</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                List&lt;Route&lt;R&gt;&gt; RT = RouteTable[MessageParameters.EventType].FindAll(x =&gt; (<span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) &gt; RadiusD));</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                OutputList = <span class="keyword">new</span> List&lt;R&gt;(RT.Count);</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; RT.Count; i++)</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                {</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                    OutputList.Add(RT[i].Address());</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                }</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                OutputList.TrimExcess();    </div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;            }</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00373">373</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        {</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            CleanDeadRoutes(MessageParameters.EventType);</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            OutputList = null;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.EventType))</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            {</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                decimal RadiusD = <span class="keyword">new</span> Decimal(MessageParameters.Radius);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                List&lt;Route&lt;R&gt;&gt; RT = RouteTable[MessageParameters.EventType].FindAll(x =&gt; (<span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) &gt; RadiusD));</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                OutputList = <span class="keyword">new</span> List&lt;R&gt;(RT.Count);</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; RT.Count; i++)</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                {</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                    OutputList.Add(RT[i].Address());</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                }</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                OutputList.TrimExcess();    </div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;            }</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1070,7 +1071,7 @@ Assigns null to OutputList if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R &gt;.RouteMessageAreaInverse </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageAreaInverse </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_area_message.html">AreaMessage</a>&#160;</td>
           <td class="paramname"><em>MessageParameters</em>, </td>
@@ -1107,17 +1108,17 @@ Enqueues nothing if the message cannot be sent. </dd></dl>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00395">395</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        {</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            CleanDeadRoutes(MessageParameters.EventType);</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    </div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.EventType))</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            {</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                decimal RadiusD = <span class="keyword">new</span> Decimal(MessageParameters.Radius);</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                List&lt;Route&lt;R&gt;&gt; RT = RouteTable[MessageParameters.EventType].FindAll(x =&gt; (<span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) &gt; RadiusD));</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                RT.ForEach(x =&gt; OutputQueue.Enqueue(x.Address()));</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            }</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00396">396</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        {</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            CleanDeadRoutes(MessageParameters.EventType);</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    </div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(MessageParameters.EventType))</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;            {</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                decimal RadiusD = <span class="keyword">new</span> Decimal(MessageParameters.Radius);</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                List&lt;Route&lt;R&gt;&gt; RT = RouteTable[MessageParameters.EventType].FindAll(x =&gt; (<span class="keyword">new</span> Decimal(Vector3.Distance(MessageParameters.Origin, x.Subscriber.transform.position)) &gt; RadiusD));</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                RT.ForEach(x =&gt; OutputQueue.Enqueue(x.Address()));</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;            }</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1129,7 +1130,7 @@ Enqueues nothing if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static List&lt;R&gt; RouterMessagingSystem.Router&lt; R &gt;.RouteMessageAscendants </td>
+          <td class="memname">static List&lt;R&gt; <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageAscendants </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_message_target.html">MessageTarget</a>&#160;</td>
           <td class="paramname"><em>Scope</em></td><td>)</td>
@@ -1189,7 +1190,7 @@ Otherwise returns null if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R &gt;.RouteMessageAscendants </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageAscendants </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_message_target.html">MessageTarget</a>&#160;</td>
           <td class="paramname"><em>Scope</em>, </td>
@@ -1255,7 +1256,7 @@ Assigns null to OutputList if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R &gt;.RouteMessageAscendants </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageAscendants </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_message_target.html">MessageTarget</a>&#160;</td>
           <td class="paramname"><em>Scope</em>, </td>
@@ -1313,7 +1314,7 @@ Enqueues nothing if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static List&lt;R&gt; RouterMessagingSystem.Router&lt; R &gt;.RouteMessageDescendants </td>
+          <td class="memname">static List&lt;R&gt; <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageDescendants </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_message_target.html">MessageTarget</a>&#160;</td>
           <td class="paramname"><em>Scope</em></td><td>)</td>
@@ -1373,7 +1374,7 @@ Otherwise returns null if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R &gt;.RouteMessageDescendants </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageDescendants </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_message_target.html">MessageTarget</a>&#160;</td>
           <td class="paramname"><em>Scope</em>, </td>
@@ -1439,7 +1440,7 @@ Assigns null to OutputList if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R &gt;.RouteMessageDescendants </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageDescendants </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_message_target.html">MessageTarget</a>&#160;</td>
           <td class="paramname"><em>Scope</em>, </td>
@@ -1497,7 +1498,7 @@ Enqueues nothing if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static List&lt;R&gt; RouterMessagingSystem.Router&lt; R &gt;.RouteMessageInactiveObjects </td>
+          <td class="memname">static List&lt;R&gt; <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageInactiveObjects </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td>
           <td class="paramname"><em>EventType</em></td><td>)</td>
@@ -1523,27 +1524,27 @@ Otherwise returns null if the message cannot be sent. </dd></dl>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00410">410</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        {</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;            CleanDeadRoutes(EventType);</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;            List&lt;R&gt; Results = null;</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;            {</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                List&lt;Route&lt;R&gt;&gt; RPL = RouteTable[EventType].FindAll(x =&gt; !x.Subscriber.gameObject.activeInHierarchy);</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                Results = <span class="keyword">new</span> List&lt;R&gt;(RPL.Count);</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; RPL.Count; i++)</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                {</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                    Results.Add(RPL[i].Address());</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                }</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                Results.TrimExcess();   </div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;            }</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            <span class="keywordflow">return</span> Results;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00411">411</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        {</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;            CleanDeadRoutes(EventType);</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;            List&lt;R&gt; Results = null;</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;            {</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                List&lt;Route&lt;R&gt;&gt; RPL = RouteTable[EventType].FindAll(x =&gt; !x.Subscriber.gameObject.activeInHierarchy);</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                Results = <span class="keyword">new</span> List&lt;R&gt;(RPL.Count);</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; RPL.Count; i++)</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                {</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                    Results.Add(RPL[i].Address());</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                }</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                Results.TrimExcess();   </div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            }</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            <span class="keywordflow">return</span> Results;</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1555,7 +1556,7 @@ Otherwise returns null if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R &gt;.RouteMessageInactiveObjects </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageInactiveObjects </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td>
           <td class="paramname"><em>EventType</em>, </td>
@@ -1592,24 +1593,24 @@ Assigns null to OutputList if the message cannot be sent. </dd></dl>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00435">435</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        {</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;            CleanDeadRoutes(EventType);</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;            OutputList = null;</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;            {</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                List&lt;Route&lt;R&gt;&gt; RPL = RouteTable[EventType].FindAll(x =&gt; !x.Subscriber.gameObject.activeInHierarchy);</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                OutputList = <span class="keyword">new</span> List&lt;R&gt;(RPL.Count);</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; RPL.Count; i++)</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                {</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;                    OutputList.Add(RPL[i].Address());</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                }</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;                OutputList.TrimExcess();    </div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            }</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00436">436</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        {</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;            CleanDeadRoutes(EventType);</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;            OutputList = null;</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;            {</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                List&lt;Route&lt;R&gt;&gt; RPL = RouteTable[EventType].FindAll(x =&gt; !x.Subscriber.gameObject.activeInHierarchy);</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                OutputList = <span class="keyword">new</span> List&lt;R&gt;(RPL.Count);</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; RPL.Count; i++)</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;                {</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                    OutputList.Add(RPL[i].Address());</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                }</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                OutputList.TrimExcess();    </div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;            }</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1621,7 +1622,7 @@ Assigns null to OutputList if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R &gt;.RouteMessageInactiveObjects </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R &gt;.RouteMessageInactiveObjects </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td>
           <td class="paramname"><em>EventType</em>, </td>
@@ -1658,29 +1659,26 @@ Enqueues nothing if the message cannot be sent. </dd></dl>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00457">457</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
-<div class="fragment"><div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        {</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;            CleanDeadRoutes(EventType);</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;            {</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;                List&lt;Route&lt;R&gt;&gt; RPL = RouteTable[EventType].FindAll(x =&gt; !x.Subscriber.gameObject.activeInHierarchy);</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;                RPL.ForEach(x =&gt; OutputQueue.Enqueue(x.Address()));</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            }</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="_routers_2_r0_8cs_source.html#l00458">458</a> of file <a class="el" href="_routers_2_r0_8cs_source.html">R0.cs</a>.</p>
+<div class="fragment"><div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;        {</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            CleanDeadRoutes(EventType);</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;            <span class="keywordflow">if</span> (TablesExist &amp;&amp; EventIsPopulated(EventType))</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;            {</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;                List&lt;Route&lt;R&gt;&gt; RPL = RouteTable[EventType].FindAll(x =&gt; !x.Subscriber.gameObject.activeInHierarchy);</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;                RPL.ForEach(x =&gt; OutputQueue.Enqueue(x.Address()));</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            }</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/Philip/Unity Projects/router/Project/Assets/Plugins/Router Messaging System/Routers/<a class="el" href="_routers_2_r0_8cs_source.html">R0.cs (00d289a91d18de00188256ea152e9ed56f3d55ec)</a></li>
-</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_router_messaging_system.html">RouterMessagingSystem</a></li><li class="navelem"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_01_4.html">Router< R ></a></li>
-    <li class="footer">Generated on Mon Sep 15 2014 14:21:58 for Router Messaging System by
+    <li class="footer">Generated on Tue May 23 2017 19:11:14 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

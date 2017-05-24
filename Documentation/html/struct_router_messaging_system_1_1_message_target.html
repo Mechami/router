@@ -32,7 +32,7 @@
    <div id="projectname">Router Messaging System
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">A replacement messaging system for Unity Engine built around not using blasted strings.</div>
+   <div id="projectbrief">A replacement messaging system for Unity Engine.</div>
   </td>
  </tr>
  </tbody>
@@ -209,6 +209,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 </dl>
 
 <p>Definition at line <a class="el" href="_message_target_8cs_source.html#l00038">38</a> of file <a class="el" href="_message_target_8cs_source.html">MessageTarget.cs</a>.</p>
+
+<p>References <a class="el" href="struct_router_messaging_system_1_1_message_target.html#a39e7bbbc3144498771a697cb8a34491b">RouterMessagingSystem.MessageTarget.Recipient</a>.</p>
 <div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">return</span> (this.<a class="code" href="struct_router_messaging_system_1_1_message_target.html#a39e7bbbc3144498771a697cb8a34491b">Recipient</a> == MT.Recipient) &amp;&amp; (this.EventType == MT.EventType);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
@@ -251,6 +253,8 @@ Immediately returns false if Obj is not a <a class="el" href="struct_router_mess
 </dl>
 
 <p>Definition at line <a class="el" href="_message_target_8cs_source.html#l00046">46</a> of file <a class="el" href="_message_target_8cs_source.html">MessageTarget.cs</a>.</p>
+
+<p>References <a class="el" href="struct_router_messaging_system_1_1_message_target.html#a39e7bbbc3144498771a697cb8a34491b">RouterMessagingSystem.MessageTarget.Recipient</a>.</p>
 <div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">return</span> ((Obj is <a class="code" href="struct_router_messaging_system_1_1_message_target.html#aa7f90655f08bb809abed7678c54bb280">MessageTarget</a>) &amp;&amp; (this.<a class="code" href="struct_router_messaging_system_1_1_message_target.html#a39e7bbbc3144498771a697cb8a34491b">Recipient</a> == ((MessageTarget)Obj).<a class="code" href="struct_router_messaging_system_1_1_message_target.html#a39e7bbbc3144498771a697cb8a34491b">Recipient</a>));</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
@@ -336,6 +340,8 @@ False if all attributes of the left-side operand are the same as their respectiv
 </dl>
 
 <p>Definition at line <a class="el" href="_message_target_8cs_source.html#l00076">76</a> of file <a class="el" href="_message_target_8cs_source.html">MessageTarget.cs</a>.</p>
+
+<p>References <a class="el" href="struct_router_messaging_system_1_1_message_target.html#a39e7bbbc3144498771a697cb8a34491b">RouterMessagingSystem.MessageTarget.Recipient</a>.</p>
 <div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        {</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">return</span> (MT1.Recipient != MT2.Recipient) &amp;&amp; (MT1.EventType != MT2.EventType);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
@@ -388,6 +394,8 @@ False if any attribute of the left-side operand is different from the respective
 </dl>
 
 <p>Definition at line <a class="el" href="_message_target_8cs_source.html#l00068">68</a> of file <a class="el" href="_message_target_8cs_source.html">MessageTarget.cs</a>.</p>
+
+<p>References <a class="el" href="struct_router_messaging_system_1_1_message_target.html#a39e7bbbc3144498771a697cb8a34491b">RouterMessagingSystem.MessageTarget.Recipient</a>.</p>
 <div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">return</span> (MT1.Recipient == MT2.Recipient) &amp;&amp; (MT1.EventType == MT2.EventType);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
@@ -419,6 +427,8 @@ False if any attribute of the left-side operand is different from the respective
 <dl class="section return"><dt>Returns</dt><dd>A string containing the recipient. </dd></dl>
 
 <p>Definition at line <a class="el" href="_message_target_8cs_source.html#l00060">60</a> of file <a class="el" href="_message_target_8cs_source.html">MessageTarget.cs</a>.</p>
+
+<p>References <a class="el" href="struct_router_messaging_system_1_1_message_target.html#a39e7bbbc3144498771a697cb8a34491b">RouterMessagingSystem.MessageTarget.Recipient</a>.</p>
 <div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        {</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">return</span> (<span class="stringliteral">&quot;[&quot;</span> + ((<a class="code" href="struct_router_messaging_system_1_1_message_target.html#a39e7bbbc3144498771a697cb8a34491b">Recipient</a> != null)? <a class="code" href="struct_router_messaging_system_1_1_message_target.html#a39e7bbbc3144498771a697cb8a34491b">Recipient</a>.ToString() : <span class="stringliteral">&quot;Null&quot;</span>) + <span class="stringliteral">&quot;]&quot;</span>);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
@@ -426,16 +436,13 @@ False if any attribute of the left-side operand is different from the respective
 </div><!-- fragment -->
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
-<li>C:/Users/Philip/Unity Projects/router/Project/Assets/Plugins/Router Messaging System/Parameters/<a class="el" href="_message_target_8cs_source.html">MessageTarget.cs (34e058475be3e1a576723989b65e3253e4e3fb68)</a></li>
-</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_router_messaging_system.html">RouterMessagingSystem</a></li><li class="navelem"><a class="el" href="struct_router_messaging_system_1_1_message_target.html">MessageTarget</a></li>
-    <li class="footer">Generated on Mon Sep 15 2014 14:21:58 for Router Messaging System by
+    <li class="footer">Generated on Tue May 23 2017 19:11:14 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

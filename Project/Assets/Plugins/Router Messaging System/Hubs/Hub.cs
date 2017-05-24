@@ -8,6 +8,7 @@ namespace RouterMessagingSystem
 	/// \warning Hubs currently do not have a system for cleaning dead routes introduced from sudden component destruction.\n
 	/// \warning It is advised to remove routes manually within OnDestroy or OnDisable for the time being.
 	/// \todo Implement cleanup system for dead components.
+	/// \todo Improve error reporting implementation.
 	[AddComponentMenu("Router Messaging System/Hub")]
 	public sealed class Hub : MonoBehaviour
 	{

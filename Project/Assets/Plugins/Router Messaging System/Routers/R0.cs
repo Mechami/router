@@ -277,7 +277,8 @@ namespace RouterMessagingSystem
 		/// \returns Returns a List<R> containing all returned data from subscribers of this event type.\n
 		/// \returns Otherwise returns null if the message cannot be sent.
 		/// \note Only works for subscribed GameObjects.
-		/// \bug Seems to call some routes twice; Possibly present in other methods as-well. <- Test after re-implementation.
+		/// \bug Seems to call some routes twice; Possibly present in other methods as-well.
+		/// \todo Regression testing for double-routing bug.
 		public static List<R> RouteMessageArea(AreaMessage MessageParameters /**< Struct containing parameters for the area message. */)
 		{
 			CleanDeadRoutes(MessageParameters.EventType);

@@ -32,7 +32,7 @@
    <div id="projectname">Router Messaging System
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">A replacement messaging system for Unity Engine built around not using blasted strings.</div>
+   <div id="projectbrief">A replacement messaging system for Unity Engine.</div>
   </td>
  </tr>
  </tbody>
@@ -120,7 +120,7 @@ $(document).ready(function(){initNavTree('class_router_messaging_system_1_1_rout
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a75028d9564f3f180f456df8231fad4e7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_00_01_t1_00_01_t2_01_4.html#a75028d9564f3f180f456df8231fad4e7">AddRoute</a> (<a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&lt; R, T1, T2 &gt; NewRoute)</td></tr>
-<tr class="memdesc:a75028d9564f3f180f456df8231fad4e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a new <a class="el" href="struct_router_messaging_system_1_1_route.html" title="A route to a function that accepts no parameters and returns nothing. ">Route</a> with the Router.  <a href="#a75028d9564f3f180f456df8231fad4e7">More...</a><br/></td></tr>
+<tr class="memdesc:a75028d9564f3f180f456df8231fad4e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a new <a class="el" href="struct_router_messaging_system_1_1_route.html" title="A route to a function that accepts no parameters and returns nothing. ">Route</a> with the <a class="el" href="class_router_messaging_system_1_1_router.html" title="A router that operates on standard routes. ">Router</a>.  <a href="#a75028d9564f3f180f456df8231fad4e7">More...</a><br/></td></tr>
 <tr class="separator:a75028d9564f3f180f456df8231fad4e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a561da085c907ff69c83fa8f012afaca3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_00_01_t1_00_01_t2_01_4.html#a561da085c907ff69c83fa8f012afaca3">RemoveRoute</a> (<a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&lt; R, T1, T2 &gt; OldRoute)</td></tr>
 <tr class="memdesc:a561da085c907ff69c83fa8f012afaca3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a <a class="el" href="struct_router_messaging_system_1_1_route.html" title="A route to a function that accepts no parameters and returns nothing. ">Route</a> from routing table.  <a href="#a561da085c907ff69c83fa8f012afaca3">More...</a><br/></td></tr>
@@ -163,7 +163,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R, T1, T2 &gt;.AddRoute </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R, T1, T2 &gt;.AddRoute </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&lt; R, T1, T2 &gt;&#160;</td>
           <td class="paramname"><em>NewRoute</em></td><td>)</td>
@@ -177,7 +177,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Registers a new <a class="el" href="struct_router_messaging_system_1_1_route.html" title="A route to a function that accepts no parameters and returns nothing. ">Route</a> with the Router. </p>
+<p>Registers a new <a class="el" href="struct_router_messaging_system_1_1_route.html" title="A route to a function that accepts no parameters and returns nothing. ">Route</a> with the <a class="el" href="class_router_messaging_system_1_1_router.html" title="A router that operates on standard routes. ">Router</a>. </p>
 <dl class="section warning"><dt>Warning</dt><dd>Any Routes with null attributes will not be registered. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -208,7 +208,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R, T1, T2 &gt;.FlushRoutes </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R, T1, T2 &gt;.FlushRoutes </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -225,7 +225,7 @@ Static Public Member Functions</h2></td></tr>
 <dl class="section warning"><dt>Warning</dt><dd>Only use this if you absolutely need to reset the entire routing table at runtime.<br/>
 </dd>
 <dd>
-Every subscriber will need to re-register with the Router after the tables are flushed.<br/>
+Every subscriber will need to re-register with the <a class="el" href="class_router_messaging_system_1_1_router.html" title="A router that operates on standard routes. ">Router</a> after the tables are flushed.<br/>
 </dd>
 <dd>
 This is a relatively slow operation, depending on the amount of subscribers that need to be re-added. </dd></dl>
@@ -247,7 +247,7 @@ This is a relatively slow operation, depending on the amount of subscribers that
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void RouterMessagingSystem.Router&lt; R, T1, T2 &gt;.RemoveRoute </td>
+          <td class="memname">static void <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R, T1, T2 &gt;.RemoveRoute </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_router_messaging_system_1_1_route.html">Route</a>&lt; R, T1, T2 &gt;&#160;</td>
           <td class="paramname"><em>OldRoute</em></td><td>)</td>
@@ -290,7 +290,7 @@ This is a relatively slow operation, depending on the amount of subscribers that
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static List&lt;R&gt; RouterMessagingSystem.Router&lt; R, T1, T2 &gt;.RouteMessage </td>
+          <td class="memname">static List&lt;R&gt; <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R, T1, T2 &gt;.RouteMessage </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespace_router_messaging_system.html#abf90ac1a99b75a99768e976718e09340">RoutingEvent</a>&#160;</td>
           <td class="paramname"><em>EventType</em>, </td>
@@ -358,7 +358,7 @@ Otherwise returns null if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static List&lt;R&gt; RouterMessagingSystem.Router&lt; R, T1, T2 &gt;.RouteMessageArea </td>
+          <td class="memname">static List&lt;R&gt; <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R, T1, T2 &gt;.RouteMessageArea </td>
           <td>(</td>
           <td class="paramtype">GameObject&#160;</td>
           <td class="paramname"><em>Origin</em>, </td>
@@ -445,7 +445,7 @@ Otherwise returns null if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static List&lt;R&gt; RouterMessagingSystem.Router&lt; R, T1, T2 &gt;.RouteMessageArea </td>
+          <td class="memname">static List&lt;R&gt; <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R, T1, T2 &gt;.RouteMessageArea </td>
           <td>(</td>
           <td class="paramtype">Component&#160;</td>
           <td class="paramname"><em>Origin</em>, </td>
@@ -533,7 +533,7 @@ Otherwise returns null if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static List&lt;R&gt; RouterMessagingSystem.Router&lt; R, T1, T2 &gt;.RouteMessageAscendants </td>
+          <td class="memname">static List&lt;R&gt; <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R, T1, T2 &gt;.RouteMessageAscendants </td>
           <td>(</td>
           <td class="paramtype">GameObject&#160;</td>
           <td class="paramname"><em>Scope</em>, </td>
@@ -611,7 +611,7 @@ Otherwise returns null if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static List&lt;R&gt; RouterMessagingSystem.Router&lt; R, T1, T2 &gt;.RouteMessageAscendants </td>
+          <td class="memname">static List&lt;R&gt; <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R, T1, T2 &gt;.RouteMessageAscendants </td>
           <td>(</td>
           <td class="paramtype">Component&#160;</td>
           <td class="paramname"><em>Scope</em>, </td>
@@ -691,7 +691,7 @@ Otherwise returns null if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static List&lt;R&gt; RouterMessagingSystem.Router&lt; R, T1, T2 &gt;.RouteMessageDescendants </td>
+          <td class="memname">static List&lt;R&gt; <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R, T1, T2 &gt;.RouteMessageDescendants </td>
           <td>(</td>
           <td class="paramtype">GameObject&#160;</td>
           <td class="paramname"><em>Scope</em>, </td>
@@ -769,7 +769,7 @@ Otherwise returns null if the message cannot be sent. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static List&lt;R&gt; RouterMessagingSystem.Router&lt; R, T1, T2 &gt;.RouteMessageDescendants </td>
+          <td class="memname">static List&lt;R&gt; <a class="el" href="class_router_messaging_system_1_1_router.html">RouterMessagingSystem.Router</a>&lt; R, T1, T2 &gt;.RouteMessageDescendants </td>
           <td>(</td>
           <td class="paramtype">Component&#160;</td>
           <td class="paramname"><em>Scope</em>, </td>
@@ -841,16 +841,13 @@ Otherwise returns null if the message cannot be sent. </dd></dl>
 </div><!-- fragment -->
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/Philip/Unity Projects/router/Project/Assets/Plugins/Router Messaging System/Routers/<a class="el" href="_routers_2_r2_8cs_source.html">R2.cs (0945171141aa4e650c94c568ea6bd69cc237ab71)</a></li>
-</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_router_messaging_system.html">RouterMessagingSystem</a></li><li class="navelem"><a class="el" href="class_router_messaging_system_1_1_router_3_01_r_00_01_t1_00_01_t2_01_4.html">Router< R, T1, T2 ></a></li>
-    <li class="footer">Generated on Mon Sep 15 2014 14:21:58 for Router Messaging System by
+    <li class="footer">Generated on Tue May 23 2017 19:11:14 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

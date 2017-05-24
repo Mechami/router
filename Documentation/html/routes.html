@@ -32,7 +32,7 @@
    <div id="projectname">Router Messaging System
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">A replacement messaging system for Unity Engine built around not using blasted strings.</div>
+   <div id="projectbrief">A replacement messaging system for Unity Engine.</div>
   </td>
  </tr>
  </tbody>
@@ -105,13 +105,14 @@ $(document).ready(function(){initNavTree('routes.html','');});
 <div class="textblock"><p>Routes are the structs used by Router to register and access subscribers.<br/>
  Router cannot operate without valid Routes being registered first.<br/>
  A valid Route is composed of a reference to a component, a delegate to a function and a routing event.<br/>
- A Route is considered valid as long as all three of this fields are non-null. Components can create any number of Routes to subscribe multiple functions to multiple events; however, when constructing a Route if you pass a multicast delegate then the Route will only use the delegate at index 0 in the invocation list. </p>
+ A Route is considered valid as long as all three of this fields are non-null.<br/>
+ Multicast delegates are not supported; All but the first delegate in the invocation are discarded. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Sep 15 2014 14:21:58 for Router Messaging System by
+    <li class="footer">Generated on Tue May 23 2017 19:11:13 for Router Messaging System by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
